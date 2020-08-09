@@ -2,21 +2,24 @@
 import {HashRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import Proptypes from "prop-types";
 import React from "react";
-import Dashboard from "../Routes/Dashboard";
+import LogIn from "../Routes/LogIn/LogInPresenter";
 
 const LoggedInRoutes = () => <Switch>
-<Route exact path="/" component={Dashboard}/>
+<Route exact path="/" component={LogIn}/>
 <Redirect from="*" to="/" />
 </Switch>
 
 const LoggedOutRoutes = () => <Switch>
-<Route exact path="/" component={Dashboard}></Route>
+<Route exact path="/" component={LogIn}></Route>
 <Redirect from="*" to="/" />
 </Switch>
 
 
+interface Props{
+    isLoggedIn:boolean;
+}
 
-const AppRouter = ({isLoggedIn}) => 
+const AppRouter:React.SFC<Props> = ({isLoggedIn}) => 
 isLoggedIn? <LoggedInRoutes /> : <LoggedOutRoutes /> 
 
 

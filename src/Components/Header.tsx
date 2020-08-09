@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Header = styled.header`
   width: 100%;
   height: ${props => props.theme.headerBarHeight};
+  color: ${props => props.theme.headerTextColor};
   border: 0;
   position: fixed;
   top: 0;
@@ -14,6 +15,8 @@ const Header = styled.header`
   border-width: 1px;
   display: flex;
   align-items: center;
+  padding-left:15px;
+  padding-right:15px;
   z-index: 2;
 `;
 

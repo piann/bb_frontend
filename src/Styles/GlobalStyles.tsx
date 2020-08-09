@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import theme from "./theme";
+
 
 export default createGlobalStyle`
     ${reset};
@@ -8,15 +10,14 @@ export default createGlobalStyle`
         box-sizing:border-box;
     }
     body {
-        background-color:${props => props.theme.bgColor};
-        color: ${props => props.theme.textColor};
+        background-color:${theme.bgColor};
+        color: ${theme.textColor};
         font-size:14px;
         font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        padding-top: ${props => props.theme.headerBarHeight};
-        padding-left: ${props => props.theme.sideBarWidth}; 
+        padding-top: ${theme.headerBarHeight};
     }
     a {
-        color:${props => props.theme.purpleColor};
+        color:${theme.blueColor};
         text-decoration:none;
     }
     input:focus{

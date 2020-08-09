@@ -2,20 +2,23 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../Styles/GlobalStyles";
 import { HashRouter as Router } from "react-router-dom";
-import Theme from "../Styles/Theme";
+import theme from "../Styles/theme";
 import Routes from "./Routes";
 import Header from "./Header";
-import Side from "./Side";
+import {Body, BodyWrapper} from "./Body";
 
 export default () => (
-  <ThemeProvider theme={Theme}>
+  <ThemeProvider theme={theme}>
     <>
     <GlobalStyles />
     <Router>
       <>
       <Header/>
-      <Side/>
-      <Routes isLoggedin={false}/>
+      <BodyWrapper>
+        <Body>
+          <Routes isLoggedIn={false}/>
+        </Body>
+      </BodyWrapper>
       </>
     </Router>
     </>
