@@ -2,7 +2,9 @@
 import {HashRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import Proptypes from "prop-types";
 import React from "react";
-import LogIn from "../Routes/LogIn/LogInPresenter";
+import LogIn from "../Routes/LogIn";
+import SignUp from "../Routes/SignUp";
+import BBP from "../Routes/BBP";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/" component={LogIn}/>
@@ -10,8 +12,10 @@ const LoggedInRoutes = () => <Switch>
 </Switch>
 
 const LoggedOutRoutes = () => <Switch>
-<Route exact path="/" component={LogIn}></Route>
-<Redirect from="*" to="/" />
+<Route exact path="/log_in" component={LogIn}></Route>
+<Route exact path="/sign_up" component={SignUp}></Route>
+<Route exact path="/program" component={BBP}></Route>
+<Redirect from="*" to="/log_in" />
 </Switch>
 
 

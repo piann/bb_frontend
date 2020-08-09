@@ -1,4 +1,4 @@
 import React from "react";
-import LogInContainer from ".";
+import LogInPresenter from "./LogInPresenter";
 
-export default () => <LogInContainer/>
+export default () => <LogInPresenter/>

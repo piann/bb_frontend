@@ -51,13 +51,13 @@ const MainArea = styled.div`
 const MainComponentWrapper = styled.div`
     display:flex;
     flex-direction:column;
-    padding-top:10px;
-    padding-bottom:10px;
+    margin-top:10px;
+    margin-bottom:10px;
     &:first-child {
-        padding-top:20px
+        margin-top:20px
     }
     &:last-child {
-        padding-bottom:20px
+        margin-bottom:20px
     }
 
 `

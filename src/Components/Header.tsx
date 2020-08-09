@@ -17,7 +17,7 @@ const Header = styled.header`
   align-items: center;
   padding-left:15px;
   padding-right:15px;
-  z-index: 2;
+  z-index: 10;
 `;
 
 export default () => <Header>

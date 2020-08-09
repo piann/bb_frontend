@@ -13,5 +13,6 @@ export default {
     borderRadius: BORDER_RADIUS,
     headerBarHeight: "80px",
     maxBodyWidth: "1500px",
-    mainBoxWidth: "1300px"
+    mainBoxWidth: "1300px",
+    bannerHeight: "250px", 
 }
