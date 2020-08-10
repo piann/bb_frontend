@@ -10,7 +10,7 @@ display:flex;
 flex-direction:column;
 border-style:groove;
 border-color:${props => props.theme.snowyGrayColor};
-border-width:1px;
+border-width:2px;
 margin-bottom:50px;
 margin-left:20px;
 margin-right:20px;
@@ -29,7 +29,7 @@ padding-right:20px;
 export const BasicTableContent = styled.div`
 border-style:groove;
 border-top-color:${props => props.theme.snowyGrayColor};
-border-top-width:1px;
+border-top-width:2px;
 height: 60px;
 display:flex;
 align-items:center;

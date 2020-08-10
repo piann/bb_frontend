@@ -28,6 +28,7 @@ const SubPolicyBox = styled.div`
     display:flex;
     flex-direction:column;
     margin-bottom:30px;
+    z-index:3;
 `;
 
 const SubPolicyTitle = styled.text`
@@ -41,6 +42,45 @@ const SubPolicyContent = styled.text`
     line-height:2em;
     white-space: pre-line;
 `;
+
+const InformationContent2 = styled.div`
+    display:grid;
+    flex-direction:column;
+    grid-template-columns:50px 1fr;
+`;
+
+const LeftSpace = styled.div`
+    min-height:1px;
+    border-right:2px groove ${props => props.theme.snowyGrayColor};
+`;
+
+const RightSpace = styled.div`
+    min-width:1px;
+    height:2000px;
+    display:flex;
+    flex-direction:column;
+`;
+
+interface CircleProps{
+    xIndex:number;
+    yIndex:number;
+}
+const CircleContent = styled.div<CircleProps>`
+  position: absolute;
+  margin-left:${props => props.xIndex}px;
+  margin-top:${props => props.yIndex}px;
+  height: 40px;
+  width: 40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:18px;
+  background-color: ${props => props.theme.blueColor};
+  border-radius:50%;
+  z-index:2;
+`
+
 
 const testOptions = [
     { value: "chocolate", label: "Ch" },
@@ -62,9 +102,14 @@ export default () =>
         </InformationBox>
         <InformationBox>
             <InformationTitle>Report</InformationTitle>
-            <InformationContent>
-                <Dropdown options={testOptions} defaultValue={testOptions[0]}/>
-            </InformationContent>
+            <InformationContent2>
+                <LeftSpace>
+                    <CircleContent xIndex={30} yIndex={50}>1</CircleContent>
+                    <CircleContent xIndex={30} yIndex={300}>2</CircleContent>
+                    <CircleContent xIndex={30} yIndex={500}>3</CircleContent>
+                </LeftSpace>
+                <RightSpace> 1111 </RightSpace>
+            </InformationContent2>
         </InformationBox>
     </BBPLeft>
     <BBPRight>

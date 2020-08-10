@@ -13,15 +13,23 @@ const StyledSelect = styled(Select)`
 
   .Select__control--is-focused {
     box-shadow: 0 0 0 1px black;
-    outline: none;
+    border-color:${props => props.theme.darkgrayColor};
+  }
+  .Select__control:hover {
+    box-shadow: 0 0 0 1px black;
+    border-color:${props => props.theme.darkgrayColor};
   }
 
   .Select__option--is-focused {
-    background-color:#445566;
+    background-color:${props => props.theme.darkgrayColor};
     color:white
   }
   .Select__option--is-selected {
-    background-color:#445566;
+    background-color:${props => props.theme.darkgrayColor};
+    color:white
+  }
+  .Select__option:active {
+    background-color:${props => props.theme.darkgrayColor};
     color:white
   }
 `;
