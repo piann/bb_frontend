@@ -9,7 +9,8 @@ const SignUpBox = styled.div`
     border-radius: ${props => props.theme.borderRadius};
     height: 600px;
     padding: 8px 20px;
-    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
     margin-top:100px;
     min-width:250px;
     width: 400px;
@@ -69,7 +70,7 @@ const MainComponentWrapper = styled.div`
 const TitleBox = styled.div`
     font-weight:500;
     font-size:16px;
-    color:${props => props.theme.darkgray};
+    color:${props => props.theme.darkgrayColor};
 `
 
 const Description = styled.text`

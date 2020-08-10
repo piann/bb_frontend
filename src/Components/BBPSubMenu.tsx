@@ -1,11 +1,9 @@
-import React from "react";
 import styled from "styled-components";
 
 export const BannerSubMenu = styled.div`
 width: 100%;
 height: calc(${props => props.theme.headerBarHeight} - 10px);
 
-border: 0;
 position: absolute;
 top: calc(${props => props.theme.bannerHeight} + ${props => props.theme.headerBarHeight} + 150px);
 left: 0;

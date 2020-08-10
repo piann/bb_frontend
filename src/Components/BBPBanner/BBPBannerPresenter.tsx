@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
 
@@ -9,7 +8,6 @@ const BBPBannerBox = styled.div`
     border-radius: ${props => props.theme.borderRadius};
     height: ${props => props.theme.bannerHeight};
     padding: 8px 20px;
-    margin: 20px;
     margin-top:80px;
     width: calc(90vw - 50px);
     max-width:${props => props.theme.maxBodyWidth};

@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Header = styled.header`
   width: 100%;
   height: ${props => props.theme.headerBarHeight};
-  color: ${props => props.theme.headerTextColor};
+  color: ${props => props.theme.snowyGrayColor};
   border: 0;
   position: fixed;
   top: 0;

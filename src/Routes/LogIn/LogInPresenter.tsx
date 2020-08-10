@@ -9,11 +9,11 @@ const LogInBox = styled.div`
     border-radius: ${props => props.theme.borderRadius};
     height: 450px;
     padding: 8px 20px;
-    margin: 20px;
     margin-top:100px;
     min-width:250px;
     width: 400px;
-
+    margin-left: auto;
+    margin-right: auto;
     display:grid;
     grid-auto-flow: row;
     grid-template-rows: 1fr 2fr 1fr;
@@ -65,7 +65,7 @@ const MainComponentWrapper = styled.div`
 const TitleBox = styled.div`
     font-weight:500;
     font-size:16px;
-    color:${props => props.theme.darkgray};
+    color:${props => props.theme.darkgrayColor};
 `
 
 

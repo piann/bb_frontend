@@ -3,8 +3,7 @@ import styled from "styled-components";
 import BBPBanner from "../../Components/BBPBanner";
 import BBPSubMenu from "../../Components/BBPSubMenu";
 import {InformationBox, InformationTitle, InformationContent} from "../../Components/InformationElement";
-import {BasicTableBox, BasicTableTitle, BasicTableContent} from "../../Components/BasicTableElement"
-
+import Dropdown from "../../Components/Dropdown";
 
 const BBPBody = styled.div`
     position: relative;
@@ -43,6 +42,13 @@ const SubPolicyContent = styled.text`
     white-space: pre-line;
 `;
 
+const testOptions = [
+    { value: "chocolate", label: "Ch" },
+    { value: "strawberry", label: "Str" },
+    { value: "vanilla", label: "Va" }
+] as any;////
+
+
 
 export default () => 
 <>
@@ -51,18 +57,13 @@ export default () =>
 <BBPBody>
     <BBPLeft>
         <InformationBox>
-            <InformationTitle>Introduction</InformationTitle>
+            <InformationTitle>Tips</InformationTitle>
             <InformationContent>34</InformationContent>
         </InformationBox>
         <InformationBox>
-            <InformationTitle>Rewards</InformationTitle>
+            <InformationTitle>Report</InformationTitle>
             <InformationContent>
-                <BasicTableBox>
-                    <BasicTableTitle> more </BasicTableTitle>
-                    <BasicTableContent> 11</BasicTableContent>
-                    <BasicTableContent> 11</BasicTableContent>
-                    <BasicTableContent> 11</BasicTableContent>
-                </BasicTableBox>
+                <Dropdown options={testOptions} defaultValue={testOptions[0]}/>
             </InformationContent>
         </InformationBox>
     </BBPLeft>

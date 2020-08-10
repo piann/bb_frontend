@@ -9,6 +9,7 @@ export const BodyWrapper = styled.div`
 export const Body = styled.div`
 width: calc(90vw - 50px);
 max-width:${props => props.theme.maxBodyWidth};
+
 `;
 
 export default Body;
