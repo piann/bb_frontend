@@ -113,13 +113,17 @@ export default () =>
         </InformationBox>
     </BBPLeft>
     <BBPRight>
-        <SubPolicyBox>
-            <SubPolicyTitle>취약점 공개 정책</SubPolicyTitle>
+    <SubPolicyBox>
+            <SubPolicyTitle>{"취약점 공개 정책"}</SubPolicyTitle>
             <SubPolicyContent>{"해당 프로그램은 취약점 공개를 허가하지 않습니다.\n 취약점 발견 시 외부에 유출하지 마세요."}</SubPolicyContent>
         </SubPolicyBox>
         <SubPolicyBox>
-            <SubPolicyTitle>운영 정보</SubPolicyTitle>
-            <SubPolicyContent>{"시작, 종료일자"}</SubPolicyContent>
+            <SubPolicyTitle>{"운영 정보"}</SubPolicyTitle>
+            <SubPolicyContent>{"시작 :"}</SubPolicyContent>
+            <SubPolicyContent>{"2020.8.20"}</SubPolicyContent>
+            <SubPolicyContent>{"\n"}</SubPolicyContent>
+            <SubPolicyContent>{"종료 :"}</SubPolicyContent>
+            <SubPolicyContent>{"2020.10.20"}</SubPolicyContent>
         </SubPolicyBox>
     </BBPRight>
 </BBPBody>

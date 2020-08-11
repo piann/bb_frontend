@@ -20,12 +20,13 @@ height:70px;
 display:flex;
 align-items:center;
 padding-left:20px;
-
 `;
 
 export const InformationContent = styled.div`
 padding-top:45px;
 padding-bottom:50px;
-padding-left:20px;
-padding-right:20px;
+padding-left:25px;
+padding-right:25px;
+display:flex;
+flex-direction:column;
 `

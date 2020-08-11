@@ -25,13 +25,12 @@ export const MenuWrapper = styled.div`
 `
 
 
-interface MenuChoiceProps{
-    companyName?:string;
+interface MenuProps{
     menuIdx?:number;
 }
 
 
-export const MenuComponent = styled.div<MenuChoiceProps>`
+export const MenuComponent = styled.div<MenuProps>`
     height: calc(${props => props.theme.headerBarHeight} - 10px);
     width:120px;
     display:flex;
@@ -44,6 +43,10 @@ export const MenuComponent = styled.div<MenuChoiceProps>`
     }
 `
 
+interface MenuChoiceProps{
+    companyName?:string;
+    menuIdx?:number;
+}
 
 const BannerSubMenu:React.SFC<MenuChoiceProps> = ({
     menuIdx,
