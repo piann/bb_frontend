@@ -39,7 +39,7 @@ const SubPolicyTitle = styled.text`
 const SubPolicyContent = styled.text`
     word-break: keep-all;
     word-spacing: 0.1em;
-    line-height:2em;
+    line-height:1.8em;
     white-space: pre-line;
 `;
 
