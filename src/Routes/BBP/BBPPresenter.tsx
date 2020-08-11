@@ -47,7 +47,7 @@ const SubPolicyContent = styled.text`
 export default () => 
 <>
 <BBPBanner/>
-<BBPSubMenu/>
+<BBPSubMenu menuIdx={1}/>
 <BBPBody>
     <BBPLeft>
         <InformationBox>

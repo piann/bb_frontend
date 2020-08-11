@@ -37,6 +37,9 @@ const FooterBox = styled.div`
     padding:10px 0px;
     display:flex;
     justify-content:flex-end;
+    a {
+    color: ${props => props.theme.blueColor};
+    }
 ` 
 
 

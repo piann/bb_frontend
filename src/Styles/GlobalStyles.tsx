@@ -17,7 +17,6 @@ export default createGlobalStyle`
         padding-top: ${theme.headerBarHeight};
     }
     a {
-        color:${theme.blueColor};
         text-decoration:none;
     }
     input:focus{
