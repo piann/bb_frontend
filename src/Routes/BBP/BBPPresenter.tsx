@@ -108,7 +108,7 @@ export default () =>
                 </InfoText>
                 <MiniTitleText>{"\nRules"}</MiniTitleText>
                     {elements.map((value, index) => {
-                         return <InfoText>{"●   "}{value}</InfoText>
+                         return <InfoText>{"⚬  "}{value}</InfoText>
                     })}
                 <InfoText>
                     {"\n그 외의 참고사항은 다음과 같습니다.\n"}
@@ -199,7 +199,7 @@ export default () =>
 
                 <MiniTitleText>{"\nExclusion List"}</MiniTitleText>
                     {elements.map((value, index) => {
-                         return <InfoText>{"●   "}{value}</InfoText>
+                         return <InfoText>{"⚬  "}{value}</InfoText>
                     })}
 
             </InformationContent>

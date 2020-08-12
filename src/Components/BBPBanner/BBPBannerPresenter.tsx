@@ -110,35 +110,61 @@ const BottomSubValue = styled.div`
 `;
 
 
-export default () => <BBPBannerBox>
-    <BannerMainArea>
-        <TopArea>
-            <CompanyArea>
-                <CompanyName>Starbucks</CompanyName>
-                <CompanyDescription>Inspiring and nurturing the human spirit</CompanyDescription>
-            </CompanyArea>
-            <ButtonArea>
-                <Button text={"Submit Report"}/>
-            </ButtonArea>
-        </TopArea>
-        <BottomArea>
-            <BottomSubArea>
-                <BottomSubHead>
-                    <img src={reportIcon} width={"18px"} height={"18px"}/>
-                    <BottomSubHeadText>총 제출 리포트</BottomSubHeadText>
-                </BottomSubHead>
-                <BottomSubValue>{"2300"}</BottomSubValue>
-            </BottomSubArea>
+interface Props {
+    hideButton?:boolean;
+}
+
+
+const BBPBannerPresenter:React.SFC<Props> = ({
+    hideButton
+}) => {
+    let buttonStatus: boolean;
+    if (hideButton===true){
+        buttonStatus=false;
+    } else if (hideButton===false){
+        buttonStatus=true;
+    } else {
+        buttonStatus=true; // when undefined
+    }
+    return (
+    <BBPBannerBox>
+        <BannerMainArea>
+            <TopArea>
+                <CompanyArea>
+                    <CompanyName>Starbucks</CompanyName>
+                    <CompanyDescription>Inspiring and nurturing the human spirit</CompanyDescription>
+                </CompanyArea>
+                {buttonStatus?
+                <ButtonArea>
+                    <Button text={"Submit Report"}/>
+                </ButtonArea>:
+                <div></div>
+                }
+                
+            </TopArea>
+            <BottomArea>
                 <BottomSubArea>
-                <BottomSubHead>
-                    <img src={wonIcon} width={"22px"} height={"22px"}/>
-                    <BottomSubHeadText>현상금 범위</BottomSubHeadText>
-                </BottomSubHead>
-                <BottomSubValue>{"₩100000"} ~ {"₩50000000"}</BottomSubValue>
-            </BottomSubArea>
-        </BottomArea>
-    </BannerMainArea>
-    <LogoArea>
+                    <BottomSubHead>
+                        <img src={reportIcon} width={"18px"} height={"18px"}/>
+                        <BottomSubHeadText>총 제출 리포트</BottomSubHeadText>
+                    </BottomSubHead>
+                    <BottomSubValue>{"2300"}</BottomSubValue>
+                </BottomSubArea>
+                    <BottomSubArea>
+                    <BottomSubHead>
+                        <img src={wonIcon} width={"22px"} height={"22px"}/>
+                        <BottomSubHeadText>현상금 범위</BottomSubHeadText>
+                    </BottomSubHead>
+                    <BottomSubValue>{"₩100000"} ~ {"₩50000000"}</BottomSubValue>
+                </BottomSubArea>
+            </BottomArea>
+        </BannerMainArea>
+        <LogoArea>
         <img src="https://cdn-vzn.yottaa.net/555a305b2bb0ac71b9002d22/266f8ad067d20138af300ead9ecbf798.yottaa.net/v~4b.20d.0.0/tenantlogos/5326.png?yocs=D_H_" width={"80%"}/>        
-    </LogoArea>
-</BBPBannerBox>
+        </LogoArea>
+    </BBPBannerBox>)
+
+}
+
+
+export default BBPBannerPresenter;

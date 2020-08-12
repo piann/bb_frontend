@@ -4,6 +4,9 @@ import BBPBanner from "../../Components/BBPBanner";
 import BBPSubMenu from "../../Components/BBPSubMenu";
 import {InformationBox, InformationTitle, InformationContent} from "../../Components/InformationElement";
 import Dropdown from "../../Components/Dropdown";
+import TextArea from "../../Components/TextArea";
+import Input from "../../Components/Input";
+import {BarLoader} from "../../Components/Loaders";
 
 const BBPBody = styled.div`
     position: relative;
@@ -56,7 +59,8 @@ const LeftSpace = styled.div`
 
 const RightSpace = styled.div`
     min-width:1px;
-    height:2000px;
+    padding-left:40px;
+    padding-right:25px;
     display:flex;
     flex-direction:column;
 `;
@@ -80,35 +84,144 @@ const CircleContent = styled.div<CircleProps>`
   border-radius:50%;
   z-index:2;
 `
+const InfoText = styled.text`
+    word-break: keep-all;
+    word-spacing: 0.1em;
+    line-height:2em;
+    white-space: pre-line;
+    margin-bottom:8px;
+`;
+
+const BoldInfoText = styled(InfoText)`
+    font-weight:600;
+`;
+
+const TextInputSetWrapper = styled.div`
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+`
+
+const InputLeftText = styled.div`
+    width:70px;
+    font-weight:600;
+`
+
+
+
+const MiniTitleText = styled.text`
+    word-break: keep-all;
+    word-spacing: 0.1em;
+    line-height:2em;
+    white-space: pre-line;
+    font-weight:600;
+    font-size:16px;
+    margin-bottom:30px;
+
+`
 
 
 const testOptions = [
-    { value: "chocolate", label: "Ch" },
-    { value: "strawberry", label: "Str" },
-    { value: "vanilla", label: "Va" }
+    { value: "chocolate", label: "Cross-Site Scripting (XSS) From Earth" },
+    { value: "strawberry", label: "SQL Injection" },
+    { value: "vanilla", label: "Remote Code Injection" }
 ] as any;////
 
 
+const testTips = [
+    "보고서는 1항을 지켜서 써야한다",
+    "보고서는 2항을 지켜서 제보해야한다 등등",
+    "보고서는 3항을 지켜서 제보해야한다 등등",
+    "보고서는 4항을 지켜서 제보해야한다 등등",
+]; ////
 
 export default () => 
 <>
-<BBPBanner/>
+<BBPBanner hideButton={true}/>
 <BBPSubMenu/>
 <BBPBody>
     <BBPLeft>
         <InformationBox>
             <InformationTitle>Tips</InformationTitle>
-            <InformationContent>34</InformationContent>
+            <InformationContent>
+                {testTips.map((value, index) => {
+                         return <InfoText>{"⚬  "}{value}</InfoText>
+                })}
+            </InformationContent>
         </InformationBox>
         <InformationBox>
             <InformationTitle>Report</InformationTitle>
             <InformationContent2>
                 <LeftSpace>
-                    <CircleContent xIndex={30} yIndex={50}>1</CircleContent>
-                    <CircleContent xIndex={30} yIndex={300}>2</CircleContent>
-                    <CircleContent xIndex={30} yIndex={500}>3</CircleContent>
+                    <CircleContent xIndex={30} yIndex={29}>1</CircleContent>
+                    <CircleContent xIndex={30} yIndex={290}>2</CircleContent>
+                    <CircleContent xIndex={30} yIndex={520}>3</CircleContent>
+                    <CircleContent xIndex={30} yIndex={780}>4</CircleContent>
                 </LeftSpace>
-                <RightSpace> 1111 </RightSpace>
+                <RightSpace>
+                    <MiniTitleText>{"\nAsset"}</MiniTitleText>
+                    <InfoText>{"취약점이 발견된 대상을 선택하세요\n\n"}</InfoText>
+                    <Dropdown options={testOptions} defaultValue={testOptions[0]}/>
+
+
+                    <MiniTitleText>{"\n\n"}{"\nVulnerability"}</MiniTitleText>
+                    <InfoText>{"발견된 취약점에 가장 부합하는 취약점 유형을 선택하세요\n\n"}</InfoText>
+                    <Dropdown options={testOptions} defaultValue={testOptions[0]}/>
+
+
+                    <MiniTitleText>{"\n\n"}{"Impact"}</MiniTitleText>
+                    <InfoText>{"발견된 취약점을 스스로 평가해주세요 (생략가능)\n\n"}</InfoText>
+                    <Dropdown options={testOptions} defaultValue={testOptions[0]}/>
+
+                    <MiniTitleText>{"\n\n\n"}{"Details"}</MiniTitleText>
+                    <InfoText>{"어떻게 해당 취약점을 재현할 수 있는지와 어떻게 취약점을 발견하게 되었는지 최대한 자세하게 기술해주세요.\n\n"}</InfoText>
+                    <BoldInfoText>{"Title"}</BoldInfoText>
+                    <InfoText>{"발견 취약점에 대해 간단한 요약, 제목 (50자 이내)"}</InfoText>
+                    <Input maxLength={50}/>
+                    
+                    <BoldInfoText>{"\n\n"}{"URL or Location Of Vulnerability"}</BoldInfoText>
+                    <InfoText>{"취약점 발생 URL을 적어주세요 (생략 가능)"}</InfoText>
+                    <Input maxLength={250}/>
+
+                    <BoldInfoText>{"\n\n"}{"Enviroment"}</BoldInfoText>
+                    <InfoText>{"취약점을 시현했던 OS와 Browser, Browser version (생략 가능)"}</InfoText>
+                        <TextInputSetWrapper>
+                            <InputLeftText>{"OS"}</InputLeftText>
+                            <Input maxLength={30} inputWidth={"50%"}/>
+                        </TextInputSetWrapper>
+                        <TextInputSetWrapper>
+                            <InputLeftText>{"Browser"}</InputLeftText>
+                            <Input maxLength={30} inputWidth={"50%"}/>
+                        </TextInputSetWrapper>
+                        <TextInputSetWrapper>
+                            <InputLeftText>{"Version"}</InputLeftText>
+                            <Input maxLength={30} inputWidth={"50%"}/>
+                        </TextInputSetWrapper>
+                        <BoldInfoText>{"\n\n\n"}{"Description"}</BoldInfoText>
+                            <InfoText>
+                                {"1. 어떻게 취약점을 발견하게 되었는지 그 경위를 기술해주세요."}
+                                {"\n2. 취약점을 재현할 수 있는 방법을 단계별로 기술해주세요."}
+                                {"\n(총 10000자 이하)"}
+                            </InfoText>
+                            <TextArea rows={20} maxLength={10000}/>
+
+
+                            <BoldInfoText>{"\n\n\n"}{"HTTP request dump"}</BoldInfoText>
+                            <InfoText>
+                                {"공격 관련 request 정보 (최대 20000자, 생략 가능)"} 
+                            </InfoText>
+                            <TextArea rows={20} maxLength={10000}/>
+
+                            <BoldInfoText>{"\n\n\n"}{"비고"}</BoldInfoText>
+                            <InfoText>
+                                {"이 외 알리고 싶은 기타 내용 (최대 300자, 생략 가능)"} 
+                            </InfoText>
+                            <TextArea rows={5} maxLength={10000}/>
+
+                            <BoldInfoText>{"\n\n\n"}{"파일 첨부"}</BoldInfoText>
+
+
+             </RightSpace>
             </InformationContent2>
         </InformationBox>
     </BBPLeft>

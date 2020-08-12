@@ -29,4 +29,4 @@ padding-left:25px;
 padding-right:25px;
 display:flex;
 flex-direction:column;
-`
+`;

@@ -2,22 +2,25 @@ import React from "react";
 import styled from "styled-components";
 
 interface StyledProps{
-    inputWidth?:string;
+    textAreaWidth?:string;
+    textAreaHeight?:string;
 }
 
-const InputContainer= styled.input<StyledProps>`
+const TextAreaContainer= styled.textarea<StyledProps>`
   border-color: gray;
   border-width: 1px;
   border-radius: 3px;
   background-color: white;
-  min-height: 40px;
   font-size: 12px;
-  padding: 0px 15px;
-  margin:5px 0px;
+  padding: 10px 15px;
+  margin:10px 0px;
   box-shadow: inset 0px 0px 1.5px 1.5px rgba(0, 0, 0, 0.1);
-  width:${props => props.inputWidth};
-  word-spacing: 0.1em;
+  width:${props => props.textAreaWidth};
+  height:${props => props.textAreaHeight};
+  word-break: keep-all;
   letter-spacing: 0.08em;
+  line-height: 2em;
+  display: block;
 `;
 
 interface Props{
@@ -27,32 +30,36 @@ interface Props{
     onChange?:any;
     type?:string;
     className?:string;
-    inputWidth?:string;
-    maxLength?:number;
+    textAreaWidth?:string;
+    textAreaHeight?:string;
+    maxLength?:number
+    rows?:number
 }
 
-const Input:React.SFC<Props> = ({
+const TextArea:React.SFC<Props> = ({
   placeholder,
   required = true,
   value,
   onChange,
-  type = "text",
   className,
-  inputWidth,
-  maxLength
+  textAreaWidth,
+  textAreaHeight,
+  maxLength,
+  rows
 }) => (
-  <InputContainer
+  <TextAreaContainer
     className={className}
     placeholder={placeholder}
     required={required}
     value={value}
     onChange={onChange}
-    type={type}
-    inputWidth={inputWidth}
+    textAreaWidth={textAreaWidth}
+    textAreaHeight={textAreaHeight}
     maxLength={maxLength}
+    rows={rows}
 
   />
 );
 
 
-export default Input;
+export default TextArea;
