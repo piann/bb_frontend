@@ -24,7 +24,7 @@ padding-left:20px;
 
 export const InformationContent = styled.div`
 padding-top:45px;
-padding-bottom:50px;
+padding-bottom:30px;
 padding-left:25px;
 padding-right:25px;
 display:flex;
