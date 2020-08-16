@@ -56,19 +56,12 @@ interface marginProps{
 }
 
 
-const TableContentWrapper = styled.div`
-    width:100%;
-    display:grid;
-    grid-auto-flow: row;
-    grid-template-columns: 1fr 1fr;
-`;
-
 
 const TableContentWrapperWithRatio = styled.div`
     width:100%;
     display:grid;
     grid-auto-flow: column;
-    grid-template-columns: 3fr 2fr 2fr 2.5fr
+    grid-template-columns: 3fr 2fr 2fr 2.5fr;
 `;
 
 const TableText = styled.text<marginProps>`

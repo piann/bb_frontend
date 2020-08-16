@@ -29,4 +29,10 @@ padding-left:25px;
 padding-right:25px;
 display:flex;
 flex-direction:column;
+.leftAlign{
+    justify-content:flex-start;
+}
+.rightAlign{
+    justify-content:flex-end;
+}
 `;

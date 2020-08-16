@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.button`
-  width: 100%;
+interface WidthProps{
+  width?:string;
+}
+
+const Container = styled.button<WidthProps>`
+  width: ${props => props.width? props.width :"100%"};
   border: 0;
   border-radius: ${props => props.theme.borderRadius};
   color: white;
@@ -17,10 +21,11 @@ const Container = styled.button`
 interface Props{
     text?:string;
     onClick?:any;
+    width?:string;
 }
 
-const Button:React.SFC<Props> = ({ text, onClick }) => (
-  <Container onClick={onClick}>{text}</Container>
+const Button:React.SFC<Props> = ({ text, onClick, width }) => (
+  <Container onClick={onClick} width={width} >{text}</Container>
 );
 
 
