@@ -16,17 +16,35 @@ const Container = styled.button<WidthProps>`
   text-align: center;
   padding: 12px 0px;
   cursor: pointer;
+
+  &:disabled{
+    background-color: #cccccc;
+    cursor: not-allowed! important;
+  }
+
+
 `;
 
 interface Props{
     text?:string;
     onClick?:any;
     width?:string;
+    disabled?:boolean
 }
 
-const Button:React.SFC<Props> = ({ text, onClick, width }) => (
-  <Container onClick={onClick} width={width} >{text}</Container>
-);
+const Button:React.SFC<Props> = ({ 
+  text,
+  onClick, 
+  width,
+  disabled
+ }) => {
+   let dValue = false;
+   if(disabled===true){
+     dValue = true;
+   }
+   return <Container disabled={dValue} onClick={onClick} width={width} >{text}</Container>
+   
+}
 
 
 

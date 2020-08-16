@@ -15,4 +15,3 @@ max-width:${props => props.theme.maxBodyWidth};
 `;
 
 export default Body;
-

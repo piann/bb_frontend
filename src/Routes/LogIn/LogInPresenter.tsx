@@ -91,7 +91,7 @@ export default () => <LogInBox>
     </MainArea>
     <LogInFooterArea>
         <FooterBox>
-            <Link to="/aaa">Creat Account</Link>
+            <Link to="/sign_up">Creat Account</Link>
         </FooterBox>
         <FooterBox>
             <Link to="/">Forgot Password?</Link>
