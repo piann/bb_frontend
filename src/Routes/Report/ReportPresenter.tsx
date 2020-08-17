@@ -34,12 +34,12 @@ const SubPolicyBox = styled.div`
     z-index:3;
 `;
 
-const SubPolicyTitle = styled.text`
+const SubPolicyTitle = styled.div`
     font-weight:600;
     margin-bottom:50px;
 `;
 
-const SubPolicyContent = styled.text`
+const SubPolicyContent = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:1.8em;
@@ -84,7 +84,7 @@ const CircleContent = styled.div<CircleProps>`
   border-radius:50%;
   z-index:2;
 `
-const InfoText = styled.text`
+const InfoText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:2em;
@@ -109,7 +109,7 @@ const InputLeftText = styled.div`
 
 
 
-const MiniTitleText = styled.text`
+const MiniTitleText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:2em;

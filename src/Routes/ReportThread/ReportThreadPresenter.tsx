@@ -18,7 +18,7 @@ const BBPBody = styled.div`
     flex-direction:column;
 `;
 
-const InfoText = styled.text`
+const InfoText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:2em;
@@ -30,7 +30,7 @@ const BoldInfoText = styled(InfoText)`
     font-weight:600;
 `;
 
-const MiniTitleText = styled.text`
+const MiniTitleText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:2em;
@@ -133,19 +133,19 @@ const ProfileWrapper = styled.div`
     margin-left:30px;
     }
 `
-const ProfileId = styled.text`
+const ProfileId = styled.div`
   margin-top:18px;
   word-break: keep-all;
 `
 
-const CommentTextAreaWrapper = styled.text`
+const CommentTextAreaWrapper = styled.div`
     margin-top:40px;
     width:100%;
     display:flex;
     flex-direction:row;
 `;
 
-const CommentProfileImgWrapper = styled.text`
+const CommentProfileImgWrapper = styled.div`
     padding-top:15px;
     margin-right:30px;
 `;

@@ -73,7 +73,7 @@ const TitleBox = styled.div`
     color:${props => props.theme.darkgrayColor};
 `
 
-const Description = styled.text`
+const Description = styled.div`
     color: gray;
     font-size:11px;
     padding: 0 15px;

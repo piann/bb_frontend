@@ -47,7 +47,7 @@ align-items:center;
 const EmptySpace = styled.div`
 width:50px;
 `
-const InfoText = styled.text`
+const InfoText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:2em;
@@ -86,7 +86,7 @@ interface marginProps{
 }
 
 
-const TableText = styled.text<marginProps>`
+const TableText = styled.div<marginProps>`
     word-break: keep-all;
     word-spacing: 0.1em;
     display:flex;

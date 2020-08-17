@@ -39,7 +39,7 @@ const Input:React.SFC<Props> = ({
   type = "text",
   className,
   inputWidth,
-  maxLength
+  maxLength,
 }) => (
   <InputContainer
     className={className}
@@ -50,7 +50,6 @@ const Input:React.SFC<Props> = ({
     type={type}
     inputWidth={inputWidth}
     maxLength={maxLength}
-
   />
 );
 

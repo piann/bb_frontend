@@ -54,12 +54,12 @@ const CompanyArea = styled.div`
     flex-direction:column;
 `
 
-const CompanyName = styled.text`
+const CompanyName = styled.div`
     font-weight:600;
     font-size:20px;
     margin-bottom:20px;
 `
-const CompanyDescription = styled.text`
+const CompanyDescription = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:1.5em;
@@ -99,7 +99,7 @@ const BottomSubHead = styled.div`
     justify-content:center;
 `;
 
-const BottomSubHeadText = styled.text`
+const BottomSubHeadText = styled.div`
     margin-left:8px;
 `;
 

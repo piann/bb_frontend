@@ -14,7 +14,7 @@ const BBPBody = styled.div`
     flex-direction:column;
 `;
 
-const InfoText = styled.text`
+const InfoText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:2em;
@@ -26,7 +26,7 @@ const BoldInfoText = styled(InfoText)`
     font-weight:600;
 `;
 
-const MiniTitleText = styled.text`
+const MiniTitleText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:2em;
@@ -64,7 +64,7 @@ const TableContentWrapperWithRatio = styled.div`
     grid-template-columns: 3fr 2fr 2fr 2.5fr;
 `;
 
-const TableText = styled.text<marginProps>`
+const TableText = styled.div<marginProps>`
     word-break: keep-all;
     word-spacing: 0.1em;
     display:flex;

@@ -31,19 +31,19 @@ const SubPolicyBox = styled.div`
     margin-bottom:30px;
 `;
 
-const SubPolicyTitle = styled.text`
+const SubPolicyTitle = styled.div`
     font-weight:600;
     margin-bottom:50px;
 `;
 
-const SubPolicyContent = styled.text`
+const SubPolicyContent = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:1.8em;
     white-space: pre-line;
 `;
 
-const InfoText = styled.text`
+const InfoText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:2em;
@@ -51,7 +51,7 @@ const InfoText = styled.text`
     margin-bottom:8px;
 `;
 
-const MiniTitleText = styled.text`
+const MiniTitleText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:2em;
@@ -83,7 +83,7 @@ const TableContentWrapperWithRatio = styled.div`
     grid-template-columns: 2fr 5fr;
 `;
 
-const TableText = styled.text<marginProps>`
+const TableText = styled.div<marginProps>`
     word-break: keep-all;
     word-spacing: 0.1em;
     margin-left:${props=>props.marginLeft}px;

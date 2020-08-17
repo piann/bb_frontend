@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 
 export const checkOnlyNormalChars = (target:string):boolean => {
@@ -11,3 +12,16 @@ export const checkEmailChars = (target:string):boolean => {
     const result = reg.test(target);
     return result;
 }
+
+export const useInput = (defaultValue:any) => {
+    const [value, setValue] = useState(defaultValue);
+  
+    const onChange = (e:any) => {
+      const {
+        target: { value }
+      } = e;
+      setValue(value);
+    };
+  
+    return { value, onChange, setValue };
+  };

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
+import {checkEmailChars} from "../../utils"; 
+import { toast, ToastContainer } from 'react-toastify';
 
 const LogInBox = styled.div`
     background-color: white;
@@ -72,21 +74,41 @@ const TitleBox = styled.div`
 `
 
 
+interface SignInPresenterProps{
+    email:any;
+    password:any;
+    clickFunc:any;
+}
 
 
-export default () => <LogInBox>
+
+export default ({
+    email,
+    password,
+    clickFunc,
+}:SignInPresenterProps) => {
+
+    const isEmailValid = checkEmailChars(email.value);
+    const isPasswordValid = ((password.value).length >= 8);
+    let buttonDisabled = true;
+    if(isEmailValid===true && isPasswordValid===true){
+        buttonDisabled = false;
+    }
+
+    return(<LogInBox>
+    <ToastContainer/>
     <LogInTitleArea>
         <TitleBox>Log in to zerowhale</TitleBox>
     </LogInTitleArea>
     <MainArea>
         <MainComponentWrapper>
-            <Input placeholder="Email Address"/>
+            <Input placeholder="Email Address" {...email}/>
         </MainComponentWrapper>
         <MainComponentWrapper>
-            <Input placeholder="Password"/>
+            <Input placeholder="Password" {...password} type={"password"} />
         </MainComponentWrapper>
         <MainComponentWrapper>
-            <Button text="Log In"/>
+            <Button text="Log In" disabled={buttonDisabled} onClick={clickFunc}/>
         </MainComponentWrapper>
     </MainArea>
     <LogInFooterArea>
@@ -97,4 +119,6 @@ export default () => <LogInBox>
             <Link to="/">Forgot Password?</Link>
         </FooterBox>
     </LogInFooterArea>
-</LogInBox>
+</LogInBox>)
+
+}
