@@ -95,8 +95,11 @@ export default ({
         buttonDisabled = false;
     }
 
-    return(<LogInBox>
-    <ToastContainer/>
+    return(<>
+    <ToastContainer
+    toastClassName="dark-toast"
+    />
+    <LogInBox>
     <LogInTitleArea>
         <TitleBox>Log in to zerowhale</TitleBox>
     </LogInTitleArea>
@@ -119,6 +122,7 @@ export default ({
             <Link to="/">Forgot Password?</Link>
         </FooterBox>
     </LogInFooterArea>
-</LogInBox>)
+</LogInBox>
+</>)
 
 }

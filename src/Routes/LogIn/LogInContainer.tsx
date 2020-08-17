@@ -5,7 +5,7 @@ import {LOCAL_LOG_IN, SIGN_IN} from "./LoginQueries";
 import { useMutation } from "@apollo/react-hooks";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import {css} from "glamor";
 export default () => {
 
     // for toast css
@@ -44,6 +44,10 @@ export default () => {
         if(ok===true||token!==null){
             await localLogInMutation({variables:{token}});
             toast("Login Success !", toastOpt as any);
+            setTimeout(()=>{window.location.href = "/";}, 2000)
+            
+        } else {
+            toast("Login Fail !", toastOpt as any);
         }
         
     }

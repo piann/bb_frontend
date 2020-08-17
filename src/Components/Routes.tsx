@@ -11,13 +11,13 @@ import Profile from "../Routes/Profile";
 import ReportThread from "../Routes/ReportThread"
 
 const LoggedInRoutes = () => <Switch>
-<Route exact path="/" component={LogIn}/>
+<Route exact path="/log_in" component={LogIn}/>
 <Route exact path="/program" component={BBP}></Route>
 <Route exact path="/report" component={Report}></Route>
 <Route exact path="/progress" component={BBPProgress}></Route>
 <Route exact path="/profile" component={Profile}></Route>
 <Route exact path="/report_thread" component={ReportThread}></Route>
-<Redirect from="*" to="/" />
+<Redirect from="*" to="/program" />
 </Switch>
 
 const LoggedOutRoutes = () => <Switch>
