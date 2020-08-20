@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import mainLogo from "../images/zerowhale_white.png";
+import { Link } from "react-router-dom"
 
 const Header = styled.header`
   width: 100%;
@@ -23,10 +24,13 @@ const Header = styled.header`
 `;
 
 const LogoSpace = styled.img`
-  height: calc(${props => props.theme.headerBarHeight} + 70px);
+  height: calc(${props => props.theme.headerBarHeight} - 40px);
+  margin-left:5px;
 `;
 
 export default () => <Header>
-    <LogoSpace src={mainLogo}/>
+    <Link to="/">
+      <LogoSpace src={mainLogo}/>
+    </Link>
     <div>menu</div>
 </Header>

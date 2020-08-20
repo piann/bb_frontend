@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../../Components/Button";
+import Button from "./Button";
 import { Link } from "react-router-dom";
-import wonIcon from "../../images/won.png";
-import reportIcon from "../../images/report.png";
+import wonIcon from "../images/won.png";
+import reportIcon from "../images/report.png";
 
 
 const BBPBannerBox = styled.div`
@@ -112,11 +112,19 @@ const BottomSubValue = styled.div`
 
 interface Props {
     hideButton?:boolean;
+    companyName?:string;
+    reportCount?:number;
+    minBounty?:number;
+    maxBounty?:number;
 }
 
 
-const BBPBannerPresenter:React.SFC<Props> = ({
-    hideButton
+const BBPBanner:React.SFC<Props> = ({
+    hideButton,
+    companyName,
+    reportCount,
+    minBounty,
+    maxBounty,
 }) => {
     let buttonStatus: boolean;
     if (hideButton===true){
@@ -167,4 +175,4 @@ const BBPBannerPresenter:React.SFC<Props> = ({
 }
 
 
-export default BBPBannerPresenter;
+export default BBPBanner;
