@@ -16,7 +16,7 @@ export default () => {
     const passwordAgain = useInput("");
     const [submitting, setSubmitting] = useState(false);
 
-    const [registerAccountMutation] = useMutation(REGISTER_ACCOUNT);
+    const [registerAccountMutation, {loading}] = useMutation(REGISTER_ACCOUNT);
 
     const clickFunc = async (e:MouseEvent<HTMLButtonElement>) => {
         setSubmitting(true);
@@ -32,13 +32,16 @@ export default () => {
             nickName:nickName.value
         }});
 
-        console.log(registerAccountResponse);////
-        if(registerAccountResponse===true){
-            toast("Success to register !", toastOpt as any);
-            setTimeout(()=>{window.location.href = "/";}, 2000)
-        } else {
-            toast("There is an error", toastOpt as any);
-            setSubmitting(false);
+
+        if(!loading){
+
+            if(registerAccountResponse===true){
+                toast("Success to register !", toastOpt as any);
+                setTimeout(()=>{window.location.href = "/";}, 2000)
+            } else {
+                toast("There is an error", toastOpt as any);
+                setSubmitting(false);
+            }
         }
     }
 

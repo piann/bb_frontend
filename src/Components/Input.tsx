@@ -25,10 +25,12 @@ interface Props{
     required?:boolean;
     value?:string;
     onChange?:any;
+    onKeyDown?:any;
     type?:string;
     className?:string;
     inputWidth?:string;
     maxLength?:number;
+
 }
 
 const Input:React.SFC<Props> = ({
@@ -36,6 +38,7 @@ const Input:React.SFC<Props> = ({
   required = true,
   value,
   onChange,
+  onKeyDown,
   type = "text",
   className,
   inputWidth,
@@ -47,6 +50,7 @@ const Input:React.SFC<Props> = ({
     required={required}
     value={value}
     onChange={onChange}
+    onKeyDown={onKeyDown}
     type={type}
     inputWidth={inputWidth}
     maxLength={maxLength}

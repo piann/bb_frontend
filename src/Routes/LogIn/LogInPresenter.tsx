@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import {checkEmailChars} from "../../utils"; 
 import { toast, ToastContainer } from 'react-toastify';
 import basicLogo from "../../images/zerowhaleBasic.png";
+import {BarLoader} from "../../Components/Loaders";
 
 const LogInBox = styled.div`
     background-color: white;
@@ -84,11 +85,17 @@ const TitleLogo = styled.img`
     margin-right:8px;
 `
 
+const LoaderWrapper = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+`;
 
 interface SignInPresenterProps{
     email:any;
     password:any;
     clickFunc:any;
+    submitting:any;
 }
 
 
@@ -97,6 +104,7 @@ export default ({
     email,
     password,
     clickFunc,
+    submitting
 }:SignInPresenterProps) => {
 
     const isEmailValid = checkEmailChars(email.value);
@@ -105,34 +113,51 @@ export default ({
     if(isEmailValid===true && isPasswordValid===true){
         buttonDisabled = false;
     }
-
+    console.log(submitting);
     return(<>
     <ToastContainer
     />
     <LogInBox>
-    <LogInTitleArea>
-        <TitleBox>{"Log in to zerowhale"}</TitleBox>
-        <TitleLogo src={basicLogo}/>
-    </LogInTitleArea>
-    <MainArea>
-        <MainComponentWrapper>
-            <Input placeholder="Email Address" {...email}/>
-        </MainComponentWrapper>
-        <MainComponentWrapper>
-            <Input placeholder="Password" {...password} type={"password"} />
-        </MainComponentWrapper>
-        <MainComponentWrapper>
-            <Button text="Log In" disabled={buttonDisabled} onClick={clickFunc}/>
-        </MainComponentWrapper>
-    </MainArea>
-    <LogInFooterArea>
-        <FooterBox>
-            <Link to="/sign_up">Creat Account</Link>
-        </FooterBox>
-        <FooterBox>
-            <Link to="/">Forgot Password?</Link>
-        </FooterBox>
-    </LogInFooterArea>
+        {submitting?
+            <LoaderWrapper>
+                <BarLoader/>
+            </LoaderWrapper>
+            :
+            <>
+            <LogInTitleArea>
+                <TitleBox>{"Log in to zerowhale"}</TitleBox>
+                <TitleLogo src={basicLogo}/>
+            </LogInTitleArea>
+            <MainArea>
+                <MainComponentWrapper>
+                    <Input placeholder="Email Address" {...email}/>
+                </MainComponentWrapper>
+                <MainComponentWrapper>
+                    <Input placeholder="Password" {...password} type={"password"} onKeyDown={
+                        (e:any)=>{
+                            if(e.key=='Enter') {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                clickFunc(e);
+                        }
+                        }
+                    }
+                    />
+                </MainComponentWrapper>
+                <MainComponentWrapper>
+                    <Button text="Log In" disabled={buttonDisabled} onClick={clickFunc}/>
+                </MainComponentWrapper>
+            </MainArea>
+            <LogInFooterArea>
+                <FooterBox>
+                    <Link to="/sign_up">Creat Account</Link>
+                </FooterBox>
+                <FooterBox>
+                    <Link to="/">Forgot Password?</Link>
+                </FooterBox>
+            </LogInFooterArea>
+            </>
+        }
 </LogInBox>
 </>)
 

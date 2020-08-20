@@ -3,6 +3,8 @@ import styled from "styled-components";
 import mainLogo from "../images/zerowhaleWhite.png";
 import { Link } from "react-router-dom"
 import grayProfile from "../images/grayProfile.png";
+import {useQuery} from "@apollo/client";
+import {LOCAL_LOGGED_IN_QUERY} from "../sharedQueries";
 
 
 const Header = styled.header`
@@ -40,14 +42,26 @@ const Profile = styled.img`
 `
 
 
-export default () => <Header>
+export default () => {
+
+  const {
+    data: {isLoggedIn}
+  }:any = useQuery(LOCAL_LOGGED_IN_QUERY);
+
+return(
+<Header>
     <Link to="/">
       <LogoSpace src={mainLogo}/>
     </Link>
     <MenuSpace>
 
     <Link to ="/profile">
+      {
+      isLoggedIn &&
       <Profile src={grayProfile}/>
+      }
     </Link>
     </MenuSpace>
 </Header>
+)
+}
