@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import mainLogo from "../images/zerowhale_white.png";
+import mainLogo from "../images/zerowhaleWhite.png";
 import { Link } from "react-router-dom"
+import grayProfile from "../images/grayProfile.png";
+
 
 const Header = styled.header`
   width: 100%;
@@ -28,9 +30,24 @@ const LogoSpace = styled.img`
   margin-left:5px;
 `;
 
+const MenuSpace = styled.div`
+
+`
+const Profile = styled.img`
+  height:35px;
+  width:35px;
+  margin-right:5px;
+`
+
+
 export default () => <Header>
     <Link to="/">
       <LogoSpace src={mainLogo}/>
     </Link>
-    <div>menu</div>
+    <MenuSpace>
+
+    <Link to ="/profile">
+      <Profile src={grayProfile}/>
+    </Link>
+    </MenuSpace>
 </Header>

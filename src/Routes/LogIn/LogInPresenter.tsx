@@ -5,7 +5,7 @@ import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
 import {checkEmailChars} from "../../utils"; 
 import { toast, ToastContainer } from 'react-toastify';
-import {BarLoader} from "../../Components/Loaders";
+import basicLogo from "../../images/zerowhaleBasic.png";
 
 const LogInBox = styled.div`
     background-color: white;
@@ -29,6 +29,9 @@ const LogInBox = styled.div`
 
 const LogInTitleArea = styled.div`
     padding-left:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 `;
 
 const LogInFooterArea = styled.div`
@@ -72,6 +75,13 @@ const TitleBox = styled.div`
     font-weight:500;
     font-size:16px;
     color:${props => props.theme.darkgrayColor};
+
+`;
+
+
+const TitleLogo = styled.img`
+    height:40px;
+    margin-right:8px;
 `
 
 
@@ -101,7 +111,8 @@ export default ({
     />
     <LogInBox>
     <LogInTitleArea>
-        <TitleBox>Log in to zerowhale</TitleBox>
+        <TitleBox>{"Log in to zerowhale"}</TitleBox>
+        <TitleLogo src={basicLogo}/>
     </LogInTitleArea>
     <MainArea>
         <MainComponentWrapper>
