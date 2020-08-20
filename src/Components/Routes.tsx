@@ -9,6 +9,7 @@ import Report from "../Routes/Report";
 import BBPProgress from "../Routes/BBPProgress";
 import Profile from "../Routes/Profile";
 import ReportThread from "../Routes/ReportThread"
+import ConfirmSecret from "../Routes/ConfirmSecret";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/log_in" component={LogIn}/>
@@ -23,6 +24,7 @@ const LoggedInRoutes = () => <Switch>
 const LoggedOutRoutes = () => <Switch>
 <Route exact path="/log_in" component={LogIn}></Route>
 <Route exact path="/sign_up" component={SignUp}></Route>
+<Route path='/confirm_secret/:key' component={ConfirmSecret}></Route>
 <Redirect from="*" to="/log_in" />
 </Switch>
 

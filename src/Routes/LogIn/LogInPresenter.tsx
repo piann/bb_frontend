@@ -5,6 +5,7 @@ import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
 import {checkEmailChars} from "../../utils"; 
 import { toast, ToastContainer } from 'react-toastify';
+import {BarLoader} from "../../Components/Loaders";
 
 const LogInBox = styled.div`
     background-color: white;
@@ -97,7 +98,6 @@ export default ({
 
     return(<>
     <ToastContainer
-    toastClassName="dark-toast"
     />
     <LogInBox>
     <LogInTitleArea>

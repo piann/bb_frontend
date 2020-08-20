@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import {gql} from "apollo-boost";
 
 export const checkOnlyNormalChars = (target:string):boolean => {
     const reg = /^[a-zA-Z0-9_]+$/;
@@ -7,8 +7,20 @@ export const checkOnlyNormalChars = (target:string):boolean => {
     return result;
 }
 
+export const checkOnlyLowerNormalChars = (target:string):boolean => {
+    const reg = /^[a-z0-9_]+$/;
+    const result = reg.test(target);
+    return result;
+}
+
 export const checkEmailChars = (target:string):boolean => {
     const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const result = reg.test(target);
+    return result;
+}
+
+export const checkComplexPassword = (target:string):boolean => {
+    const reg = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[A-z])(?=(.*)).{8,}/
     const result = reg.test(target);
     return result;
 }
@@ -25,3 +37,10 @@ export const useInput = (defaultValue:any) => {
   
     return { value, onChange, setValue };
   };
+
+
+export const LOCAL_LOG_IN = gql`
+mutation logUserIn($token: String!) {
+  logUserIn(token: $token) @client
+}
+`;
