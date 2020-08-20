@@ -33,12 +33,22 @@ const LogoSpace = styled.img`
 `;
 
 const MenuSpace = styled.div`
-
+  display:flex;
+  align-items:center;
 `
 const Profile = styled.img`
   height:35px;
   width:35px;
-  margin-right:5px;
+  margin-right:12px;
+  margin-left: 6px;
+`
+
+const MenuLink = styled(Link)`
+  color:white;
+  font-size:16px;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-right:25px;
 `
 
 
@@ -54,13 +64,18 @@ return(
       <LogoSpace src={mainLogo}/>
     </Link>
     <MenuSpace>
-
-    <Link to ="/profile">
+    <MenuLink to="/">
+        {"Introduction"}
+      </MenuLink>
+      <MenuLink to="/">
+        {"Programs"}
+      </MenuLink>
       {
       isLoggedIn &&
-      <Profile src={grayProfile}/>
+      <Link to ="/profile">
+        <Profile src={grayProfile}/>
+      </Link>
       }
-    </Link>
     </MenuSpace>
 </Header>
 )
