@@ -111,8 +111,10 @@ const BottomSubValue = styled.div`
 
 
 interface Props {
+    loading:boolean;
     hideButton?:boolean;
     companyName?:string;
+    description?:string;
     reportCount?:number;
     minBounty?:number;
     maxBounty?:number;
@@ -120,8 +122,10 @@ interface Props {
 
 
 const BBPBanner:React.SFC<Props> = ({
+    loading,
     hideButton,
     companyName,
+    description,
     reportCount,
     minBounty,
     maxBounty,
@@ -139,8 +143,8 @@ const BBPBanner:React.SFC<Props> = ({
         <BannerMainArea>
             <TopArea>
                 <CompanyArea>
-                    <CompanyName>Starbucks</CompanyName>
-                    <CompanyDescription>Inspiring and nurturing the human spirit</CompanyDescription>
+                    <CompanyName>{companyName}</CompanyName>
+                    <CompanyDescription>{description}</CompanyDescription>
                 </CompanyArea>
                 {buttonStatus?
                 <ButtonArea>
@@ -158,14 +162,14 @@ const BBPBanner:React.SFC<Props> = ({
                         <img src={reportIcon} width={"18px"} height={"18px"}/>
                         <BottomSubHeadText>총 제출 리포트</BottomSubHeadText>
                     </BottomSubHead>
-                    <BottomSubValue>{"2300"}</BottomSubValue>
+                    <BottomSubValue>{reportCount}</BottomSubValue>
                 </BottomSubArea>
                     <BottomSubArea>
                     <BottomSubHead>
                         <img src={wonIcon} width={"22px"} height={"22px"}/>
                         <BottomSubHeadText>현상금 범위</BottomSubHeadText>
                     </BottomSubHead>
-                    <BottomSubValue>{"₩100000"} ~ {"₩50000000"}</BottomSubValue>
+                    <BottomSubValue>{"₩"}{minBounty}{" ~ "}{"₩"}{maxBounty}</BottomSubValue>
                 </BottomSubArea>
             </BottomArea>
         </BannerMainArea>
