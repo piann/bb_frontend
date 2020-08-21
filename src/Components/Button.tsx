@@ -34,7 +34,7 @@ interface Props{
 
 const Button:React.SFC<Props> = ({ 
   text,
-  onClick, 
+  onClick,
   width,
   disabled
  }) => {

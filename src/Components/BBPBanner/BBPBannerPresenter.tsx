@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "./Button";
+import Button from "../Button";
 import { Link } from "react-router-dom";
-import wonIcon from "../images/won.png";
-import reportIcon from "../images/report.png";
+import wonIcon from "../../images/won.png";
+import reportIcon from "../../images/report.png";
 
 
 const BBPBannerBox = styled.div`
@@ -144,7 +144,9 @@ const BBPBanner:React.SFC<Props> = ({
                 </CompanyArea>
                 {buttonStatus?
                 <ButtonArea>
-                    <Button text={"Submit Report"}/>
+                    <Link to="/">
+                        <Button text={"Submit Report"}/>
+                    </Link>
                 </ButtonArea>:
                 <div></div>
                 }

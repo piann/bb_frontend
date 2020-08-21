@@ -8,7 +8,6 @@ export const IS_EMAIL_DUPLICATED = gql`
             email:$email
         )
     }
-
 `;
 
 export const IS_NICKNAME_DUPLICATED = gql`

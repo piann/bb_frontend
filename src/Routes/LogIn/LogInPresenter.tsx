@@ -25,6 +25,7 @@ const LogInBox = styled.div`
 
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
     position: relative;
+
 `;
 
 
@@ -99,7 +100,6 @@ interface SignInPresenterProps{
 }
 
 
-
 export default ({
     email,
     password,
@@ -135,10 +135,10 @@ export default ({
                 <MainComponentWrapper>
                     <Input placeholder="Password" {...password} type={"password"} onKeyDown={
                         (e:any)=>{
-                            if(e.key=='Enter') {
+                            if(e.key==='Enter') {
                                 e.preventDefault();
                                 e.stopPropagation();
-                                clickFunc(e);
+                                clickFunc();
                         }
                         }
                     }
