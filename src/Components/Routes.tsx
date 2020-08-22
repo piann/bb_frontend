@@ -13,11 +13,11 @@ import ConfirmSecret from "../Routes/ConfirmSecret";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/log_in" component={LogIn}/>
-<Route exact path="/program" component={BBP}></Route>
-<Route exact path="/report" component={Report}></Route>
 <Route exact path="/progress" component={BBPProgress}></Route>
 <Route exact path="/profile" component={Profile}></Route>
 <Route exact path="/report_thread" component={ReportThread}></Route>
+<Route exact path="/:name_id" component={BBP}></Route>
+<Route exact path="/:name_id/report" component={Report}></Route>
 <Redirect from="*" to="/program" />
 </Switch>
 

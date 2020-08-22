@@ -112,6 +112,7 @@ const BottomSubValue = styled.div`
 
 interface Props {
     loading:boolean;
+    nameId?:string;
     hideButton?:boolean;
     companyName?:string;
     description?:string;
@@ -123,6 +124,7 @@ interface Props {
 
 const BBPBanner:React.SFC<Props> = ({
     loading,
+    nameId,
     hideButton,
     companyName,
     description,
@@ -148,7 +150,7 @@ const BBPBanner:React.SFC<Props> = ({
                 </CompanyArea>
                 {buttonStatus?
                 <ButtonArea>
-                    <Link to="/">
+                    <Link to={"/"+nameId+"/report"}>
                         <Button text={"Submit Report"}/>
                     </Link>
                 </ButtonArea>:

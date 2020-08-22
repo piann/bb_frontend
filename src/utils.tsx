@@ -44,3 +44,9 @@ mutation logUserIn($token: String!) {
   logUserIn(token: $token) @client
 }
 `;
+
+
+export const dateStringToDotFormat = (dateString:any) =>{
+    const res = dateString.slice(0,10).replace(/-/g,".");
+    return res;
+}

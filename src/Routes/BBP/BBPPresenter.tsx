@@ -4,7 +4,7 @@ import BBPBanner from "../../Components/BBPBanner";
 import BBPSubMenu from "../../Components/BBPSubMenu";
 import {InformationBox, InformationTitle, InformationContent} from "../../Components/InformationElement";
 import {BasicTableBox, BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
-
+import {dateStringToDotFormat} from "../../utils";
 
 const BBPBody = styled.div`
     position: relative;
@@ -93,21 +93,41 @@ const TableText = styled.div<marginProps>`
 const elements = ['이런 것을 이렇게 해야한다', '저렇게 이렇게 꼭 해야한다', '이런 것을 알아야한다.'];////
 const testTargetObjList = [{type:"WEB", value:"https://starbucks.com"},{type:"WEB", value:"https://api.starbucks.com"} ]////;
 
-export default () => 
+export default ({
+nameId,
+loading,
+disclosurePolicy,
+introduction,
+ruleValueList,
+openDate,
+closeDate,
+lowPriceMin,
+lowPriceMax,
+mediumPriceMin,
+mediumriceMax,
+highPriceMin,
+highriceMax,
+fatalPriceMin,
+fatalPriceMax,
+inScopeTargetList,
+outOfScopeTargetList,
+exclusionValueList,
+}:any) => 
 <>
-<BBPBanner/>
+<BBPBanner nameId={"pastelplanet"}/>
 <BBPSubMenu menuIdx={1}/>
 <BBPBody>
+{loading?<></>:
+    <>
     <BBPLeft>
         <InformationBox>
             <InformationTitle>Introduction</InformationTitle>
             <InformationContent>
                 <InfoText>
-                    {"Starbucks는 네트워크, 웹 및 모바일 애플리케이션에 대한 취약성으로 인한 악의적인 활동으로부터 시스템과 고객의 개인 정보를 보호하고 조직 전체에 보안 정책을 설정하는데 도움이되는 보안 전문가 간의 협력을 촉진하는 프로그램을 믿습니다. 우리는 고객 개인 정보의 보안과 안전을 가장 중요하게 생각합니다.\n"}
-                    {"고객 보호를 위해 Starbucks는 알려진 문제를 포괄적으로 조사, 진단 및 수정하기 전까지 보안 문제를 공개, 논의 또는 확인하지 않습니다."}
+                    {introduction}
                 </InfoText>
                 <MiniTitleText>{"\nRules"}</MiniTitleText>
-                    {elements.map((value, index) => {
+                    {ruleValueList.map((value:any, index:any) => {
                          return <InfoText>{"⚬  "}{value}</InfoText>
                     })}
                 <InfoText>
@@ -132,25 +152,25 @@ export default () =>
                     <BasicTableContent>
                         <TableContentWrapper>
                             <TableText marginLeft={0} marginRight={0}>⚫  Fatal</TableText>
-                            <TableText marginLeft={0} marginRight={0}>{"₩500000 ~ ₩1000000"}</TableText>
+                            <TableText marginLeft={0} marginRight={0}>{"₩"}{fatalPriceMin}{" ~ "}{"₩"}{fatalPriceMax}</TableText>
                         </TableContentWrapper>
                     </BasicTableContent>
                     <BasicTableContent>
                         <TableContentWrapper>
                             <TableText marginLeft={0} marginRight={0}>🔴  High</TableText>
-                            <TableText marginLeft={0} marginRight={0}>{"₩200000 ~ ₩500000"}</TableText>
+                            <TableText marginLeft={0} marginRight={0}>{"₩"}{highPriceMin}{" ~ "}{"₩"}{highriceMax}</TableText>
                         </TableContentWrapper>
                     </BasicTableContent>
                     <BasicTableContent>
                         <TableContentWrapper>
                             <TableText marginLeft={0} marginRight={0}>🟠  Medium</TableText>
-                            <TableText marginLeft={0} marginRight={0}>{"₩100000 ~ ₩200000"}</TableText>
+                            <TableText marginLeft={0} marginRight={0}>{"₩"}{mediumPriceMin}{" ~ "}{"₩"}{mediumriceMax}</TableText>
                         </TableContentWrapper>
                     </BasicTableContent>
                     <BasicTableContent>
                         <TableContentWrapper>
                             <TableText marginLeft={0} marginRight={0}>🟡  Low</TableText>
-                            <TableText marginLeft={0} marginRight={0}>{"₩30000 ~ ₩50000"}</TableText>
+                            <TableText marginLeft={0} marginRight={0}>{"₩"}{lowPriceMin}{" ~ "}{"₩"}{lowPriceMax}</TableText>
                         </TableContentWrapper>
                     </BasicTableContent>
                 </BasicTableBox>
@@ -165,7 +185,7 @@ export default () =>
                     </BasicTableHead>
                     
                     
-                    {testTargetObjList.map((dictObj, index) => {
+                    {inScopeTargetList.map((dictObj:any, index:any) => {
                          return (<BasicTableContent>
                              <TableContentWrapperWithRatio>
                                  <TableText marginLeft={22} marginRight={0}>{dictObj.type}</TableText>
@@ -186,7 +206,7 @@ export default () =>
                     </BasicTableHead>
                     
                     
-                    {testTargetObjList.map((dictObj, index) => {
+                    {outOfScopeTargetList.map((dictObj:any, index:any) => {
                          return (<BasicTableContent>
                              <TableContentWrapperWithRatio>
                                  <TableText marginLeft={22} marginRight={0}>{dictObj.type}</TableText>
@@ -198,7 +218,7 @@ export default () =>
                 </BasicTableBox>
 
                 <MiniTitleText>{"\nExclusion List"}</MiniTitleText>
-                    {elements.map((value, index) => {
+                    {exclusionValueList.map((value:any, index:any) => {
                          return <InfoText>{"⚬  "}{value}</InfoText>
                     })}
 
@@ -208,17 +228,18 @@ export default () =>
     <BBPRight>
         <SubPolicyBox>
             <SubPolicyTitle>{"취약점 공개 정책"}</SubPolicyTitle>
-            <SubPolicyContent>{"해당 프로그램은 취약점 공개를 허가하지 않습니다.\n 취약점 발견 시 외부에 유출하지 마세요."}</SubPolicyContent>
+            <SubPolicyContent>{disclosurePolicy}</SubPolicyContent>
         </SubPolicyBox>
         <SubPolicyBox>
             <SubPolicyTitle>{"운영 정보"}</SubPolicyTitle>
             <SubPolicyContent>{"시작 :"}</SubPolicyContent>
-            <SubPolicyContent>{"2020.8.20"}</SubPolicyContent>
+            <SubPolicyContent>{openDate?dateStringToDotFormat(openDate):"-"}</SubPolicyContent>
             <SubPolicyContent>{"\n"}</SubPolicyContent>
             <SubPolicyContent>{"종료 :"}</SubPolicyContent>
-            <SubPolicyContent>{"2020.10.20"}</SubPolicyContent>
+            <SubPolicyContent>{closeDate?dateStringToDotFormat(closeDate):"⠀-⠀"}</SubPolicyContent>
         </SubPolicyBox>
     </BBPRight>
+    </>}
 </BBPBody>
 
 </>

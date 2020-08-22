@@ -7,6 +7,7 @@ import Dropdown from "../../Components/Dropdown";
 import TextArea from "../../Components/TextArea";
 import Input from "../../Components/Input";
 import {BarLoader} from "../../Components/Loaders";
+import { dateStringToDotFormat } from "../../utils";
 
 const BBPBody = styled.div`
     position: relative;
@@ -135,17 +136,28 @@ const testTips = [
     "보고서는 4항을 지켜서 제보해야한다 등등",
 ]; ////
 
-export default () => 
+export default ({
+    loading,
+    nameId,
+    reportTipList,
+    disclosurePolicy,
+    vulnerabilityList,
+    openDate,
+    closeDate,
+    inScopeTargetList,
+}:any) => 
 <>
-<BBPBanner hideButton={true}/>
+<BBPBanner hideButton={true} nameId={nameId}/>
 <BBPSubMenu/>
 <BBPBody>
+    {loading?<></>:
+    <>
     <BBPLeft>
         <InformationBox>
             <InformationTitle>Tips</InformationTitle>
             <InformationContent>
-                {testTips.map((value, index) => {
-                         return <InfoText>{"⚬  "}{value}</InfoText>
+                {reportTipList.map((value:any, index:any) => {
+                         return <InfoText key={index}>{"⚬  "}{value}</InfoText>
                 })}
             </InformationContent>
         </InformationBox>
@@ -161,17 +173,17 @@ export default () =>
                 <RightSpace>
                     <MiniTitleText>{"\nAsset"}</MiniTitleText>
                     <InfoText>{"취약점이 발견된 대상을 선택하세요\n\n"}</InfoText>
-                    <Dropdown options={testOptions} defaultValue={testOptions[0]}/>
+                    <Dropdown options={inScopeTargetList} defaultValue={inScopeTargetList[0].options[0]}/>
 
 
                     <MiniTitleText>{"\n\n"}{"\nVulnerability"}</MiniTitleText>
                     <InfoText>{"발견된 취약점에 가장 부합하는 취약점 유형을 선택하세요\n\n"}</InfoText>
-                    <Dropdown options={testOptions} defaultValue={testOptions[0]}/>
+                    <Dropdown options={vulnerabilityList} defaultValue={vulnerabilityList[0].options[0]}/>
 
 
                     <MiniTitleText>{"\n\n"}{"Impact"}</MiniTitleText>
                     <InfoText>{"발견된 취약점을 스스로 평가해주세요 (생략가능)\n\n"}</InfoText>
-                    <Dropdown options={testOptions} defaultValue={testOptions[0]}/>
+                    
 
                     <MiniTitleText>{"\n\n\n"}{"Details"}</MiniTitleText>
                     <InfoText>{"어떻게 해당 취약점을 재현할 수 있는지와 어떻게 취약점을 발견하게 되었는지 최대한 자세하게 기술해주세요.\n\n"}</InfoText>
@@ -228,17 +240,19 @@ export default () =>
     <BBPRight>
     <SubPolicyBox>
             <SubPolicyTitle>{"취약점 공개 정책"}</SubPolicyTitle>
-            <SubPolicyContent>{"해당 프로그램은 취약점 공개를 허가하지 않습니다.\n 취약점 발견 시 외부에 유출하지 마세요."}</SubPolicyContent>
+            <SubPolicyContent>{disclosurePolicy}</SubPolicyContent>
         </SubPolicyBox>
         <SubPolicyBox>
             <SubPolicyTitle>{"운영 정보"}</SubPolicyTitle>
             <SubPolicyContent>{"시작 :"}</SubPolicyContent>
-            <SubPolicyContent>{"2020.8.20"}</SubPolicyContent>
+            <SubPolicyContent>{openDate?dateStringToDotFormat(openDate):"-"}</SubPolicyContent>
             <SubPolicyContent>{"\n"}</SubPolicyContent>
             <SubPolicyContent>{"종료 :"}</SubPolicyContent>
-            <SubPolicyContent>{"2020.10.20"}</SubPolicyContent>
+            <SubPolicyContent>{closeDate?dateStringToDotFormat(closeDate):"⠀-⠀"}</SubPolicyContent>
         </SubPolicyBox>
     </BBPRight>
+    </>
+    }
 </BBPBody>
 
 </>

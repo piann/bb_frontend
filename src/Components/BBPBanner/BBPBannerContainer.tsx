@@ -10,9 +10,11 @@ interface Props{
 
 export const GET_PROGRAM_BANNER = gql`
     query getProgramBanner(
-    $nameId: String!
+    $bbpId:String
+    $nameId: String
     ){
         getProgramBanner(
+            bbpId:$bbpId
             nameId:$nameId
         ){
             isPrivate
@@ -33,7 +35,6 @@ const BBPBannerContainer:React.SFC<Props> = ({
     hideButton,
     nameId
 }) => {
-    nameId = "pastelplanet";
     const {data, loading} = useQuery(GET_PROGRAM_BANNER, {variables:{nameId}})
     
     let 
@@ -69,6 +70,7 @@ const BBPBannerContainer:React.SFC<Props> = ({
     return(
         <BBPBannerPresenter
         loading={loading}
+        nameId={nameId}
         hideButton={hideButton}
         companyName={companyName}
         description={description}
