@@ -8,6 +8,9 @@ import TextArea from "../../Components/TextArea";
 import Input from "../../Components/Input";
 import {BarLoader} from "../../Components/Loaders";
 import { dateStringToDotFormat } from "../../utils";
+import { Radio, RadioGroup } from 'rsuite';
+import Button from "../../Components/Button";
+import CheckDialog from "../../Components/CheckDialog";
 
 const BBPBody = styled.div`
     position: relative;
@@ -80,7 +83,7 @@ const CircleContent = styled.div<CircleProps>`
   align-items:center;
   justify-content:center;
   color:white;
-  font-size:18px;
+  font-size:17px;
   background-color: ${props => props.theme.blueColor};
   border-radius:50%;
   z-index:2;
@@ -121,6 +124,43 @@ const MiniTitleText = styled.div`
 
 `
 
+const RadioSpace = styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+`;
+
+const RadioRow = styled.div`
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    margin-bottom:30px;
+`;
+
+const RadioBox = styled.div`
+    width:50%;
+    flex-direction:column;
+`
+const RadioTitle = styled.div`
+    margin-bottom:10px;
+    font-weight:600;
+`;
+
+const RadioSelect = styled.div`
+
+`
+
+const ExRadioGroup = styled(RadioGroup)`
+    display:flex;
+    flex-direction:row;
+`
+
+const SubmitButtonWrapper = styled.div`
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:15px;
+`
+
 
 const testOptions = [
     { value: "chocolate", label: "Cross-Site Scripting (XSS) From Earth" },
@@ -138,6 +178,7 @@ const testTips = [
 
 export default ({
     loading,
+    submitLoading,
     nameId,
     reportTipList,
     disclosurePolicy,
@@ -145,6 +186,28 @@ export default ({
     openDate,
     closeDate,
     inScopeTargetList,
+
+    titleInput,
+    locationInput,
+    descriptionInput,
+    dumpInput,
+    additionalTextInput,
+    osInput,
+    browserInput,
+    browserVersionInput,
+    setTargetId,
+    setVId,
+    setAttackComplexity,
+    setRequiredPriv,
+    setUserInteraction,
+    setConfidentiality,
+    setIntegrity,
+    setAvailablity,
+
+    clickFunc,
+    buttonDisabled,
+    dialogOpen,
+    setDialogOpen
 }:any) => 
 <>
 <BBPBanner hideButton={true} nameId={nameId}/>
@@ -168,46 +231,122 @@ export default ({
                     <CircleContent xIndex={30} yIndex={29}>1</CircleContent>
                     <CircleContent xIndex={30} yIndex={290}>2</CircleContent>
                     <CircleContent xIndex={30} yIndex={520}>3</CircleContent>
-                    <CircleContent xIndex={30} yIndex={780}>4</CircleContent>
+                    <CircleContent xIndex={30} yIndex={958}>4</CircleContent>
                 </LeftSpace>
                 <RightSpace>
                     <MiniTitleText>{"\nAsset"}</MiniTitleText>
                     <InfoText>{"취약점이 발견된 대상을 선택하세요\n\n"}</InfoText>
-                    <Dropdown options={inScopeTargetList} defaultValue={inScopeTargetList[0].options[0]}/>
+                    <Dropdown options={inScopeTargetList} defaultValue={inScopeTargetList[0].options[0]} onChange={
+                             (selected:any) => {
+                                setTargetId(selected.value);
+                              }
+                    }/>
 
 
                     <MiniTitleText>{"\n\n"}{"\nVulnerability"}</MiniTitleText>
                     <InfoText>{"발견된 취약점에 가장 부합하는 취약점 유형을 선택하세요\n\n"}</InfoText>
-                    <Dropdown options={vulnerabilityList} defaultValue={vulnerabilityList[0].options[0]}/>
+                    <Dropdown options={vulnerabilityList} defaultValue={vulnerabilityList[0].options[0]} onChange={
+                            (selected:any) => {
+                                setVId(selected.value);
+                            }
+                    }/>
 
 
                     <MiniTitleText>{"\n\n"}{"Impact"}</MiniTitleText>
                     <InfoText>{"발견된 취약점을 스스로 평가해주세요 (생략가능)\n\n"}</InfoText>
-                    
+                    <RadioSpace>
+                        <RadioRow>
+                            <RadioBox>
+                                <RadioTitle>{"공격의 복잡도"}</RadioTitle>
+                                <RadioSelect>
+                                    <ExRadioGroup name="attackComplexity" onChange={(v:any)=>{setAttackComplexity(v)}}>
+                                        <Radio value={1}>{"Low "}</Radio>
+                                        <Radio value={2}>{"Medium "}</Radio>
+                                        <Radio value={3}>{"High "}</Radio>
+                                    </ExRadioGroup>
+                                </RadioSelect>
+                            </RadioBox>
+                            <RadioBox>
+                                <RadioTitle>{"필요권한"}</RadioTitle>
+                                <RadioSelect>
+                                    <ExRadioGroup name="requiredPriv" onChange={(v:any)=>{setRequiredPriv(v)}}>
+                                        <Radio value={1}>{"Low "}</Radio>
+                                        <Radio value={2}>{"Medium "}</Radio>
+                                        <Radio value={3}>{"High "}</Radio>
+                                    </ExRadioGroup>
+                                </RadioSelect>
+                            </RadioBox>
+                        </RadioRow>
+                        <RadioRow>
+                            <RadioBox>
+                                <RadioTitle>{"필요한 사용자 개입 수준"}</RadioTitle>
+                                <RadioSelect>
+                                    <ExRadioGroup name="userInteraction" onChange={(v:any)=>{setUserInteraction(v)}}>
+                                        <Radio value={1}>{"Low "}</Radio>
+                                        <Radio value={2}>{"Medium "}</Radio>
+                                        <Radio value={3}>{"High "}</Radio>
+                                    </ExRadioGroup>
+                                </RadioSelect>
+
+                            </RadioBox>
+                            <RadioBox>
+                                <RadioTitle>{"기밀성 파급력"}</RadioTitle>
+                                <RadioSelect>
+                                    <ExRadioGroup name="confidentiality" onChange={(v:any)=>{setConfidentiality(v)}}>
+                                        <Radio value={1}>{"Low "}</Radio>
+                                        <Radio value={2}>{"Medium "}</Radio>
+                                        <Radio value={3}>{"High "}</Radio>
+                                    </ExRadioGroup>
+                                </RadioSelect>
+                            </RadioBox>
+                        </RadioRow>
+                        <RadioRow>
+                            <RadioBox>
+                                <RadioTitle>{"무결성 파급력"}</RadioTitle>
+                                <RadioSelect>
+                                    <ExRadioGroup name="integrity" onChange={(v:any)=>{setIntegrity(v)}}>
+                                        <Radio value={1}>{"Low "}</Radio>
+                                        <Radio value={2}>{"Medium "}</Radio>
+                                        <Radio value={3}>{"High "}</Radio>
+                                    </ExRadioGroup>
+                                </RadioSelect>
+                            </RadioBox>
+                            <RadioBox>
+                                <RadioTitle>{"가용성 파급력"}</RadioTitle>
+                                <RadioSelect>
+                                    <ExRadioGroup name="availablity" onChange={(v:any)=>{setAvailablity(v)}}>
+                                        <Radio value={1}>{"Low "}</Radio>
+                                        <Radio value={2}>{"Medium "}</Radio>
+                                        <Radio value={3}>{"High "}</Radio>
+                                    </ExRadioGroup>
+                                </RadioSelect>
+                            </RadioBox>
+                        </RadioRow>
+                    </RadioSpace>
 
                     <MiniTitleText>{"\n\n\n"}{"Details"}</MiniTitleText>
                     <InfoText>{"어떻게 해당 취약점을 재현할 수 있는지와 어떻게 취약점을 발견하게 되었는지 최대한 자세하게 기술해주세요.\n\n"}</InfoText>
                     <BoldInfoText>{"Title"}</BoldInfoText>
                     <InfoText>{"발견 취약점에 대해 간단한 요약, 제목 (50자 이내)"}</InfoText>
-                    <Input maxLength={50}/>
+                    <Input maxLength={50} {...titleInput}/>
                     
                     <BoldInfoText>{"\n\n"}{"URL or Location Of Vulnerability"}</BoldInfoText>
                     <InfoText>{"취약점 발생 URL을 적어주세요 (생략 가능)"}</InfoText>
-                    <Input maxLength={250}/>
+                    <Input maxLength={500} {...locationInput}/>
 
                     <BoldInfoText>{"\n\n"}{"Enviroment"}</BoldInfoText>
                     <InfoText>{"취약점을 시현했던 OS와 Browser, Browser version (생략 가능)"}</InfoText>
                         <TextInputSetWrapper>
                             <InputLeftText>{"OS"}</InputLeftText>
-                            <Input maxLength={30} inputWidth={"50%"}/>
+                            <Input maxLength={30} inputWidth={"50%"} {...osInput}/>
                         </TextInputSetWrapper>
                         <TextInputSetWrapper>
                             <InputLeftText>{"Browser"}</InputLeftText>
-                            <Input maxLength={30} inputWidth={"50%"}/>
+                            <Input maxLength={30} inputWidth={"50%"} {...browserInput}/>
                         </TextInputSetWrapper>
                         <TextInputSetWrapper>
                             <InputLeftText>{"Version"}</InputLeftText>
-                            <Input maxLength={30} inputWidth={"50%"}/>
+                            <Input maxLength={30} inputWidth={"50%"} {...browserVersionInput}/>
                         </TextInputSetWrapper>
                         <BoldInfoText>{"\n\n\n"}{"Description"}</BoldInfoText>
                             <InfoText>
@@ -215,24 +354,36 @@ export default ({
                                 {"\n2. 취약점을 재현할 수 있는 방법을 단계별로 기술해주세요."}
                                 {"\n(총 10000자 이하)"}
                             </InfoText>
-                            <TextArea rows={20} maxLength={10000}/>
+                            <TextArea rows={20} maxLength={10000} {...descriptionInput}/>
 
 
                             <BoldInfoText>{"\n\n\n"}{"HTTP request dump"}</BoldInfoText>
                             <InfoText>
                                 {"공격 관련 request 정보 (최대 20000자, 생략 가능)"} 
                             </InfoText>
-                            <TextArea rows={20} maxLength={10000}/>
+                            <TextArea rows={20} maxLength={10000} {...dumpInput}/>
 
                             <BoldInfoText>{"\n\n\n"}{"비고"}</BoldInfoText>
                             <InfoText>
                                 {"이 외 알리고 싶은 기타 내용 (최대 300자, 생략 가능)"} 
                             </InfoText>
-                            <TextArea rows={5} maxLength={10000}/>
+                            <TextArea rows={5} maxLength={10000} {...additionalTextInput}/>
 
                             <BoldInfoText>{"\n\n\n"}{"파일 첨부"}</BoldInfoText>
-
-
+                            <SubmitButtonWrapper>
+                            {submitLoading?
+                            <BarLoader/>:
+                            <Button text="Submit Report" width={"150px"} onClick={()=>{setDialogOpen(true)}} disabled={buttonDisabled}/>
+                            }
+                                <CheckDialog
+                                title={"Submit Report"}
+                                contentText={"최종 제출하시겠습니까?"}
+                                okClickedFunc={clickFunc}
+                                checkDialogOpen={dialogOpen}
+                                setCheckDialogOpen={setDialogOpen}
+                                refetch={false}
+                                />
+                            </SubmitButtonWrapper>
              </RightSpace>
             </InformationContent2>
         </InformationBox>

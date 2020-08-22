@@ -47,16 +47,19 @@ interface GroupedOptionProps{
 interface Props{
     defaultValue?:OptionProps|GroupedOptionProps;
     options?:[OptionProps|GroupedOptionProps];
+    onChange?:any;
 }
 
 const Dropdown:React.SFC<Props> = ({
     defaultValue,
     options,
+    onChange
 }) => (
     <StyledSelect
       defaultValue={defaultValue}
       classNamePrefix="Select"
       options={options}
+      onChange={onChange}
     />
   );
 

@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState, MouseEvent} from "react";
 import ReportPresenter from "./ReportPresenter";
 import { useQuery } from "@apollo/client";
-import { GET_REPORT_READY_PAGE } from "./ReportQueries";
-
+import { GET_REPORT_READY_PAGE, SUBMIT_REPORT } from "./ReportQueries";
+import { useMutation } from "@apollo/react-hooks";
+import { useInput } from "../../utils";
+import { toast } from "react-toastify";
+import { toastOpt } from "../../common";
 
 export default (props:any) => {
 
@@ -10,8 +13,71 @@ export default (props:any) => {
     const nameId = result.name_id;
     let vulnerabilityListForDropdown = [];
     let inScopeTargetListForDropdown = [];
-    const {data, loading} = useQuery(GET_REPORT_READY_PAGE, {variables:{nameId}})
+    const {data, loading} = useQuery(GET_REPORT_READY_PAGE, {variables:{nameId}});
     
+    // setting for submit report
+    const [submitReportMutation, {loading:submitLoading}] = useMutation(SUBMIT_REPORT);
+    
+    const [targetId, setTargetId] = useState();
+    const [vId, setVId] = useState();
+    const [attackComplexity, setAttackComplexity] = useState();
+    const [requiredPriv, setRequiredPriv] = useState();
+    const [userInteraction, setUserInteraction] = useState();
+    const [confidentiality, setConfidentiality] = useState();
+    const [integrity, setIntegrity] = useState();
+    const [availablity, setAvailablity] = useState();
+    const titleInput = useInput("");
+    const locationInput = useInput("");
+    const osInput = useInput("");
+    const browserInput = useInput("");
+    const browserVersionInput = useInput("");
+    const descriptionInput = useInput("");
+    const dumpInput = useInput("");
+    const additionalTextInput = useInput("");
+
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+    const [dialogOpen, setDialogOpen] = useState(false);
+
+    const clickFunc = async () => {
+        setButtonDisabled(true);
+        const {
+            data:{
+                submitReport:submitReportResponse
+            }
+        } = await submitReportMutation({variables:{
+            nameId,
+            targetId,
+            vId,
+            attackComplexity,
+            requiredPriv,
+            userInteraction,
+            confidentiality,
+            integrity,
+            availablity,
+            //
+            title:titleInput.value,
+            location:locationInput.value,
+            enviroment:osInput.value+"::"+browserInput.value+"::"+browserVersionInput.value,
+            description:descriptionInput.value,
+            dump:dumpInput.value,
+            additionalText:additionalTextInput.value,
+        }});
+
+
+        if(!submitLoading){
+            setDialogOpen(false);
+            if(submitReportResponse!==null){
+                toast("Submit Completed !", toastOpt as any);
+                setTimeout(()=>{window.location.href = "/";}, 2000)
+            } else {
+                toast("There is an error", toastOpt as any);
+                setButtonDisabled(false);
+                
+            }
+        }
+    }
+
+
     let 
     reportTipList,
     disclosurePolicy,
@@ -72,7 +138,6 @@ export default (props:any) => {
         }
         const uniquetypeList = [...new Set(typeList) as any];
 
-        console.log(uniquetypeList);////
 
         for(const type of uniquetypeList){
             const gOpt = {label:"", options:[] as any}
@@ -80,6 +145,7 @@ export default (props:any) => {
             inScopeTargetListForDropdown.push(gOpt);
         }
 
+        inScopeTargetListForDropdown.push({label:"OTHERS", options:[{value:-1,label:"Others"}]}); // for OTHERS
 
         for(const inScopeTarget of inScopeTargetList){
             const inScopeObj = {value:-1,label:""};
@@ -92,11 +158,13 @@ export default (props:any) => {
             }
         }
         
-        console.log(inScopeTargetListForDropdown);////
+
     }
 
     return <ReportPresenter
+        // for query
         loading={loading}
+        submitLoading={submitLoading}
         nameId={nameId}
         reportTipList={reportTipList}
         disclosurePolicy={disclosurePolicy}
@@ -104,6 +172,28 @@ export default (props:any) => {
         openDate={openDate}
         closeDate={closeDate}
         inScopeTargetList={inScopeTargetListForDropdown}
+        // for submit
+        titleInput={titleInput}
+        locationInput={locationInput}
+        osInput={osInput}
+        browserInput={browserInput}
+        browserVersionInput={browserVersionInput}
+        descriptionInput={descriptionInput}
+        dumpInput={dumpInput}
+        additionalTextInput={additionalTextInput}
+        setTargetId={setTargetId}
+        setVId={setVId}
+        setAttackComplexity={setAttackComplexity}
+        setRequiredPriv={setRequiredPriv}
+        setUserInteraction={setUserInteraction}
+        setConfidentiality={setConfidentiality}
+        setIntegrity={setIntegrity}
+        setAvailablity={setAvailablity}
+
+        clickFunc={clickFunc}
+        buttonDisabled={buttonDisabled}
+        dialogOpen={dialogOpen}
+        setDialogOpen={setDialogOpen}
     />
 
 
