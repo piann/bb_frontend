@@ -14,11 +14,11 @@ import ConfirmSecret from "../Routes/ConfirmSecret";
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/log_in" component={LogIn}/>
 <Route exact path="/profile" component={Profile}></Route>
-<Route exact path="/report_thread" component={ReportThread}></Route>
+<Route exact path="/report_thread/:report_id" component={ReportThread}></Route>
 <Route exact path="/:name_id" component={BBP}></Route>
 <Route exact path="/:name_id/report" component={Report}></Route>
 <Route exact path="/:name_id/progress" component={BBPProgress}></Route>
-<Redirect from="*" to="/profile" />
+<Redirect from="*" to="/introduction" />
 </Switch>
 
 const LoggedOutRoutes = () => <Switch>

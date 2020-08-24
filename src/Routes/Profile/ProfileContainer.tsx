@@ -2,6 +2,7 @@ import React from "react";
 import ProfilePresenter from "./ProfilePresenter";
 import {gql} from "apollo-boost";
 import { useQuery } from "@apollo/client";
+import { Redirect } from "react-router-dom";
 
 
 export const GET_MY_PROFILE = gql`
@@ -32,7 +33,6 @@ export default () => {
     profilePictureId,
     reportInfoList;
     
-    let isForbidden = false;
 
     if(!loading){
         const {
@@ -45,14 +45,13 @@ export default () => {
         profilePictureId = getMyProfileResponse.profilePictureId;
         reportInfoList = getMyProfileResponse.reportInfoList;
         } else {
-            isForbidden=true;
+            return <Redirect to="/" />
         }
     }
 
 
     return <ProfilePresenter
         loading={loading}
-        isForbidden={isForbidden}
         email={email}
         nickName={nickName}
         profilePictureId={profilePictureId}

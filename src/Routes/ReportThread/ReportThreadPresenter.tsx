@@ -10,6 +10,9 @@ import basicProfile from "../../images/basicProfile.png";
 import TextArea from "../../Components/TextArea";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
+import {BarLoader} from "../../Components/Loaders"
+
+
 const BBPBody = styled.div`
     position: relative;
     width:100%;
@@ -172,54 +175,83 @@ const testTargetObjList = [
   ] ////
 
 
+
+///// add collaborator comment case
 export default ({
-    nameId
+    loading,
+    nameId,
+    authorNickName,
+    progressStatus,
+    resultCode,
+    bountyAmount,
+    commentInfoList,
 }:any) => 
 <>
-<BBPBanner hideButton={true}/>
+<BBPBanner hideButton={true} nameId={nameId}/>
 <BBPSubMenu nameId={nameId}/>
 <BBPBody>
+    {loading?
+    <BarLoader/>:
+        <>
         <InformationBox>
             <InformationTitle>Progress</InformationTitle>
             <InformationContent>
             <ProgressBarWrapper>
                 <div className="progressbar">
-                    <li className="active">{"1. STAND BY"}</li>
-                    <li className="active">{"2. IN PROGRESS"}</li>
-                    <li className="inactive">{"3. ON ASSESMENT"}</li>
-                    <li className="inactive">{"4. RESOLVED"}</li>
+                    <li className={progressStatus>=0?"active":"inactive"}>{"1. STAND BY"}</li>
+                    <li className={progressStatus>=1?"active":"inactive"}>{"2. IN PROGRESS"}</li>
+                    <li className={progressStatus>=2?"active":"inactive"}>{"3. ON ASSESMENT"}</li>
+                    <li className={progressStatus>=3?"active":"inactive"}>{"4. RESOLVED"}</li>
                 </div>
             </ProgressBarWrapper>
             <AdditionalInfo>
-                <BoldInfoText>{"Result⠀:⠀"}</BoldInfoText><InfoText>{"DUPLICATED"}</InfoText>
+                <BoldInfoText>{"Result⠀:⠀"}</BoldInfoText><InfoText>{resultCode?resultCode:" - "}</InfoText>
             </AdditionalInfo>
 
             </InformationContent>
         </InformationBox>
         
 
-        
         <InformationBox>
             <InformationTitle>Comments</InformationTitle>
             <InformationContent>
-                <CommentWrapper className={"leftAlign"}>
-                    <ProfileWrapper>
-                    <img src={basicProfile} width={"50px"} height={"50px"}/>
-                    <ProfileId>jtjisGodISMINER</ProfileId>
-                    </ProfileWrapper>
-                    <LSpeechBubble
-                    maxWidth={"calc(100% - 130px)"} 
-                    text={"이것은 테스트 항항의글을 달면  있을 것이라고감. 여기서부터 무슨 내용들을 적을 것이고 그것들에 대한 이야기들을 답변하는 전개가 이루어져야 함."}/>
-                </CommentWrapper>
-                <CommentWrapper className={"rightAlign"}>
-                    <RSpeechBubble
-                    maxWidth={"calc(100% - 130px)"} 
-                    text={"이것은 테스트 항이것 내용들이 있을 것이라고감"}/>
-                    <ProfileWrapper>
-                    <img src={basicProfile} width={"50px"} height={"50px"}/>
-                    <ProfileId>jtjisGodISMINER</ProfileId>
-                    </ProfileWrapper>
-                </CommentWrapper>
+            {commentInfoList.map((dictObj:any, index:any) => {
+                const commenterNickName = dictObj.writerNickName;
+                const commentContent = dictObj.content;
+
+                const isAuthor = (authorNickName)===(commenterNickName)
+
+                if(isAuthor===true){ // determine direction of bubble 
+                    return(
+                        <CommentWrapper className={"rightAlign"} key={1000+index}>
+                            <RSpeechBubble
+                            maxWidth={"calc(100% - 130px)"} 
+                            text={commentContent}/>
+                            <ProfileWrapper>
+                            <img src={basicProfile} width={"50px"} height={"50px"}/>
+                            <ProfileId>{commenterNickName}</ProfileId>
+                            </ProfileWrapper>
+                        </CommentWrapper>
+                    )
+                } else {
+                    return(
+                        <CommentWrapper className={"leftAlign"} key={1000+index}>
+                            <ProfileWrapper>
+                            <img src={basicProfile} width={"50px"} height={"50px"}/>
+                            <ProfileId>{commenterNickName}</ProfileId>
+                            </ProfileWrapper>
+                            <LSpeechBubble
+                            maxWidth={"calc(100% - 130px)"} 
+                            text={commentContent}/>
+                        </CommentWrapper>
+                    )
+
+                }
+                                
+            })}
+
+
+
                 <CommentTextAreaWrapper >
                         <CommentProfileImgWrapper>
                             <img src={basicProfile} width={"50px"} height={"50px"}/>
@@ -231,7 +263,8 @@ export default ({
                 </ButtonWrapper>
             </InformationContent>
         </InformationBox>
-
+        </>
+    }
 </BBPBody>
 
 </>

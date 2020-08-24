@@ -151,10 +151,7 @@ export default ({
     profilePictureId,
     reportInfoList,
     loading,
-    isForbidden
-
 }:any) => <ProfileWrapper>
-{!loading&&isForbidden&&<Redirect to="/"/>}
 {loading?
 <BarLoader/>:
 <>
