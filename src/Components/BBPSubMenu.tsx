@@ -44,18 +44,18 @@ export const MenuComponent = styled.div<MenuProps>`
 `
 
 interface MenuChoiceProps{
-    companyName?:string;
+    nameId:string;
     menuIdx?:number;
 }
 
 const BannerSubMenu:React.SFC<MenuChoiceProps> = ({
     menuIdx,
-    companyName
+    nameId
 }) => <BannerSubMenuStruct>
 <BodyWrapper>
     <Body>
         <MenuWrapper>
-            <Link to={"/program"}>
+            <Link to={"/"+nameId}>
             <MenuComponent menuIdx={menuIdx}>
                Policy
             </MenuComponent>

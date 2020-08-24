@@ -44,7 +44,6 @@ export default (props:any) => {
 
     const result : any = props.match.params;
     const nameId = result.name_id;
-
     const {data, loading} = useQuery(GET_PROGRAM_BODY_CONTENTS, {variables:{nameId}})
     
     let 
@@ -93,7 +92,6 @@ export default (props:any) => {
 
     }
    
-
     return <BBPPresenter
         nameId={nameId}
         loading={loading}

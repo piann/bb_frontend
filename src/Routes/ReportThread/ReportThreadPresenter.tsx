@@ -172,10 +172,12 @@ const testTargetObjList = [
   ] ////
 
 
-export default () => 
+export default ({
+    nameId
+}:any) => 
 <>
 <BBPBanner hideButton={true}/>
-<BBPSubMenu/>
+<BBPSubMenu nameId={nameId}/>
 <BBPBody>
         <InformationBox>
             <InformationTitle>Progress</InformationTitle>
@@ -194,7 +196,9 @@ export default () =>
 
             </InformationContent>
         </InformationBox>
-        {/* second area start */}
+        
+
+        
         <InformationBox>
             <InformationTitle>Comments</InformationTitle>
             <InformationContent>

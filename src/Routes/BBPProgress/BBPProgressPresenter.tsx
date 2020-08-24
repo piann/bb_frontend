@@ -4,7 +4,10 @@ import BBPBanner from "../../Components/BBPBanner";
 import BBPSubMenu from "../../Components/BBPSubMenu";
 import {InformationBox, InformationTitle, InformationContent} from "../../Components/InformationElement";
 import {BasicTableBox, BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
-
+import {BarLoader} from "../../Components/Loaders";
+import { Redirect } from "react-router-dom";
+import { getTimeGapStr } from "../../utils";
+import { Link } from "react-router-dom";
 
 const BBPBody = styled.div`
     position: relative;
@@ -57,11 +60,13 @@ interface marginProps{
 
 
 
-const TableContentWrapperWithRatio = styled.div`
+const TableContentWrapperWithRatio = styled.a`
     width:100%;
     display:grid;
     grid-auto-flow: column;
     grid-template-columns: 3fr 2fr 2fr 2.5fr;
+    color:inherit;
+    text-decoration: none;
 `;
 
 const TableText = styled.div<marginProps>`
@@ -89,78 +94,115 @@ const testTargetObjList = [
       }
   ] ////;
 
-export default () => 
-<>
-<BBPBanner hideButton={true}/>
-<BBPSubMenu/>
-<BBPBody>
-        <InformationBox>
-            <InformationTitle>Summary</InformationTitle>
-            <InformationContent>
-                <GridWrapper>
-                    <GridContent>
-                        <BoldInfoText>{"총 제출 리포트 수 :"}</BoldInfoText>
-                        <InfoText>{23}</InfoText>
-                    </GridContent>
-                    <GridContent>
-                        <BoldInfoText>{"시작 후 경과 시간 :"}</BoldInfoText>
-                        <InfoText>{"3일 15시간"}</InfoText>
-                    </GridContent>
-                    <GridContent>
-                        <BoldInfoText>{"발견된 취약점 수 :"}</BoldInfoText>
-                        <InfoText>{18}</InfoText>
-                    </GridContent>
-                    <GridContent>
-                        <BoldInfoText>{"총 참가 해커 수 :"}</BoldInfoText>
-                        <InfoText>{"12명"}</InfoText>
-                    </GridContent>
-                    <GridContent>
-                        <BoldInfoText>{"보상 인정 취약점 수 :"}</BoldInfoText>
-                        <InfoText>{"9"}</InfoText>
-                    </GridContent>
-                    <GridContent>
-                        <BoldInfoText>{"최초 레포트 제출 시기 :"}</BoldInfoText>
-                        <InfoText>{"시작 후 18시간 후"}</InfoText>
-                    </GridContent>
-                    <GridContent>
-                        <BoldInfoText>{"총 지불 포상금 :"}</BoldInfoText>
-                        <InfoText>{"₩750000"}</InfoText>
-                    </GridContent>
-                    <GridContent>
-                        <BoldInfoText>{"최근 레포트 제출 시점 :"}</BoldInfoText>
-                        <InfoText>{"8시간 전"}</InfoText>
-                    </GridContent>
-                </GridWrapper>
-            </InformationContent>
-        </InformationBox>
-        {/* second area start */}
-        <InformationBox>
-            <InformationTitle>Reports</InformationTitle>
-            <InformationContent>
-                <BasicTableBox>
-                    <BasicTableHead>
-                        <TableContentWrapperWithRatio>
-                            <TableText marginLeft={0} marginRight={0}>report id</TableText>
-                            <TableText marginLeft={0} marginRight={0}>status</TableText>
-                            <TableText marginLeft={0} marginRight={0}>result</TableText>
-                            <TableText marginLeft={0} marginRight={0}>by hacker</TableText>
-                        </TableContentWrapperWithRatio>
-                    </BasicTableHead>
-                    {testTargetObjList.map((dictObj, index) => {
-                         return (<BasicTableContent>
-                             <TableContentWrapperWithRatio>
-                                 <TableText marginLeft={0} marginRight={0}>{dictObj.reportId}</TableText>
-                                 <TableText marginLeft={0} marginRight={0}>{dictObj.status}</TableText>
-                                 <TableText marginLeft={0} marginRight={0}>{dictObj.result?"Good":"Bad"}</TableText>
-                                 <TableText marginLeft={0} marginRight={0}>{dictObj.authorNickName}</TableText>
-                             </TableContentWrapperWithRatio>
-                         </BasicTableContent>)
-                    })}
-                </BasicTableBox>
+export default ({
+    loading,
+    responseSuccess,
+    nameId,
+    submittedReportCount,
+    totalVulnerabilityCount,
+    rewardedVulnerabilityCount,
+    totalReward,
+    joinedHackerCount,
+    closeDate,
+    openDate,
+    firstReportDate,
+    recentReportDate,
+    reportInfoList,
+}:any) =>{
 
-            </InformationContent>
-        </InformationBox>
+    let 
+    GapAfterStart,
+    FirstReportGap,
+    lastReportGap;
+    
+    if(loading===false){
+        GapAfterStart = getTimeGapStr(openDate, new Date());
+        FirstReportGap = getTimeGapStr(openDate, firstReportDate);
+        lastReportGap = getTimeGapStr(recentReportDate, new Date());
+    }
 
-</BBPBody>
+    return(
+    <>
+    <BBPBanner hideButton={true} nameId={nameId}/>
+    <BBPSubMenu nameId={nameId}/>
+    <BBPBody>
+        {loading===false&&responseSuccess===false&&<Redirect to={"/"}/>}
+        {loading?<BarLoader/>:
+            <>
+            <InformationBox>
+                <InformationTitle>{"Summary"}</InformationTitle>
+                <InformationContent>
+                    <GridWrapper>
+                        <GridContent>
+                            <BoldInfoText>{"총 제출 리포트 수 :"}</BoldInfoText>
+                            <InfoText>{submittedReportCount}</InfoText>
+                        </GridContent>
+                        <GridContent>
+                            <BoldInfoText>{"시작 후 경과 시간 :"}</BoldInfoText>
+                            <InfoText>{GapAfterStart}</InfoText>
+                        </GridContent>
+                        <GridContent>
+                            <BoldInfoText>{"발견된 취약점 수 :"}</BoldInfoText>
+                            <InfoText>{totalVulnerabilityCount}</InfoText>
+                        </GridContent>
+                        <GridContent>
+                            <BoldInfoText>{"총 참가 해커 수 :"}</BoldInfoText>
+                            <InfoText>{joinedHackerCount}</InfoText>
+                        </GridContent>
+                        <GridContent>
+                            <BoldInfoText>{"보상 인정 취약점 수 :"}</BoldInfoText>
+                            <InfoText>{rewardedVulnerabilityCount}</InfoText>
+                        </GridContent>
+                        <GridContent>
+                            <BoldInfoText>{"최초 레포트 제출 시기 :"}</BoldInfoText>
+                            <InfoText>{"시작 후 "}{FirstReportGap}</InfoText>
+                        </GridContent>
+                        <GridContent>
+                            <BoldInfoText>{"총 지불 포상금 :"}</BoldInfoText>
+                            <InfoText>{"₩"}{totalReward}</InfoText>
+                        </GridContent>
+                        <GridContent>
+                            <BoldInfoText>{"최근 레포트 제출 시점 :"}</BoldInfoText>
+                            <InfoText>{lastReportGap}{" 전"}</InfoText>
+                        </GridContent>
+                    </GridWrapper>
+                </InformationContent>
+            </InformationBox>
 
-</>
+
+
+
+
+            <InformationBox>
+                <InformationTitle>Reports</InformationTitle>
+                <InformationContent>
+                    <BasicTableBox>
+                        <BasicTableHead>
+                            <TableContentWrapperWithRatio>
+                                <TableText marginLeft={0} marginRight={0}>report id</TableText>
+                                <TableText marginLeft={0} marginRight={0}>status</TableText>
+                                <TableText marginLeft={0} marginRight={0}>result</TableText>
+                                <TableText marginLeft={0} marginRight={0}>by hacker</TableText>
+                            </TableContentWrapperWithRatio>
+                        </BasicTableHead>
+                        {reportInfoList.map((dictObj:any, index:any) => {
+                            return (<BasicTableContent key={1000+index}>
+                                <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
+                                    <TableText marginLeft={0} marginRight={0}>{dictObj.reportId}</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>{dictObj.status}</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>{dictObj.result?"Good":"Bad"}</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>{dictObj.authorNickName}</TableText>
+                                </TableContentWrapperWithRatio>
+                            </BasicTableContent>)
+                        })}
+                    </BasicTableBox>
+
+                </InformationContent>
+            </InformationBox>
+            </>
+        }
+    </BBPBody>
+
+    </>
+    )
+}

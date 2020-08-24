@@ -4,7 +4,7 @@ import BBPBanner from "../../Components/BBPBanner";
 import BBPSubMenu from "../../Components/BBPSubMenu";
 import {InformationBox, InformationTitle, InformationContent} from "../../Components/InformationElement";
 import {BasicTableBox, BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
-import {dateStringToDotFormat} from "../../utils";
+import {dateStringToDotFormat, generateRandomStr} from "../../utils";
 
 const BBPBody = styled.div`
     position: relative;
@@ -114,8 +114,8 @@ outOfScopeTargetList,
 exclusionValueList,
 }:any) => 
 <>
-<BBPBanner nameId={"pastelplanet"}/>
-<BBPSubMenu menuIdx={1}/>
+<BBPBanner nameId={nameId}/>
+<BBPSubMenu menuIdx={1} nameId={nameId}/>
 <BBPBody>
 {loading?<></>:
     <>
@@ -128,7 +128,7 @@ exclusionValueList,
                 </InfoText>
                 <MiniTitleText>{"\nRules"}</MiniTitleText>
                     {ruleValueList.map((value:any, index:any) => {
-                         return <InfoText>{"⚬  "}{value}</InfoText>
+                         return <InfoText key={1000+index}>{"⚬  "}{value}</InfoText>
                     })}
                 <InfoText>
                     {"\n그 외의 참고사항은 다음과 같습니다.\n"}
@@ -186,10 +186,10 @@ exclusionValueList,
                     
                     
                     {inScopeTargetList.map((dictObj:any, index:any) => {
-                         return (<BasicTableContent>
+                         return (<BasicTableContent key={2000+index}>
                              <TableContentWrapperWithRatio>
-                                 <TableText marginLeft={22} marginRight={0}>{dictObj.type}</TableText>
-                                 <TableText marginLeft={0} marginRight={0}>{dictObj.value}</TableText>
+                                 <TableText key={3000+index} marginLeft={22} marginRight={0}>{dictObj.type}</TableText>
+                                 <TableText key={4000+index} marginLeft={0} marginRight={0}>{dictObj.value}</TableText>
                              </TableContentWrapperWithRatio>
                          </BasicTableContent>)
                     })}
@@ -207,10 +207,10 @@ exclusionValueList,
                     
                     
                     {outOfScopeTargetList.map((dictObj:any, index:any) => {
-                         return (<BasicTableContent>
+                         return (<BasicTableContent key={5000+index}>
                              <TableContentWrapperWithRatio>
-                                 <TableText marginLeft={22} marginRight={0}>{dictObj.type}</TableText>
-                                 <TableText marginLeft={0} marginRight={0}>{dictObj.value}</TableText>
+                                 <TableText key={5000+index} marginLeft={22} marginRight={0}>{dictObj.type}</TableText>
+                                 <TableText key={6000+index} marginLeft={0} marginRight={0}>{dictObj.value}</TableText>
                              </TableContentWrapperWithRatio>
                          </BasicTableContent>)
                     })}
@@ -219,7 +219,7 @@ exclusionValueList,
 
                 <MiniTitleText>{"\nExclusion List"}</MiniTitleText>
                     {exclusionValueList.map((value:any, index:any) => {
-                         return <InfoText>{"⚬  "}{value}</InfoText>
+                         return <InfoText key={7000+index}>{"⚬  "}{value}</InfoText>
                     })}
 
             </InformationContent>

@@ -3,6 +3,7 @@ import { defaults, resolvers } from "./LocalState";
 
 export default new ApolloClient({
   uri: "http://localhost:4001",
+  credentials:'same-origin',
   clientState: {
     defaults,
     resolvers

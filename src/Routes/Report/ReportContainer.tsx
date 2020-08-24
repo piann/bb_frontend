@@ -108,9 +108,7 @@ export default (props:any) => {
         for(const vul of vulnerabilityList){
             categoryList.push(vul.category);
         }
-        const uniqueCategoryList = [...new Set(categoryList) as any];
-
-
+        const uniqueCategoryList = Array.from(new Set(categoryList));
         
         for(const category of uniqueCategoryList){
             const gOpt = {label:"", options:[] as any}

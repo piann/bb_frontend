@@ -7,10 +7,11 @@ import Dropdown from "../../Components/Dropdown";
 import TextArea from "../../Components/TextArea";
 import Input from "../../Components/Input";
 import {BarLoader} from "../../Components/Loaders";
-import { dateStringToDotFormat } from "../../utils";
+import { dateStringToDotFormat, generateRandomStr } from "../../utils";
 import { Radio, RadioGroup } from 'rsuite';
 import Button from "../../Components/Button";
 import CheckDialog from "../../Components/CheckDialog";
+
 
 const BBPBody = styled.div`
     position: relative;
@@ -211,7 +212,7 @@ export default ({
 }:any) => 
 <>
 <BBPBanner hideButton={true} nameId={nameId}/>
-<BBPSubMenu/>
+<BBPSubMenu nameId={nameId}/>
 <BBPBody>
     {loading?<></>:
     <>
@@ -220,7 +221,7 @@ export default ({
             <InformationTitle>Tips</InformationTitle>
             <InformationContent>
                 {reportTipList.map((value:any, index:any) => {
-                         return <InfoText key={index}>{"⚬  "}{value}</InfoText>
+                         return <InfoText key={index+1000}>{"⚬  "}{value}</InfoText>
                 })}
             </InformationContent>
         </InformationBox>
@@ -359,15 +360,15 @@ export default ({
 
                             <BoldInfoText>{"\n\n\n"}{"HTTP request dump"}</BoldInfoText>
                             <InfoText>
-                                {"공격 관련 request 정보 (최대 20000자, 생략 가능)"} 
+                                {"공격 관련 request 정보 (최대 10000자, 생략 가능)"} 
                             </InfoText>
                             <TextArea rows={20} maxLength={10000} {...dumpInput}/>
 
                             <BoldInfoText>{"\n\n\n"}{"비고"}</BoldInfoText>
                             <InfoText>
-                                {"이 외 알리고 싶은 기타 내용 (최대 300자, 생략 가능)"} 
+                                {"이 외 알리고 싶은 기타 내용 (최대 500자, 생략 가능)"} 
                             </InfoText>
-                            <TextArea rows={5} maxLength={10000} {...additionalTextInput}/>
+                            <TextArea rows={5} maxLength={500} {...additionalTextInput}/>
 
                             <BoldInfoText>{"\n\n\n"}{"파일 첨부"}</BoldInfoText>
                             <SubmitButtonWrapper>
