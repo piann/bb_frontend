@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import basicProfile from "../../images/basicProfile.png";
-import {BasicTableBox, BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
+import {BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
+import {statusDict} from "../../common";
+import {BarLoader} from "../../Components/Loaders"
+import { Redirect } from "react-router-dom";
 
 const ProfileWrapper = styled.div`
     display:flex;
@@ -60,24 +63,41 @@ const BoldInfoText = styled(InfoText)`
 `;
 
 
+export const MiniTableBox = styled.div`
+display:flex;
+flex-direction:column;
+border-style:groove;
+border-color:${props => props.theme.snowyGrayColor};
+border-width:2px;
+margin-bottom:20px;
+margin-left:8px;
+margin-right:8px;
+width:100%;
+`;
+
+
 const MiniTableHead = styled(BasicTableHead)`
 background-color:${props => props.theme.bgColor};
 height:40px;
 padding-left:10px;
 padding-right:10px;
+width:100%;
 `;
 
 const MiniTableContent = styled(BasicTableContent)`
 height: 40px;
 padding-left:10px;
 padding-right:10px;
+width:100%;
 `
 
-const TableContentWrapperWithRatio = styled.div`
-    width:350px;
+const TableContentWrapperWithRatio = styled.a`
+    width:100%;
     display:grid;
     grid-auto-flow: column;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 3fr 1.5fr 1fr 1fr;
+    color:inherit;
+    text-decoration: none;
 `;
 
 interface marginProps{
@@ -125,42 +145,60 @@ const testTargetObjList = [
   ] ////;
 
 
-export default () => <ProfileWrapper>
-<ProfileBox width={"175px"} height={"250px"}>
+export default ({
+    email,
+    nickName,
+    profilePictureId,
+    reportInfoList,
+    loading,
+    isForbidden
+
+}:any) => <ProfileWrapper>
+{!loading&&isForbidden&&<Redirect to="/"/>}
+{loading?
+<BarLoader/>:
+<>
+<ProfileBox width={"200px"} height={"220px"}>
     <ProfileTitle>Profile</ProfileTitle>
     <ProfileContent>
         <img src={basicProfile} width={"60px"} height={"60px"}/>
-        <InfoText>{"\nJTJISGODIMALIVE_100"}</InfoText>
+        <InfoText>{nickName}</InfoText>
     </ProfileContent>
 </ProfileBox>
 <EmptySpace/>
 
-<ProfileBox width={"500px"} >
+<ProfileBox width={"800px"} >
     <ProfileTitle>Reports</ProfileTitle>
     <ProfileContent>
+        {reportInfoList.length===0?
         <InfoText>
             {"아직 제출한 리포트가 없습니다. 버그바운티에 참여해보세요!"}
             {"\n프로그램 리스트 버튼"}
         </InfoText>
-        <BasicTableBox>
+        :
+        <MiniTableBox>
                     <MiniTableHead>
                         <TableContentWrapperWithRatio>
-                            <TableText marginLeft={0} marginRight={10}>company</TableText>
+                            <TableText marginLeft={0} marginRight={10}>Reported Vulnerability</TableText>
+                            <TableText marginLeft={10} marginRight={10}>company</TableText>
                             <TableText marginLeft={0} marginRight={0}>status</TableText>
                             <TableText marginLeft={10} marginRight={0}>result</TableText>
                         </TableContentWrapperWithRatio>
                     </MiniTableHead>
-                    {testTargetObjList.map((dictObj, index) => {
-                         return (<MiniTableContent>
-                             <TableContentWrapperWithRatio>
-                                 <TableText marginLeft={0} marginRight={10}>{dictObj.companyName}</TableText>
-                                 <TableText marginLeft={0} marginRight={0}>{dictObj.status}</TableText>
-                                 <TableText marginLeft={10} marginRight={0}>{dictObj.result?"Good":"Bad"}</TableText>
+                    {reportInfoList.map((dictObj:any, index:any) => {
+                         return (<MiniTableContent key={1000+index}>
+                             <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
+                                    <TableText marginLeft={0} marginRight={10}>{dictObj.vulName}</TableText>
+                                    <TableText marginLeft={10} marginRight={10}>{dictObj.companyName}</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</TableText>
                              </TableContentWrapperWithRatio>
                          </MiniTableContent>)
                     })}
-        </BasicTableBox>
+        </MiniTableBox>
+        }
     </ProfileContent>
 </ProfileBox>
-
+</>
+}
 </ProfileWrapper>

@@ -8,6 +8,8 @@ import {BarLoader} from "../../Components/Loaders";
 import { Redirect } from "react-router-dom";
 import { getTimeGapStr } from "../../utils";
 import { Link } from "react-router-dom";
+import {statusDict} from "../../common";
+
 
 const BBPBody = styled.div`
     position: relative;
@@ -78,6 +80,12 @@ const TableText = styled.div<marginProps>`
     margin-right:${props=>props.marginRight}px;
 `;
 
+const CenteredText = styled.div`
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+`;
+
 const elements = ['이런 것을 이렇게 해야한다', '저렇게 이렇게 꼭 해야한다', '이런 것을 알아야한다.'];////
 const testTargetObjList = [
     {
@@ -93,6 +101,7 @@ const testTargetObjList = [
         result: null
       }
   ] ////;
+
 
 export default ({
     loading,
@@ -176,6 +185,8 @@ export default ({
             <InformationBox>
                 <InformationTitle>Reports</InformationTitle>
                 <InformationContent>
+                    {submittedReportCount==0?
+                    <CenteredText>{"아직 제출된 리포트가 없습니다"}</CenteredText>:
                     <BasicTableBox>
                         <BasicTableHead>
                             <TableContentWrapperWithRatio>
@@ -189,14 +200,14 @@ export default ({
                             return (<BasicTableContent key={1000+index}>
                                 <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
                                     <TableText marginLeft={0} marginRight={0}>{dictObj.reportId}</TableText>
-                                    <TableText marginLeft={0} marginRight={0}>{dictObj.status}</TableText>
-                                    <TableText marginLeft={0} marginRight={0}>{dictObj.result?"Good":"Bad"}</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</TableText>
                                     <TableText marginLeft={0} marginRight={0}>{dictObj.authorNickName}</TableText>
                                 </TableContentWrapperWithRatio>
                             </BasicTableContent>)
                         })}
                     </BasicTableBox>
-
+                }
                 </InformationContent>
             </InformationBox>
             </>
