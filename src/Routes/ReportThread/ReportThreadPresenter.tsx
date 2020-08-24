@@ -11,7 +11,7 @@ import TextArea from "../../Components/TextArea";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import {BarLoader} from "../../Components/Loaders"
-
+import { ToastContainer } from 'react-toastify';
 
 const BBPBody = styled.div`
     position: relative;
@@ -185,10 +185,15 @@ export default ({
     resultCode,
     bountyAmount,
     commentInfoList,
+    //
+    buttonDisabled,
+    commentInput,
+    clickFunc,
 }:any) => 
 <>
 <BBPBanner hideButton={true} nameId={nameId}/>
 <BBPSubMenu nameId={nameId}/>
+<ToastContainer/>
 <BBPBody>
     {loading?
     <BarLoader/>:
@@ -256,10 +261,10 @@ export default ({
                         <CommentProfileImgWrapper>
                             <img src={basicProfile} width={"50px"} height={"50px"}/>
                         </CommentProfileImgWrapper>
-                    <TextArea rows={3} maxLength={3000} textAreaWidth={"calc(100% - 80px)"}/>
+                    <TextArea rows={3} maxLength={3000} textAreaWidth={"calc(100% - 80px)"} {...commentInput}/>
                 </CommentTextAreaWrapper>
                 <ButtonWrapper>
-                    <Button text="Submit" width="90px"/>
+                    <Button text="Submit" width="90px" disabled={buttonDisabled||commentInput.value===""} onClick={clickFunc}/>
                 </ButtonWrapper>
             </InformationContent>
         </InformationBox>

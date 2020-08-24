@@ -22,3 +22,21 @@ export const GET_REPORT_TOTAL_STATUS = gql`
     }
 
 `;
+
+
+
+export const ADD_COMMENT = gql`
+    mutation addComment(
+        $rId:String!
+        $content:String!
+        $fileId:String
+    ){
+        addComment(
+            rId:$rId
+            content:$content
+            fileId:$fileId
+        ) # return created comment id
+        
+    }
+
+`;
