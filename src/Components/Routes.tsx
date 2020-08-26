@@ -10,9 +10,11 @@ import BBPProgress from "../Routes/BBPProgress";
 import Profile from "../Routes/Profile";
 import ReportThread from "../Routes/ReportThread"
 import ConfirmSecret from "../Routes/ConfirmSecret";
+import Introduction from "../Routes/Introduction";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/log_in" component={LogIn}/>
+<Route exact path="/introduction" component={Introduction}/>
 <Route exact path="/profile" component={Profile}></Route>
 <Route exact path="/report_thread/:report_id" component={ReportThread}></Route>
 <Route exact path="/:name_id" component={BBP}></Route>

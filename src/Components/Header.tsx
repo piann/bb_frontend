@@ -17,6 +17,7 @@ const Header = styled.header`
   left: 0;
   background-color: ${props => props.theme.headerBarColor};
   border-radius: 0px;
+  box-shadow: 0 4px 4px rgba(180, 180, 180, 0.7);
   border-bottom: solid ${props => props.theme.borderColor};
   border-width: 1px;
   display: flex;
