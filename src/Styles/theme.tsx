@@ -9,7 +9,7 @@ export default {
     headerBarColor: "#102A3A",
     cellColor1: "#303641",
     blueColor:"#3A3ADE",
-    purpleColor : "#50199B",
+    purpleColor : "#5F25C5",
     darkGrayColor:"#444566",
     borderColor : "#464B53",
     borderRadius: BORDER_RADIUS,

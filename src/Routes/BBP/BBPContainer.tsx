@@ -2,6 +2,7 @@ import React from "react";
 import BBPPresenter from "./BBPPresenter";
 import {gql} from "apollo-boost";
 import { useQuery } from "@apollo/client";
+import { Redirect } from "react-router-dom";
 
 
 export const GET_PROGRAM_BODY_CONTENTS = gql`
@@ -88,9 +89,11 @@ export default (props:any) => {
             outOfScopeTargetList = getProgramBodyContentsResponse.outOfScopeTargetList;
             exclusionValueList = getProgramBodyContentsResponse.exclusionValueList;
 
+        } else {
+            return <Redirect to="/"/>
         }
 
-    }
+    } 
    
     return <BBPPresenter
         nameId={nameId}

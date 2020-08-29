@@ -11,11 +11,13 @@ import Profile from "../Routes/Profile";
 import ReportThread from "../Routes/ReportThread"
 import ConfirmSecret from "../Routes/ConfirmSecret";
 import Introduction from "../Routes/Introduction";
+import ProgramList from "../Routes/ProgramList";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/log_in" component={LogIn}/>
 <Route exact path="/introduction" component={Introduction}/>
 <Route exact path="/profile" component={Profile}></Route>
+<Route exact path="/programs" component={ProgramList}></Route>
 <Route exact path="/report_thread/:report_id" component={ReportThread}></Route>
 <Route exact path="/:name_id" component={BBP}></Route>
 <Route exact path="/:name_id/report" component={Report}></Route>
@@ -24,10 +26,11 @@ const LoggedInRoutes = () => <Switch>
 </Switch>
 
 const LoggedOutRoutes = () => <Switch>
+<Route exact path="/" component={Introduction}/>
 <Route exact path="/log_in" component={LogIn}></Route>
 <Route exact path="/sign_up" component={SignUp}></Route>
 <Route path='/confirm_secret/:key' component={ConfirmSecret}></Route>
-<Redirect from="*" to="/log_in" />
+<Redirect from="*" to="/" />
 </Switch>
 
 

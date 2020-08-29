@@ -89,8 +89,8 @@ const DescBox = styled.div`
 `
 
 const DescImg = styled.img`
-    width:100px;
-    height:100px;
+    width:110px;
+    height:110px;
     margin-bottom:30px;
 `
 
@@ -100,7 +100,7 @@ const DescText= styled.div`
     line-height:2em;
     white-space: pre-line;
     font-family: 'Noto Serif KR', serif;
-
+    font-size:15px;
 `;
 
 export default () => {

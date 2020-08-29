@@ -5,6 +5,8 @@ import { Link } from "react-router-dom"
 import grayProfile from "../images/grayProfile.png";
 import {useQuery} from "@apollo/client";
 import {LOCAL_LOGGED_IN_QUERY} from "../sharedQueries";
+import Button from "./Button";
+import LogIn from "../Routes/LogIn";
 
 
 const Header = styled.header`
@@ -51,6 +53,13 @@ const MenuLink = styled(Link)`
   padding-bottom:15px;
   padding-right:25px;
 `
+const StartLink = styled(Link)`
+  background-color:${props => props.theme.purpleColor};
+  color:white;
+  font-size:15px;
+  padding:10px 25px;
+
+`
 
 
 export default () => {
@@ -68,14 +77,16 @@ return(
     <MenuLink to="/">
         {"Introduction"}
       </MenuLink>
-      <MenuLink to="/">
+      <MenuLink to="/programs">
         {"Programs"}
       </MenuLink>
       {
-      isLoggedIn &&
+      isLoggedIn?
       <Link to ="/profile">
         <Profile src={grayProfile}/>
       </Link>
+      :
+      <StartLink to={"/log_in"}>{"Start Research"}</StartLink>
       }
     </MenuSpace>
 </Header>
