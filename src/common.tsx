@@ -14,3 +14,13 @@ export const statusDict = {
     2:"on assessment",
     3:"resolved"
 } as any;
+
+
+export const categoryUpperToNormal = {
+    "WEB":"Web",
+    "ANDROID":"Androird",
+    "IOS":"IOS",
+    "WINDOWS":"Windows",
+    "LINUX":"Linux",
+    "OTHERS":"Others"
+} as any;

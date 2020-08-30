@@ -13,8 +13,8 @@ const TagWrapper = styled.div`
 
 
 const TagText = styled.div`
-    padding-left:1.3em;
-    padding-right:0.9em;
+    padding-left:1.2em;
+    padding-right:0.8em;
     color:${props=>props.theme.darkGrayColor};
 `;
 

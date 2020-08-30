@@ -97,3 +97,15 @@ export const getTimeGapStr = (startTime:any, finishTime:any) =>{
   }
 
 }
+
+export const getBountyRangeText = (min:number,max:number):string =>{
+  if(max===0){
+    return "Only Points";
+  } else {
+    if(min===0){
+      return "Points⠀~⠀₩".concat(max.toString());
+    } else {
+      return "₩"+min.toString()+"⠀~⠀₩"+max.toString();
+    }
+  }
+}
