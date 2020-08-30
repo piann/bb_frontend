@@ -3,7 +3,7 @@ import BBPPresenter from "./BBPPresenter";
 import {gql} from "apollo-boost";
 import { useQuery } from "@apollo/client";
 import { Redirect } from "react-router-dom";
-
+import Page404 from "../../Components/Page404";
 
 export const GET_PROGRAM_BODY_CONTENTS = gql`
     query getProgramBodyContents(
@@ -90,7 +90,7 @@ export default (props:any) => {
             exclusionValueList = getProgramBodyContentsResponse.exclusionValueList;
 
         } else {
-            return <Redirect to="/"/>
+            return <Page404 />
         }
 
     } 
