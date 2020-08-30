@@ -18,8 +18,9 @@ const UpperBody = styled.div`
         font-family:'Noto Serif KR';
         src: url(${require("../resources/fonts/NotoSerifKR/NotoSerifKR-Medium.otf")});   
 }
+
 width: 100%;
-height: 750px;
+height: 890px;
 position: absolute;
 top: ${props => props.theme.headerBarHeight};
 left:0;
@@ -33,11 +34,14 @@ display: flex;
 justify-content:space-between;
 flex-direction:column;
 align-items:center;
+-webkit-clip-path: polygon(0 0, 100% 0%, 100% 94%, 0 100%);
+  clip-path: polygon(0 0, 100% 0%, 100% 94%, 0 100%);
 `;
 
 const MainText = styled.div`
-    margin-top:60px;
-    font-size:45px;
+    position:relative;
+    top:80px;
+    font-size:50px;
     font-family: 'Source Serif Pro', serif;
     display: flex;
     justify-content:center;
@@ -59,7 +63,7 @@ const SubArea = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    margin-bottom:calc(55px - 1vw);
+    margin-bottom:calc(110px - 1.2vw);
 `
 
 const SubText = styled.div`
@@ -70,8 +74,8 @@ const SubText = styled.div`
 
 const MainBody = styled.div`
     position: relative;
-    top: 750px;
-    margin-top:100px;
+    top: 770px;
+    margin-top:200px;
     margin-bottom:100px;
     display: flex;
     flex-direction:row;
@@ -140,5 +144,3 @@ export default () => {
     </>
     )
 }
-
-

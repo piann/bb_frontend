@@ -111,6 +111,7 @@ const TableText = styled.div<marginProps>`
     word-spacing: 0.1em;
     display:flex;
     justify-content:center;
+    align-items:center;
     margin-left:${props=>props.marginLeft}px;
     margin-right:${props=>props.marginRight}px;
 `;
