@@ -41,7 +41,15 @@ export const MenuComponent = styled.div<MenuProps>`
         box-shadow: 0px -4px 0px black inset;
         font-weight:600;
     }
-`
+`;
+
+const SLink = styled(Link)`
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+`;
 
 interface MenuChoiceProps{
     nameId:string;
@@ -55,12 +63,16 @@ const BannerSubMenu:React.SFC<MenuChoiceProps> = ({
 <BodyWrapper>
     <Body>
         <MenuWrapper>
-            <Link to={"/"+nameId}>
             <MenuComponent menuIdx={menuIdx}>
-               Policy
+            <SLink to={"/"+nameId}>
+               {"Policy"}
+            </SLink >
             </MenuComponent>
-            </Link>
-            <MenuComponent menuIdx={menuIdx}>Notice</MenuComponent>
+            <MenuComponent menuIdx={menuIdx}>
+            <SLink to={"/"+nameId+"/notice"}>
+                {"Notice"}
+            </SLink>
+            </MenuComponent>
         </MenuWrapper>
     </Body>
 </BodyWrapper>

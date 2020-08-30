@@ -40,7 +40,7 @@ align-items:center;
 
 const MainText = styled.div`
     position:relative;
-    top:80px;
+    top:90px;
     font-size:50px;
     font-family: 'Source Serif Pro', serif;
     display: flex;
