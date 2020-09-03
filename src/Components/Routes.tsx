@@ -13,6 +13,7 @@ import ReportThread from "../Routes/ReportThread"
 import ConfirmSecret from "../Routes/ConfirmSecret";
 import Introduction from "../Routes/Introduction";
 import ProgramList from "../Routes/ProgramList";
+import EmailResend from "../Routes/EmailResend";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/log_in" component={LogIn}/>
@@ -31,6 +32,7 @@ const LoggedOutRoutes = () => <Switch>
 <Route exact path="/" component={Introduction}/>
 <Route exact path="/log_in" component={LogIn}></Route>
 <Route exact path="/sign_up" component={SignUp}></Route>
+<Route exact path="/reauth" component={EmailResend}></Route>
 <Route path='/confirm_secret/:key' component={ConfirmSecret}></Route>
 <Redirect from="*" to="/" />
 </Switch>

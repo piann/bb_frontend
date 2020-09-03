@@ -18,7 +18,6 @@ const UpperBody = styled.div`
         font-family:'Noto Serif KR';
         src: url(${require("../resources/fonts/NotoSerifKR/NotoSerifKR-Medium.otf")});   
 }
-
 width: 100%;
 height: 890px;
 position: absolute;
@@ -107,8 +106,25 @@ const DescText= styled.div`
     font-size:15px;
 `;
 
+const FooterWrapper = styled.footer`
+    width: 100vw;
+    position: relative;
+    display: flex;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: ${props=>props.theme.blackGrayColor};
+    color: white;
+    bottom:-850px;
+    padding: 3rem;
+    text-align: left;
+`;
+
+
 export default () => {
     
+
     const openPdf = () => {
 
     }
@@ -141,6 +157,9 @@ export default () => {
             <DescText>{"보안에 자신있다는\n마케팅 요소로 활용됩니다."}</DescText>
         </DescBox>
     </MainBody>
+    <FooterWrapper>
+            {"Copyright © pastel planet. All rights reserved."}
+    </FooterWrapper>
     </>
     )
 }

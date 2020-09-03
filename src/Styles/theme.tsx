@@ -6,6 +6,7 @@ export default {
     snowyGrayColor:"#EFEFFE",
     lightGrayColor:"#E6E9ED",
     normalGrayColor:"#A2AEBB",
+    blackGrayColor:"#2D3642",
     headerBarColor: "#102A3A",
     cellColor1: "#303641",
     blueColor:"#3A3ADE",

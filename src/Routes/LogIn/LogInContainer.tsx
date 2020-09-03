@@ -7,9 +7,10 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {toastOpt} from "../../common";
 
-export default () => {
+export default (props:any) => {
 
     // for toast css
+    const {history} = props;
 
     const email = useInput("");
     const password = useInput("");
@@ -41,6 +42,15 @@ export default () => {
                 toast("Login Success !", toastOpt as any);
                 setTimeout(()=>{window.location.href = "/";}, 2000)
                 
+            } else if(ok===false&&error==="NEW_ACCOUNT"&&token===null){
+                const state = {email};
+
+                history.push({
+                    pathname: '/reauth',
+                    state: { email:email.value }
+                  });
+
+
             } else {
                 setSubmitting(false);
                 toast("Login Fail !", toastOpt as any);

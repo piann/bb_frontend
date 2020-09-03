@@ -35,8 +35,8 @@ const MainText = styled.div`
         1px 6px 1px #777789,
         1px 6px 3px rgba(16,16,16,0.4),
         1px 8px 5px rgba(16,16,16,0.2),
-        1px 12px 17px rgba(16,16,16,0.2),
-        1px 15px 30px rgba(16,16,16,0.4);
+        1px 10px 10px rgba(16,16,16,0.2),
+        1px 12px 17px rgba(16,16,16,0.4);
 `;
 
 

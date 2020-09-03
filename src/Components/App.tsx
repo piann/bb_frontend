@@ -22,7 +22,7 @@ export default () => {
     <Router>
       <>
       <Header/>
-      <BodyWrapper>
+      <BodyWrapper id={"main"}>
         <Body>
           <Routes isLoggedIn={isLoggedIn}/>
         </Body>

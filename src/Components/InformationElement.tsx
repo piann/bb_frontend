@@ -1,6 +1,3 @@
-
-
-
 import React from "react";
 import styled from "styled-components";
 
@@ -19,7 +16,7 @@ color:white;
 height:70px;
 display:flex;
 align-items:center;
-padding-left:20px;
+padding-left:25px;
 `;
 
 export const InformationContent = styled.div`
