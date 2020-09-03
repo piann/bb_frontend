@@ -107,6 +107,19 @@ const DescText= styled.div`
     font-size:15px;
 `;
 
+const FooterWrapper = styled.footer`
+    position: absolute;
+    background: rgb(45, 55, 67);
+    color: white;
+    width: 100%;
+    left:0;
+    right:0;
+    bottom:-850px;
+    padding: 3.3rem;
+    text-align: left;
+    padding-left:150px
+`
+
 export default () => {
     
     const openPdf = () => {
@@ -141,6 +154,7 @@ export default () => {
             <DescText>{"보안에 자신있다는\n마케팅 요소로 활용됩니다."}</DescText>
         </DescBox>
     </MainBody>
+    <FooterWrapper>Copyright © pastel planet. All rights reserved.</FooterWrapper>
     </>
     )
 }
