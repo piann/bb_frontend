@@ -39,8 +39,9 @@ export default (props:any) => {
             } = signInResponse;
             if(ok===true||token!==null){
                 await localLogInMutation({variables:{token}});
-                toast("Login Success !", toastOpt as any);
-                setTimeout(()=>{window.location.href = "/";}, 2000)
+                history.push({
+                    pathname: '/',
+                });
                 
             } else if(ok===false&&error==="NEW_ACCOUNT"&&token===null){
                 const state = {email};

@@ -14,12 +14,14 @@ import ConfirmSecret from "../Routes/ConfirmSecret";
 import Introduction from "../Routes/Introduction";
 import ProgramList from "../Routes/ProgramList";
 import EmailResend from "../Routes/EmailResend";
+import ViewReport from "../Routes/ViewReport";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/log_in" component={LogIn}/>
 <Route exact path="/introduction" component={Introduction}/>
 <Route exact path="/profile" component={Profile}></Route>
 <Route exact path="/programs" component={ProgramList}></Route>
+<Route exact path="/view_report" component={ViewReport}></Route>
 <Route exact path="/report_thread/:report_id" component={ReportThread}></Route>
 <Route exact path="/:name_id" component={BBP}></Route>
 <Route exact path="/:name_id/report" component={Report}></Route>

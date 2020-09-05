@@ -12,6 +12,7 @@ import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import {BarLoader} from "../../Components/Loaders"
 import { ToastContainer } from 'react-toastify';
+import AdvButton from "../../Components/AdvButton";
 
 const BBPBody = styled.div`
     position: relative;
@@ -47,6 +48,14 @@ interface marginProps{
     marginLeft:number;
     marginRight:number;
 }
+
+const ButtonRow = styled.div`
+    display:flex;
+    justify-content:flex-end;
+    height:30px;
+    margin-bottom:100px;
+    margin-right:2%;
+`
 
 
 const ProgressBarWrapper = styled.div`
@@ -201,6 +210,9 @@ export default ({
         <InformationBox>
             <InformationTitle>Progress</InformationTitle>
             <InformationContent>
+            <ButtonRow>
+                <AdvButton text={"View Report"} width={"150px"}/>
+            </ButtonRow>
             <ProgressBarWrapper>
                 <div className="progressbar">
                     <li className={progressStatus>=0?"active":"inactive"}>{"1. STAND BY"}</li>

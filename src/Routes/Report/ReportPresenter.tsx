@@ -159,7 +159,9 @@ const ExRadioGroup = styled(RadioGroup)`
 const SubmitButtonWrapper = styled.div`
     display:flex;
     justify-content:flex-end;
-    margin-bottom:15px;
+    padding-top:20px;
+    margin-bottom:20px;
+    border-top: 1px solid rgba(50,33,50,0.3);
 `
 
 
@@ -366,7 +368,7 @@ export default ({
 
                             <BoldInfoText>{"\n\n\n"}{"비고"}</BoldInfoText>
                             <InfoText>
-                                {"이 외 알리고 싶은 기타 내용 (최대 500자, 생략 가능)"} 
+                                {"이 외 해커로서 하고 싶은 코멘트를 자유롭게 해주세요 (최대 500자, 생략 가능)"} 
                             </InfoText>
                             <TextArea rows={5} maxLength={500} {...additionalTextInput}/>
 

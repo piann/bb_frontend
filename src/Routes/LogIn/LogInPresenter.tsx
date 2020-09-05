@@ -104,7 +104,7 @@ export default ({
     email,
     password,
     clickFunc,
-    submitting
+    submitting,
 }:SignInPresenterProps) => {
 
     const isEmailValid = checkEmailChars(email.value);
@@ -113,7 +113,7 @@ export default ({
     if(isEmailValid===true && isPasswordValid===true){
         buttonDisabled = false;
     }
-    console.log(submitting);
+
     return(<>
     <ToastContainer
     />
