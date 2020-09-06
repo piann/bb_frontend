@@ -6,7 +6,8 @@ import { Redirect } from "react-router-dom";
 import { useInput } from "../../utils";
 import { toastOpt } from "../../common";
 import { toast } from "react-toastify";
-
+import {gql} from "apollo-boost";
+import Page404 from "../../Components/Page404";
 
 export default (props:any) => {
     const result : any = props.match.params;
@@ -72,7 +73,7 @@ export default (props:any) => {
         commentInfoList = getReportTotalStatusResponse.commentInfoList;
 
         } else {
-            return <Redirect to="/" />
+            return <Page404 />
         }
     }
 

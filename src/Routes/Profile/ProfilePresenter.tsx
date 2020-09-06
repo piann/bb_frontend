@@ -28,6 +28,12 @@ box-shadow:0 3px 7px 3px rgba(7, 7, 33, 0.1),0 1px 1px 1px rgba(0, 0, 0, 0.2);
 margin-bottom:70px;
 `;
 
+const ProfileImg = styled.img`
+width:60px;
+height:60px;
+border-radius: 43%;
+`;
+
 export const ProfileTitle = styled.div`
 background-color:${props => props.theme.lightGrayColor};
 color:${props => props.theme.headerBarColor};
@@ -116,6 +122,7 @@ const TableText = styled.div<marginProps>`
     margin-right:${props=>props.marginRight}px;
 `;
 
+
 const elements = ['이런 것을 이렇게 해야한다', '저렇게 이렇게 꼭 해야한다', '이런 것을 알아야한다.'];////
 const testTargetObjList = [
     {
@@ -159,7 +166,7 @@ export default ({
 <ProfileBox width={"200px"} height={"220px"}>
     <ProfileTitle>Profile</ProfileTitle>
     <ProfileContent>
-        <img src={basicProfile} width={"60px"} height={"60px"}/>
+        <ProfileImg src={basicProfile}/>
         <InfoText>{nickName}</InfoText>
     </ProfileContent>
 </ProfileBox>

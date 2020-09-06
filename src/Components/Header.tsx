@@ -42,6 +42,7 @@ const MenuSpace = styled.div`
 const Profile = styled.img`
   height:35px;
   width:35px;
+  border-radius:43%;
   margin-right:12px;
   margin-left: 6px;
 `

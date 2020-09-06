@@ -55,8 +55,14 @@ const ButtonRow = styled.div`
     height:30px;
     margin-bottom:100px;
     margin-right:2%;
-`
-
+`;
+const LoaderWrapper = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:50px;
+    width:100%;
+`;
 
 const ProgressBarWrapper = styled.div`
 
@@ -205,7 +211,10 @@ export default ({
 <ToastContainer/>
 <BBPBody>
     {loading?
-    <BarLoader/>:
+    <LoaderWrapper>
+        <BarLoader/>
+    </LoaderWrapper>
+    :
         <>
         <InformationBox>
             <InformationTitle>Progress</InformationTitle>

@@ -8,7 +8,7 @@ import Button from "../../Components/Button";
 import basicLogo from "../../images/zerowhaleBasic.png";
 import hideArrow from "../../images/hideArrow.png";
 import { RatingStar } from "rating-star";
-
+import grayProfile from "../../images/grayProfile.png";
 
 const BBPBody = styled.div`
     position: relative;
@@ -51,7 +51,6 @@ const HeadWrapper = styled.div`
     align-items:center;
     justify-content:space-between;
     margin-bottom:55px;
-
 `
 
 const Line = styled.div`
@@ -64,6 +63,31 @@ const Line = styled.div`
 const TitleLogo = styled.img`
     width:50px;
 `
+
+const HackerInfoRow = styled.div`
+    margin-top:10px;
+    margin-left:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:50px;
+    width:min-content;
+`;
+
+const HackerNickNameText = styled.div`
+    word-break: keep-all;
+    word-spacing: 0.1em;
+    line-height:2em;
+`;
+
+
+const HackerProfileImg = styled.img`
+  height:55px;
+  width:55px;
+  border-radius:43%;
+  margin-bottom:10px;
+`;
 
 const PaperArea = styled.div`
 margin-top:20px;
@@ -153,11 +177,13 @@ const EtcArrow = styled.img`
     margin-bottom:20px;
 `;
 
-
-const EtcArea = styled.div`
-
+const LoaderWrapper = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:50px;
+    width:100%;
 `;
-
 
 const toggleHide = ():any => {
     var contentObj = document.getElementById("EtcContent");
@@ -173,13 +199,28 @@ const toggleHide = ():any => {
 export default ({
     loading,
     nameId,
+    fileId,
+    profilePicId,
+    authorNickName,
+    vulName,
+    assetName,
+    title,
+    description,
+    cvssScore,
+    additionalText,
+    location,
+    enviroment,
+    dump,
 }:any) => (
 <>
 <BBPBanner hideButton={true} nameId={nameId}/>
 <BBPSubMenu nameId={nameId}/>
 <BBPBody>
     {loading?
-    <BarLoader/>:
+    <LoaderWrapper>
+        <BarLoader/>
+    </LoaderWrapper>
+    :
         <>
         <InformationBox>
             <InformationTitle>Report</InformationTitle>
@@ -187,45 +228,81 @@ export default ({
             <HeadWrapper>
             <TitleLogo src={basicLogo}/>
             <Line/>
-            <Button text={"Download attachment"} width={"200px"}/>
+            <Button text={"Download attachment"} width={"180px"}/>
             </HeadWrapper>
-            <MiniTitleText>{"1. Vulnerability "}</MiniTitleText>
+            <MiniTitleText>{"0. Hacker "}</MiniTitleText>
+            <HackerInfoRow>
+                <HackerProfileImg src={grayProfile}/>
+                <HackerNickNameText>{authorNickName}</HackerNickNameText>
+            </HackerInfoRow>
 
-            <InfoText>{"Universal Cross-Site Scripting (UXSS)"}</InfoText>
+
+            <MiniTitleText>{"1. Vulnerability "}</MiniTitleText>
+            <InfoText>{vulName}</InfoText>
+
+
             <MiniTitleText>{"2. Asset"}</MiniTitleText>
-            <InfoText>{"https://api.zerowhale.io"}</InfoText>
+            <InfoText>{assetName}</InfoText>
+
+
             <MiniTitleText>{"3. Detail"}</MiniTitleText>
             <PaperArea>
                 <div className={"paper"}>
-                <ReportTitleText>{"댓글 기능에서 XSS 취약점 발견"}</ReportTitleText>
-                <PaperText>{"이것은 리포트의 내용 예시입니다. 이런 식으로 리포트의 내용들을 채우고 공격에 대해서 설명합니다. md 파일 기능을 지원할 예정에 있습니다."}</PaperText>
+                <ReportTitleText>{title}</ReportTitleText>
+                <PaperText>{description}</PaperText>
                 </div>
             </PaperArea>
-            <MiniTitleText>{"4. CVSS score"}</MiniTitleText>
-            <StarWrapper>
-            <RatingStar id="100" maxScore={10} rating={8.0} />
-            <RatingText>{"("}{"8.0"}{" / 10.0)"}</RatingText>
-            </StarWrapper>
-            <MiniTitleText>{"5. Hacker's comment "}</MiniTitleText>
-            <InfoText>{"이런 저런 이야기와 의견들"}</InfoText>
 
+
+            <MiniTitleText>{"4. CVSS score"}</MiniTitleText>
+            {cvssScore===null?
+                <InfoText>{"평가점수가 없습니다."}</InfoText>
+            :<StarWrapper>
+                <RatingStar id="1000" maxScore={10} rating={cvssScore} />
+                <RatingText>{"("}{cvssScore}{" / 10.0)"}</RatingText>
+            </StarWrapper>
+            }
+
+            <MiniTitleText>{"5. Hacker's comment "}</MiniTitleText>
+            <InfoText>{additionalText}</InfoText>
+
+
+            {
+                (location||enviroment!=="::::"||dump)&&
+            <>
             <EtcHeader>
             <MiniTitleText>{"6. Etc"}</MiniTitleText>
                 <EtcArrow src={hideArrow} onClick={toggleHide}/>
             </EtcHeader>
+
             <PaperArea id="EtcContent">
                 <div className={"paper"}>
-                <MiniTitleText>{"Location of Vulnerability"}</MiniTitleText>
-                <PaperText>{"url example"}</PaperText>
-
+                {
+                    location&&
+                    <>
+                    <MiniTitleText>{"Location of Vulnerability"}</MiniTitleText>
+                    <PaperText>{location}</PaperText>
+                    </>
+                }
+                {               
+                enviroment!=="::::"&&
+                <>
                 <MiniTitleText>{"Enviroment"}</MiniTitleText>
-                <PaperText>{"env example"}</PaperText>
-
+                <PaperText>{enviroment}</PaperText>
+                </>
+                }
+                {
+                dump&&
+                <>
                 <MiniTitleText>{"HTTP dump"}</MiniTitleText>
-                <PaperText>{"dump packet"}</PaperText>
+                <PaperText>{dump}</PaperText>
+                </>
+                }
 
                 </div>
             </PaperArea>
+            </>
+            }
             </InformationContent>
         </InformationBox>
         
