@@ -1,10 +1,9 @@
-import React, {useEffect} from "react";
+import React from "react";
 import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
-import { Link } from "react-router-dom";
 import { checkEmailChars, checkOnlyLowerNormalChars, checkComplexPassword } from "../../utils";
-import { useQuery, useLazyQuery } from "@apollo/react-hooks";
+import { useLazyQuery } from "@apollo/react-hooks";
 import { IS_EMAIL_DUPLICATED, IS_NICKNAME_DUPLICATED } from "./SignUpQueries";
 import { ToastContainer } from 'react-toastify';
 import {BarLoader} from "../../Components/Loaders";
@@ -40,12 +39,6 @@ const SignUpFooterArea = styled.div`
     margin-top:20px;
     margin-bottom:20px;
 `;
-
-const FooterBox = styled.div`
-    padding:10px 0px;
-    display:flex;
-    justify-content:flex-end;
-` 
 
 
 

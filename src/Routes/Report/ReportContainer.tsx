@@ -1,4 +1,4 @@
-import React, {useState, MouseEvent} from "react";
+import React, {useState} from "react";
 import ReportPresenter from "./ReportPresenter";
 import { useQuery } from "@apollo/client";
 import { GET_REPORT_READY_PAGE, SUBMIT_REPORT } from "./ReportQueries";

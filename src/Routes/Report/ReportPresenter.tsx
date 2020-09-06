@@ -7,7 +7,7 @@ import Dropdown from "../../Components/Dropdown";
 import TextArea from "../../Components/TextArea";
 import Input from "../../Components/Input";
 import {BarLoader} from "../../Components/Loaders";
-import { dateStringToDotFormat, generateRandomStr } from "../../utils";
+import { dateStringToDotFormat } from "../../utils";
 import { Radio, RadioGroup } from 'rsuite';
 import Button from "../../Components/Button";
 import CheckDialog from "../../Components/CheckDialog";
@@ -164,7 +164,7 @@ const SubmitButtonWrapper = styled.div`
     border-top: 1px solid rgba(50,33,50,0.3);
 `
 
-
+/*
 const testOptions = [
     { value: "chocolate", label: "Cross-Site Scripting (XSS) From Earth" },
     { value: "strawberry", label: "SQL Injection" },
@@ -178,6 +178,8 @@ const testTips = [
     "보고서는 3항을 지켜서 제보해야한다 등등",
     "보고서는 4항을 지켜서 제보해야한다 등등",
 ]; ////
+
+*/
 
 export default ({
     loading,

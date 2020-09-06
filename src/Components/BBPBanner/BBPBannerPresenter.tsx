@@ -161,14 +161,14 @@ const BBPBanner:React.SFC<Props> = ({
             <BottomArea>
                 <BottomSubArea>
                     <BottomSubHead>
-                        <img src={reportIcon} width={"18px"} height={"18px"}/>
+                        <img src={reportIcon} width={"18px"} height={"18px"} alt={""}/>
                         <BottomSubHeadText>총 제출 리포트</BottomSubHeadText>
                     </BottomSubHead>
                     <BottomSubValue>{reportCount}</BottomSubValue>
                 </BottomSubArea>
                     <BottomSubArea>
                     <BottomSubHead>
-                        <img src={wonIcon} width={"22px"} height={"22px"}/>
+                        <img src={wonIcon} width={"22px"} height={"22px"} alt={""}/>
                         <BottomSubHeadText>현상금 범위</BottomSubHeadText>
                     </BottomSubHead>
                     <BottomSubValue>{"₩"}{minBounty}{" ~ "}{"₩"}{maxBounty}</BottomSubValue>
@@ -176,7 +176,7 @@ const BBPBanner:React.SFC<Props> = ({
             </BottomArea>
         </BannerMainArea>
         <LogoArea>
-        <img src="https://cdn-vzn.yottaa.net/555a305b2bb0ac71b9002d22/266f8ad067d20138af300ead9ecbf798.yottaa.net/v~4b.20d.0.0/tenantlogos/5326.png?yocs=D_H_" width={"80%"}/>        
+        <img src="https://cdn-vzn.yottaa.net/555a305b2bb0ac71b9002d22/266f8ad067d20138af300ead9ecbf798.yottaa.net/v~4b.20d.0.0/tenantlogos/5326.png?yocs=D_H_" width={"80%"} alt={""}/>        
         </LogoArea>
     </BBPBannerBox>)
 

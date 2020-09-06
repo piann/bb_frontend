@@ -5,8 +5,6 @@ import { Link } from "react-router-dom"
 import grayProfile from "../images/grayProfile.png";
 import {useQuery} from "@apollo/client";
 import {LOCAL_LOGGED_IN_QUERY} from "../sharedQueries";
-import Button from "./Button";
-import LogIn from "../Routes/LogIn";
 
 
 const Header = styled.header`

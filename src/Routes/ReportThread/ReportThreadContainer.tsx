@@ -2,11 +2,9 @@ import React, {useState} from "react";
 import ReportThreadPresenter from "./ReportThreadPresenter";
 import {GET_REPORT_TOTAL_STATUS, ADD_COMMENT } from "./ReportThreadQueries";
 import { useQuery, useMutation } from "@apollo/client";
-import { Redirect } from "react-router-dom";
 import { useInput } from "../../utils";
 import { toastOpt } from "../../common";
 import { toast } from "react-toastify";
-import {gql} from "apollo-boost";
 import Page404 from "../../Components/Page404";
 
 export default (props:any) => {

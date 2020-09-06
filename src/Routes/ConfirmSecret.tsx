@@ -1,10 +1,8 @@
 import React, {useEffect} from "react";
-import {RouteComponentProps} from "react-router";
 import { Redirect } from "react-router-dom";
 import { LOCAL_LOG_IN } from "../utils";
 import {gql} from "apollo-boost";
 import { useMutation } from "@apollo/react-hooks";
-import { render } from "@testing-library/react";
 export const CONFIRM_SECRET = gql`
     mutation confirmSecret(
     $authSecret: String!
@@ -42,7 +40,6 @@ export default (props:any) =>{
         
         const {
             ok,
-            error,
             token
         } = confirmSecretResponse;
         if(ok===true||token!==null){

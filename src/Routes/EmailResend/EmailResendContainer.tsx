@@ -1,10 +1,10 @@
-import React, { MouseEvent } from "react";
+import React  from "react";
 import EmailResendPresenter from "./EmailResendPresenter";
-import { Redirect, RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
 import {gql} from "apollo-boost";
 import Page404 from "../../Components/Page404";
 import { toastOpt } from "../../common";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Mutation } from '@apollo/client/react/components';
 
 export const RESEND_MAIL = gql`

@@ -4,7 +4,6 @@ import basicProfile from "../../images/basicProfile.png";
 import {BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
 import {statusDict} from "../../common";
 import {BarLoader} from "../../Components/Loaders"
-import { Redirect } from "react-router-dom";
 
 const ProfileWrapper = styled.div`
     display:flex;
@@ -64,9 +63,6 @@ const InfoText = styled.div`
     margin-bottom:8px;
 `;
 
-const BoldInfoText = styled(InfoText)`
-    font-weight:600;
-`;
 
 
 export const MiniTableBox = styled.div`

@@ -3,7 +3,7 @@ import SignUpPresenter from "./SignUpPresenter";
 import { useInput } from "../../utils";
 import { REGISTER_ACCOUNT} from "./SignUpQueries";
 import { useMutation } from "@apollo/react-hooks";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {toastOpt} from "../../common";
 

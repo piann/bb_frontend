@@ -3,7 +3,7 @@ import LogInPresenter from "./LogInPresenter";
 import { useInput, LOCAL_LOG_IN } from "../../utils";
 import {SIGN_IN} from "./LoginQueries";
 import { useMutation } from "@apollo/react-hooks";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {toastOpt} from "../../common";
 
@@ -44,7 +44,6 @@ export default (props:any) => {
                 });
                 
             } else if(ok===false&&error==="NEW_ACCOUNT"&&token===null){
-                const state = {email};
 
                 history.push({
                     pathname: '/reauth',

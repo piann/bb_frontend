@@ -4,7 +4,7 @@ import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
 import {checkEmailChars} from "../../utils"; 
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import basicLogo from "../../images/zerowhaleBasic.png";
 import {BarLoader} from "../../Components/Loaders";
 

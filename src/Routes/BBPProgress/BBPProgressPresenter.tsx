@@ -7,7 +7,6 @@ import {BasicTableBox, BasicTableHead, BasicTableContent} from "../../Components
 import {BarLoader} from "../../Components/Loaders";
 import { Redirect } from "react-router-dom";
 import { getTimeGapStr } from "../../utils";
-import { Link } from "react-router-dom";
 import {statusDict} from "../../common";
 
 
@@ -31,16 +30,6 @@ const BoldInfoText = styled(InfoText)`
     font-weight:600;
 `;
 
-const MiniTitleText = styled.div`
-    word-break: keep-all;
-    word-spacing: 0.1em;
-    line-height:2em;
-    white-space: pre-line;
-    font-weight:600;
-    font-size:16px;
-    margin-bottom:30px;
-
-`
 const GridWrapper = styled.div`
     width:100%;
     display:grid;
@@ -85,7 +74,7 @@ const CenteredText = styled.div`
     justify-content:center;
     margin-bottom:20px;
 `;
-
+/*
 const elements = ['이런 것을 이렇게 해야한다', '저렇게 이렇게 꼭 해야한다', '이런 것을 알아야한다.'];////
 const testTargetObjList = [
     {
@@ -100,8 +89,8 @@ const testTargetObjList = [
         status: "0",
         result: null
       }
-  ] ////;
-
+  ] 
+*/
 
 export default ({
     loading,
@@ -185,7 +174,7 @@ export default ({
             <InformationBox>
                 <InformationTitle>Reports</InformationTitle>
                 <InformationContent>
-                    {submittedReportCount==0?
+                    {submittedReportCount===0?
                     <CenteredText>{"아직 제출된 리포트가 없습니다"}</CenteredText>:
                     <BasicTableBox>
                         <BasicTableHead>

@@ -3,12 +3,10 @@ import styled from "styled-components";
 import BBPBanner from "../../Components/BBPBanner";
 import BBPSubMenu from "../../Components/BBPSubMenu";
 import {InformationBox, InformationTitle, InformationContent} from "../../Components/InformationElement";
-import {BasicTableBox, BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
 import checkImg from "../../images/check.png";
 import {LSpeechBubble, RSpeechBubble} from "../../Components/SpeechBubble"
 import basicProfile from "../../images/basicProfile.png";
 import TextArea from "../../Components/TextArea";
-import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import {BarLoader} from "../../Components/Loaders"
 import { ToastContainer } from 'react-toastify';
@@ -34,16 +32,7 @@ const BoldInfoText = styled(InfoText)`
     font-weight:600;
 `;
 
-const MiniTitleText = styled.div`
-    word-break: keep-all;
-    word-spacing: 0.1em;
-    line-height:2em;
-    white-space: pre-line;
-    font-weight:600;
-    font-size:16px;
-    margin-bottom:30px;
 
-`
 interface marginProps{
     marginLeft:number;
     marginRight:number;
@@ -172,7 +161,7 @@ const ButtonWrapper = styled.div`
     display:flex;
     justify-content:flex-end;
 `;
-
+/*
 const elements = ['이런 것을 이렇게 해야한다', '저렇게 이렇게 꼭 해야한다', '이런 것을 알아야한다.'];////
 const testTargetObjList = [
     {
@@ -190,6 +179,7 @@ const testTargetObjList = [
   ] ////
 
 
+*/
 
 ///// add collaborator comment case
 export default ({
@@ -254,7 +244,7 @@ export default ({
                             maxWidth={"calc(100% - 130px)"} 
                             text={commentContent}/>
                             <ProfileWrapper>
-                            <img src={basicProfile} width={"50px"} height={"50px"}/>
+                            <img src={basicProfile} width={"50px"} height={"50px"} alt={""}/>
                             <ProfileId>{commenterNickName}</ProfileId>
                             </ProfileWrapper>
                         </CommentWrapper>
@@ -263,7 +253,7 @@ export default ({
                     return(
                         <CommentWrapper className={"leftAlign"} key={1000+index}>
                             <ProfileWrapper>
-                            <img src={basicProfile} width={"50px"} height={"50px"}/>
+                            <img src={basicProfile} width={"50px"} height={"50px"} alt={""}/>
                             <ProfileId>{commenterNickName}</ProfileId>
                             </ProfileWrapper>
                             <LSpeechBubble
@@ -280,7 +270,7 @@ export default ({
 
                 <CommentTextAreaWrapper >
                         <CommentProfileImgWrapper>
-                            <img src={basicProfile} width={"50px"} height={"50px"}/>
+                            <img src={basicProfile} width={"50px"} height={"50px"} alt={""}/>
                         </CommentProfileImgWrapper>
                     <TextArea rows={3} maxLength={3000} textAreaWidth={"calc(100% - 80px)"} {...commentInput}/>
                 </CommentTextAreaWrapper>
