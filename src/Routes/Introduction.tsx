@@ -7,8 +7,12 @@ import groupImg from "../images/group.png";
 import increaseImg from "../images/increase.png";
 import clockImg from "../images/time.png";
 import marketingImg from "../images/marketing.png";
-import Footers from '../Components/Footer';
+import {RelFooter} from '../Components/Footer';
 
+
+const WholeWrapper = styled.div`
+    height:max-content;
+`;
 
 const UpperBody = styled.div`
 @font-face {
@@ -115,7 +119,7 @@ export default () => {
 
     }
     return (
-    <>
+    <WholeWrapper>
     <UpperBody>
         <MainText>{"We connect security"}</MainText>
         <SubArea>
@@ -143,7 +147,7 @@ export default () => {
             <DescText>{"보안에 자신있다는\n마케팅 요소로 활용됩니다."}</DescText>
         </DescBox>
     </MainBody>
-    <Footers />;
-    </>
+    <RelFooter/>;
+    </WholeWrapper>
     )
 }

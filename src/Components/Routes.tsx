@@ -15,8 +15,10 @@ import Introduction from "../Routes/Introduction";
 import ProgramList from "../Routes/ProgramList";
 import EmailResend from "../Routes/EmailResend";
 import ViewReport from "../Routes/ViewReport";
+import Privacy from "../Routes/Privacy";
 
 const LoggedInRoutes = () => <Switch>
+<Route exact path="/privacy" component={Privacy}></Route>
 <Route exact path="/log_in" component={LogIn}/>
 <Route exact path="/introduction" component={Introduction}/>
 <Route exact path="/profile" component={Profile}></Route>
@@ -34,6 +36,7 @@ const LoggedOutRoutes = () => <Switch>
 <Route exact path="/" component={Introduction}/>
 <Route exact path="/log_in" component={LogIn}></Route>
 <Route exact path="/sign_up" component={SignUp}></Route>
+<Route exact path="/privacy" component={Privacy}></Route>
 <Route exact path="/reauth" component={EmailResend}></Route>
 <Route path='/confirm_secret/:key' component={ConfirmSecret}></Route>
 <Redirect from="*" to="/" />
