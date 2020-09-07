@@ -92,10 +92,21 @@ const CircleContent = styled.div<CircleProps>`
 const InfoText = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
-    line-height:2em;
+    line-height: 2em;
     white-space: pre-line;
     margin-bottom:8px;
 `;
+
+const CountText = styled.div`
+    margin-right: 5px; 
+    color: ${props => props.theme.normalGrayColor};
+`;
+
+const InfoTextRow = styled.div`
+    display:flex;
+    justify-content:space-between;
+`;
+
 
 const BoldInfoText = styled(InfoText)`
     font-weight:600;
@@ -356,21 +367,37 @@ export default ({
                         <BoldInfoText>{"\n\n\n"}{"Description"}</BoldInfoText>
                             <InfoText>
                                 {"1. 어떻게 취약점을 발견하게 되었는지 그 경위를 기술해주세요."}
-                                {"\n2. 취약점을 재현할 수 있는 방법을 단계별로 기술해주세요."}
-                                {"\n(총 10000자 이하)"}
+                            </InfoText>
+                            <InfoText>
+                                <InfoTextRow>
+                                    {"2. 취약점을 재현할 수 있는 방법을 단계별로 기술해주세요."}
+                                    <CountText>
+                                    {`(${descriptionInput.value.length} / 10000)`}
+                                    </CountText>
+                                </InfoTextRow>
                             </InfoText>
                             <TextArea rows={20} maxLength={10000} {...descriptionInput}/>
 
 
                             <BoldInfoText>{"\n\n\n"}{"HTTP request dump"}</BoldInfoText>
                             <InfoText>
-                                {"공격 관련 request 정보 (최대 10000자, 생략 가능)"} 
+                                <InfoTextRow>
+                                {"공격 관련 request 정보"}
+                                    <CountText>
+                                    {`(${dumpInput.value.length} / 10000)`}
+                                    </CountText>
+                                </InfoTextRow>
                             </InfoText>
                             <TextArea rows={20} maxLength={10000} {...dumpInput}/>
 
                             <BoldInfoText>{"\n\n\n"}{"비고"}</BoldInfoText>
                             <InfoText>
-                                {"이 외 해커로서 하고 싶은 코멘트를 자유롭게 해주세요 (최대 500자, 생략 가능)"} 
+                                <InfoTextRow>
+                                {"이 외 해커로서 하고 싶은 코멘트를 자유롭게 해주세요"}
+                                    <CountText>
+                                        {`(${additionalTextInput.value.length} / 500)`}
+                                    </CountText>
+                                </InfoTextRow>
                             </InfoText>
                             <TextArea rows={5} maxLength={500} {...additionalTextInput}/>
 
