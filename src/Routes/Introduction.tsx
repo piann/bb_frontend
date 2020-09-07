@@ -7,6 +7,7 @@ import groupImg from "../images/group.png";
 import increaseImg from "../images/increase.png";
 import clockImg from "../images/time.png";
 import marketingImg from "../images/marketing.png";
+import Footers from '../Components/Footer';
 
 
 const UpperBody = styled.div`
@@ -106,21 +107,6 @@ const DescText= styled.div`
     font-size:15px;
 `;
 
-const FooterWrapper = styled.footer`
-    width: 100vw;
-    position: relative;
-    display: flex;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    background: ${props=>props.theme.blackGrayColor};
-    color: white;
-    bottom:-850px;
-    padding: 3rem;
-    text-align: left;
-`;
-
 
 export default () => {
     
@@ -157,9 +143,7 @@ export default () => {
             <DescText>{"보안에 자신있다는\n마케팅 요소로 활용됩니다."}</DescText>
         </DescBox>
     </MainBody>
-    <FooterWrapper>
-            {"Copyright © pastel planet. All rights reserved."}
-    </FooterWrapper>
+    <Footers />;
     </>
     )
 }
