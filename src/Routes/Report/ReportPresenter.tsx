@@ -11,7 +11,7 @@ import { dateStringToDotFormat } from "../../utils";
 import { Radio, RadioGroup } from 'rsuite';
 import Button from "../../Components/Button";
 import CheckDialog from "../../Components/CheckDialog";
-
+import axios from "axios";
 
 const BBPBody = styled.div`
     position: relative;
@@ -175,6 +175,46 @@ const SubmitButtonWrapper = styled.div`
     border-top: 1px solid rgba(50,33,50,0.3);
 `
 
+const FileInputArea = styled.div`
+margin-top:10px;
+margin-bottom:10px;
+
+input[type="file"] {
+	position: absolute;
+	width: 0;
+	height: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+}
+
+label {
+	display: inline-block;
+	padding: 5px 10px;
+    margin-right:5px;
+	color: ${props=>props.theme.blackGrayColor};
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-radius: 5px;
+}
+
+/* named upload */
+.upload-name {
+	display: inline-block;
+  height: 25px;
+  padding: 0 10px;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+
+}
+
+`;
+
+
 /*
 const testOptions = [
     { value: "chocolate", label: "Cross-Site Scripting (XSS) From Earth" },
@@ -220,6 +260,8 @@ export default ({
     setIntegrity,
     setAvailablity,
 
+    fileData,
+    setFileData,
     clickFunc,
     buttonDisabled,
     dialogOpen,
@@ -382,7 +424,7 @@ export default ({
                             <BoldInfoText>{"\n\n\n"}{"HTTP request dump"}</BoldInfoText>
                             <InfoText>
                                 <InfoTextRow>
-                                {"공격 관련 request 정보"}
+                                {"공격 관련 request 정보 (생략 가능)"}
                                     <CountText>
                                     {`(${dumpInput.value.length} / 10000)`}
                                     </CountText>
@@ -402,6 +444,29 @@ export default ({
                             <TextArea rows={5} maxLength={500} {...additionalTextInput}/>
 
                             <BoldInfoText>{"\n\n\n"}{"파일 첨부"}</BoldInfoText>
+                            <InfoText>{"필요한 경우 poc 등을 압축해서 올려주세요 (zip 파일만 가능, 50MB)"}</InfoText>
+                            <FileInputArea>
+                            <label htmlFor="file">{"Upload"}</label> 
+                            <input 
+                             type="file"
+                             id="file"
+                             onChange={e=>{
+                                const fileObjList = e.target.files;
+                                
+                                if(fileObjList===null ||fileObjList.length===0){
+                                    return;
+                                }
+                                const fileName = fileObjList[0].name;
+                                const domObj = document.getElementById("upload-name") as HTMLInputElement;
+                                if(domObj===null){
+                                    return;
+                                }
+                                domObj.value =fileName;
+                                setFileData(fileObjList[0]);
+
+                             }}/> 
+                            <input className="upload-name" id="upload-name" value="Choose a file..." readOnly/>
+                            </FileInputArea>
                             <SubmitButtonWrapper>
                             {submitLoading?
                             <BarLoader/>:

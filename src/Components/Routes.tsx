@@ -16,6 +16,7 @@ import ProgramList from "../Routes/ProgramList";
 import EmailResend from "../Routes/EmailResend";
 import ViewReport from "../Routes/ViewReport";
 import Privacy from "../Routes/Privacy";
+import UploadTest from "../Routes/UploadTest";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/privacy" component={Privacy}></Route>
@@ -23,6 +24,7 @@ const LoggedInRoutes = () => <Switch>
 <Route exact path="/introduction" component={Introduction}/>
 <Route exact path="/profile" component={Profile}></Route>
 <Route exact path="/programs" component={ProgramList}></Route>
+<Route exact path="/upload" component={UploadTest}></Route>
 <Route exact path="/view_report/:report_id" component={ViewReport}></Route>
 <Route exact path="/report_thread/:report_id" component={ReportThread}></Route>
 <Route exact path="/:name_id" component={BBP}></Route>

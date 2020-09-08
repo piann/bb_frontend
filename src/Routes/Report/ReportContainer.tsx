@@ -6,13 +6,15 @@ import { useMutation } from "@apollo/react-hooks";
 import { useInput } from "../../utils";
 import { toast } from "react-toastify";
 import { toastOpt } from "../../common";
+import axios from "axios";
+
 
 export default (props:any) => {
 
     const result : any = props.match.params;
     const nameId = result.name_id;
-    let vulnerabilityListForDropdown = [];
-    let inScopeTargetListForDropdown = [];
+    let vulnerabilityListForDropdown = [] as any;
+    let inScopeTargetListForDropdown = [] as any;
     const {data, loading} = useQuery(GET_REPORT_READY_PAGE, {variables:{nameId}});
     
     // setting for submit report
@@ -34,6 +36,8 @@ export default (props:any) => {
     const descriptionInput = useInput("");
     const dumpInput = useInput("");
     const additionalTextInput = useInput("");
+    
+    const [fileData,setFileData] = useState();
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -66,13 +70,42 @@ export default (props:any) => {
 
         if(!submitLoading){
             setDialogOpen(false);
-            if(submitReportResponse!==null){
-                toast("Submit Completed !", toastOpt as any);
-                setTimeout(()=>{window.location.href = "/";}, 2000)
-            } else {
+            const reportId = submitReportResponse
+
+            try{
+
+                if(reportId!==null){
+                    if(fileData!==undefined){
+                        // upload file
+
+                        const jwt = localStorage.getItem("token");
+
+                        const formData = new FormData();
+                        formData.append("streamfile", fileData as any);
+                        formData.append("jwt", jwt as any);
+                    
+                        const res = await axios({
+                            method: "post",
+                            url: "http://localhost:4002/upload_report/".concat(reportId),
+                            data: formData,
+                            headers: {
+                            Authorization: jwt,
+                            "Content-Type" : "multipart/form-data",
+                            },
+                        });
+                        
+                    }
+
+                    toast("Submit Completed !", toastOpt as any);
+                    setTimeout(()=>{window.location.href = "/";}, 2000)
+                } else {
+                    toast("There is an error", toastOpt as any);
+                    setButtonDisabled(false);
+                    
+                }
+            } catch {
                 toast("There is an error", toastOpt as any);
                 setButtonDisabled(false);
-                
             }
         }
     }
@@ -187,6 +220,10 @@ export default (props:any) => {
         setConfidentiality={setConfidentiality}
         setIntegrity={setIntegrity}
         setAvailablity={setAvailablity}
+
+        fileData={fileData}
+        setFileData={setFileData}
+        
 
         clickFunc={clickFunc}
         buttonDisabled={buttonDisabled}
