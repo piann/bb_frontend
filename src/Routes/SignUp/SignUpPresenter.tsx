@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
-import { checkEmailChars, checkOnlyLowerNormalChars, checkComplexPassword } from "../../utils";
+import { checkEmailChars, checkOnlyNormalChars, checkComplexPassword } from "../../utils";
 import { useLazyQuery } from "@apollo/react-hooks";
 import { IS_EMAIL_DUPLICATED, IS_NICKNAME_DUPLICATED } from "./SignUpQueries";
 import { ToastContainer } from 'react-toastify';
@@ -184,8 +184,8 @@ export default ({
 
     // nickName logic
     if(nickNameValue.length >= 3){
-        if(checkOnlyLowerNormalChars(nickNameValue)===false){
-            nickNameDescription = "영어 소문자와 숫자, 언더바로만 구성되어야합니다";
+        if(checkOnlyNormalChars(nickNameValue)===false){
+            nickNameDescription = "영어와 숫자, 언더바로만 구성되어야합니다";
             nickNameDescriptionColor = "red";
             buttonDisabled = true;
         } else {
