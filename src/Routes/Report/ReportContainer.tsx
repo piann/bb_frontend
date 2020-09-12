@@ -227,6 +227,7 @@ export default (props:any) => {
 
         clickFunc={clickFunc}
         buttonDisabled={buttonDisabled}
+        setButtonDisabled={setButtonDisabled}
         dialogOpen={dialogOpen}
         setDialogOpen={setDialogOpen}
     />

@@ -264,6 +264,7 @@ export default ({
     setFileData,
     clickFunc,
     buttonDisabled,
+    setButtonDisabled,
     dialogOpen,
     setDialogOpen
 }:any) => 
@@ -451,6 +452,7 @@ export default ({
                              type="file"
                              id="file"
                              onChange={e=>{
+                                setButtonDisabled(true);
                                 const fileObjList = e.target.files;
                                 
                                 if(fileObjList===null ||fileObjList.length===0){
@@ -458,11 +460,11 @@ export default ({
                                 }
                                 const fileName = fileObjList[0].name;
                                 const domObj = document.getElementById("upload-name") as HTMLInputElement;
-                                if(domObj===null){
-                                    return;
+                                if(domObj!==null){
+                                    domObj.value =fileName;
+                                    setFileData(fileObjList[0]);
                                 }
-                                domObj.value =fileName;
-                                setFileData(fileObjList[0]);
+                                setButtonDisabled(false);
 
                              }}/> 
                             <input className="upload-name" id="upload-name" value="Choose a file..." readOnly/>
