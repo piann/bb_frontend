@@ -24,3 +24,5 @@ export const categoryUpperToNormal = {
     "LINUX":"Linux",
     "OTHERS":"Others"
 } as any;
+
+export const fileServerAddr = "http://localhost:4002/";

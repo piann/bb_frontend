@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import basicProfile from "../../images/basicProfile.png";
 import {BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
 import {statusDict} from "../../common";
-import {BarLoader} from "../../Components/Loaders"
+import {BarLoader, SpinLoader} from "../../Components/Loaders"
+import PhotoInput from "../../Components/PhotoInput";
+import { ToastContainer } from "react-toastify";
 
 const ProfileWrapper = styled.div`
     display:flex;
@@ -27,11 +28,6 @@ box-shadow:0 3px 7px 3px rgba(7, 7, 33, 0.1),0 1px 1px 1px rgba(0, 0, 0, 0.2);
 margin-bottom:70px;
 `;
 
-const ProfileImg = styled.img`
-width:60px;
-height:60px;
-border-radius: 43%;
-`;
 
 export const ProfileTitle = styled.div`
 background-color:${props => props.theme.lightGrayColor};
@@ -111,6 +107,7 @@ interface marginProps{
 const TableText = styled.div<marginProps>`
     word-break: keep-all;
     word-spacing: 0.1em;
+    text-align:center;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -155,14 +152,21 @@ export default ({
     profilePictureId,
     reportInfoList,
     loading,
+    uploading,
+    onChangeProfile
 }:any) => <ProfileWrapper>
+    <ToastContainer/>
 {loading?
 <BarLoader/>:
 <>
-<ProfileBox width={"200px"} height={"220px"}>
+<ProfileBox width={"220px"} height={"250px"}>
     <ProfileTitle>Profile</ProfileTitle>
     <ProfileContent>
-        <ProfileImg src={basicProfile}/>
+        <PhotoInput
+        uploading={uploading}
+        fileUrl={profilePictureId?`http://localhost:4002/${profilePictureId}`:null}
+        onChange={onChangeProfile}
+        />
         <InfoText>{nickName}</InfoText>
     </ProfileContent>
 </ProfileBox>

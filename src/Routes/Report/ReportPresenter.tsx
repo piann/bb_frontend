@@ -12,6 +12,8 @@ import { Radio, RadioGroup } from 'rsuite';
 import Button from "../../Components/Button";
 import CheckDialog from "../../Components/CheckDialog";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import { toastOpt } from "../../common";
 
 const BBPBody = styled.div`
     position: relative;
@@ -271,6 +273,7 @@ export default ({
 <>
 <BBPBanner hideButton={true} nameId={nameId}/>
 <BBPSubMenu nameId={nameId}/>
+<ToastContainer/>
 <BBPBody>
     {loading?<></>:
     <>
@@ -456,8 +459,16 @@ export default ({
                                 const fileObjList = e.target.files;
                                 
                                 if(fileObjList===null ||fileObjList.length===0){
+                                    toast("There is error.", toastOpt as any);
+                                    setButtonDisabled(false);
                                     return;
                                 }
+                                if(fileObjList[0].size >= 50*1024*1024){// 50mb limit
+                                    toast("File Size Limit : 50mb", toastOpt as any);
+                                    setButtonDisabled(false);
+                                    return;
+                                } 
+
                                 const fileName = fileObjList[0].name;
                                 const domObj = document.getElementById("upload-name") as HTMLInputElement;
                                 if(domObj!==null){

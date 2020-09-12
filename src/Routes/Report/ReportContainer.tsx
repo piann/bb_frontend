@@ -5,7 +5,7 @@ import { GET_REPORT_READY_PAGE, SUBMIT_REPORT } from "./ReportQueries";
 import { useMutation } from "@apollo/react-hooks";
 import { useInput } from "../../utils";
 import { toast } from "react-toastify";
-import { toastOpt } from "../../common";
+import { toastOpt, fileServerAddr } from "../../common";
 import axios from "axios";
 
 
@@ -86,7 +86,7 @@ export default (props:any) => {
                     
                         const res = await axios({
                             method: "post",
-                            url: "http://localhost:4002/upload_report/".concat(reportId),
+                            url: fileServerAddr.concat("upload_report/".concat(reportId)),
                             data: formData,
                             headers: {
                             Authorization: jwt,

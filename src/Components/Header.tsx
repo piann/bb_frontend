@@ -2,9 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import mainLogo from "../images/zerowhaleWhite.png";
 import { Link } from "react-router-dom"
-import grayProfile from "../images/grayProfile.png";
 import {useQuery} from "@apollo/client";
 import {LOCAL_LOGGED_IN_QUERY} from "../sharedQueries";
+import UserProfileImage from "./UserProfileImage";
+import {gql} from "apollo-boost";
+
+
+export const GET_MY_PROFILE = gql`
+    query getMyProfile{
+        getMyProfile{
+            profilePictureId
+        }
+    }
+`;
+
 
 
 const Header = styled.header`
@@ -36,14 +47,7 @@ const LogoSpace = styled.img`
 const MenuSpace = styled.div`
   display:flex;
   align-items:center;
-`
-const Profile = styled.img`
-  height:35px;
-  width:35px;
-  border-radius:43%;
-  margin-right:12px;
-  margin-left: 6px;
-`
+`;
 
 const MenuLink = styled(Link)`
   color:white;
@@ -51,21 +55,40 @@ const MenuLink = styled(Link)`
   padding-top:15px;
   padding-bottom:15px;
   padding-right:25px;
-`
+`;
 const StartLink = styled(Link)`
   background-color:${props => props.theme.purpleColor};
   color:white;
   font-size:15px;
   padding:10px 25px;
 
-`
-
+`;
 
 export default () => {
 
   const {
     data: {isLoggedIn}
   }:any = useQuery(LOCAL_LOGGED_IN_QUERY);
+
+
+  let profilePictureId = null;
+  if(isLoggedIn===true){
+    const {data:profileData, loading:profileLoading} = useQuery(GET_MY_PROFILE);
+
+
+    if(!profileLoading){
+        const {
+            getMyProfile:getMyProfileResponse
+        } = profileData;
+    if(getMyProfileResponse!==null){
+        profilePictureId = getMyProfileResponse.profilePictureId;
+        } else {
+        profilePictureId = null;
+        }
+    }
+  }
+  //// for test
+
 
 return(
 <Header>
@@ -82,7 +105,11 @@ return(
       {
       isLoggedIn?
       <Link to ="/profile">
-        <Profile src={grayProfile}/>
+        <UserProfileImage 
+          src={profilePictureId?`http://localhost:4002/${profilePictureId}`:null}
+          width={"35px"}
+          height={"35px"}
+        />
       </Link>
       :
       <StartLink to={"/log_in"}>{"Start Research"}</StartLink>
