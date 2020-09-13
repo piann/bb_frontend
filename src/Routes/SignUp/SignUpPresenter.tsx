@@ -7,6 +7,7 @@ import { useLazyQuery } from "@apollo/react-hooks";
 import { IS_EMAIL_DUPLICATED, IS_NICKNAME_DUPLICATED } from "./SignUpQueries";
 import { ToastContainer } from 'react-toastify';
 import {BarLoader} from "../../Components/Loaders";
+import { Link } from "react-router-dom";
 
 const SignUpBox = styled.div`
     background-color: white;
@@ -87,6 +88,24 @@ const LoaderWrapper = styled.div`
     justify-content:center;
 `;
 
+
+const CheckBoxRow = styled.div`
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    font-size:11px;
+`;
+
+const SLink = styled(Link)`
+    margin-left:8px;
+    color:blue;
+`;
+
+const JText = styled.div`
+
+`;
+
+
 interface SignUpPresenterProps{
     email:any
     realName:any
@@ -95,6 +114,10 @@ interface SignUpPresenterProps{
     passwordAgain:any
     clickFunc:any
     submitting:any
+    checkedPrivacy:any
+    setCheckedPrivacy:any
+    checkedTerm:any
+    setCheckedTerm:any
 }
 
 
@@ -105,7 +128,11 @@ export default ({
     password,
     passwordAgain,
     clickFunc,
-    submitting
+    submitting,
+    checkedPrivacy,
+    setCheckedPrivacy,
+    checkedTerm,
+    setCheckedTerm,
 }:SignUpPresenterProps) => {
 
     const emailValue = email.value;
@@ -126,6 +153,10 @@ export default ({
     
     let buttonDisabled = false;
 
+    if(checkedTerm===false||checkedPrivacy===false){
+        buttonDisabled = true;
+    }
+
     const [doEmailQuery, {called:eqCalled, data:eqData, loading:eqLoading}] = useLazyQuery(IS_EMAIL_DUPLICATED, {variables:{email:emailValue}});
     const [doNickNameQuery, {called:nqcalled, data:nqData, loading:nqLoading}] = useLazyQuery(IS_NICKNAME_DUPLICATED, {variables:{nickName:nickNameValue}});
     
@@ -135,7 +166,7 @@ export default ({
             } = e;
             email.setValue(value);
           
-        console.log("test");
+
         doEmailQuery();
     }
 
@@ -145,7 +176,7 @@ export default ({
         } = e;
         nickName.setValue(value);
       
-    console.log("nick");
+
     doNickNameQuery();
     }
 
@@ -165,7 +196,7 @@ export default ({
                 const {
                     isEmailDuplicated
                 } = eqData;
-                console.log(isEmailDuplicated);
+
                 if(isEmailDuplicated===true){
                     emailDescription = "중복된 이메일입니다";
                     emailDescriptionColor = "red";
@@ -195,7 +226,7 @@ export default ({
                 const {
                     isNickNameDuplicated
                 } = nqData;
-                console.log(isNickNameDuplicated);
+
                 if(isNickNameDuplicated===true){
                     nickNameDescription = "중복된 닉네임입니다."
                     nickNameDescriptionColor = "red";
@@ -269,6 +300,16 @@ export default ({
             </MainComponentWrapper>
         </MainArea>
         <SignUpFooterArea>
+            <CheckBoxRow>
+                <input type="checkbox" name="color" onChange={(e)=>setCheckedPrivacy(e.target.checked)}/>
+                <SLink to="/privacy">{"개인정보 수집•이용"}</SLink>
+                <JText>{"에 동의합니다 (필수)"}</JText>
+            </CheckBoxRow>
+            <CheckBoxRow>
+                <input type="checkbox" name="color" onChange={(e)=>setCheckedTerm(e.target.checked)}/>
+                <SLink to="/terms_of_service">{"서비스 이용약관"}</SLink>
+                <JText>{"에 동의합니다 (필수)"}</JText>
+            </CheckBoxRow>
             <Button text="Sign Up" disabled={buttonDisabled} onClick={clickFunc}/>
         </SignUpFooterArea>
         </>

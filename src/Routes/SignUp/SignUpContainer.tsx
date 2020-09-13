@@ -15,8 +15,11 @@ export default () => {
     const password = useInput("");
     const passwordAgain = useInput("");
     const [submitting, setSubmitting] = useState(false);
+    const [checkedPrivacy, setCheckedPrivacy] = useState(false);
+    const [checkedTerm, setCheckedTerm] = useState(false);
 
     const [registerAccountMutation, {loading}] = useMutation(REGISTER_ACCOUNT);
+
 
     const clickFunc = async (e:MouseEvent<HTMLButtonElement>) => {
         setSubmitting(true);
@@ -53,6 +56,10 @@ export default () => {
     passwordAgain={passwordAgain}
     clickFunc={clickFunc}
     submitting={submitting}
+    checkedPrivacy={checkedPrivacy}
+    setCheckedPrivacy={setCheckedPrivacy}
+    checkedTerm={checkedTerm}
+    setCheckedTerm={setCheckedTerm}
     />
 
 
