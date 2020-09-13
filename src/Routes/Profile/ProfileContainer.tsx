@@ -53,6 +53,8 @@ export default () => {
     email,
     nickName,
     profilePictureId,
+    credit,
+    numOfVul,
     reportInfoList;
     
 
@@ -66,6 +68,8 @@ export default () => {
         nickName = getMyProfileResponse.nickName;
         profilePictureId = getMyProfileResponse.profilePictureId;
         reportInfoList = getMyProfileResponse.reportInfoList;
+        credit = getMyProfileResponse.credit;
+        numOfVul = getMyProfileResponse.numOfVul;
         if(role==="BUSINESS"){
 
         }
@@ -81,6 +85,8 @@ export default () => {
         email={email}
         nickName={nickName}
         profilePictureId={profilePictureId}
+        credit={credit}
+        numOfVul={numOfVul}
         reportInfoList={reportInfoList}
         uploading={uploading}
         onChangeProfile={onChangeProfile}

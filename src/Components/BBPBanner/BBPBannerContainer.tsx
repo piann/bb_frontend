@@ -24,7 +24,7 @@ export const GET_PROGRAM_BANNER = gql`
             submittedReportCount
             bountyMin
             bountyMax
-            logoUrl
+            logoId
         }
     }
 
@@ -45,7 +45,7 @@ const BBPBannerContainer:React.SFC<Props> = ({
     submittedReportCount,
     bountyMin,
     bountyMax,
-    logoUrl;
+    logoId;
     
     
     if(!loading){
@@ -61,7 +61,7 @@ const BBPBannerContainer:React.SFC<Props> = ({
         submittedReportCount = getProgramBannerResponse.submittedReportCount;
         bountyMin = getProgramBannerResponse.bountyMin;
         bountyMax = getProgramBannerResponse.bountyMax;
-        logoUrl = getProgramBannerResponse.logoUrl;
+        logoId = getProgramBannerResponse.logoId;
 
     }
 
@@ -77,6 +77,7 @@ const BBPBannerContainer:React.SFC<Props> = ({
         reportCount={submittedReportCount}
         minBounty={bountyMin}
         maxBounty={bountyMax}
+        logoId={logoId}
         />
     )
 }

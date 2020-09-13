@@ -4,7 +4,8 @@ import Button from "../Button";
 import { Link } from "react-router-dom";
 import wonIcon from "../../images/won.png";
 import reportIcon from "../../images/report.png";
-
+import basicLogo from "../../images/zerowhaleBasic.png";
+import {fileServerAddr} from "../../common";
 
 const BBPBannerBox = styled.div`
     background-color: white;
@@ -119,6 +120,7 @@ interface Props {
     reportCount?:number;
     minBounty?:number;
     maxBounty?:number;
+    logoId?:string|null;
 }
 
 
@@ -131,6 +133,7 @@ const BBPBanner:React.SFC<Props> = ({
     reportCount,
     minBounty,
     maxBounty,
+    logoId,
 }) => {
     let buttonStatus: boolean;
     if (hideButton===true){
@@ -176,7 +179,7 @@ const BBPBanner:React.SFC<Props> = ({
             </BottomArea>
         </BannerMainArea>
         <LogoArea>
-        <img src="https://cdn-vzn.yottaa.net/555a305b2bb0ac71b9002d22/266f8ad067d20138af300ead9ecbf798.yottaa.net/v~4b.20d.0.0/tenantlogos/5326.png?yocs=D_H_" width={"80%"} alt={""}/>        
+        <img src={logoId?`${fileServerAddr}${logoId}/`:basicLogo} height={"100%"} alt={""}/>        
         </LogoArea>
     </BBPBannerBox>)
 

@@ -6,6 +6,8 @@ query getMyProfile{
         email
         nickName
         profilePictureId
+        credit
+        numOfVul
         reportInfoList{
             reportId
             status

@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import {BarLoader} from "../../Components/Loaders";
 import { categoryUpperToNormal } from "../../common";
 import { getBountyRangeText } from "../../utils";
+import basicLogo from "../../images/zerowhaleBasic.png";
+import {fileServerAddr} from "../../common";
 
 const LoaderWrapper = styled.div`
     width:100%;
@@ -119,7 +121,7 @@ programInfoList,
             <SLink to={"/"+programInfo.nameId} key={1000+index}>
                 <CardBox>
                 <CardLogoSpace>
-                    <Logo src="https://cdn-vzn.yottaa.net/555a305b2bb0ac71b9002d22/266f8ad067d20138af300ead9ecbf798.yottaa.net/v~4b.20d.0.0/tenantlogos/5326.png?yocs=D_H_"/>
+                    <Logo src={programInfo.logoId?fileServerAddr.concat(programInfo.logoId).concat("/"):zeroWhaleIcon}/>
                 </CardLogoSpace>
                 <CardBodySpace>
                     <CompanyNameText>{programInfo.companyName}</CompanyNameText>

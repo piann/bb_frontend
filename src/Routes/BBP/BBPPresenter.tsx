@@ -196,6 +196,9 @@ exclusionValueList,
                     
                 </BasicTableBox>
 
+                {outOfScopeTargetList.length===0?
+                <></>:
+                <>
                 <MiniTitleText>{"\nOut Of Scope"}</MiniTitleText>
                 <BasicTableBox>
                     <BasicTableHead>
@@ -216,7 +219,10 @@ exclusionValueList,
                     })}
                     
                 </BasicTableBox>
-
+                <InfoText>{"⚬  이 외에도 특별히 명시되지 않은 범위는 보상에서 제외됩니다.\n"}</InfoText>
+                </>
+                }
+ 
                 <MiniTitleText>{"\nExclusion List"}</MiniTitleText>
                     {exclusionValueList.map((value:any, index:any) => {
                          return <InfoText key={7000+index}>{"⚬  "}{value}</InfoText>

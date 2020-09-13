@@ -6,7 +6,7 @@ import {useQuery} from "@apollo/client";
 import {LOCAL_LOGGED_IN_QUERY} from "../sharedQueries";
 import UserProfileImage from "./UserProfileImage";
 import {gql} from "apollo-boost";
-
+import {fileServerAddr} from "../common";
 
 export const GET_MY_PROFILE = gql`
     query getMyProfile{
@@ -69,11 +69,11 @@ export default () => {
   const {
     data: {isLoggedIn}
   }:any = useQuery(LOCAL_LOGGED_IN_QUERY);
+  const {data:profileData, loading:profileLoading} = useQuery(GET_MY_PROFILE);
 
 
   let profilePictureId = null;
   if(isLoggedIn===true){
-    const {data:profileData, loading:profileLoading} = useQuery(GET_MY_PROFILE);
 
 
     if(!profileLoading){
@@ -106,7 +106,7 @@ return(
       isLoggedIn?
       <Link to ="/profile">
         <UserProfileImage 
-          src={profilePictureId?`http://localhost:4002/${profilePictureId}`:null}
+          src={profilePictureId?`${fileServerAddr}${profilePictureId}/`:null}
           width={"35px"}
           height={"35px"}
         />

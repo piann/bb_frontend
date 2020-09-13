@@ -150,6 +150,8 @@ export default ({
     email,
     nickName,
     profilePictureId,
+    credit,
+    numOfVul,
     reportInfoList,
     loading,
     uploading,
