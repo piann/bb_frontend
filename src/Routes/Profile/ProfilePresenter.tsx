@@ -26,6 +26,7 @@ display:flex;
 flex-direction:column;
 box-shadow:0 3px 7px 3px rgba(7, 7, 33, 0.1),0 1px 1px 1px rgba(0, 0, 0, 0.2);
 margin-bottom:70px;
+padding-bottom:20px;
 `;
 
 
@@ -57,6 +58,16 @@ const InfoText = styled.div`
     line-height:2em;
     white-space: pre-line;
     margin-bottom:8px;
+`;
+
+const BoldText = styled(InfoText)`
+    font-weight:600;
+`;
+
+const SpecRow = styled.div`
+    margin-left:18px;
+    display:flex;
+    flex-direction:row;
 `;
 
 
@@ -161,7 +172,7 @@ export default ({
 {loading?
 <BarLoader/>:
 <>
-<ProfileBox width={"220px"} height={"250px"}>
+<ProfileBox width={"235px"} height={"max-content"}>
     <ProfileTitle>Profile</ProfileTitle>
     <ProfileContent>
         <PhotoInput
@@ -171,6 +182,16 @@ export default ({
         />
         <InfoText>{nickName}</InfoText>
     </ProfileContent>
+ 
+    <SpecRow>
+        <BoldText>{"Credit⠀:⠀"}</BoldText>
+        <InfoText>{credit}</InfoText>
+    </SpecRow>
+    <SpecRow>
+        <BoldText>{"Vulnerabilities found⠀:⠀"}</BoldText>
+        <InfoText>{numOfVul}</InfoText>
+    </SpecRow>
+  
 </ProfileBox>
 <EmptySpace/>
 
