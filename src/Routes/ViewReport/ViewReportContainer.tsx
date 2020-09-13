@@ -75,7 +75,7 @@ export default (props:any) => {
         }
     }
 
-
+    console.log(fileId);////
     return <ViewReportPresenter
     loading={loading}
     nameId={nameId}

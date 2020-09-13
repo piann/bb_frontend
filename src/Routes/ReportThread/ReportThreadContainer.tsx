@@ -79,6 +79,7 @@ export default (props:any) => {
     return <ReportThreadPresenter
         loading={loading}
         nameId={nameId}
+        rId={rId}
         authorNickName={authorNickName}
         progressStatus={progressStatus}
         resultCode={resultCode}

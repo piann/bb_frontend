@@ -9,6 +9,8 @@ import basicLogo from "../../images/zerowhaleBasic.png";
 import hideArrow from "../../images/hideArrow.png";
 import { RatingStar } from "rating-star";
 import grayProfile from "../../images/grayProfile.png";
+import { Link } from "react-router-dom";
+import {fileServerAddr} from "../../common";
 
 const BBPBody = styled.div`
     position: relative;
@@ -90,6 +92,7 @@ const HackerProfileImg = styled.img`
 `;
 
 const PaperArea = styled.div`
+display:none;
 margin-top:20px;
 margin-bottom:50px;
 .paper {
@@ -225,11 +228,17 @@ export default ({
         <InformationBox>
             <InformationTitle>Report</InformationTitle>
             <InformationContent>
+            {fileId?
             <HeadWrapper>
             <TitleLogo src={basicLogo}/>
             <Line/>
-            <Button text={"Download attachment"} width={"180px"}/>
+                <a href={`${fileServerAddr}i/${fileId}/`}>
+                    <Button text={"Download attachment"} width={"180px"}/>
+                </a>
             </HeadWrapper>
+            :
+            <></>
+            }
             <MiniTitleText>{"0. Hacker "}</MiniTitleText>
             <HackerInfoRow>
                 <HackerProfileImg src={grayProfile}/>

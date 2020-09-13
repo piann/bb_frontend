@@ -11,6 +11,7 @@ import Button from "../../Components/Button";
 import {BarLoader} from "../../Components/Loaders"
 import { ToastContainer } from 'react-toastify';
 import AdvButton from "../../Components/AdvButton";
+import { Link } from "react-router-dom";
 
 const BBPBody = styled.div`
     position: relative;
@@ -185,6 +186,7 @@ const testTargetObjList = [
 export default ({
     loading,
     nameId,
+    rId,
     authorNickName,
     progressStatus,
     resultCode,
@@ -210,7 +212,9 @@ export default ({
             <InformationTitle>Progress</InformationTitle>
             <InformationContent>
             <ButtonRow>
-                <AdvButton text={"View Report"} width={"150px"}/>
+                <Link to={`/view_report/${rId}`}>
+                    <AdvButton text={"View Report"} width={"150px"}/>
+                </Link>
             </ButtonRow>
             <ProgressBarWrapper>
                 <div className="progressbar">

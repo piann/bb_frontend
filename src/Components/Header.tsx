@@ -106,7 +106,7 @@ return(
       isLoggedIn?
       <Link to ="/profile">
         <UserProfileImage 
-          src={profilePictureId?`${fileServerAddr}${profilePictureId}/`:null}
+          src={profilePictureId?`${fileServerAddr}i/${profilePictureId}/`:null}
           width={"35px"}
           height={"35px"}
         />

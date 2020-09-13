@@ -37,7 +37,7 @@ export default (props:any) => {
     const dumpInput = useInput("");
     const additionalTextInput = useInput("");
     
-    const [fileData,setFileData] = useState();
+    const [fileData,setFileData] = useState(null);
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -75,7 +75,7 @@ export default (props:any) => {
             try{
 
                 if(reportId!==null){
-                    if(fileData!==undefined){
+                    if(fileData!==undefined && fileData!==null){
                         // upload file
 
                         const jwt = localStorage.getItem("token");

@@ -121,7 +121,7 @@ programInfoList,
             <SLink to={"/"+programInfo.nameId} key={1000+index}>
                 <CardBox>
                 <CardLogoSpace>
-                    <Logo src={programInfo.logoId?fileServerAddr.concat(programInfo.logoId).concat("/"):zeroWhaleIcon}/>
+                    <Logo src={programInfo.logoId?`${fileServerAddr}i/${programInfo.logoId}/`:zeroWhaleIcon}/>
                 </CardLogoSpace>
                 <CardBodySpace>
                     <CompanyNameText>{programInfo.companyName}</CompanyNameText>
