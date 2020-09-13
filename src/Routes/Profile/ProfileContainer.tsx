@@ -1,29 +1,11 @@
 import React, { useState } from "react";
 import ProfilePresenter from "./ProfilePresenter";
-import {gql} from "apollo-boost";
 import { useQuery } from "@apollo/client";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { fileServerAddr, toastOpt } from "../../common";
 import { toast } from "react-toastify";
-
-export const GET_MY_PROFILE = gql`
-    query getMyProfile{
-        getMyProfile{
-            email
-            nickName
-            profilePictureId
-            reportInfoList{
-                reportId
-                status
-                result
-                companyName
-                submitDate
-                vulName
-            }
-        }
-    }
-`;
+import {GET_MY_PROFILE} from "./ProfileQueries";
 
 
 export default () => {
@@ -67,6 +49,7 @@ export default () => {
      }
 
     let 
+    role,
     email,
     nickName,
     profilePictureId,
@@ -78,11 +61,15 @@ export default () => {
             getMyProfile:getMyProfileResponse
         } = data;
     if(getMyProfileResponse!==null){
-
+        role = getMyProfileResponse.role;
         email = getMyProfileResponse.email;
         nickName = getMyProfileResponse.nickName;
         profilePictureId = getMyProfileResponse.profilePictureId;
         reportInfoList = getMyProfileResponse.reportInfoList;
+        if(role==="BUSINESS"){
+
+        }
+
         } else {
             return <Redirect to="/" />
         }

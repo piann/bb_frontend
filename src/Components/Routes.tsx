@@ -17,6 +17,7 @@ import EmailResend from "../Routes/EmailResend";
 import ViewReport from "../Routes/ViewReport";
 import Privacy from "../Routes/Privacy";
 import UploadTest from "../Routes/UploadTest";
+import TermsOfServices from "../Routes/TermsOfServices";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/privacy" component={Privacy}></Route>
@@ -39,6 +40,7 @@ const LoggedOutRoutes = () => <Switch>
 <Route exact path="/log_in" component={LogIn}></Route>
 <Route exact path="/sign_up" component={SignUp}></Route>
 <Route exact path="/privacy" component={Privacy}></Route>
+<Route exact path="/terms_of_service" component={TermsOfServices}></Route>
 <Route exact path="/reauth" component={EmailResend}></Route>
 <Route path='/confirm_secret/:key' component={ConfirmSecret}></Route>
 <Redirect from="*" to="/" />
