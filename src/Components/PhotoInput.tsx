@@ -29,6 +29,7 @@ const Image = styled.div`
   }
 `;
 
+
 const Input = styled.input`
   color: white;
   opacity: 0;
@@ -37,6 +38,7 @@ const Input = styled.input`
     outline: none;
   }
 `;
+
 const EditButton = styled.label`
     cursor: pointer;
     height: 25px;
@@ -57,13 +59,14 @@ const EditButton = styled.label`
 `;
 
 interface IProps {
+    idx?:string;
     uploading: boolean;
     fileUrl: string|null;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   }
   
 
-  const PhotoInput: React.SFC<IProps> = ({ uploading, fileUrl, onChange }) => (
+  const PhotoInput: React.SFC<IProps> = ({ idx, uploading, fileUrl, onChange }) => (
     <Container>
       {uploading? <SpinLoader/>:
       <>
@@ -71,7 +74,7 @@ interface IProps {
       {/* profile image */}
       {!uploading && <UserProfileImage src={fileUrl}/>}
       </Image>
-      <Input id={"photo"} type="file" accept=".png,.jpg,.jpeg" onChange={onChange} />
+      <Input id={"photo"} type="file" accept=".png,.jpg,.jpeg" onChange={onChange} alt={idx}/>
       <EditButton htmlFor="photo">
         <img src={editPicImage}/>
       </EditButton>

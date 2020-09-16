@@ -177,7 +177,7 @@ export default ({
     <ProfileContent>
         <PhotoInput
         uploading={uploading}
-        fileUrl={profilePictureId?`http://localhost:4002/${profilePictureId}`:null}
+        fileUrl={profilePictureId?`http://localhost:4002/i/${profilePictureId}/`:null}
         onChange={onChangeProfile}
         />
         <InfoText>{nickName}</InfoText>

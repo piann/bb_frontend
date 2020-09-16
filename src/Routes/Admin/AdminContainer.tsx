@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import ProfilePresenter from "./ProfilePresenter";
+import AdminPresenter from "./AdminPresenter";
 import { useQuery } from "@apollo/client";
-import { Redirect } from "react-router-dom";
+import {GET_ALL_COMPANY_LOGOS} from "./AdminQueries"
 import axios from "axios";
 import { fileServerAddr, toastOpt } from "../../common";
 import { toast } from "react-toastify";
-import {GET_MY_PROFILE} from "./ProfileQueries";
+import Page404 from "../../Components/Page404";
 
 
 export default () => {
-    const {data, loading} = useQuery(GET_MY_PROFILE);
 
+    const {data, loading} = useQuery(GET_ALL_COMPANY_LOGOS);
     const [uploading, setUploading] = useState(false);
 
-    const onChangeProfile = async (e:any) => {
+    const onChangeLogo = async (e:any) => {
+        const companyId = e.target.alt;
+
         setUploading(true);
         const fileObjList = e.target.files;
         
@@ -36,7 +38,7 @@ export default () => {
     
         const res = await axios({
             method: "post",
-            url: fileServerAddr.concat("upload_profile"),
+            url: `${fileServerAddr}upload_logo/${companyId}/`,
             data: formData,
             headers: {
             Authorization: jwt,
@@ -46,52 +48,30 @@ export default () => {
 
         setUploading(false);
         window.location.reload();
+        
      }
 
     let 
-    role,
-    email,
-    nickName,
-    profilePictureId,
-    credit,
-    numOfVul,
-    reportInfoList;
+    infoList;
     
 
     if(!loading){
             const {
-                getMyProfile:getMyProfileResponse
+                getAllCompanyLogos:getAllCompanyLogosResponse
             } = data;
-        if(getMyProfileResponse!==null){
-            role = getMyProfileResponse.role;
-            email = getMyProfileResponse.email;
-            nickName = getMyProfileResponse.nickName;
-            profilePictureId = getMyProfileResponse.profilePictureId;
-            reportInfoList = getMyProfileResponse.reportInfoList;
-            credit = getMyProfileResponse.credit;
-            numOfVul = getMyProfileResponse.numOfVul;
-            if(role==="BUSINESS"){
-
-            } 
-            if(role==="ADMIN"){
-
-            }
+        if(getAllCompanyLogosResponse!==null){
+            infoList = getAllCompanyLogosResponse;
 
         } else {
-            return <Redirect to="/" />
+            return <Page404 />
         }
     }
 
 
-    return <ProfilePresenter
+    return <AdminPresenter
         loading={loading}
-        email={email}
-        nickName={nickName}
-        profilePictureId={profilePictureId}
-        credit={credit}
-        numOfVul={numOfVul}
-        reportInfoList={reportInfoList}
+        infoList={infoList}
         uploading={uploading}
-        onChangeProfile={onChangeProfile}
+        onChangeLogo={onChangeLogo}
     />
 }

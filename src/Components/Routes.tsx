@@ -18,6 +18,7 @@ import ViewReport from "../Routes/ViewReport";
 import Privacy from "../Routes/Privacy";
 import UploadTest from "../Routes/UploadTest";
 import TermsOfServices from "../Routes/TermsOfServices";
+import Admin from "../Routes/Admin";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/privacy" component={Privacy}></Route>
@@ -28,6 +29,7 @@ const LoggedInRoutes = () => <Switch>
 <Route exact path="/upload" component={UploadTest}></Route>
 <Route exact path="/view_report/:report_id" component={ViewReport}></Route>
 <Route exact path="/report_thread/:report_id" component={ReportThread}></Route>
+<Route exact path="/admin" component={Admin}></Route>
 <Route exact path="/:name_id" component={BBP}></Route>
 <Route exact path="/:name_id/report" component={Report}></Route>
 <Route exact path="/:name_id/notice" component={BBPNotice}></Route>
