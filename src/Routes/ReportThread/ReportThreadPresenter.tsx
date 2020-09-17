@@ -114,11 +114,20 @@ const ProgressBarWrapper = styled.div`
 
 const AdditionalInfo = styled.div`
     display:flex;
-    justify-content:flex-end;
+    flex-direction:column;
+    align-items:flex-end;
     height:30px;
     margin-top:50px;
+    margin-bottom:30px;
     margin-right:5%;
 `;
+
+const AdditionalRow = styled.div`
+    display:flex;
+    flex-direction:row;
+    
+`;
+
 
 // Position of Comment Wrapper is set by parent justify-content feature 
 const CommentWrapper = styled.div`
@@ -225,7 +234,14 @@ export default ({
                 </div>
             </ProgressBarWrapper>
             <AdditionalInfo>
-                <BoldInfoText>{"Result⠀:⠀"}</BoldInfoText><InfoText>{resultCode?resultCode:" - "}</InfoText>
+                <AdditionalRow>
+                    <BoldInfoText>{"Result⠀:⠀"}</BoldInfoText><InfoText>{resultCode?resultCode:" - "}</InfoText>
+                </AdditionalRow>
+                {bountyAmount>0?
+                <AdditionalRow>
+                    <BoldInfoText>{"Bounty⠀:⠀"}</BoldInfoText><InfoText>{`₩${bountyAmount}`}</InfoText>
+                </AdditionalRow>
+                :<></>}
             </AdditionalInfo>
 
             </InformationContent>
