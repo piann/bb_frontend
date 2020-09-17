@@ -38,9 +38,12 @@ export default (props:any) => {
     const additionalTextInput = useInput("");
     
     const [fileData,setFileData] = useState(null);
+    const [fileText, setFileText] = useState("Choose a file...");
+
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
+    
 
     const clickFunc = async () => {
         setButtonDisabled(true);
@@ -223,7 +226,8 @@ export default (props:any) => {
 
         fileData={fileData}
         setFileData={setFileData}
-        
+        fileText={fileText}
+        setFileText={setFileText}
 
         clickFunc={clickFunc}
         buttonDisabled={buttonDisabled}

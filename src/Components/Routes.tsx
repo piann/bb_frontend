@@ -22,14 +22,15 @@ import Admin from "../Routes/Admin";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/privacy" component={Privacy}></Route>
+<Route exact path="/terms_of_service" component={TermsOfServices}></Route>
 <Route exact path="/log_in" component={LogIn}/>
 <Route exact path="/introduction" component={Introduction}/>
 <Route exact path="/profile" component={Profile}></Route>
 <Route exact path="/programs" component={ProgramList}></Route>
-<Route exact path="/upload" component={UploadTest}></Route>
+{/*<Route exact path="/upload" component={UploadTest}></Route>*/}
 <Route exact path="/view_report/:report_id" component={ViewReport}></Route>
 <Route exact path="/report_thread/:report_id" component={ReportThread}></Route>
-<Route exact path="/admin" component={Admin}></Route>
+<Route exact path="/orchestration" component={Admin}></Route>
 <Route exact path="/:name_id" component={BBP}></Route>
 <Route exact path="/:name_id/report" component={Report}></Route>
 <Route exact path="/:name_id/notice" component={BBPNotice}></Route>
@@ -41,6 +42,7 @@ const LoggedOutRoutes = () => <Switch>
 <Route exact path="/" component={Introduction}/>
 <Route exact path="/log_in" component={LogIn}></Route>
 <Route exact path="/sign_up" component={SignUp}></Route>
+<Route exact path="/programs" component={ProgramList}></Route>
 <Route exact path="/privacy" component={Privacy}></Route>
 <Route exact path="/terms_of_service" component={TermsOfServices}></Route>
 <Route exact path="/reauth" component={EmailResend}></Route>

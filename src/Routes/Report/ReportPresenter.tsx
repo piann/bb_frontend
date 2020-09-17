@@ -264,6 +264,8 @@ export default ({
 
     fileData,
     setFileData,
+    fileText,
+    setFileText,
     clickFunc,
     buttonDisabled,
     setButtonDisabled,
@@ -352,7 +354,7 @@ export default ({
 
                             </RadioBox>
                             <RadioBox>
-                                <RadioTitle>{"기밀성 파급력"}</RadioTitle>
+                                <RadioTitle>{"기밀성 영향"}</RadioTitle>
                                 <RadioSelect>
                                     <ExRadioGroup name="confidentiality" onChange={(v:any)=>{setConfidentiality(v)}}>
                                         <Radio value={1}>{"Low "}</Radio>
@@ -364,7 +366,7 @@ export default ({
                         </RadioRow>
                         <RadioRow>
                             <RadioBox>
-                                <RadioTitle>{"무결성 파급력"}</RadioTitle>
+                                <RadioTitle>{"무결성 영향"}</RadioTitle>
                                 <RadioSelect>
                                     <ExRadioGroup name="integrity" onChange={(v:any)=>{setIntegrity(v)}}>
                                         <Radio value={1}>{"Low "}</Radio>
@@ -374,7 +376,7 @@ export default ({
                                 </RadioSelect>
                             </RadioBox>
                             <RadioBox>
-                                <RadioTitle>{"가용성 파급력"}</RadioTitle>
+                                <RadioTitle>{"가용성 영향"}</RadioTitle>
                                 <RadioSelect>
                                     <ExRadioGroup name="availablity" onChange={(v:any)=>{setAvailablity(v)}}>
                                         <Radio value={1}>{"Low "}</Radio>
@@ -454,6 +456,7 @@ export default ({
                             <input 
                              type="file"
                              id="file"
+                             accept=".zip"
                              onChange={e=>{
                                 setButtonDisabled(true);
                                 const fileObjList = e.target.files;
@@ -470,15 +473,14 @@ export default ({
                                 } 
 
                                 const fileName = fileObjList[0].name;
-                                const domObj = document.getElementById("upload-name") as HTMLInputElement;
-                                if(domObj!==null){
-                                    domObj.value =fileName;
-                                    setFileData(fileObjList[0]);
-                                }
+       
+                                setFileText(fileName);
+                                setFileData(fileObjList[0]);
+                                
                                 setButtonDisabled(false);
 
                              }}/> 
-                            <input className="upload-name" id="upload-name" value="Choose a file..." readOnly/>
+                            <input className="upload-name" id="upload-name" value={fileText} readOnly={true}/>
                             </FileInputArea>
                             <SubmitButtonWrapper>
                             {submitLoading?

@@ -201,7 +201,6 @@ export default ({
         {reportInfoList.length===0?
         <InfoText>
             {"아직 제출한 리포트가 없습니다. 버그바운티에 참여해보세요!"}
-            {"\n프로그램 리스트 버튼"}
         </InfoText>
         :
         <MiniTableBox>

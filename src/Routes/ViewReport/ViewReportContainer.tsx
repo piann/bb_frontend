@@ -74,8 +74,7 @@ export default (props:any) => {
             return <Page404 />
         }
     }
-
-    console.log(fileId);////
+    console.log(profilePicId);////
     return <ViewReportPresenter
     loading={loading}
     nameId={nameId}

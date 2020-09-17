@@ -174,6 +174,7 @@ const EtcHeader = styled.div`
 `;
 
 const EtcArrow = styled.img`
+    cursor:pointer;
     width:16px;
     height:16px;
     margin-left:10px;
@@ -190,11 +191,11 @@ const LoaderWrapper = styled.div`
 
 const toggleHide = ():any => {
     var contentObj = document.getElementById("EtcContent");
-    if (contentObj?.style.display === "none") {
+    if (contentObj?.style.display !== "block") {
         contentObj!.style.display = "block";
-      } else {
+    } else {
         contentObj!.style.display = "none";
-      }
+    }
 }
 
 
@@ -241,7 +242,7 @@ export default ({
             }
             <MiniTitleText>{"0. Hacker "}</MiniTitleText>
             <HackerInfoRow>
-                <HackerProfileImg src={grayProfile}/>
+                <HackerProfileImg src={profilePicId?`http://localhost:4002/i/${profilePicId}/`:grayProfile}/>
                 <HackerNickNameText>{authorNickName}</HackerNickNameText>
             </HackerInfoRow>
 
