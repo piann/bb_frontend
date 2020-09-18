@@ -6,6 +6,7 @@ import wonIcon from "../../images/won.png";
 import reportIcon from "../../images/report.png";
 import basicLogo from "../../images/zerowhaleBasic.png";
 import {fileServerAddr} from "../../common";
+import {SpinLoader} from "../Loaders";
 
 const BBPBannerBox = styled.div`
     background-color: white;
@@ -112,6 +113,11 @@ const BottomSubValue = styled.div`
     align-items:center;
 `;
 
+const LoaderWrapper = styled.div`
+    width:125%;
+    display:flex;
+    justify-content:center;
+`;
 
 interface Props {
     loading:boolean;
@@ -147,6 +153,12 @@ const BBPBanner:React.SFC<Props> = ({
     }
     return (
     <BBPBannerBox>
+        {loading?
+        <LoaderWrapper>
+            <SpinLoader/>
+        </LoaderWrapper>
+        :
+        <>
         <BannerMainArea>
             <TopArea>
                 <CompanyArea>
@@ -167,22 +179,27 @@ const BBPBanner:React.SFC<Props> = ({
                 <BottomSubArea>
                     <BottomSubHead>
                         <img src={reportIcon} width={"18px"} height={"18px"} alt={""}/>
-                        <BottomSubHeadText>총 제출 리포트</BottomSubHeadText>
+                        <BottomSubHeadText>{"총 제출 리포트"}</BottomSubHeadText>
                     </BottomSubHead>
                     <BottomSubValue>{reportCount}</BottomSubValue>
                 </BottomSubArea>
                     <BottomSubArea>
                     <BottomSubHead>
                         <img src={wonIcon} width={"22px"} height={"22px"} alt={""}/>
-                        <BottomSubHeadText>현상금 범위</BottomSubHeadText>
+                        <BottomSubHeadText>{"현상금 범위"}</BottomSubHeadText>
                     </BottomSubHead>
-                    <BottomSubValue>{"₩"}{minBounty}{" ~ "}{"₩"}{maxBounty}</BottomSubValue>
+                    <BottomSubValue> {(maxBounty===undefined||maxBounty===0)?
+                    "Credit Only":
+                    `₩${minBounty} ~ ₩${maxBounty}`
+                    }</BottomSubValue>
                 </BottomSubArea>
             </BottomArea>
         </BannerMainArea>
         <LogoArea>
         <img src={logoId?`${fileServerAddr}i/${logoId}/`:basicLogo} height={"100%"} alt={""}/>        
         </LogoArea>
+        </>
+        }
     </BBPBannerBox>)
 
 }

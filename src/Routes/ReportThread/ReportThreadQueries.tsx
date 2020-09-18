@@ -12,6 +12,7 @@ export const GET_REPORT_TOTAL_STATUS = gql`
             progressStatus
             resultCode
             bountyAmount
+            grantedCredit
             commentInfoList{
                 id
                 content

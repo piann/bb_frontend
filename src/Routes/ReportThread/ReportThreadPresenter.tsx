@@ -116,16 +116,13 @@ const AdditionalInfo = styled.div`
     display:flex;
     flex-direction:column;
     align-items:flex-end;
-    height:30px;
     margin-top:50px;
-    margin-bottom:30px;
-    margin-right:5%;
+    margin-right:30px;
 `;
 
 const AdditionalRow = styled.div`
     display:flex;
     flex-direction:row;
-    
 `;
 
 
@@ -200,6 +197,7 @@ export default ({
     progressStatus,
     resultCode,
     bountyAmount,
+    grantedCredit,
     commentInfoList,
     //
     buttonDisabled,
@@ -239,7 +237,12 @@ export default ({
                 </AdditionalRow>
                 {bountyAmount>0?
                 <AdditionalRow>
-                    <BoldInfoText>{"Bounty⠀:⠀"}</BoldInfoText><InfoText>{`₩${bountyAmount}`}</InfoText>
+                    <BoldInfoText>{"Reward⠀:⠀"}</BoldInfoText><InfoText>{`₩${bountyAmount}`}</InfoText>
+                </AdditionalRow>
+                :<></>}
+                {grantedCredit>0?
+                <AdditionalRow>
+                    <BoldInfoText>{"Credit Granted⠀:⠀"}</BoldInfoText><InfoText>{grantedCredit}</InfoText>
                 </AdditionalRow>
                 :<></>}
             </AdditionalInfo>

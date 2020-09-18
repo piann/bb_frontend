@@ -198,7 +198,7 @@ export default ({
 <ProfileBox width={"800px"} >
     <ProfileTitle>Reports</ProfileTitle>
     <ProfileContent>
-        {reportInfoList.length===0?
+        {(reportInfoList===null || reportInfoList.length===0)?
         <InfoText>
             {"아직 제출한 리포트가 없습니다. 버그바운티에 참여해보세요!"}
         </InfoText>

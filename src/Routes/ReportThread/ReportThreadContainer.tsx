@@ -6,6 +6,7 @@ import { useInput } from "../../utils";
 import { toastOpt } from "../../common";
 import { toast } from "react-toastify";
 import Page404 from "../../Components/Page404";
+import { get } from "https";
 
 export default (props:any) => {
     const result : any = props.match.params;
@@ -55,6 +56,7 @@ export default (props:any) => {
     progressStatus,
     resultCode,
     bountyAmount,
+    grantedCredit,
     commentInfoList;
     
     
@@ -68,6 +70,7 @@ export default (props:any) => {
         progressStatus = getReportTotalStatusResponse.progressStatus;
         resultCode = getReportTotalStatusResponse.resultCode;
         bountyAmount = getReportTotalStatusResponse.bountyAmount;
+        grantedCredit = getReportTotalStatusResponse.grantedCredit;
         commentInfoList = getReportTotalStatusResponse.commentInfoList;
 
         } else {
@@ -84,6 +87,7 @@ export default (props:any) => {
         progressStatus={progressStatus}
         resultCode={resultCode}
         bountyAmount={bountyAmount}
+        grantedCredit={grantedCredit}
         commentInfoList={commentInfoList}
         //
         buttonDisabled={buttonDisabled}
