@@ -1,6 +1,6 @@
 import React, { MouseEvent, useState } from "react";
 import LogInPresenter from "./LogInPresenter";
-import { useInput, LOCAL_LOG_IN } from "../../utils";
+import { useInput, LOCAL_LOG_IN, generateSaltedHash } from "../../utils";
 import {SIGN_IN} from "./LoginQueries";
 import { useMutation } from "@apollo/react-hooks";
 import { toast } from 'react-toastify';
@@ -27,7 +27,7 @@ export default (props:any) => {
             },
         } = await signInMutation({variables:{
             email:email.value,
-            password:password.value
+            password:generateSaltedHash(password.value)
         }});
 
         if(!loading){

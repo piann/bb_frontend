@@ -1,6 +1,6 @@
 import React,{MouseEvent, useState} from "react";
 import SignUpPresenter from "./SignUpPresenter";
-import { useInput } from "../../utils";
+import { useInput, generateSaltedHash } from "../../utils";
 import { REGISTER_ACCOUNT} from "./SignUpQueries";
 import { useMutation } from "@apollo/react-hooks";
 import { toast } from 'react-toastify';
@@ -30,7 +30,7 @@ export default () => {
             }
         } = await registerAccountMutation({variables:{
             email:email.value,
-            password:password.value,
+            password:generateSaltedHash(password.value),
             realName:realName.value,
             nickName:nickName.value
         }});

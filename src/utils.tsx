@@ -4,11 +4,11 @@ import crypto from "crypto";
 
 export const generateSaltedHash = (text:string):string => {
   const salt = "0w";
-  const hashedPassword:string= crypto.createHmac('sha3-512',salt).update(text).digest('hex');
+  const hashedPassword:string= crypto.createHmac('sha256',salt).update(text).digest('hex');
+  console.log(hashedPassword);////
   return hashedPassword;
 
 }
-
 
 export const checkOnlyNormalChars = (target:string):boolean => {
     const reg = /^[a-zA-Z0-9_]+$/;
