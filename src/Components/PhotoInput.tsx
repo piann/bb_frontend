@@ -74,8 +74,8 @@ interface IProps {
       {/* profile image */}
       {!uploading && <UserProfileImage src={fileUrl}/>}
       </Image>
-      <Input id={"photo"} type="file" accept=".png,.jpg,.jpeg" onChange={onChange} alt={idx}/>
-      <EditButton htmlFor="photo">
+      <Input id={idx?idx:"photo"} type="file" accept=".png,.jpg,.jpeg" onChange={onChange} alt={idx}/>
+      <EditButton htmlFor={idx?idx:"photo"}>
         <img src={editPicImage}/>
       </EditButton>
       </>

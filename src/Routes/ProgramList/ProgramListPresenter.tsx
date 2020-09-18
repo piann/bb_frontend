@@ -32,6 +32,7 @@ const CardListArea = styled.div`
 const CardBox = styled.div`
     background-color: white;
     padding-bottom:30px;
+    height:100%;
     display:flex;
     flex-direction:column;
     box-shadow:0 3px 7px 3px rgba(7, 7, 33, 0.1),0 1px 1px 1px rgba(0, 0, 0, 0.2);

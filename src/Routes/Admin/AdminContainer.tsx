@@ -15,7 +15,7 @@ export default () => {
 
     const onChangeLogo = async (e:any) => {
         const companyId = e.target.alt;
-
+        
         setUploading(true);
         const fileObjList = e.target.files;
         

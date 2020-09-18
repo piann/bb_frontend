@@ -47,6 +47,7 @@ const LoggedOutRoutes = () => <Switch>
 <Route exact path="/terms_of_service" component={TermsOfServices}></Route>
 <Route exact path="/reauth" component={EmailResend}></Route>
 <Route path='/confirm_secret/:key' component={ConfirmSecret}></Route>
+<Route exact path="/:name_id" component={BBP}></Route>
 <Redirect from="*" to="/" />
 </Switch>
 
