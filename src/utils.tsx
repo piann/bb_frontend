@@ -1,6 +1,15 @@
 import { useState } from "react";
 import {gql} from "apollo-boost";
 import crypto from "crypto";
+
+export const generateSaltedHash = (text:string):string => {
+  const salt = "0w";
+  const hashedPassword:string= crypto.createHmac('sha3-512',salt).update(text).digest('hex');
+  return hashedPassword;
+
+}
+
+
 export const checkOnlyNormalChars = (target:string):boolean => {
     const reg = /^[a-zA-Z0-9_]+$/;
     const result = reg.test(target);
