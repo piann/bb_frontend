@@ -473,7 +473,7 @@ export default ({
                                 } 
 
                                 const fileName = fileObjList[0].name;
-       
+
                                 setFileText(fileName);
                                 setFileData(fileObjList[0]);
                                 

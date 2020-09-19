@@ -246,6 +246,7 @@ export default ({
         } else {
             passwordDescription = "적절하지 않은 패스워드입니다";
             passwordDescriptionColor = "red";
+            buttonDisabled = true;
         }
     }
      else {

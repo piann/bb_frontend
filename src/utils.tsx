@@ -5,7 +5,6 @@ import crypto from "crypto";
 export const generateSaltedHash = (text:string):string => {
   const salt = "0w";
   const hashedPassword:string= crypto.createHmac('sha256',salt).update(text).digest('hex');
-  console.log(hashedPassword);////
   return hashedPassword;
 
 }

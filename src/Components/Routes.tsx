@@ -16,15 +16,16 @@ import ProgramList from "../Routes/ProgramList";
 import EmailResend from "../Routes/EmailResend";
 import ViewReport from "../Routes/ViewReport";
 import Privacy from "../Routes/Privacy";
-import UploadTest from "../Routes/UploadTest";
 import TermsOfServices from "../Routes/TermsOfServices";
 import Admin from "../Routes/Admin";
+import ResetPasswordBySecret from "../Routes/ResetPasswordBySecret";
 
 const LoggedInRoutes = () => <Switch>
+<Route exact path="/" component={Introduction}/>
+<Route exact path="/introduction" component={Introduction}/>
 <Route exact path="/privacy" component={Privacy}></Route>
 <Route exact path="/terms_of_service" component={TermsOfServices}></Route>
 <Route exact path="/log_in" component={LogIn}/>
-<Route exact path="/introduction" component={Introduction}/>
 <Route exact path="/profile" component={Profile}></Route>
 <Route exact path="/programs" component={ProgramList}></Route>
 {/*<Route exact path="/upload" component={UploadTest}></Route>*/}
@@ -40,13 +41,15 @@ const LoggedInRoutes = () => <Switch>
 
 const LoggedOutRoutes = () => <Switch>
 <Route exact path="/" component={Introduction}/>
+<Route exact path="/introduction" component={Introduction}/>
+<Route exact path="/privacy" component={Privacy}></Route>
+<Route exact path="/terms_of_service" component={TermsOfServices}></Route>
 <Route exact path="/log_in" component={LogIn}></Route>
 <Route exact path="/sign_up" component={SignUp}></Route>
 <Route exact path="/programs" component={ProgramList}></Route>
-<Route exact path="/privacy" component={Privacy}></Route>
-<Route exact path="/terms_of_service" component={TermsOfServices}></Route>
 <Route exact path="/reauth" component={EmailResend}></Route>
 <Route path='/confirm_secret/:key' component={ConfirmSecret}></Route>
+<Route path='/reset_password/:key' component={ResetPasswordBySecret}></Route>
 <Route exact path="/:name_id" component={BBP}></Route>
 <Redirect from="*" to="/" />
 </Switch>

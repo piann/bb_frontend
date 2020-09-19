@@ -1,0 +1,2 @@
+import ResetPasswordBySecretContainer from "./ResetPasswordBySecretContainer";
+export default ResetPasswordBySecretContainer;

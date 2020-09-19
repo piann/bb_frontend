@@ -20,6 +20,7 @@ export default (props:any) => {
 
     const clickFunc = async (e:MouseEvent<HTMLButtonElement>) => {
         password.setValue("");
+        console.log(generateSaltedHash(password.value));////
         setSubmitting(true);
         const {
             data:{
