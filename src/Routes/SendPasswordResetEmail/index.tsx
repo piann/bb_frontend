@@ -1,0 +1,2 @@
+import SendPasswordResetEmailContainer from "./SendPasswordResetEmailContainer";
+export default SendPasswordResetEmailContainer;

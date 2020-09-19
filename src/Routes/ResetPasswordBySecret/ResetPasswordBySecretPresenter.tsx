@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
-import { Link } from "react-router-dom";
 import {checkComplexPassword} from "../../utils"; 
 import { ToastContainer } from 'react-toastify';
 import {BarLoader, SpinLoader} from "../../Components/Loaders";
@@ -19,7 +18,7 @@ const FormBox = styled.div`
     margin-right: auto;
     display:grid;
     grid-auto-flow: row;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 3fr 6fr 1fr;
     align-items: center;
 
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
@@ -29,7 +28,7 @@ const FormBox = styled.div`
 
 
 const FormTitleArea = styled.div`
-    padding-left:12px;
+    padding-left:8px;
     display:flex;
     justify-content:flex-start;
     align-items:center;
@@ -153,10 +152,10 @@ export default ({
                     <Input placeholder="New password again" type={"password"} {...passwordAgain} />
                     <Description color={passwordAgainDescriptionColor}>{passwordAgainDescription}</Description>
                 </MainComponentWrapper>
+            </MainArea>
                 <MainComponentWrapper>
                     <Button text="Submit" disabled={buttonDisabled} onClick={clickFunc}/>
                 </MainComponentWrapper>
-            </MainArea>
             </>
         }
 </FormBox>

@@ -27,7 +27,6 @@ export default (props:any) => {
 
     const result : any = props.match.params;
     const key = result.key;
-    console.log(key.length);////
     if(key.length!==6+25+84){
         return <Page404/>
     }

@@ -19,6 +19,7 @@ import Privacy from "../Routes/Privacy";
 import TermsOfServices from "../Routes/TermsOfServices";
 import Admin from "../Routes/Admin";
 import ResetPasswordBySecret from "../Routes/ResetPasswordBySecret";
+import SendPasswordResetEmail from "../Routes/SendPasswordResetEmail";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/" component={Introduction}/>
@@ -48,6 +49,7 @@ const LoggedOutRoutes = () => <Switch>
 <Route exact path="/sign_up" component={SignUp}></Route>
 <Route exact path="/programs" component={ProgramList}></Route>
 <Route exact path="/reauth" component={EmailResend}></Route>
+<Route exact path="/find_password" component={SendPasswordResetEmail}></Route>
 <Route path='/confirm_secret/:key' component={ConfirmSecret}></Route>
 <Route path='/reset_password/:key' component={ResetPasswordBySecret}></Route>
 <Route exact path="/:name_id" component={BBP}></Route>

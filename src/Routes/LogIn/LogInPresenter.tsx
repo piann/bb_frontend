@@ -153,7 +153,7 @@ export default ({
                     <Link to="/sign_up">Creat Account</Link>
                 </FooterBox>
                 <FooterBox>
-                    <Link to="/">Forgot Password?</Link>
+                    <Link to="/find_password">Forgot Password?</Link>
                 </FooterBox>
             </LogInFooterArea>
             </>
