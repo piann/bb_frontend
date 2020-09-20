@@ -104,7 +104,7 @@ closeDate,
 lowPriceMin,
 lowPriceMax,
 mediumPriceMin,
-mediumriceMax,
+mediumPriceMax,
 highPriceMin,
 highriceMax,
 fatalPriceMin,
@@ -152,25 +152,45 @@ exclusionValueList,
                     <BasicTableContent>
                         <TableContentWrapper>
                             <TableText marginLeft={0} marginRight={0}>⚫  Fatal</TableText>
-                            <TableText marginLeft={0} marginRight={0}>{"₩"}{fatalPriceMin}{" ~ "}{"₩"}{fatalPriceMax}</TableText>
+                            <TableText marginLeft={0} marginRight={0}>
+                                {(fatalPriceMax===0||fatalPriceMax===undefined)?
+                                "Credit Only":
+                                `₩${fatalPriceMin} ~ ₩${fatalPriceMax}`
+                                }
+                            </TableText>
                         </TableContentWrapper>
                     </BasicTableContent>
                     <BasicTableContent>
                         <TableContentWrapper>
                             <TableText marginLeft={0} marginRight={0}>🔴  High</TableText>
-                            <TableText marginLeft={0} marginRight={0}>{"₩"}{highPriceMin}{" ~ "}{"₩"}{highriceMax}</TableText>
+                            <TableText marginLeft={0} marginRight={0}>
+                                {(highriceMax===0||highriceMax===undefined)?
+                                "Credit Only":
+                                `₩${highPriceMin} ~ ₩${highriceMax}`
+                                }
+                            </TableText>
                         </TableContentWrapper>
                     </BasicTableContent>
                     <BasicTableContent>
                         <TableContentWrapper>
                             <TableText marginLeft={0} marginRight={0}>🟠  Medium</TableText>
-                            <TableText marginLeft={0} marginRight={0}>{"₩"}{mediumPriceMin}{" ~ "}{"₩"}{mediumriceMax}</TableText>
+                            <TableText marginLeft={0} marginRight={0}>
+                                {(mediumPriceMax===0||mediumPriceMax===undefined)?
+                                "Credit Only":
+                                `₩${mediumPriceMin} ~ ₩${mediumPriceMax}`
+                                }
+                            </TableText>
                         </TableContentWrapper>
                     </BasicTableContent>
                     <BasicTableContent>
                         <TableContentWrapper>
                             <TableText marginLeft={0} marginRight={0}>🟡  Low</TableText>
-                            <TableText marginLeft={0} marginRight={0}>{"₩"}{lowPriceMin}{" ~ "}{"₩"}{lowPriceMax}</TableText>
+                            <TableText marginLeft={0} marginRight={0}>
+                                {(lowPriceMax===0||lowPriceMax===undefined)?
+                                "Credit Only":
+                                `₩${lowPriceMin} ~ ₩${lowPriceMax}`
+                                }
+                            </TableText>
                         </TableContentWrapper>
                     </BasicTableContent>
                 </BasicTableBox>

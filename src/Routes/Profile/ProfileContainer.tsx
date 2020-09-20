@@ -9,6 +9,7 @@ import {GET_MY_PROFILE} from "./ProfileQueries";
 
 
 export default () => {
+    console.log("start");////
     const {data, loading} = useQuery(GET_MY_PROFILE);
 
     const [uploading, setUploading] = useState(false);
@@ -56,12 +57,13 @@ export default () => {
     credit,
     numOfVul,
     reportInfoList;
-    
+    console.log("start2");////
 
     if(!loading){
             const {
                 getMyProfile:getMyProfileResponse
             } = data;
+            console.log("start3");////
         if(getMyProfileResponse!==null){
             role = getMyProfileResponse.role;
             email = getMyProfileResponse.email;

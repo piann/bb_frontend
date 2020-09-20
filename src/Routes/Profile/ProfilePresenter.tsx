@@ -206,10 +206,10 @@ export default ({
         <MiniTableBox>
                     <MiniTableHead>
                         <TableContentWrapperWithRatio>
-                            <TableText marginLeft={0} marginRight={10}>Reported Vulnerability</TableText>
-                            <TableText marginLeft={10} marginRight={10}>company</TableText>
-                            <TableText marginLeft={0} marginRight={0}>status</TableText>
-                            <TableText marginLeft={10} marginRight={0}>result</TableText>
+                            <TableText marginLeft={0} marginRight={10}>{"Reported Vulnerability"}</TableText>
+                            <TableText marginLeft={10} marginRight={10}>{"Company"}</TableText>
+                            <TableText marginLeft={0} marginRight={0}>{"Status"}</TableText>
+                            <TableText marginLeft={10} marginRight={0}>{"Result"}</TableText>
                         </TableContentWrapperWithRatio>
                     </MiniTableHead>
                     {reportInfoList.map((dictObj:any, index:any) => {

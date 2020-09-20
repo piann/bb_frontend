@@ -40,9 +40,13 @@ export default (props:any) => {
             } = signInResponse;
             if(ok===true||token!==null){
                 await localLogInMutation({variables:{token}});
+                /*
                 history.push({
                     pathname: '/',
                 });
+                */
+                window.location.href = "/profile";
+                
                 
             } else if(ok===false&&error==="NEW_ACCOUNT"&&token===null){
 

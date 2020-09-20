@@ -21,7 +21,7 @@ export const GET_PROGRAM_BODY_CONTENTS = gql`
             lowPriceMin
             lowPriceMax
             mediumPriceMin
-            mediumriceMax
+            mediumPriceMax
             highPriceMin
             highriceMax
             fatalPriceMin
@@ -55,7 +55,7 @@ export default (props:any) => {
     lowPriceMin,
     lowPriceMax,
     mediumPriceMin,
-    mediumriceMax,
+    mediumPriceMax,
     highPriceMin,
     highriceMax,
     fatalPriceMin,
@@ -79,7 +79,7 @@ export default (props:any) => {
             lowPriceMin = getProgramBodyContentsResponse.lowPriceMin;
             lowPriceMax = getProgramBodyContentsResponse.lowPriceMax;
             mediumPriceMin = getProgramBodyContentsResponse.mediumPriceMin;
-            mediumriceMax = getProgramBodyContentsResponse.mediumriceMax;
+            mediumPriceMax = getProgramBodyContentsResponse.mediumPriceMax;
             highPriceMin = getProgramBodyContentsResponse.highPriceMin;
             highriceMax = getProgramBodyContentsResponse.highriceMax;
             fatalPriceMin = getProgramBodyContentsResponse.fatalPriceMin;
@@ -105,7 +105,7 @@ export default (props:any) => {
         lowPriceMin={lowPriceMin}
         lowPriceMax={lowPriceMax}
         mediumPriceMin={mediumPriceMin}
-        mediumriceMax={mediumriceMax}
+        mediumPriceMax={mediumPriceMax}
         highPriceMin={highPriceMin}
         highriceMax={highriceMax}
         fatalPriceMin={fatalPriceMin}
