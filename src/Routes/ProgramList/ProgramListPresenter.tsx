@@ -108,7 +108,7 @@ export default ({
 loading,
 programInfoList,
 }:any) =>{
-    console.log(programInfoList);////
+
     return (<>
     {loading?
     <LoaderWrapper>

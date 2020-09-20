@@ -60,7 +60,7 @@ export default (props:any) => {
                 setSubmitting(false);
                 toast("Login Fail !", toastOpt as any);
             }
-            //// u must add case for locked NEW_ACCOUNT
+           
         }
     }
 

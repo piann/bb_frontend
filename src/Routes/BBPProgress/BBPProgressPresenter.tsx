@@ -74,23 +74,7 @@ const CenteredText = styled.div`
     justify-content:center;
     margin-bottom:20px;
 `;
-/*
-const elements = ['이런 것을 이렇게 해야한다', '저렇게 이렇게 꼭 해야한다', '이런 것을 알아야한다.'];////
-const testTargetObjList = [
-    {
-      reportId: "ckdd2g2au0006a1p4donly56g",
-      authorNickName: "babubabapplebannanke",
-      status: "0",
-      result: null
-    },
-    {
-        reportId: "ckdd2g2au0006a1p4donly56g",
-        authorNickName: "jtjisGod",
-        status: "0",
-        result: null
-      }
-  ] 
-*/
+
 
 export default ({
     loading,

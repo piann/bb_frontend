@@ -217,22 +217,6 @@ label {
 `;
 
 
-/*
-const testOptions = [
-    { value: "chocolate", label: "Cross-Site Scripting (XSS) From Earth" },
-    { value: "strawberry", label: "SQL Injection" },
-    { value: "vanilla", label: "Remote Code Injection" }
-] as any;////
-
-
-const testTips = [
-    "보고서는 1항을 지켜서 써야한다",
-    "보고서는 2항을 지켜서 제보해야한다 등등",
-    "보고서는 3항을 지켜서 제보해야한다 등등",
-    "보고서는 4항을 지켜서 제보해야한다 등등",
-]; ////
-
-*/
 
 export default ({
     loading,
