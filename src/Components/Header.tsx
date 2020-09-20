@@ -7,6 +7,7 @@ import {LOCAL_LOGGED_IN_QUERY} from "../sharedQueries";
 import UserProfileImage from "./UserProfileImage";
 import {gql} from "apollo-boost";
 import {fileServerAddr} from "../common";
+import betaImg from "../images/beta.png";
 
 export const GET_MY_PROFILE = gql`
     query getMyProfile{
@@ -94,6 +95,7 @@ return(
 <Header>
     <Link to="/">
       <LogoSpace src={mainLogo}/>
+      <img src={betaImg}/>
     </Link>
     <MenuSpace>
     <MenuLink to="/">
