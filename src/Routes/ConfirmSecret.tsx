@@ -44,6 +44,7 @@ export default (props:any) =>{
         } = confirmSecretResponse;
         if(ok===true||token!==null){
             await localLogInMutation({variables:{token}});
+            window.location.href = "/profile";
         }
     }
     confirmAndLogin()

@@ -242,7 +242,7 @@ export default ({
             }
             <MiniTitleText>{"0. Hacker "}</MiniTitleText>
             <HackerInfoRow>
-                <HackerProfileImg src={profilePicId?`http://localhost:4002/i/${profilePicId}/`:grayProfile}/>
+                <HackerProfileImg src={profilePicId?`${fileServerAddr}i/${profilePicId}/`:grayProfile}/>
                 <HackerNickNameText>{authorNickName}</HackerNickNameText>
             </HackerInfoRow>
 

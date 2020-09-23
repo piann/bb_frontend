@@ -5,6 +5,7 @@ import {statusDict} from "../../common";
 import {BarLoader, SpinLoader} from "../../Components/Loaders"
 import PhotoInput from "../../Components/PhotoInput";
 import { ToastContainer } from "react-toastify";
+import {fileServerAddr} from "../../common";
 
 const ProfileWrapper = styled.div`
     display:flex;
@@ -177,7 +178,7 @@ export default ({
     <ProfileContent>
         <PhotoInput
         uploading={uploading}
-        fileUrl={profilePictureId?`http://localhost:4002/i/${profilePictureId}/`:null}
+        fileUrl={profilePictureId?`${fileServerAddr}i/${profilePictureId}/`:null}
         onChange={onChangeProfile}
         />
         <InfoText>{nickName}</InfoText>
