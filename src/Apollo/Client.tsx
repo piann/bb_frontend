@@ -1,8 +1,9 @@
 import ApolloClient from "apollo-boost";
 import { defaults, resolvers } from "./LocalState";
+import {backServerAddr} from "../common";
 
 export default new ApolloClient({
-  uri: "http://172.31.5.94:4001/",
+  uri: backServerAddr,
   credentials:'same-origin',
   clientState: {
     defaults,

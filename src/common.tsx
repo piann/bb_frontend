@@ -25,4 +25,5 @@ export const categoryUpperToNormal = {
     "OTHERS":"Others"
 } as any;
 
-export const fileServerAddr = "http://172.31.5.94:4002/";
+export const fileServerAddr = "http://127.0.0.1:4002/";
+export const backServerAddr = "http://127.0.0.1:4001/"
