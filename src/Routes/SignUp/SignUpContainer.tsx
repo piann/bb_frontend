@@ -39,8 +39,8 @@ export default () => {
         if(!loading){
 
             if(registerAccountResponse===true){
-                toast("Success to register !", toastOpt as any);
-                setTimeout(()=>{window.location.href = "/";}, 2000)
+                toast("메일에서 인증을 완료해주세요 !", toastOpt as any);
+                setTimeout(()=>{window.location.href = "/";}, 3000)
             } else {
                 toast("There is an error", toastOpt as any);
                 setSubmitting(false);
