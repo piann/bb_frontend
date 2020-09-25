@@ -29,4 +29,4 @@ export const categoryUpperToNormal = {
 } as any;
 
 export const fileServerAddr = isProduction?"https://file.zerowhale.io/":"http://127.0.0.1:4002/"
-export const backServerAddr = isProduction?"https://zerowhale.io/api":"http://127.0.0.1:4001/"
+export const backServerAddr = isProduction?"https://api.zerowhale.io/":"http://127.0.0.1:4001/"
