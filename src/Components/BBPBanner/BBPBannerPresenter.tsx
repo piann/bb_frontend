@@ -47,6 +47,12 @@ const LogoArea = styled.div`
     padding-right:15px;
 `
 
+const LogoImg = styled.img`
+    max-height:100%;
+    max-width:100%;
+    object-fit:cover;
+`
+
 const TopArea = styled.div`
     width:100%;
     display:flex;
@@ -196,7 +202,7 @@ const BBPBanner:React.SFC<Props> = ({
             </BottomArea>
         </BannerMainArea>
         <LogoArea>
-        <img src={logoId?`${fileServerAddr}i/${logoId}/`:basicLogo} height={"100%"} alt={""}/>        
+            <LogoImg src={logoId?`${fileServerAddr}i/${logoId}/`:basicLogo} alt={""}/>        
         </LogoArea>
         </>
         }
