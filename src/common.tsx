@@ -21,7 +21,7 @@ export const statusDict = {
 
 export const categoryUpperToNormal = {
     "WEB":"Web",
-    "ANDROID":"Androird",
+    "ANDROID":"Android",
     "IOS":"IOS",
     "WINDOWS":"Windows",
     "LINUX":"Linux",
