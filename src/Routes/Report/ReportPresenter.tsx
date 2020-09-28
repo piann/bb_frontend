@@ -286,6 +286,7 @@ export default ({
                     <InfoText>{"취약점이 발견된 대상을 선택하세요\n\n"}</InfoText>
                     <Dropdown options={inScopeTargetList} defaultValue={inScopeTargetList[0].options[0]} onChange={
                              (selected:any) => {
+                                console.log(selected.value);////
                                 setTargetId(selected.value);
                               }
                     }/>

@@ -92,6 +92,49 @@ const HackerProfileImg = styled.img`
 `;
 
 const PaperArea = styled.div`
+margin-top:20px;
+margin-bottom:50px;
+.paper {
+  background: #fff;
+  padding: 30px;
+  position: relative;
+}
+
+.paper,
+.paper::before,
+.paper::after {
+  /* Styles to distinguish sheets from one another */
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+  border: 1px solid #bbb;
+}
+
+.paper::before,
+.paper::after {
+  content: "";
+  position: absolute;
+  height: 95%;
+  width: 99%;
+  background-color: #eee;
+}
+
+.paper::before {
+  right: 15px;
+  top: 0;
+  transform: rotate(-1deg);
+  z-index: -1;
+}
+
+.paper::after {
+  top: 5px;
+  right: -5px;
+  transform: rotate(1deg);
+  z-index: -2;
+}
+
+`;
+
+
+const EtcPaperArea = styled.div`
 display:none;
 margin-top:20px;
 margin-bottom:50px;
@@ -285,7 +328,7 @@ export default ({
                 <EtcArrow src={hideArrow} onClick={toggleHide}/>
             </EtcHeader>
 
-            <PaperArea id="EtcContent">
+            <EtcPaperArea id="EtcContent">
                 <div className={"paper"}>
                 {
                     location&&
@@ -310,7 +353,7 @@ export default ({
                 }
 
                 </div>
-            </PaperArea>
+            </EtcPaperArea>
             </>
             }
             </InformationContent>

@@ -192,7 +192,7 @@ const BBPBanner:React.SFC<Props> = ({
                     <BottomSubArea>
                     <BottomSubHead>
                         <img src={wonIcon} width={"22px"} height={"22px"} alt={""}/>
-                        <BottomSubHeadText>{"현상금 범위"}</BottomSubHeadText>
+                        <BottomSubHeadText>{"바운티 범위"}</BottomSubHeadText>
                     </BottomSubHead>
                     <BottomSubValue> {(maxBounty===undefined||maxBounty===0)?
                     "Credit Only":
