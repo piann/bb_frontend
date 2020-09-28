@@ -27,6 +27,27 @@ const FormBox = styled.div`
 `;
 
 
+const MiniFormBox = styled.div`
+    background-color: white;
+    border-radius: ${props => props.theme.borderRadius};
+    margin-top:100px;
+    height: 150px;
+    padding: 8px 20px;
+    min-width:250px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+
+    box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+`;
+
+
+
 const FormTitleArea = styled.div`
     padding-left:8px;
     display:flex;
@@ -77,7 +98,6 @@ const ResultText = styled.div`
     word-spacing: 0.1em;
     line-height: 2em;
     white-space: pre-line;
-    margin-top:100px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -109,10 +129,13 @@ export default ({
     return(<>
     <ToastContainer
     />
-    <FormBox>
-        {done?
+    {done?
+    <MiniFormBox>
         <ResultText>{"이메일 전송이 완료되었습니다."}</ResultText>
-        :
+    </MiniFormBox>
+    :
+    <FormBox>
+        
         <>
         {submitting?
             <LoaderWrapper>
@@ -132,8 +155,8 @@ export default ({
             </>
         }
         </>
-        }
 </FormBox>
+}
 </>)
 
 }

@@ -143,7 +143,7 @@ export default ({
     
     let emailDescription = "⠀"
     let emailDescriptionColor;
-    let realNameDescription = "실명을 기재하세요 (생략가능)";
+    let realNameDescription = "실명을 기재하세요";
     let nickNameDescription = "공개되는 아이디(3자 이상): zerowhale.kr/u/<nickname>"
     let nickNameDescriptionColor;
     let passwordDescription = "영어와 특수문자, 숫자를 섞어서 8자 이상"

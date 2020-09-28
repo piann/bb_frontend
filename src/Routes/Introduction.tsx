@@ -147,7 +147,7 @@ export default () => {
             <DescText>{"보안에 자신있다는\n마케팅 요소로 활용됩니다."}</DescText>
         </DescBox>
     </MainBody>
-    <RelFooter/>;
+    <RelFooter/>
     </WholeWrapper>
     )
 }
