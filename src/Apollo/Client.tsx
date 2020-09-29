@@ -4,7 +4,7 @@ import {backServerAddr} from "../common";
 
 export default new ApolloClient({
   uri: backServerAddr,
-  credentials:'include', // 'same-origin',
+  credentials:'same-origin',
   clientState: {
     defaults,
     resolvers
