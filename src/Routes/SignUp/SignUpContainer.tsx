@@ -35,7 +35,6 @@ export default () => {
             nickName:nickName.value
         }});
 
-
         if(!loading){
 
             if(registerAccountResponse===true){

@@ -303,12 +303,12 @@ export default ({
         <SignUpFooterArea>
             <CheckBoxRow>
                 <input type="checkbox" name="color" onChange={(e)=>setCheckedPrivacy(e.target.checked)}/>
-                <SLink to="/privacy">{"개인정보 수집•이용"}</SLink>
+                <SLink to="/privacy" target="_blank">{"개인정보 수집•이용"}</SLink>
                 <JText>{"에 동의합니다 (필수)"}</JText>
             </CheckBoxRow>
             <CheckBoxRow>
                 <input type="checkbox" name="color" onChange={(e)=>setCheckedTerm(e.target.checked)}/>
-                <SLink to="/terms_of_service">{"서비스 이용약관"}</SLink>
+                <SLink to="/terms_of_service" target="_blank">{"서비스 이용약관"}</SLink>
                 <JText>{"에 동의합니다 (필수)"}</JText>
             </CheckBoxRow>
             <Button text="Sign Up" disabled={buttonDisabled} onClick={clickFunc}/>
