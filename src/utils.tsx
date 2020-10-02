@@ -2,6 +2,8 @@ import { useState } from "react";
 import {gql} from "apollo-boost";
 import crypto from "crypto";
 
+export const addCommaForMoney = (money:any) => money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
 export const generateSaltedHash = (text:string):string => {
   const salt = "0w";
   const hashedPassword:string= crypto.createHmac('sha256',salt).update(text).digest('hex');
@@ -108,12 +110,12 @@ export const getTimeGapStr = (startTime:any, finishTime:any) =>{
 
 export const getBountyRangeText = (min:number,max:number):string =>{
   if(max===0){
-    return "Only Points";
+    return "Credit Only";
   } else {
     if(min===0){
-      return "Points⠀~⠀₩".concat(max.toString());
+      return "Credit⠀~⠀₩".concat(addCommaForMoney(max));
     } else {
-      return "₩"+min.toString()+"⠀~⠀₩"+max.toString();
+      return "₩"+addCommaForMoney(min)+"⠀~⠀₩"+addCommaForMoney(max);
     }
   }
 }

@@ -4,7 +4,7 @@ import BBPBanner from "../../Components/BBPBanner";
 import BBPSubMenu from "../../Components/BBPSubMenu";
 import {InformationBox, InformationTitle, InformationContent} from "../../Components/InformationElement";
 import {BasicTableBox, BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
-import {dateStringToDotFormat} from "../../utils";
+import {dateStringToDotFormat, addCommaForMoney} from "../../utils";
 
 const BBPBody = styled.div`
     position: relative;
@@ -155,7 +155,7 @@ exclusionValueList,
                             <TableText marginLeft={0} marginRight={0}>
                                 {(fatalPriceMax===0||fatalPriceMax===undefined)?
                                 "Credit Only":
-                                `₩${fatalPriceMin} ~ ₩${fatalPriceMax}`
+                                `₩${addCommaForMoney(fatalPriceMin)} ~ ₩${addCommaForMoney(fatalPriceMax)}`
                                 }
                             </TableText>
                         </TableContentWrapper>
@@ -166,7 +166,7 @@ exclusionValueList,
                             <TableText marginLeft={0} marginRight={0}>
                                 {(highriceMax===0||highriceMax===undefined)?
                                 "Credit Only":
-                                `₩${highPriceMin} ~ ₩${highriceMax}`
+                                `₩${addCommaForMoney(highPriceMin)} ~ ₩${addCommaForMoney(highriceMax)}`
                                 }
                             </TableText>
                         </TableContentWrapper>
@@ -177,7 +177,7 @@ exclusionValueList,
                             <TableText marginLeft={0} marginRight={0}>
                                 {(mediumPriceMax===0||mediumPriceMax===undefined)?
                                 "Credit Only":
-                                `₩${mediumPriceMin} ~ ₩${mediumPriceMax}`
+                                `₩${addCommaForMoney(mediumPriceMin)} ~ ₩${addCommaForMoney(mediumPriceMax)}`
                                 }
                             </TableText>
                         </TableContentWrapper>
@@ -188,7 +188,7 @@ exclusionValueList,
                             <TableText marginLeft={0} marginRight={0}>
                                 {(lowPriceMax===0||lowPriceMax===undefined)?
                                 "Credit Only":
-                                `₩${lowPriceMin} ~ ₩${lowPriceMax}`
+                                `₩${addCommaForMoney(lowPriceMin)} ~ ₩${addCommaForMoney(lowPriceMax)}`
                                 }
                             </TableText>
                         </TableContentWrapper>

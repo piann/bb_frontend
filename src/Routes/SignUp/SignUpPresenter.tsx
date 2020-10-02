@@ -280,23 +280,23 @@ export default ({
         </SignUpTitleArea>
         <MainArea>
             <MainComponentWrapper>
-                <Input placeholder="Email Address (*)" {...email}/>
+                <Input placeholder="Email Address (*)" {...email} maxLength={60}/>
                 <Description color={emailDescriptionColor}>{emailDescription}</Description>
             </MainComponentWrapper>
             <MainComponentWrapper>
-                <Input placeholder="Real name" {...realName} />
+                <Input placeholder="Real name" {...realName} maxLength={36}/>
             <Description>{realNameDescription}</Description>
             </MainComponentWrapper>
             <MainComponentWrapper>
-                <Input placeholder="Nickname (*)" {...nickName} />
+                <Input placeholder="Nickname (*)" {...nickName} maxLength={24}/>
                 <Description color={nickNameDescriptionColor}>{nickNameDescription}</Description>
             </MainComponentWrapper>
             <MainComponentWrapper>
-                <Input placeholder="Password (*)" {...password} type={"password"}/>
+                <Input placeholder="Password (*)" {...password} type={"password"} maxLength={24}/>
                 <Description color={passwordDescriptionColor}>{passwordDescription}</Description>
             </MainComponentWrapper>
             <MainComponentWrapper>
-                <Input placeholder="Password Confirmation (*)" {...passwordAgain} type={"password"}/>
+                <Input placeholder="Password Confirmation (*)" {...passwordAgain} type={"password"} maxLength={24}/>
                 <Description color={passwordAgainDescriptionColor}>{passwordAgainDescription}</Description>
             </MainComponentWrapper>
         </MainArea>

@@ -6,6 +6,7 @@ import wonIcon from "../../images/won.png";
 import reportIcon from "../../images/report.png";
 import basicLogo from "../../images/zerowhaleBasic.png";
 import {fileServerAddr} from "../../common";
+import {addCommaForMoney} from "../../utils";
 import {SpinLoader} from "../Loaders";
 
 const BBPBannerBox = styled.div`
@@ -196,7 +197,7 @@ const BBPBanner:React.SFC<Props> = ({
                     </BottomSubHead>
                     <BottomSubValue> {(maxBounty===undefined||maxBounty===0)?
                     "Credit Only":
-                    `₩${minBounty} ~ ₩${maxBounty}`
+                    `₩${addCommaForMoney(minBounty)} ~ ₩${addCommaForMoney(maxBounty)}`
                     }</BottomSubValue>
                 </BottomSubArea>
             </BottomArea>
