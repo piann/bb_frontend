@@ -160,13 +160,6 @@ programInfoList,
             })}
             
 
-
-        <CardBox>456</CardBox>
-        <CardBox>123</CardBox>
-        <CardBox>456</CardBox>
-        <CardBox>123</CardBox>
-        <CardBox>456</CardBox>
-
     </CardListArea>}
     </>
     )

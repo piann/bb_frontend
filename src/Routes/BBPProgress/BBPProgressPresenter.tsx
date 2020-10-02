@@ -75,6 +75,13 @@ const CenteredText = styled.div`
     margin-bottom:20px;
 `;
 
+const LoaderWrapper = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:100px;
+    width:100%;
+`;
 
 export default ({
     loading,
@@ -109,7 +116,11 @@ export default ({
     <BBPSubMenu nameId={nameId}/>
     <BBPBody>
         {loading===false&&responseSuccess===false&&<Redirect to={"/"}/>}
-        {loading?<BarLoader/>:
+        {loading?
+        <LoaderWrapper>
+            <BarLoader/>
+        </LoaderWrapper>
+        :
             <>
             <InformationBox>
                 <InformationTitle>{"Summary"}</InformationTitle>
