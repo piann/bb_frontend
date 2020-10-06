@@ -20,8 +20,6 @@ export default (props:any) => {
     // setting for submit report
     const [submitReportMutation, {loading:submitLoading}] = useMutation(SUBMIT_REPORT);
     
-    const [targetId, setTargetId] = useState();
-    const [vId, setVId] = useState();
     const [attackComplexity, setAttackComplexity] = useState();
     const [requiredPriv, setRequiredPriv] = useState();
     const [userInteraction, setUserInteraction] = useState();
@@ -37,6 +35,10 @@ export default (props:any) => {
     const dumpInput = useInput("");
     const additionalTextInput = useInput("");
     
+
+    const [targetId, setTargetId] = useState(undefined);
+    const [vId, setVId] = useState(undefined);
+
     const [fileData,setFileData] = useState(null);
     const [fileText, setFileText] = useState("Choose a file...");
 
@@ -47,6 +49,8 @@ export default (props:any) => {
 
     const clickFunc = async () => {
         setButtonDisabled(true);
+
+
         const {
             data:{
                 submitReport:submitReportResponse
@@ -191,8 +195,6 @@ export default (props:any) => {
                 }
             }
         }
-        
-
     }
 
     return <ReportPresenter

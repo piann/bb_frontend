@@ -11,9 +11,9 @@ import { dateStringToDotFormat } from "../../utils";
 import { Radio, RadioGroup } from 'rsuite';
 import Button from "../../Components/Button";
 import CheckDialog from "../../Components/CheckDialog";
-import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { toastOpt } from "../../common";
+import basicLogo from "../../images/zerowhaleBasic.png";
 
 const BBPBody = styled.div`
     position: relative;
@@ -125,7 +125,13 @@ const InputLeftText = styled.div`
     font-weight:600;
 `
 
-
+const SpaceBetweenRow = styled.div`
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-right:10px;
+`
 
 const MiniTitleText = styled.div`
     word-break: keep-all;
@@ -216,6 +222,13 @@ label {
 
 `;
 
+const LoaderWrapper = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:50px;
+    width:100%;
+`;
 
 
 export default ({
@@ -261,7 +274,11 @@ export default ({
 <BBPSubMenu nameId={nameId}/>
 <ToastContainer/>
 <BBPBody>
-    {loading?<></>:
+    {loading?
+    <LoaderWrapper>
+        <BarLoader/>
+    </LoaderWrapper>
+    :
     <>
     <BBPLeft>
         <InformationBox>
@@ -282,11 +299,17 @@ export default ({
                     <CircleContent xIndex={30} yIndex={958}>4</CircleContent>
                 </LeftSpace>
                 <RightSpace>
-                    <MiniTitleText>{"\nAsset"}</MiniTitleText>
+                    <SpaceBetweenRow>
+                        <MiniTitleText>{"\nAsset"}</MiniTitleText>
+                        <img src={basicLogo} width={"30px"} height={"30px"} onLoad={()=>{
+                            setTargetId(inScopeTargetList[0].options[0].value);
+                            setVId(vulnerabilityList[0].options[0].value);
+                        }}/>
+                    </SpaceBetweenRow>
                     <InfoText>{"취약점이 발견된 대상을 선택하세요\n\n"}</InfoText>
                     <Dropdown options={inScopeTargetList} defaultValue={inScopeTargetList[0].options[0]} onChange={
                              (selected:any) => {
-                                console.log(selected.value);////
+                                
                                 setTargetId(selected.value);
                               }
                     }/>

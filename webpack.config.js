@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+import createStyledComponentsTransformer from 'typescript-styled-components-plugin';
 
 module.exports = {
   // webpack will take the files from ./src/index
