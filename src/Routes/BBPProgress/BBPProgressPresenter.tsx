@@ -6,7 +6,7 @@ import {InformationBox, InformationTitle, InformationContent} from "../../Compon
 import {BasicTableBox, BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
 import {BarLoader} from "../../Components/Loaders";
 import { Redirect } from "react-router-dom";
-import { getTimeGapStr } from "../../utils";
+import { getTimeGapStr, addCommaForMoney } from "../../utils";
 import {statusDict} from "../../common";
 
 
@@ -152,7 +152,7 @@ export default ({
                         </GridContent>
                         <GridContent>
                             <BoldInfoText>{"총 지불 포상금 :"}</BoldInfoText>
-                            <InfoText>{"₩"}{totalReward}</InfoText>
+                            <InfoText>{"₩"}{addCommaForMoney(totalReward)}</InfoText>
                         </GridContent>
                         <GridContent>
                             <BoldInfoText>{"최근 레포트 제출 시점 :"}</BoldInfoText>

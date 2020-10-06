@@ -32,6 +32,10 @@ const RelativeFooterWrapper = styled.footer`
 
 type FooterProps = {};
 
+const FooterImage = styled.div`
+
+`;
+
 export const Footer: React.FC<FooterProps> = () => (
   <div>
     <FooterWrapper>
