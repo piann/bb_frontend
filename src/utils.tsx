@@ -55,6 +55,12 @@ mutation logUserIn($token: String!) {
 }
 `;
 
+export const LOCAL_LOG_OUT = gql`
+mutation logUserOut{
+  logUserOut @client
+}
+`;
+
 
 export const dateStringToDotFormat = (dateString:any) =>{
     const res = dateString.slice(0,10).replace(/-/g,".");

@@ -6,13 +6,20 @@ import axios from "axios";
 import { fileServerAddr, toastOpt } from "../../common";
 import { toast } from "react-toastify";
 import {GET_MY_PROFILE} from "./ProfileQueries";
+import { useMutation } from "@apollo/react-hooks";
+import {LOCAL_LOG_OUT} from "../../utils";
 
 
 export default () => {
 
     const {data, loading} = useQuery(GET_MY_PROFILE);
 
+    const [localLogOutMutation] = useMutation(LOCAL_LOG_OUT);
     const [uploading, setUploading] = useState(false);
+
+    const clickFunc = async (e:any) => {
+        await localLogOutMutation();
+    }
 
     const onChangeProfile = async (e:any) => {
         setUploading(true);
@@ -95,5 +102,6 @@ export default () => {
         reportInfoList={reportInfoList}
         uploading={uploading}
         onChangeProfile={onChangeProfile}
+        clickFunc={clickFunc}
     />
 }

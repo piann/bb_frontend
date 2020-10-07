@@ -6,6 +6,7 @@ import {BarLoader, SpinLoader} from "../../Components/Loaders"
 import PhotoInput from "../../Components/PhotoInput";
 import { ToastContainer } from "react-toastify";
 import {fileServerAddr} from "../../common";
+import Button from "../../Components/Button";
 
 const ProfileWrapper = styled.div`
     display:flex;
@@ -71,7 +72,11 @@ const SpecRow = styled.div`
     flex-direction:row;
 `;
 
-
+const LogOutBox = styled.div`
+    display:flex;
+    justify-content: center;
+    margin-bottom: 30px;
+`;
 
 export const MiniTableBox = styled.div`
 display:flex;
@@ -99,7 +104,7 @@ height: 40px;
 padding-left:10px;
 padding-right:10px;
 width:100%;
-`
+`;
 
 const TableContentWrapperWithRatio = styled.a`
     width:100%;
@@ -167,7 +172,8 @@ export default ({
     reportInfoList,
     loading,
     uploading,
-    onChangeProfile
+    onChangeProfile,
+    clickFunc
 }:any) => <ProfileWrapper>
     <ToastContainer/>
 {loading?
@@ -183,7 +189,9 @@ export default ({
         />
         <InfoText>{nickName}</InfoText>
     </ProfileContent>
- 
+    <LogOutBox>
+        <Button text="Log Out" width={"100px"} onClick={clickFunc}/>
+    </LogOutBox>
     <SpecRow>
         <BoldText>{"Credit⠀:⠀"}</BoldText>
         <InfoText>{credit}</InfoText>
