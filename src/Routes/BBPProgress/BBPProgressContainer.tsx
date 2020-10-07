@@ -2,6 +2,7 @@ import React from "react";
 import BBPProgressPresenter from "./BBPProgressPresenter";
 import {gql} from "apollo-boost";
 import { useQuery } from "@apollo/client";
+import Page404 from "../../Components/Page404";
 
 export const GET_BUSINESS_BOUNTY_PAGE = gql`
     query getBusinessBountyPage(
@@ -72,6 +73,7 @@ export default (props:any) => {
 
         } else {
             responseSuccess = false;
+            return <Page404 />
         }
 
     }
