@@ -258,6 +258,7 @@ export default ({
     location,
     enviroment,
     dump,
+    fileDownloadFunc
 }:any) => (
 <>
 <BBPBanner hideButton={true} nameId={nameId}/>
@@ -276,9 +277,7 @@ export default ({
             <HeadWrapper>
             <TitleLogo src={basicLogo}/>
             <Line/>
-                <a href={`${fileServerAddr}i/${fileId}/`}>
-                    <Button text={"Download attachment"} width={"180px"}/>
-                </a>
+                <Button text={"Download attachment"} width={"180px"} onClick={fileDownloadFunc}/>
             </HeadWrapper>
             :
             <></>

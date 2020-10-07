@@ -3,6 +3,8 @@ import { useQuery } from "@apollo/client";
 import ViewReportPresenter from "./ViewReportPresenter";
 import {gql} from "apollo-boost";
 import Page404 from "../../Components/Page404";
+import axios from "axios";
+import { fileServerAddr } from "../../common";
 
 export const GET_REPORT_CONTENT = gql`
     query getReportContent(
@@ -36,7 +38,7 @@ export default (props:any) => {
     const {data, loading } = useQuery(GET_REPORT_CONTENT, {variables:{rId}})
 
     let
-    fileId,
+    fileId:any,
     nameId,
     profilePicId,
     authorNickName,
@@ -74,7 +76,27 @@ export default (props:any) => {
             return <Page404 />
         }
     }
-    console.log(profilePicId);////
+
+    const fileDownloadFunc = async () => {
+        const jwt = localStorage.getItem("token");
+        const res = await axios({
+            method: "get",
+            url: fileServerAddr.concat("i/".concat(fileId.toString())),
+            headers: {
+            Authorization: jwt,
+            "Content-Type" : "multipart/form-data",
+            },
+            responseType: 'blob',
+        });
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement("a");
+        link.download = fileId.toString().concat(".zip");
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    }
+
     return <ViewReportPresenter
     loading={loading}
     nameId={nameId}
@@ -90,5 +112,6 @@ export default (props:any) => {
     location={location}
     enviroment={enviroment}
     dump={dump}
+    fileDownloadFunc={fileDownloadFunc}
     />
 }
