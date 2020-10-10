@@ -26,6 +26,24 @@ const BBPBannerBox = styled.div`
     align-items: center;
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
     position: relative;
+
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        margin-top:40px;
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:flex-start;
+        margin-left:auto;
+        margin-right:auto;
+        width:90vw;
+        padding-left:10px;
+        padding-right:10px;
+        height:300px;
+        font-size:13px;
+        
+    }
+
+
 `;
 
 const BannerMainArea = styled.div`
@@ -54,6 +72,22 @@ const LogoImg = styled.img`
     object-fit:cover;
 `
 
+
+const MobileLogoArea = styled.div`
+    height: 80px;
+    width: 100%;
+
+    border-bottom:1px groove rgba(30,30,40,0.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+`
+
+
+
 const TopArea = styled.div`
     width:100%;
     display:flex;
@@ -63,18 +97,29 @@ const TopArea = styled.div`
 const CompanyArea = styled.div`
     display:flex;
     flex-direction:column;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        margin-top:12px;
+    }
 `
 
 const CompanyName = styled.div`
     font-weight:600;
     font-size:20px;
     margin-bottom:20px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size:15px;
+        margin-bottom:12px;
+    }
 `
 const CompanyDescription = styled.div`
     word-break: keep-all;
     word-spacing: 0.1em;
     line-height:1.5em;
     white-space: pre-line;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size:13px;
+        margin-bottom:20px;
+    }
 `;
 
 
@@ -120,10 +165,36 @@ const BottomSubValue = styled.div`
     align-items:center;
 `;
 
+const MobileBottomRow = styled.div`
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    height:30px;
+`;
+
+const MobileButtonArea = styled.div`
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    margin-top: auto;
+    justify-self:flex-end;
+    font-size:10px;
+`
+
 const LoaderWrapper = styled.div`
     width:125%;
     display:flex;
     justify-content:center;
+`;
+
+const SubmitLink = styled(Link)`
+  background-color: black;
+  text-align:center;
+  color:white;
+  font-size:12px;
+  padding:10px 15px;
+  font-weight:600;
 `;
 
 interface Props {
@@ -158,6 +229,7 @@ const BBPBanner:React.SFC<Props> = ({
     } else {
         buttonStatus=true; // when undefined
     }
+    console.log(window.innerWidth);////
     return (
     <BBPBannerBox>
         {loading?
@@ -165,6 +237,8 @@ const BBPBanner:React.SFC<Props> = ({
             <SpinLoader/>
         </LoaderWrapper>
         :
+        (window.innerWidth>700?
+        // for desktop
         <>
         <BannerMainArea>
             <TopArea>
@@ -206,8 +280,39 @@ const BBPBanner:React.SFC<Props> = ({
             <LogoImg src={logoId?`${fileServerAddr}i/${logoId}/`:basicLogo} alt={""}/>        
         </LogoArea>
         </>
+        :
+        // for mobile
+        <>
+        <MobileLogoArea>
+            <LogoImg src={logoId?`${fileServerAddr}i/${logoId}/`:basicLogo} alt={""}/>        
+        </MobileLogoArea>
+        <CompanyArea>
+            <CompanyName>{companyName}</CompanyName>
+            <CompanyDescription>{description}</CompanyDescription>
+        </CompanyArea>
+        <MobileBottomRow>
+            <img src={reportIcon} width={"16px"} height={"16px"} alt={""}/>
+            <BottomSubHeadText>{`총 ${reportCount}개 리포트 제출됨`}</BottomSubHeadText>
+        </MobileBottomRow>
+        <MobileBottomRow>
+            <img src={wonIcon} width={"16px"} height={"16px"} alt={""}/>
+            <BottomSubHeadText>
+                {(maxBounty===undefined||maxBounty===0)?
+                    "Credit Only":
+                    `₩${addCommaForMoney(minBounty)} ~ ₩${addCommaForMoney(maxBounty)}`
+                }
+            </BottomSubHeadText>
+        </MobileBottomRow>
+        <MobileButtonArea>
+            <SubmitLink to={"/"+nameId+"/report"}>{"Submit Report"}</SubmitLink>
+        </MobileButtonArea>
+        </>
+        )
         }
-    </BBPBannerBox>)
+    </BBPBannerBox>
+    
+    
+    )
 
 }
 
