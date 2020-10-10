@@ -183,9 +183,11 @@ const MobileButtonArea = styled.div`
 `
 
 const LoaderWrapper = styled.div`
-    width:125%;
+    width:100%;
+    height:100%;
     display:flex;
     justify-content:center;
+    align-items:center;
 `;
 
 const SubmitLink = styled(Link)`
