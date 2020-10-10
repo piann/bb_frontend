@@ -12,6 +12,11 @@ top: calc(${props => props.theme.bannerHeight} + ${props => props.theme.headerBa
 left: 0;
 background-color: white;
 z-index: 2;
+@media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    height: calc(${props => props.theme.headerBarHeight} - 25px);
+    font-size:12px;
+}
+
 `;
 
 export const MenuWrapper = styled.div`
@@ -32,7 +37,7 @@ interface MenuProps{
 
 export const MenuComponent = styled.div<MenuProps>`
     height: calc(${props => props.theme.headerBarHeight} - 10px);
-    width:120px;
+    width:135px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -41,6 +46,12 @@ export const MenuComponent = styled.div<MenuProps>`
         box-shadow: 0px -4px 0px black inset;
         font-weight:600;
     }
+
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    height: calc(${props => props.theme.headerBarHeight} - 25px);
+    width:90px;
+    font-size:12px;
+}
 `;
 
 const SLink = styled(Link)`
