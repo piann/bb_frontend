@@ -18,11 +18,14 @@ const LogInBox = styled.div`
     width: 400px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom:50px;
     display:grid;
     grid-auto-flow: row;
     grid-template-rows: 1fr 2fr 1fr;
     align-items: center;
-
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        width:min(95vw, 400px);
+    }
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
     position: relative;
 

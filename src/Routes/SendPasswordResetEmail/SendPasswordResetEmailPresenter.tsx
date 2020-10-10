@@ -12,6 +12,7 @@ const FormBox = styled.div`
     height: 300px;
     padding: 8px 20px;
     margin-top:100px;
+    margin-bottom:100px;
     min-width:250px;
     width: 400px;
     margin-left: auto;
@@ -20,7 +21,9 @@ const FormBox = styled.div`
     grid-auto-flow: row;
     grid-template-rows: 2fr 4fr 2fr;
     align-items: center;
-
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        width:min(95vw, 400px);
+    }
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
     position: relative;
 
@@ -31,6 +34,7 @@ const MiniFormBox = styled.div`
     background-color: white;
     border-radius: ${props => props.theme.borderRadius};
     margin-top:100px;
+    margin-bottom:100px;
     height: 150px;
     padding: 8px 20px;
     min-width:250px;
@@ -40,7 +44,9 @@ const MiniFormBox = styled.div`
     display:flex;
     justify-content:center;
     align-items: center;
-
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        width:min(95vw, 400px);
+    }
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
     position: relative;
 
