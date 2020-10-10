@@ -304,7 +304,7 @@ const BBPBanner:React.SFC<Props> = ({
             </BottomSubHeadText>
         </MobileBottomRow>
         <MobileButtonArea>
-            <SubmitLink to={"/"+nameId+"/report"}>{"Submit Report"}</SubmitLink>
+            {hideButton?<></>:<SubmitLink to={"/"+nameId+"/report"}>{"Submit Report"}</SubmitLink>}
         </MobileButtonArea>
         </>
         )

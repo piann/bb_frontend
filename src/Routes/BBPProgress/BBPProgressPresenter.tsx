@@ -16,6 +16,9 @@ const BBPBody = styled.div`
     top: 200px;
     display:flex;
     flex-direction:column;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size:13px;
+    }
 `;
 
 const InfoText = styled.div`

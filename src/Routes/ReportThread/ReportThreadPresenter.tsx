@@ -45,6 +45,9 @@ const ButtonRow = styled.div`
     height:30px;
     margin-bottom:100px;
     margin-right:2%;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        margin-bottom:70px;
+    }
 `;
 const LoaderWrapper = styled.div`
     display:flex;
@@ -71,6 +74,11 @@ const ProgressBarWrapper = styled.div`
     .progressbar li:before {
     width: 60px;
     height: 60px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        width: 40px;
+        height: 40px;
+        font-size:10px;
+    }
     content: "";
     line-height: 60px;
     display: block;
@@ -220,7 +228,7 @@ export default ({
             <InformationContent>
             <ButtonRow>
                 <Link to={`/view_report/${rId}`}>
-                    <AdvButton text={"View Report"} width={"150px"}/>
+                    <AdvButton text={"View Report"} width={window.innerWidth>700?"150px":"138px"}/>
                 </Link>
             </ButtonRow>
             <ProgressBarWrapper>

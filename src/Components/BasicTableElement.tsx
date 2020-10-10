@@ -20,6 +20,11 @@ display:flex;
 align-items:center;
 padding-left:20px;
 padding-right:20px;
+@media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    height:50px;
+    padding-left:0px;
+    padding-right:0px;
+}
 `;
 
 export const BasicTableContent = styled.div`
@@ -30,6 +35,10 @@ height: 60px;
 display:flex;
 align-items:center;
 padding-left:20px;
-padding-left:20px;
 padding-right:20px;
+@media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    height:50px;
+    padding-left:0px;
+    padding-right:0px;
+}
 `

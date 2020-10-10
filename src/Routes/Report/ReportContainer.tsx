@@ -4,9 +4,10 @@ import { useQuery } from "@apollo/client";
 import { GET_REPORT_READY_PAGE, SUBMIT_REPORT } from "./ReportQueries";
 import { useMutation } from "@apollo/react-hooks";
 import { useInput } from "../../utils";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { toastOpt, fileServerAddr } from "../../common";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 
 export default (props:any) => {
@@ -46,6 +47,7 @@ export default (props:any) => {
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
     
+
 
     const clickFunc = async () => {
         setButtonDisabled(true);
@@ -195,6 +197,17 @@ export default (props:any) => {
                 }
             }
         }
+    }
+
+    if(window.innerWidth<700){
+        const toastId:any = React.useRef(null); 
+        if(! toast.isActive(toastId.current)) {
+            toastId.current = toast("리포트 제출은 데스크탑에서 해주세요", toastOpt as any)
+        }
+        setTimeout(()=>{window.location.href = `/${nameId}`;}, 2000)
+        return (
+            <ToastContainer/>
+        )
     }
 
     return <ReportPresenter

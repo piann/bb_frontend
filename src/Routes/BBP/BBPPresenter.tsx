@@ -14,6 +14,10 @@ const BBPBody = styled.div`
     grid-auto-flow: row;
     grid-column-gap:20px;
     grid-template-columns: 4fr 1fr;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        display:flex;
+        flex-direction:column;
+    }
 `;
 
 const BBPLeft = styled.div`
@@ -29,6 +33,9 @@ const SubPolicyBox = styled.div`
     display:flex;
     flex-direction:column;
     margin-bottom:30px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        display:none;
+    }
 `;
 
 const SubPolicyTitle = styled.div`
@@ -59,6 +66,9 @@ const MiniTitleText = styled.div`
     font-weight:600;
     font-size:16px;
     margin-bottom:30px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    font-size:14px;
+    }
 
 `
 
@@ -80,7 +90,7 @@ const TableContentWrapperWithRatio = styled.div`
     width:100%;
     display:grid;
     grid-auto-flow: row;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 3fr 5fr;
 `;
 
 const TableText = styled.div<marginProps>`
@@ -93,6 +103,10 @@ const TableText = styled.div<marginProps>`
     margin-right:${props=>props.marginRight}px;
     display:flex;
     align-items:center;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size:13px;
+        overflow-wrap:anywhere;
+    }
 `;
 
 const ImgFollowedText = styled.div`
@@ -156,17 +170,17 @@ exclusionValueList,
                 <BasicTableBox>
                     <BasicTableHead>
                         <TableContentWrapper>
-                            <TableText marginLeft={20} marginRight={0}>Grade</TableText>
-                            <TableText marginLeft={0} marginRight={70}>Range</TableText>
+                            <TableText marginLeft={15} marginRight={0}>Grade</TableText>
+                            <TableText marginLeft={0} marginRight={60}>Range</TableText>
                         </TableContentWrapper>
                     </BasicTableHead>
                     <BasicTableContent>
                         <TableContentWrapper>
-                            <TableText marginLeft={0} marginRight={0}>
+                            <TableText marginLeft={5} marginRight={0}>
                             <img height={"18px"} src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik0yNTYsMEMxMTQuODQyLDAsMCwxMTQuODQyLDAsMjU2czExNC44NDIsMjU2LDI1NiwyNTZzMjU2LTExNC44NDIsMjU2LTI1NlMzOTcuMTU4LDAsMjU2LDB6IiBmaWxsPSIjMDAwMDAwIiBkYXRhLW9yaWdpbmFsPSIjYTRlMjc2IiBjbGFzcz0iIj48L3BhdGg+CjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9IiIgZD0iTTAsMjU2YzAsMTQxLjE1OCwxMTQuODQyLDI1NiwyNTYsMjU2VjBDMTE0Ljg0MiwwLDAsMTE0Ljg0MiwwLDI1NnoiIGZpbGw9IiMzZTNlM2UiIGRhdGEtb3JpZ2luYWw9IiM2NGMzN2QiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
                                 <ImgFollowedText>{"Fatal"}</ImgFollowedText>
                             </TableText>
-                            <TableText marginLeft={0} marginRight={0}>
+                            <TableText marginLeft={5} marginRight={0}>
                                 {(fatalPriceMax===0||fatalPriceMax===undefined)?
                                 "Credit Only":
                                 `₩${addCommaForMoney(fatalPriceMin)} ~ ₩${addCommaForMoney(fatalPriceMax)}`
@@ -176,11 +190,11 @@ exclusionValueList,
                     </BasicTableContent>
                     <BasicTableContent>
                         <TableContentWrapper>
-                            <TableText marginLeft={0} marginRight={0}>
+                            <TableText marginLeft={5} marginRight={0}>
                                 <img height={"18px"} src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik0yNTYsMEMxMTQuODQyLDAsMCwxMTQuODQyLDAsMjU2czExNC44NDIsMjU2LDI1NiwyNTZzMjU2LTExNC44NDIsMjU2LTI1NlMzOTcuMTU4LDAsMjU2LDB6IiBmaWxsPSIjZmYwMDAwIiBkYXRhLW9yaWdpbmFsPSIjYTRlMjc2IiBjbGFzcz0iIj48L3BhdGg+CjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9IiIgZD0iTTAsMjU2YzAsMTQxLjE1OCwxMTQuODQyLDI1NiwyNTYsMjU2VjBDMTE0Ljg0MiwwLDAsMTE0Ljg0MiwwLDI1NnoiIGZpbGw9IiNmZjczNzMiIGRhdGEtb3JpZ2luYWw9IiM2NGMzN2QiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
                                 <ImgFollowedText>{"High"}</ImgFollowedText>
                             </TableText>
-                            <TableText marginLeft={0} marginRight={0}>
+                            <TableText marginLeft={5} marginRight={0}>
                                 {(highriceMax===0||highriceMax===undefined)?
                                 "Credit Only":
                                 `₩${addCommaForMoney(highPriceMin)} ~ ₩${addCommaForMoney(highriceMax)}`
@@ -190,11 +204,11 @@ exclusionValueList,
                     </BasicTableContent>
                     <BasicTableContent>
                         <TableContentWrapper>
-                            <TableText marginLeft={0} marginRight={0}>
+                            <TableText marginLeft={5} marginRight={0}>
                             <img height={"18px"} src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik0yNTYsMEMxMTQuODQyLDAsMCwxMTQuODQyLDAsMjU2czExNC44NDIsMjU2LDI1NiwyNTZzMjU2LTExNC44NDIsMjU2LTI1NlMzOTcuMTU4LDAsMjU2LDB6IiBmaWxsPSIjZmY4MzAwIiBkYXRhLW9yaWdpbmFsPSIjYTRlMjc2IiBjbGFzcz0iIj48L3BhdGg+CjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9IiIgZD0iTTAsMjU2YzAsMTQxLjE1OCwxMTQuODQyLDI1NiwyNTYsMjU2VjBDMTE0Ljg0MiwwLDAsMTE0Ljg0MiwwLDI1NnoiIGZpbGw9IiNmZmFhNTEiIGRhdGEtb3JpZ2luYWw9IiM2NGMzN2QiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
                                 <ImgFollowedText>{"Medium"}</ImgFollowedText>
                             </TableText>
-                            <TableText marginLeft={0} marginRight={0}>
+                            <TableText marginLeft={5} marginRight={0}>
                                 {(mediumPriceMax===0||mediumPriceMax===undefined)?
                                 "Credit Only":
                                 `₩${addCommaForMoney(mediumPriceMin)} ~ ₩${addCommaForMoney(mediumPriceMax)}`
@@ -204,11 +218,11 @@ exclusionValueList,
                     </BasicTableContent>
                     <BasicTableContent>
                         <TableContentWrapper>
-                            <TableText marginLeft={0} marginRight={0}>
+                            <TableText marginLeft={5} marginRight={0}>
                             <img height={"18px"} src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik0yNTYsMEMxMTQuODQyLDAsMCwxMTQuODQyLDAsMjU2czExNC44NDIsMjU2LDI1NiwyNTZzMjU2LTExNC44NDIsMjU2LTI1NlMzOTcuMTU4LDAsMjU2LDB6IiBmaWxsPSIjZGZkYzAwIiBkYXRhLW9yaWdpbmFsPSIjYTRlMjc2IiBjbGFzcz0iIj48L3BhdGg+CjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9IiIgZD0iTTAsMjU2YzAsMTQxLjE1OCwxMTQuODQyLDI1NiwyNTYsMjU2VjBDMTE0Ljg0MiwwLDAsMTE0Ljg0MiwwLDI1NnoiIGZpbGw9IiNmZmZiMTciIGRhdGEtb3JpZ2luYWw9IiM2NGMzN2QiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
                                 <ImgFollowedText>{"Low"}</ImgFollowedText>
                             </TableText>
-                            <TableText marginLeft={0} marginRight={0}>
+                            <TableText marginLeft={5} marginRight={0}>
                                 {(lowPriceMax===0||lowPriceMax===undefined)?
                                 "Credit Only":
                                 `₩${addCommaForMoney(lowPriceMin)} ~ ₩${addCommaForMoney(lowPriceMax)}`
@@ -231,7 +245,7 @@ exclusionValueList,
                     {inScopeTargetList.map((dictObj:any, index:any) => {
                          return (<BasicTableContent key={2000+index}>
                              <TableContentWrapperWithRatio>
-                                 <TableText key={3000+index} marginLeft={22} marginRight={0}>{dictObj.type}</TableText>
+                                 <TableText key={3000+index} marginLeft={22} marginRight={10}>{dictObj.type}</TableText>
                                  <TableText key={4000+index} marginLeft={0} marginRight={0}>{dictObj.value}</TableText>
                              </TableContentWrapperWithRatio>
                          </BasicTableContent>)
@@ -255,7 +269,7 @@ exclusionValueList,
                     {outOfScopeTargetList.map((dictObj:any, index:any) => {
                          return (<BasicTableContent key={5000+index}>
                              <TableContentWrapperWithRatio>
-                                 <TableText key={5000+index} marginLeft={22} marginRight={0}>{dictObj.type}</TableText>
+                                 <TableText key={5000+index} marginLeft={22} marginRight={10}>{dictObj.type}</TableText>
                                  <TableText key={6000+index} marginLeft={0} marginRight={0}>{dictObj.value}</TableText>
                              </TableContentWrapperWithRatio>
                          </BasicTableContent>)
