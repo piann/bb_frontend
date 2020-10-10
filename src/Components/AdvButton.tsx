@@ -11,20 +11,23 @@ const StyledButton = styled.button<WidthProps>`
   border: none;
   font-family: 'Source Serif Pro', serif;
   font-weight:300;
-  width:${props=>props.width};
+  width:${props=>(props.width?props.width:"min-width")};
   cursor: pointer;
   display: flex;
   justify-content:space-around;
   align-items:center;
   line-height: 1em;
-  padding-left:15px;
-  padding-right:15px;
+  padding-left:30px;
+  padding-right:30px;
   padding-top:10px;
   padding-bottom:10px;
   outline: none;
   position: relative;
   font-weight: 700;
   letter-spacing:0.05em;
+  @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size: 4vw;
+  }
 &&:before,
 &&:after {
   border-color: transparent;

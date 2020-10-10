@@ -18,4 +18,5 @@ export default {
     maxBodyWidth: "1500px",
     mainBoxWidth: "1300px",
     bannerHeight: "250px", 
+    mobileWidth:"730px",
 }

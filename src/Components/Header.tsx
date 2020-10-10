@@ -22,6 +22,9 @@ export const GET_MY_PROFILE = gql`
 const Header = styled.header`
   width: 100%;
   height: ${props => props.theme.headerBarHeight};
+  @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        height:calc(${props => props.theme.headerBarHeight} - 10px);
+  }
   color: ${props => props.theme.snowyGrayColor};
   border: 0;
   position: fixed;
@@ -38,11 +41,16 @@ const Header = styled.header`
   padding-left:15px;
   padding-right:15px;
   z-index: 10;
+
 `;
 
 const LogoSpace = styled.img`
-  height: calc(${props => props.theme.headerBarHeight} - 40px);
+  width:210px;
   margin-left:5px;
+  @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    width:135px;
+    margin-left:0px;
+  }
 `;
 
 const MenuSpace = styled.div`
@@ -56,6 +64,9 @@ const MenuLink = styled(Link)`
   padding-top:15px;
   padding-bottom:15px;
   padding-right:25px;
+  @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    display:none;
+  }
 `;
 const StartLink = styled(Link)`
   background-color:${props => props.theme.purpleColor};
@@ -64,6 +75,20 @@ const StartLink = styled(Link)`
   padding:10px 25px;
 
 `;
+
+const SLink = styled(Link)`
+  display:flex;
+  flex-direction:row;
+  align-items:flex-end;
+`;
+
+const BetaImg = styled.img`
+  margin-left:-3px;
+  @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    width:25px;
+    margin-left:0px;
+  }
+`
 
 export default () => {
 
@@ -92,12 +117,12 @@ export default () => {
 
 return(
 <Header>
-    <Link to="/">
+    <SLink to="/">
       <LogoSpace src={mainLogo}/>
-      <img src={betaImg}/>
-    </Link>
+      <BetaImg src={betaImg}/>
+    </SLink>
     <MenuSpace>
-    <MenuLink to="/">
+      <MenuLink to="/">
         {"Introduction"}
       </MenuLink>
       <MenuLink to="/programs">

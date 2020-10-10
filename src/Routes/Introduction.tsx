@@ -29,6 +29,10 @@ position: absolute;
 top: ${props => props.theme.headerBarHeight};
 left:0;
 right:0;
+@media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        height:75vh;
+        top: calc(${props => props.theme.headerBarHeight} - 10px);
+}
 background-color: white;
 background-image: url(${mainImg});
 background-position: center center;
@@ -43,6 +47,7 @@ align-items:center;
 `;
 
 const MainText = styled.div`
+    text-align:center;
     position:relative;
     top:90px;
     font-size:50px;
@@ -61,6 +66,12 @@ const MainText = styled.div`
         opacity: 1;
     }
     }
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size: 7vw;
+        top:60px;
+    }
+
+
 `;
 const SubArea = styled.div`
     display: flex;
@@ -71,21 +82,34 @@ const SubArea = styled.div`
 `
 
 const SubText = styled.div`
+    line-height:2rem;
+    text-align:center;
     font-size:16px;
     margin-bottom:30px;
     font-family: 'Noto Serif KR', serif;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size:11px;
+        margin-top:45vh;
+    }
 `;
 
 const MainBody = styled.div`
     position: relative;
     top: 770px;
     margin-top:200px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        top:75vh;
+        margin-top:100px;
+    }
     margin-bottom:100px;
-    display: flex;
-    flex-direction:row;
-    align-items:center;
     display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(auto, 50%));
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+	grid-template-columns: repeat(auto-fill, minmax(auto, 38%));
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        grid-template-columns: 1fr;
+    }
 	grid-template-rows: 250px;
     grid-row-gap:100px;
 `;
@@ -125,7 +149,7 @@ export default () => {
         <SubArea>
             <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
             <a href = {Pdf} target = "_blank">
-                <AdvButton text={"What is Bug Bounty?"} width={"200px"}/>
+                <AdvButton text={"What is Bug Bounty?"} />
             </a>
         </SubArea>
     </UpperBody>
