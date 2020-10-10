@@ -67,7 +67,7 @@ const MainText = styled.div`
     }
     }
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-        font-size: 7vw;
+        font-size: 8vw;
         top:60px;
     }
 
@@ -88,8 +88,9 @@ const SubText = styled.div`
     margin-bottom:30px;
     font-family: 'Noto Serif KR', serif;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-        font-size:11px;
+        font-size:0px;
         margin-top:45vh;
+        
     }
 `;
 
@@ -97,17 +98,16 @@ const MainBody = styled.div`
     position: relative;
     top: 770px;
     margin-top:200px;
-    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-        top:75vh;
-        margin-top:100px;
-    }
     margin-bottom:100px;
     display: grid;
     flex-direction:row;
     justify-content:center;
     align-items:center;
 	grid-template-columns: repeat(auto-fill, minmax(auto, 38%));
+    font-size:15px;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        top:75vh;
+        margin-top:50px;
         grid-template-columns: 1fr;
     }
 	grid-template-rows: 250px;
@@ -124,6 +124,10 @@ const DescImg = styled.img`
     width:110px;
     height:110px;
     margin-bottom:30px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        width:90px;
+        height:90px;
+    }
 `
 
 const DescText= styled.div`
@@ -132,7 +136,6 @@ const DescText= styled.div`
     line-height:2em;
     white-space: pre-line;
     font-family: 'Noto Serif KR', serif;
-    font-size:15px;
 `;
 
 

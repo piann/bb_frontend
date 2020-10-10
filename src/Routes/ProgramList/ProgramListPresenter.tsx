@@ -23,9 +23,8 @@ const LoaderWrapper = styled.div`
 const CardListArea = styled.div`
     display:grid;
     margin-top:30px;
-	grid-template-columns: repeat(auto-fill, minmax(23rem,1fr));
-
-    grid-column-gap:45px;
+	grid-template-columns: repeat(auto-fill, minmax(23em, 1fr));
+    grid-column-gap:10px;
     grid-row-gap:40px;
 `;
 
@@ -36,6 +35,8 @@ const CardBox = styled.div`
     display:flex;
     flex-direction:column;
     box-shadow:0 3px 7px 3px rgba(7, 7, 33, 0.1),0 1px 1px 1px rgba(0, 0, 0, 0.2);
+    margin-left:15px;
+    margin-right:15px;
 `;
 
 const CardLogoSpace = styled.div`
