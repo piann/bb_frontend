@@ -17,7 +17,10 @@ const BBPBannerBox = styled.div`
     padding-bottom: 10px;
     padding-left:35px;
     margin-top:80px;
-    width: calc(90vw - 50px);
+    margin-left:auto;
+    margin-right:auto;
+    width: calc(100% - 30px);
+
     max-width:${props => props.theme.maxBodyWidth};
 
     display:grid;
@@ -33,8 +36,6 @@ const BBPBannerBox = styled.div`
         flex-direction:column;
         justify-content:flex-start;
         align-items:flex-start;
-        margin-left:auto;
-        margin-right:auto;
         width:90vw;
         padding-left:10px;
         padding-right:10px;
@@ -48,7 +49,7 @@ const BBPBannerBox = styled.div`
 
 const BannerMainArea = styled.div`
     height: calc(${props => props.theme.bannerHeight} - 40px);
-    width:100%;
+    max-width:100%;
     padding-top:20px;
     display:flex;
     flex-direction:column;
@@ -58,13 +59,14 @@ const BannerMainArea = styled.div`
 
 const LogoArea = styled.div`
     height: calc(${props => props.theme.bannerHeight} - 40px);
+    max-width: 100%;
     border-left:2px groove ${props => props.theme.snowyGrayColor};
     display:flex;
     align-items:center;
     justify-content:center;
     padding-left:15px;
-    padding-right:15px;
-`
+    padding-right:15px;  
+`;
 
 const LogoImg = styled.img`
     max-height:100%;

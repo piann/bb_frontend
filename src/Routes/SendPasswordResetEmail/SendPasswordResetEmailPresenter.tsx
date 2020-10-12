@@ -22,7 +22,7 @@ const FormBox = styled.div`
     grid-template-rows: 2fr 4fr 2fr;
     align-items: center;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-        width:min(95vw, 400px);
+        width:min(90vw, 400px);
     }
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
     position: relative;

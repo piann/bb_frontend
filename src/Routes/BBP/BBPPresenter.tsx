@@ -14,9 +14,13 @@ const BBPBody = styled.div`
     grid-auto-flow: row;
     grid-column-gap:20px;
     grid-template-columns: 4fr 1fr;
+    padding-left:15px;
+    padding-right:15px;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
         display:flex;
         flex-direction:column;
+        padding-left:0px;
+        padding-right:0px;
     }
 `;
 
