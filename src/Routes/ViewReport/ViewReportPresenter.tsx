@@ -11,6 +11,10 @@ import { RatingStar } from "rating-star";
 import grayProfile from "../../images/grayProfile.png";
 import { Link } from "react-router-dom";
 import {fileServerAddr} from "../../common";
+import 'codemirror/lib/codemirror.css';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Viewer } from '@toast-ui/react-editor';
+
 
 const BBPBody = styled.div`
     position: relative;
@@ -301,7 +305,7 @@ export default ({
             <PaperArea>
                 <div className={"paper"}>
                 <ReportTitleText>{title}</ReportTitleText>
-                <PaperText>{description}</PaperText>
+                <Viewer initialValue={description}/>
                 </div>
             </PaperArea>
 

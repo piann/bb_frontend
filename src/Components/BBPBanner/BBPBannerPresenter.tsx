@@ -233,7 +233,7 @@ const BBPBanner:React.SFC<Props> = ({
     } else {
         buttonStatus=true; // when undefined
     }
-    console.log(window.innerWidth);////
+
     return (
     <BBPBannerBox>
         {loading?

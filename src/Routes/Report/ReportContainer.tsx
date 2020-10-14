@@ -32,7 +32,8 @@ export default (props:any) => {
     const osInput = useInput("");
     const browserInput = useInput("");
     const browserVersionInput = useInput("");
-    const descriptionInput = useInput("");
+    //const descriptionInput = useInput("");
+    const [editorDescription,setEditorDescription] = useState("");
     const dumpInput = useInput("");
     const additionalTextInput = useInput("");
     
@@ -71,7 +72,7 @@ export default (props:any) => {
             title:titleInput.value,
             location:locationInput.value,
             enviroment:osInput.value+"::"+browserInput.value+"::"+browserVersionInput.value,
-            description:descriptionInput.value,
+            description:editorDescription,
             dump:dumpInput.value,
             additionalText:additionalTextInput.value,
         }});
@@ -227,7 +228,9 @@ export default (props:any) => {
         osInput={osInput}
         browserInput={browserInput}
         browserVersionInput={browserVersionInput}
-        descriptionInput={descriptionInput}
+        //descriptionInput={descriptionInput}
+        editorDescription={editorDescription}
+        setEditorDescription={setEditorDescription}
         dumpInput={dumpInput}
         additionalTextInput={additionalTextInput}
         setTargetId={setTargetId}

@@ -15,6 +15,11 @@ import { toast, ToastContainer } from "react-toastify";
 import { toastOpt } from "../../common";
 import basicLogo from "../../images/zerowhaleBasic.png";
 
+import 'codemirror/lib/codemirror.css';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Editor } from '@toast-ui/react-editor';
+import ToastEditor from "../../Components/ToastEditor";
+
 const BBPBody = styled.div`
     position: relative;
     width:100%;
@@ -230,6 +235,29 @@ const LoaderWrapper = styled.div`
     width:100%;
 `;
 
+const toolbarItems = [
+    'heading',
+    'bold',
+    'italic',
+    'underscore',
+    'strike',
+    'divider',
+    'hr',
+    'quote',
+    'divider',
+    'ul',
+    'ol',
+    'task',
+    'divider',
+    'indent',
+    'outdent',
+    'codeblock',
+    'divider',
+    'table',
+    'image',
+    'divider',
+
+ ];
 
 export default ({
     loading,
@@ -244,7 +272,9 @@ export default ({
 
     titleInput,
     locationInput,
-    descriptionInput,
+    //descriptionInput,
+    editorDescription,
+    setEditorDescription,
     dumpInput,
     additionalTextInput,
     osInput,
@@ -422,18 +452,15 @@ export default ({
                         </TextInputSetWrapper>
                         <BoldInfoText>{"\n\n\n"}{"Description"}</BoldInfoText>
                             <InfoText>
-                                {"1. 어떻게 취약점을 발견하게 되었는지 그 경위를 기술해주세요."}
-                            </InfoText>
-                            <InfoText>
                                 <InfoTextRow>
-                                    {"2. 취약점을 재현할 수 있는 방법을 단계별로 기술해주세요."}
-                                    <CountText>
-                                    {`(${descriptionInput.value.length} / 10000)`}
-                                    </CountText>
+                                    {"1. 취약점 발견 과정과 재현 방법을 설명해주세요 (10000 byte 제한)"}
+                                <CountText>
+                                    {`(${editorDescription.length} / 10000)`}
+                                </CountText>
                                 </InfoTextRow>
                             </InfoText>
-                            <TextArea rows={20} maxLength={10000} {...descriptionInput}/>
 
+                            <ToastEditor onChangeContent={setEditorDescription} maxBytes={10000}/>
 
                             <BoldInfoText>{"\n\n\n"}{"HTTP request dump"}</BoldInfoText>
                             <InfoText>
