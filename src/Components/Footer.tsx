@@ -29,7 +29,7 @@ const RelativeFooterWrapper = styled.footer`
     padding-left: calc(5vw + 25px);	
     text-align: left;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-      bottom:-650px;
+      bottom:-750px;
     }
 `;
 
