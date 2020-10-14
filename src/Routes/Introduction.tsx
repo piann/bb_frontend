@@ -8,7 +8,16 @@ import increaseImg from "../images/increase.png";
 import clockImg from "../images/time.png";
 import marketingImg from "../images/marketing.png";
 import {RelFooter} from '../Components/Footer';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 const WholeWrapper = styled.div`
     height:max-content;
@@ -70,8 +79,6 @@ const MainText = styled.div`
         font-size: 8vw;
         top:60px;
     }
-
-
 `;
 const SubArea = styled.div`
     display: flex;
@@ -105,19 +112,22 @@ const MainBody = styled.div`
     align-items:center;
 	grid-template-columns: repeat(auto-fill, minmax(auto, 38%));
     font-size:15px;
-    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-        top:75vh;
-        margin-top:50px;
-        grid-template-columns: 1fr;
-    }
 	grid-template-rows: 250px;
     grid-row-gap:100px;
 `;
+
+const MainMobileBody = styled.div`
+    position: relative;
+    top: 85vh;
+    margin-top:50px;
+`;
+
 
 const DescBox = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
+    height: 230px;
 `
 
 const DescImg = styled.img`
@@ -146,35 +156,86 @@ export default () => {
 
     }
     return (
-    <WholeWrapper>
-    <UpperBody>
-        <MainText>{"We connect security"}</MainText>
-        <SubArea>
-            <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
-            <a href = {Pdf} target = "_blank">
-                <AdvButton text={"What is Bug Bounty?"} />
-            </a>
-        </SubArea>
-    </UpperBody>
-    <MainBody>
-        <DescBox>
-            <DescImg src={groupImg}/>
-            <DescText>{"다양한 지식의 해커들이\n진단을 수행합니다."}</DescText>
-        </DescBox>
-        <DescBox>
-            <DescImg src={increaseImg}/>
-            <DescText>{"기존 취약점 진단 대비\n최대 6배의 취약점이 발견됩니다."}</DescText>
-        </DescBox>
-        <DescBox>
-            <DescImg src={clockImg}/>
-            <DescText>{"취약점 발견시간 및\n대응시간이 단축됩니다."}</DescText>
-        </DescBox>
-        <DescBox>
-            <DescImg src={marketingImg}/>
-            <DescText>{"보안에 자신있다는\n마케팅 요소로 활용됩니다."}</DescText>
-        </DescBox>
-    </MainBody>
-    <RelFooter/>
-    </WholeWrapper>
+        (window.innerWidth>700?
+            // for desktop
+            <WholeWrapper>
+            <UpperBody>
+                <MainText>{"We connect security"}</MainText>
+                <SubArea>
+                    <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
+                    <a href = {Pdf} target = "_blank">
+                        <AdvButton text={"What is Bug Bounty?"} />
+                    </a>
+                </SubArea>
+            </UpperBody>
+            <MainBody>
+                <DescBox>
+                    <DescImg src={groupImg}/>
+                    <DescText>{"다양한 지식의 해커들이\n진단을 수행합니다."}</DescText>
+                </DescBox>
+                <DescBox>
+                    <DescImg src={increaseImg}/>
+                    <DescText>{"기존 취약점 진단 대비\n최대 6배의 취약점이 발견됩니다."}</DescText>
+                </DescBox>
+                <DescBox>
+                    <DescImg src={clockImg}/>
+                    <DescText>{"취약점 발견시간 및\n대응시간이 단축됩니다."}</DescText>
+                </DescBox>
+                <DescBox>
+                    <DescImg src={marketingImg}/>
+                    <DescText>{"보안에 자신있다는\n마케팅 요소로 활용됩니다."}</DescText>
+                </DescBox>
+            </MainBody>
+            <RelFooter/>
+            </WholeWrapper>
+                :
+            // for mobile
+            <WholeWrapper>
+                <UpperBody>
+                    <MainText>{"We connect security"}</MainText>
+                    <SubArea>
+                        <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
+                        <a href = {Pdf} target = "_blank">
+                            <AdvButton text={"What is Bug Bounty?"} />
+                        </a>
+                    </SubArea>
+                </UpperBody>
+                <MainMobileBody>
+    
+                    <Swiper
+                        spaceBetween={50}
+                        pagination={{ clickable: true }}
+                        onSwiper={(swiper) => console.log(swiper)}
+                        autoplay={{delay: 3000}}
+                    >
+                    <SwiperSlide>
+                        <DescBox>
+                            <DescImg src={groupImg}/>
+                            <DescText>{"다양한 지식의 해커들이\n진단을 수행합니다."}</DescText>
+                        </DescBox>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <DescBox>
+                            <DescImg src={increaseImg}/>
+                            <DescText>{"기존 취약점 진단 대비\n최대 6배의 취약점이 발견됩니다."}</DescText>
+                        </DescBox>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <DescBox>
+                            <DescImg src={clockImg}/>
+                            <DescText>{"취약점 발견시간 및\n대응시간이 단축됩니다."}</DescText>
+                        </DescBox>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <DescBox>
+                            <DescImg src={marketingImg}/>
+                            <DescText>{"보안에 자신있다는\n마케팅 요소로 활용됩니다."}</DescText>
+                        </DescBox>
+                    </SwiperSlide>
+                    </Swiper>
+                </MainMobileBody>
+                <RelFooter/>
+            </WholeWrapper>
+        )
     )
 }
