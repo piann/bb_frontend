@@ -109,6 +109,7 @@ const TableText = styled.div<marginProps>`
     font-size:16px;
     word-break: keep-all;
     word-spacing: 0.1em;
+    line-height:1rem;
     margin-left:${props=>props.marginLeft}px;
     margin-right:${props=>props.marginRight}px;
     display:flex;
@@ -256,7 +257,7 @@ exclusionValueList,
                          return (<BasicTableContent key={2000+index}>
                              <TableContentWrapperWithRatio>
                                  <TableText key={3000+index} marginLeft={10} marginRight={10}>{getTypeImage(dictObj.type)}</TableText>
-                                 <TableText key={4000+index} marginLeft={0} marginRight={0}>{dictObj.value}</TableText>
+                                 <TableText key={4000+index} marginLeft={0} marginRight={10}>{dictObj.value}</TableText>
                              </TableContentWrapperWithRatio>
                          </BasicTableContent>)
                     })}
@@ -279,8 +280,8 @@ exclusionValueList,
                     {outOfScopeTargetList.map((dictObj:any, index:any) => {
                          return (<BasicTableContent key={5000+index}>
                              <TableContentWrapperWithRatio>
-                                 <TableText key={5000+index} marginLeft={10} marginRight={10}>{dictObj.type}</TableText>
-                                 <TableText key={6000+index} marginLeft={0} marginRight={0}>{dictObj.value}</TableText>
+                                 <TableText key={5000+index} marginLeft={10} marginRight={10}>{getTypeImage(dictObj.type)}</TableText>
+                                 <TableText key={6000+index} marginLeft={0} marginRight={10}>{dictObj.value}</TableText>
                              </TableContentWrapperWithRatio>
                          </BasicTableContent>)
                     })}

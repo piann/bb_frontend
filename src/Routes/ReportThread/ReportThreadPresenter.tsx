@@ -70,13 +70,16 @@ const ProgressBarWrapper = styled.div`
     text-align: center;
     text-transform: uppercase;
     color: #7d7d7d;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size:10px;
+    }
     }
     .progressbar li:before {
     width: 60px;
     height: 60px;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         font-size:10px;
     }
     content: "";
@@ -99,6 +102,9 @@ const ProgressBarWrapper = styled.div`
         top: 30px;
         left: -50%;
         z-index: 0;
+        @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+            top: 15px;
+        }
         
     }
     .progressbar li:first-child:after {
@@ -113,7 +119,10 @@ const ProgressBarWrapper = styled.div`
     .progressbar li.active:before {
         border-color: ${props => props.theme.headerBarColor};
         background: white url(${checkImg}) no-repeat center center;
-        background-size: 30px
+        @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+            background-size: 20px;
+        }   
+
     }
     .progressbar li.active + li:after {
         background-color: ${props => props.theme.headerBarColor};
@@ -126,6 +135,10 @@ const AdditionalInfo = styled.div`
     align-items:flex-end;
     margin-top:50px;
     margin-right:30px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size: 12px;
+        margin-right:15px;
+    }
 `;
 
 const AdditionalRow = styled.div`
@@ -139,6 +152,9 @@ const CommentWrapper = styled.div`
     display:flex;
     flex-direction:row;
     margin-bottom:22px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size:11px;
+    }
 
 `;
 const ProfileWrapper = styled.div`
@@ -214,7 +230,7 @@ export default ({
 }:any) => 
 <>
 <BBPBanner hideButton={true} nameId={nameId}/>
-<BBPSubMenu nameId={nameId}/>
+<BBPSubMenu nameId={nameId} />
 <ToastContainer/>
 <BBPBody>
     {loading?
