@@ -2,6 +2,7 @@ import React from "react";
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
+import DOMPurify from 'dompurify';
 
 const toolbarItems = [
     'heading',
@@ -57,6 +58,10 @@ class ToastEditor extends React.Component<EProps, EState>{
         toolbarItems={toolbarItems}
         hideModeSwitch={true}
         ref={this.refObj}
+        customHTMLSanitizer= {html => {
+            return DOMPurify.sanitize(html)
+          }
+        }
         events={
             {
                 change:({source ,data})=>{

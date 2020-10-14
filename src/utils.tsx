@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import {gql} from "apollo-boost";
 import crypto from "crypto";
@@ -124,4 +125,27 @@ export const getBountyRangeText = (min:number,max:number):string =>{
       return "₩"+addCommaForMoney(min)+"⠀~⠀₩"+addCommaForMoney(max);
     }
   }
+}
+
+
+export const getTypeImage = (type:string):any =>{
+  let imgComponent:any = <div/>;
+  if(type==="WEB"){
+    
+  }
+  else if(type==="ANDROID"){
+    
+  }
+  else if(type==="IOS"){
+
+  }
+  else if(type==="WINDOWS"){
+
+  }
+  else if(type==="LINUX"){
+
+  }
+
+  return type;
+
 }
