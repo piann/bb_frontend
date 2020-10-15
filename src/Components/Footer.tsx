@@ -11,6 +11,9 @@ const FooterWrapper = styled.footer`
     padding: 3rem;
     text-align: left;
     padding-left:calc(5vw + 25px);
+    word-break: keep-all;
+    line-height:1.5rem;
+    white-space: pre-line;
 `;
 
 
@@ -28,8 +31,12 @@ const RelativeFooterWrapper = styled.footer`
     padding: 3rem;
     padding-left: calc(5vw + 25px);	
     text-align: left;
+    word-break: keep-all;
+    line-height:1.5rem;
+    white-space: pre-line;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-      bottom:-750px;
+      bottom:-600px;
+      padding-left: calc(2vw + 20px);	
     }
 `;
 

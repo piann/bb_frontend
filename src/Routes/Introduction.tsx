@@ -201,7 +201,6 @@ export default () => {
                     <Swiper
                         spaceBetween={50}
                         pagination={{ clickable: true }}
-                        onSwiper={(swiper) => console.log(swiper)}
                         autoplay={{delay: 3000}}
                         loop={true}
                     >
