@@ -119,6 +119,7 @@ const ProgressBarWrapper = styled.div`
     .progressbar li.active:before {
         border-color: ${props => props.theme.headerBarColor};
         background: white url(${checkImg}) no-repeat center center;
+        background-size: 30px;
         @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
             background-size: 20px;
         }   

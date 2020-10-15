@@ -14,7 +14,7 @@ export const toastOpt = {
 export const statusDict = {
     0:"stand by",
     1:"in progress",
-    2:"on assessment",
+    2:"on judge",
     3:"resolved"
 } as any;
 

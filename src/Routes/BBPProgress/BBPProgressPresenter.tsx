@@ -61,16 +61,29 @@ const TableContentWrapperWithRatio = styled.a`
     grid-template-columns: 3fr 2fr 2fr 2.5fr;
     color:inherit;
     text-decoration: none;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        grid-template-columns: 1fr 3fr 2.5fr 3fr;
+    }
 `;
 
 const TableText = styled.div<marginProps>`
     word-break: keep-all;
     word-spacing: 0.1em;
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
+    white-space: pre-line;
+    align-items: center;
     margin-left:${props=>props.marginLeft}px;
     margin-right:${props=>props.marginRight}px;
+    font-size:12px;
 `;
+
+const TruncatedTableText = styled(TableText)`
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+`
 
 const CenteredText = styled.div`
     display:flex;
@@ -174,26 +187,51 @@ export default ({
                 <InformationContent>
                     {submittedReportCount===0?
                     <CenteredText>{"아직 제출된 리포트가 없습니다"}</CenteredText>:
-                    <BasicTableBox>
-                        <BasicTableHead>
-                            <TableContentWrapperWithRatio>
-                                <TableText marginLeft={0} marginRight={0}>report id</TableText>
-                                <TableText marginLeft={0} marginRight={0}>status</TableText>
-                                <TableText marginLeft={0} marginRight={0}>result</TableText>
-                                <TableText marginLeft={0} marginRight={0}>by hacker</TableText>
-                            </TableContentWrapperWithRatio>
-                        </BasicTableHead>
-                        {reportInfoList.map((dictObj:any, index:any) => {
-                            return (<BasicTableContent key={1000+index}>
-                                <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
-                                    <TableText marginLeft={0} marginRight={0}>{dictObj.reportId}</TableText>
-                                    <TableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</TableText>
-                                    <TableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</TableText>
-                                    <TableText marginLeft={0} marginRight={0}>{dictObj.authorNickName}</TableText>
+                    window.innerWidth>700?
+                        // for desktop
+                        <BasicTableBox>
+                            <BasicTableHead>
+                                <TableContentWrapperWithRatio>
+                                    <TableText marginLeft={0} marginRight={0}>report id</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>status</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>result</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>by hacker</TableText>
                                 </TableContentWrapperWithRatio>
-                            </BasicTableContent>)
-                        })}
-                    </BasicTableBox>
+                            </BasicTableHead>
+                            {reportInfoList.map((dictObj:any, index:any) => {
+                                return (<BasicTableContent key={1000+index}>
+                                    <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
+                                        <TableText marginLeft={0} marginRight={0}>{dictObj.reportId}</TableText>
+                                        <TableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</TableText>
+                                        <TableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"⋯"}</TableText>
+                                        <TableText marginLeft={0} marginRight={0}>{dictObj.authorNickName}</TableText>
+                                    </TableContentWrapperWithRatio>
+                                </BasicTableContent>)
+                            })}
+                        </BasicTableBox>
+                        :
+                        // for mobile
+                        <BasicTableBox>
+                            <BasicTableHead>
+                                <TableContentWrapperWithRatio>
+                                    <TableText marginLeft={7} marginRight={2}>#</TableText>
+                                    <TableText marginLeft={0} marginRight={3}>status</TableText>
+                                    <TableText marginLeft={0} marginRight={4}>result</TableText>
+                                    <TableText marginLeft={0} marginRight={0}>from</TableText>
+                                </TableContentWrapperWithRatio>
+                            </BasicTableHead>
+                            {reportInfoList.map((dictObj:any, index:any) => {
+                                return (<BasicTableContent key={1000+index}>
+                                    <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
+                                        <TableText marginLeft={7} marginRight={2}>{index+1}</TableText>
+                                        <TableText marginLeft={0} marginRight={3}>{statusDict[dictObj.status]}</TableText>
+                                        <TableText marginLeft={0} marginRight={4}>{dictObj.result?dictObj.result:"⋯"}</TableText>
+                                        <TruncatedTableText marginLeft={0} marginRight={1}>{dictObj.authorNickName}</TruncatedTableText>
+                                    </TableContentWrapperWithRatio>
+                                </BasicTableContent>)
+                            })}
+                        </BasicTableBox>
+                    
                 }
                 </InformationContent>
             </InformationBox>
