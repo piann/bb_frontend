@@ -26,7 +26,11 @@ const StyledButton = styled.button<WidthProps>`
   font-weight: 700;
   letter-spacing:0.05em;
   @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-        font-size: 4vw;
+        font-size: 11px;
+        padding-left:8px;
+        padding-right:8px;
+        padding-top:8px;
+        padding-bottom:8px;
   }
 &&:before,
 &&:after {
@@ -70,7 +74,7 @@ export default ({
     width,
     disabled
 }:any) => {
-  
+
     return(
     <StyledButton onClick={clickFunc} disabled={disabled} width={width}>
         <div>{text}</div>

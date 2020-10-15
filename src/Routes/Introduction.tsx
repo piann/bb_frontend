@@ -151,10 +151,6 @@ const DescText= styled.div`
 
 export default () => {
     
-
-    const openPdf = () => {
-
-    }
     return (
         (window.innerWidth>700?
             // for desktop
@@ -163,7 +159,7 @@ export default () => {
                 <MainText>{"We connect security"}</MainText>
                 <SubArea>
                     <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
-                    <a href = {Pdf} target = "_blank">
+                    <a href = {Pdf} target = "_blank" rel={"noopener"}>
                         <AdvButton text={"What is Bug Bounty?"} />
                     </a>
                 </SubArea>
@@ -196,7 +192,7 @@ export default () => {
                     <SubArea>
                         <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
                         <a href = {Pdf} target = "_blank">
-                            <AdvButton text={"What is Bug Bounty?"} />
+                            <AdvButton text={"What is Bug Bounty?"} width={"180px"}/>
                         </a>
                     </SubArea>
                 </UpperBody>
@@ -207,6 +203,7 @@ export default () => {
                         pagination={{ clickable: true }}
                         onSwiper={(swiper) => console.log(swiper)}
                         autoplay={{delay: 3000}}
+                        loop={true}
                     >
                     <SwiperSlide>
                         <DescBox>

@@ -57,6 +57,7 @@ const HeadWrapper = styled.div`
     align-items:center;
     justify-content:space-between;
     margin-bottom:55px;
+    margin-top:10px;
 `
 
 const Line = styled.div`
@@ -98,10 +99,12 @@ const HackerProfileImg = styled.img`
 const PaperArea = styled.div`
 margin-top:20px;
 margin-bottom:50px;
+
 .paper {
   background: #fff;
   padding: 30px;
   position: relative;
+  
 }
 
 .paper,
@@ -236,6 +239,13 @@ const LoaderWrapper = styled.div`
     width:100%;
 `;
 
+const MInformationContent = styled(InformationBox)`
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size: 12px;
+    }
+`;
+
+
 const toggleHide = ():any => {
     var contentObj = document.getElementById("EtcContent");
     if (contentObj?.style.display !== "block") {
@@ -276,7 +286,7 @@ export default ({
         <>
         <InformationBox>
             <InformationTitle>Report</InformationTitle>
-            <InformationContent>
+            <MInformationContent>
             {fileId?
             <HeadWrapper>
             <TitleLogo src={basicLogo}/>
@@ -359,7 +369,7 @@ export default ({
             </EtcPaperArea>
             </>
             }
-            </InformationContent>
+            </MInformationContent>
         </InformationBox>
         
         </>

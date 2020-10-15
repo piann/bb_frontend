@@ -244,7 +244,7 @@ export default ({
             <InformationContent>
             <ButtonRow>
                 <Link to={`/view_report/${rId}`}>
-                    <AdvButton text={"View Report"} width={window.innerWidth>700?"150px":"138px"}/>
+                    <AdvButton text={"View Report"} width={window.innerWidth>700?"150px":"120px"}/>
                 </Link>
             </ButtonRow>
             <ProgressBarWrapper>

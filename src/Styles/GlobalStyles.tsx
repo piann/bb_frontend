@@ -17,6 +17,7 @@ export default createGlobalStyle`
         padding-top: ${theme.headerBarHeight};
         @media only screen and (max-width: ${theme.mobileWidth}) {
             padding-top:calc(${theme.headerBarHeight} - 10px);
+            font-size:12px;
         }
     }
     a {
