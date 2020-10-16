@@ -18,7 +18,7 @@ const LogInBox = styled.div`
     width: 400px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom:50px;
+    margin-bottom:120px;
     display:grid;
     grid-auto-flow: row;
     grid-template-rows: 1fr 2fr 1fr;

@@ -14,6 +14,9 @@ const FooterWrapper = styled.footer`
     word-break: keep-all;
     line-height:1.5rem;
     white-space: pre-line;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+      font-size:11px;
+    }
 `;
 
 
@@ -35,8 +38,9 @@ const RelativeFooterWrapper = styled.footer`
     line-height:1.5rem;
     white-space: pre-line;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-      bottom:-600px;
+      bottom:-730px;
       padding-left: calc(2vw + 20px);	
+      font-size:11px;
     }
 `;
 
