@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
 import {statusDict} from "../../common";
-import {BarLoader, SpinLoader} from "../../Components/Loaders"
+import {BarLoader} from "../../Components/Loaders"
 import PhotoInput from "../../Components/PhotoInput";
 import { ToastContainer } from "react-toastify";
 import {fileServerAddr} from "../../common";
@@ -13,12 +13,21 @@ const ProfileWrapper = styled.div`
     flex-direction: row;
     margin-top:50px;
     justify-content:center;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    align-items: center;  
+    flex-direction: column;
+    }
 `;
 
 interface sizeProps{
     width?:string;
     height?:string;
 }
+
+const MobileReportWrapper = styled.div`
+    display:flex;
+    flex-direction: row;
+`;
 
 export const ProfileBox = styled.div<sizeProps>`
 width:${props => props.width};
@@ -29,6 +38,20 @@ flex-direction:column;
 box-shadow:0 3px 7px 3px rgba(7, 7, 33, 0.1),0 1px 1px 1px rgba(0, 0, 0, 0.2);
 margin-bottom:70px;
 padding-bottom:20px;
+`;
+
+export const ReportBox = styled.div<sizeProps>`
+width:${props => props.width};
+height:${props => props.height};
+background-color: white;
+display:flex;
+flex-direction:column;
+box-shadow:0 3px 7px 3px rgba(7, 7, 33, 0.1),0 1px 1px 1px rgba(0, 0, 0, 0.2);
+margin-bottom:70px;
+padding-bottom:20px;
+@media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    margin-left: 615px;
+    }
 `;
 
 
@@ -204,37 +227,40 @@ export default ({
 </ProfileBox>
 <EmptySpace/>
 
-<ProfileBox width={"800px"} >
-    <ProfileTitle>Reports</ProfileTitle>
-    <ProfileContent>
-        {(reportInfoList===null || reportInfoList.length===0)?
-        <InfoText>
-            {"아직 제출한 리포트가 없습니다. 버그바운티에 참여해보세요!"}
-        </InfoText>
-        :
-        <MiniTableBox>
-                    <MiniTableHead>
-                        <TableContentWrapperWithRatio>
-                            <TableText marginLeft={0} marginRight={10}>{"Reported Vulnerability"}</TableText>
-                            <TableText marginLeft={10} marginRight={10}>{"Company"}</TableText>
-                            <TableText marginLeft={0} marginRight={0}>{"Status"}</TableText>
-                            <TableText marginLeft={10} marginRight={0}>{"Result"}</TableText>
-                        </TableContentWrapperWithRatio>
-                    </MiniTableHead>
-                    {reportInfoList.map((dictObj:any, index:any) => {
-                         return (<MiniTableContent key={1000+index}>
-                             <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
-                                    <TableText marginLeft={0} marginRight={10}>{dictObj.vulName}</TableText>
-                                    <TableText marginLeft={10} marginRight={10}>{dictObj.companyName}</TableText>
-                                    <TableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</TableText>
-                                    <TableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</TableText>
-                             </TableContentWrapperWithRatio>
-                         </MiniTableContent>)
-                    })}
-        </MiniTableBox>
-        }
-    </ProfileContent>
-</ProfileBox>
+<MobileReportWrapper>
+    <ReportBox width={"800px"} >
+        <ProfileTitle>Reports</ProfileTitle>
+        <ProfileContent>
+            {(reportInfoList===null || reportInfoList.length===0)?
+            <InfoText>
+                {"아직 제출한 리포트가 없습니다. 버그바운티에 참여해보세요!"}
+            </InfoText>
+            :
+            <MiniTableBox>
+                        <MiniTableHead>
+                            <TableContentWrapperWithRatio>
+                                <TableText marginLeft={0} marginRight={10}>{"Reported Vulnerability"}</TableText>
+                                <TableText marginLeft={10} marginRight={10}>{"Company"}</TableText>
+                                <TableText marginLeft={0} marginRight={0}>{"Status"}</TableText>
+                                <TableText marginLeft={10} marginRight={0}>{"Result"}</TableText>
+                            </TableContentWrapperWithRatio>
+                        </MiniTableHead>
+                        {reportInfoList.map((dictObj:any, index:any) => {
+                            return (<MiniTableContent key={1000+index}>
+                                <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
+                                        <TableText marginLeft={0} marginRight={10}>{dictObj.vulName}</TableText>
+                                        <TableText marginLeft={10} marginRight={10}>{dictObj.companyName}</TableText>
+                                        <TableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</TableText>
+                                        <TableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</TableText>
+                                </TableContentWrapperWithRatio>
+                            </MiniTableContent>)
+                        })}
+            </MiniTableBox>
+            }
+        </ProfileContent>
+    </ReportBox>
+    <EmptySpace/>
+</MobileReportWrapper>
 </>
 }
 </ProfileWrapper>
