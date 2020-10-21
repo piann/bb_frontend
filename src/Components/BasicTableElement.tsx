@@ -37,7 +37,7 @@ align-items:center;
 padding-left:20px;
 padding-right:20px;
 @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-    height:100px;
+    height:50px;
     padding-left:0px;
     padding-right:0px;
 }

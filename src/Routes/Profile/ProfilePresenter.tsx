@@ -36,9 +36,16 @@ margin-bottom:70px;
 padding-bottom:20px;
 `;
 
-export const EachReport = styled(BasicTableContent)`
+export const MobileEachReport = styled.div`
 display:flex;
 flex-direction:row;
+border-style:groove;
+border-top-color:${props => props.theme.snowyGrayColor};
+border-top-width:2px;
+font-size:11px;
+height: 100px;
+display:flex;
+align-items:center;
 `;
 
 
@@ -125,9 +132,7 @@ width:100%;
 `;
 
 const MobileMiniTableContent = styled.div`
-height: 60px;
-padding-left:10px;
-padding-right:10px;
+height: 100px;
 width:100%;
 border-style:groove;
 border-left-color:${props => props.theme.snowyGrayColor};
@@ -147,8 +152,8 @@ const MobileTableContentWrapperWithRatio = styled.a`
     width:100%;
     display:grid;
     grid-auto-flow: column;
-    grid-template-columns: 80px 60px;
-    grid-template-rows: 30px 30px;
+    grid-template-columns: 4fr 3fr;
+    grid-template-rows: 1fr 1fr;
     color:inherit;
     text-decoration: none;
 `;
@@ -175,20 +180,10 @@ const MobileTableText = styled.div<marginProps>`
     word-break: keep-all;
     word-spacing: 0.1em;
     text-align:center;
+    height: 50px;
     display:flex;
     justify-content:center;
     align-items:center;
-    margin-left:${props=>props.marginLeft}px;
-    margin-right:${props=>props.marginRight}px;
-`;
-
-const MobileTableTextTruncate = styled.div<marginProps>`
-    word-break: keep-all;
-    word-spacing: 0.1em;
-    text-align:center;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
     margin-left:${props=>props.marginLeft}px;
     margin-right:${props=>props.marginRight}px;
 `;
@@ -282,7 +277,7 @@ export default ({
     {loading?
     <BarLoader/>:
     <>
-    <ProfileBox width={"235px"} height={"max-content"}>
+    <ProfileBox width={`calc(99vw - 20px)`} height={"max-content"}>
         <ProfileTitle>Profile</ProfileTitle>
         <ProfileContent>
             <PhotoInput
@@ -307,7 +302,7 @@ export default ({
     </ProfileBox>
     <EmptySpace/>
 
-    <ProfileBox width={"235px"} >
+    <ProfileBox width={`calc(99vw - 20px)`} >
         <ProfileTitle>Reports</ProfileTitle>
             <ProfileContent>
                 {(reportInfoList===null || reportInfoList.length===0)?
@@ -321,29 +316,29 @@ export default ({
                             </MobileMiniTableHead>
                             {reportInfoList.map((dictObj:any, index:any) => {
                                 return (
-                                    <EachReport key={1000+index}>
-                                        <TableText marginLeft={6} marginRight={6}>{index+1}</TableText>
+                                    <MobileEachReport key={1000+index}>
+                                        <MobileTableText marginLeft={6} marginRight={6}>{index+1}</MobileTableText>
                                         <MobileMiniTableContent>
                                             <MobileTableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
                                                     
-                                                        <MobileTableTextTruncate marginLeft={0} marginRight={0}>
-                                                            <Truncate lines={2}>
+                                                        <MobileTableText marginLeft={0} marginRight={0}>
+
                                                                 {dictObj.vulName}
-                                                            </Truncate>
-                                                        </MobileTableTextTruncate>
+
+                                                        </MobileTableText>
                                                     
                                                         <MobileTableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</MobileTableText>
                                                     
-                                                        <MobileTableTextTruncate marginLeft={0} marginRight={0}>
-                                                            <Truncate lines={2}>
+                                                        <MobileTableText marginLeft={0} marginRight={0}>
+
                                                                 {dictObj.companyName}
-                                                            </Truncate>
-                                                        </MobileTableTextTruncate>
+
+                                                        </MobileTableText>
 
                                                         <MobileTableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</MobileTableText>
                                             </MobileTableContentWrapperWithRatio>
                                         </MobileMiniTableContent>
-                                    </EachReport>)
+                                    </MobileEachReport>)
                             })}
                 </MiniTableBox>
                 }
