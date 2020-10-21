@@ -7,6 +7,7 @@ import PhotoInput from "../../Components/PhotoInput";
 import { ToastContainer } from "react-toastify";
 import {fileServerAddr} from "../../common";
 import Button from "../../Components/Button";
+import Truncate from 'react-truncate';
 
 const ProfileWrapper = styled.div`
     display:flex;
@@ -24,11 +25,6 @@ interface sizeProps{
     height?:string;
 }
 
-const MobileReportWrapper = styled.div`
-    display:flex;
-    flex-direction: row;
-`;
-
 export const ProfileBox = styled.div<sizeProps>`
 width:${props => props.width};
 height:${props => props.height};
@@ -40,18 +36,9 @@ margin-bottom:70px;
 padding-bottom:20px;
 `;
 
-export const ReportBox = styled.div<sizeProps>`
-width:${props => props.width};
-height:${props => props.height};
-background-color: white;
+export const EachReport = styled(BasicTableContent)`
 display:flex;
-flex-direction:column;
-box-shadow:0 3px 7px 3px rgba(7, 7, 33, 0.1),0 1px 1px 1px rgba(0, 0, 0, 0.2);
-margin-bottom:70px;
-padding-bottom:20px;
-@media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-    margin-left: 615px;
-    }
+flex-direction:row;
 `;
 
 
@@ -122,11 +109,29 @@ padding-right:10px;
 width:100%;
 `;
 
+const MobileMiniTableHead = styled(BasicTableHead)`
+background-color:${props => props.theme.bgColor};
+height:40px;
+padding-left:10px;
+padding-right:10px;
+width:100%;
+`;
+
 const MiniTableContent = styled(BasicTableContent)`
 height: 40px;
 padding-left:10px;
 padding-right:10px;
 width:100%;
+`;
+
+const MobileMiniTableContent = styled.div`
+height: 60px;
+padding-left:10px;
+padding-right:10px;
+width:100%;
+border-style:groove;
+border-left-color:${props => props.theme.snowyGrayColor};
+border-left-width:2px;
 `;
 
 const TableContentWrapperWithRatio = styled.a`
@@ -137,6 +142,17 @@ const TableContentWrapperWithRatio = styled.a`
     color:inherit;
     text-decoration: none;
 `;
+
+const MobileTableContentWrapperWithRatio = styled.a`
+    width:100%;
+    display:grid;
+    grid-auto-flow: column;
+    grid-template-columns: 80px 60px;
+    grid-template-rows: 30px 30px;
+    color:inherit;
+    text-decoration: none;
+`;
+
 
 interface marginProps{
     marginLeft:number;
@@ -155,35 +171,27 @@ const TableText = styled.div<marginProps>`
     margin-right:${props=>props.marginRight}px;
 `;
 
+const MobileTableText = styled.div<marginProps>`
+    word-break: keep-all;
+    word-spacing: 0.1em;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-left:${props=>props.marginLeft}px;
+    margin-right:${props=>props.marginRight}px;
+`;
 
-const elements = ['이런 것을 이렇게 해야한다', '저렇게 이렇게 꼭 해야한다', '이런 것을 알아야한다.'];////
-const testTargetObjList = [
-    {
-      reportId: "ckdd2g2au0006a1p4donly56g",
-      companyName: "starbucks",
-      status: "0",
-      result: null
-    },
-    {
-        reportId: "ckdd2g2au0006a1p4donly56g",
-        companyName: "TestName",
-        status: "0",
-        result: null
-    },
-    {
-        reportId: "ckdd2g2au0006a1p4donly56g",
-        companyName: "starbucks",
-        status: "0",
-        result: null
-      },
-      {
-          reportId: "ckdd2g2au0006a1p4donly56g",
-          companyName: "TestName",
-          status: "0",
-          result: null
-      },
-      
-  ] ////;
+const MobileTableTextTruncate = styled.div<marginProps>`
+    word-break: keep-all;
+    word-spacing: 0.1em;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    margin-left:${props=>props.marginLeft}px;
+    margin-right:${props=>props.marginRight}px;
+`;
 
 
 export default ({
@@ -197,46 +205,50 @@ export default ({
     uploading,
     onChangeProfile,
     clickFunc
-}:any) => <ProfileWrapper>
-    <ToastContainer/>
-{loading?
-<BarLoader/>:
-<>
-<ProfileBox width={"235px"} height={"max-content"}>
-    <ProfileTitle>Profile</ProfileTitle>
-    <ProfileContent>
-        <PhotoInput
-        uploading={uploading}
-        fileUrl={profilePictureId?`${fileServerAddr}i/${profilePictureId}/`:null}
-        onChange={onChangeProfile}
-        />
-        <InfoText>{nickName}</InfoText>
-    </ProfileContent>
-    <LogOutBox>
-        <Button text="Log Out" width={"100px"} onClick={clickFunc}/>
-    </LogOutBox>
-    <SpecRow>
-        <BoldText>{"Credit⠀:⠀"}</BoldText>
-        <InfoText>{credit}</InfoText>
-    </SpecRow>
-    <SpecRow>
-        <BoldText>{"Vulnerabilities found⠀:⠀"}</BoldText>
-        <InfoText>{numOfVul}</InfoText>
-    </SpecRow>
-  
-</ProfileBox>
-<EmptySpace/>
-
-<MobileReportWrapper>
-    <ReportBox width={"800px"} >
-        <ProfileTitle>Reports</ProfileTitle>
+}:any) => 
+{
+    return(
+        window.innerWidth>700?
+        // for desktop
+        <ProfileWrapper>
+        <ToastContainer/>
+    {loading?
+    <BarLoader/>:
+    <>
+    <ProfileBox width={"235px"} height={"max-content"}>
+        <ProfileTitle>Profile</ProfileTitle>
         <ProfileContent>
-            {(reportInfoList===null || reportInfoList.length===0)?
-            <InfoText>
-                {"아직 제출한 리포트가 없습니다. 버그바운티에 참여해보세요!"}
-            </InfoText>
-            :
-            <MiniTableBox>
+            <PhotoInput
+            uploading={uploading}
+            fileUrl={profilePictureId?`${fileServerAddr}i/${profilePictureId}/`:null}
+            onChange={onChangeProfile}
+            />
+            <InfoText>{nickName}</InfoText>
+        </ProfileContent>
+        <LogOutBox>
+            <Button text="Log Out" width={"100px"} onClick={clickFunc}/>
+        </LogOutBox>
+        <SpecRow>
+            <BoldText>{"Credit⠀:⠀"}</BoldText>
+            <InfoText>{credit}</InfoText>
+        </SpecRow>
+        <SpecRow>
+            <BoldText>{"Vulnerabilities found⠀:⠀"}</BoldText>
+            <InfoText>{numOfVul}</InfoText>
+        </SpecRow>
+    
+    </ProfileBox>
+    <EmptySpace/>
+
+    <ProfileBox width={"800px"} >
+        <ProfileTitle>Reports</ProfileTitle>
+            <ProfileContent>
+                {(reportInfoList===null || reportInfoList.length===0)?
+                <InfoText>
+                    {"아직 제출한 리포트가 없습니다. 버그바운티에 참여해보세요!"}
+                </InfoText>
+                :
+                <MiniTableBox>
                         <MiniTableHead>
                             <TableContentWrapperWithRatio>
                                 <TableText marginLeft={0} marginRight={10}>{"Reported Vulnerability"}</TableText>
@@ -245,22 +257,99 @@ export default ({
                                 <TableText marginLeft={10} marginRight={0}>{"Result"}</TableText>
                             </TableContentWrapperWithRatio>
                         </MiniTableHead>
-                        {reportInfoList.map((dictObj:any, index:any) => {
-                            return (<MiniTableContent key={1000+index}>
-                                <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
-                                        <TableText marginLeft={0} marginRight={10}>{dictObj.vulName}</TableText>
-                                        <TableText marginLeft={10} marginRight={10}>{dictObj.companyName}</TableText>
-                                        <TableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</TableText>
-                                        <TableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</TableText>
-                                </TableContentWrapperWithRatio>
-                            </MiniTableContent>)
-                        })}
-            </MiniTableBox>
-            }
+                            {reportInfoList.map((dictObj:any, index:any) => {
+                                return (
+                                <MiniTableContent key={1000+index}>
+                                    <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
+                                            <TableText marginLeft={0} marginRight={10}>{dictObj.vulName}</TableText>
+                                            <TableText marginLeft={10} marginRight={10}>{dictObj.companyName}</TableText>
+                                            <TableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</TableText>
+                                            <TableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</TableText>
+                                    </TableContentWrapperWithRatio>
+                                </MiniTableContent>)
+                            })}
+                </MiniTableBox>
+                }
+            </ProfileContent>
+        </ProfileBox>
+    </>
+    }
+    </ProfileWrapper>
+        :
+        // for mobile
+        <ProfileWrapper>
+        <ToastContainer/>
+    {loading?
+    <BarLoader/>:
+    <>
+    <ProfileBox width={"235px"} height={"max-content"}>
+        <ProfileTitle>Profile</ProfileTitle>
+        <ProfileContent>
+            <PhotoInput
+            uploading={uploading}
+            fileUrl={profilePictureId?`${fileServerAddr}i/${profilePictureId}/`:null}
+            onChange={onChangeProfile}
+            />
+            <InfoText>{nickName}</InfoText>
         </ProfileContent>
-    </ReportBox>
+        <LogOutBox>
+            <Button text="Log Out" width={"100px"} onClick={clickFunc}/>
+        </LogOutBox>
+        <SpecRow>
+            <BoldText>{"Credit⠀:⠀"}</BoldText>
+            <InfoText>{credit}</InfoText>
+        </SpecRow>
+        <SpecRow>
+            <BoldText>{"Vulnerabilities found⠀:⠀"}</BoldText>
+            <InfoText>{numOfVul}</InfoText>
+        </SpecRow>
+    
+    </ProfileBox>
     <EmptySpace/>
-</MobileReportWrapper>
-</>
-}
-</ProfileWrapper>
+
+    <ProfileBox width={"235px"} >
+        <ProfileTitle>Reports</ProfileTitle>
+            <ProfileContent>
+                {(reportInfoList===null || reportInfoList.length===0)?
+                <InfoText>
+                    {"아직 제출한 리포트가 없습니다. 버그바운티에 참여해보세요!"}
+                </InfoText>
+                :
+                <MiniTableBox>
+                            <MobileMiniTableHead>
+
+                            </MobileMiniTableHead>
+                            {reportInfoList.map((dictObj:any, index:any) => {
+                                return (
+                                    <EachReport key={1000+index}>
+                                        <TableText marginLeft={6} marginRight={6}>{index+1}</TableText>
+                                        <MobileMiniTableContent>
+                                            <MobileTableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
+                                                    
+                                                        <MobileTableTextTruncate marginLeft={0} marginRight={0}>
+                                                            <Truncate lines={2}>
+                                                                {dictObj.vulName}
+                                                            </Truncate>
+                                                        </MobileTableTextTruncate>
+                                                    
+                                                        <MobileTableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</MobileTableText>
+                                                    
+                                                        <MobileTableTextTruncate marginLeft={0} marginRight={0}>
+                                                            <Truncate lines={2}>
+                                                                {dictObj.companyName}
+                                                            </Truncate>
+                                                        </MobileTableTextTruncate>
+
+                                                        <MobileTableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</MobileTableText>
+                                            </MobileTableContentWrapperWithRatio>
+                                        </MobileMiniTableContent>
+                                    </EachReport>)
+                            })}
+                </MiniTableBox>
+                }
+            </ProfileContent>
+        </ProfileBox>
+    </>
+    }
+    </ProfileWrapper>
+)}
