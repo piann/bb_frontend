@@ -7,6 +7,8 @@ import PhotoInput from "../../Components/PhotoInput";
 import { ToastContainer } from "react-toastify";
 import {fileServerAddr} from "../../common";
 import Button from "../../Components/Button";
+import {truncateLongStr} from "../../utils";
+
 
 const ProfileWrapper = styled.div`
     display:flex;
@@ -55,6 +57,9 @@ height:50px;
 display:flex;
 align-items:center;
 padding-left:20px;
+@media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    padding-left:18px;
+    }
 `;
 
 export const ProfileContent = styled.div`
@@ -65,6 +70,11 @@ padding-right:25px;
 display:flex;
 flex-direction:column;
 align-items:center;
+
+@media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    padding-left:18px;
+    padding-right:18px;
+    }
 `;
 
 const EmptySpace = styled.div`
@@ -101,8 +111,8 @@ border-style:groove;
 border-color:${props => props.theme.snowyGrayColor};
 border-width:2px;
 margin-bottom:20px;
-margin-left:8px;
-margin-right:8px;
+margin-left:2px;
+margin-right:2px;
 width:100%;
 `;
 
@@ -124,8 +134,8 @@ width:100%;
 
 const MiniTableContent = styled(BasicTableContent)`
 height: 40px;
-padding-left:10px;
-padding-right:10px;
+padding-left:4px;
+padding-right:4px;
 width:100%;
 `;
 
@@ -174,9 +184,10 @@ const TableText = styled.div<marginProps>`
     margin-right:${props=>props.marginRight}px;
 `;
 
-const MobileTableText = styled.div<marginProps>`
+const MobileHeadText = styled.div<marginProps>`
     word-break: keep-all;
     word-spacing: 0.1em;
+    line-height:1rem;
     text-align:center;
     height: 50px;
     display:flex;
@@ -184,6 +195,22 @@ const MobileTableText = styled.div<marginProps>`
     align-items:center;
     margin-left:${props=>props.marginLeft}px;
     margin-right:${props=>props.marginRight}px;
+`;
+
+const MobileTableText = styled.div<marginProps>`
+    word-break: keep-all;
+    word-spacing: 0.1em;
+    line-height:1rem;
+    text-align:center;
+    height: 50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-left:${props=>props.marginLeft}px;
+    margin-right:${props=>props.marginRight}px;
+    border-style:groove;
+    border-color:rgba(180,180,210,0.1);
+    border-width:1px;
 `;
 
 
@@ -310,28 +337,20 @@ export default ({
                 :
                 <MiniTableBox>
                             <MobileMiniTableHead>
-                                <MobileTableText marginLeft={0} marginRight={0}>#</MobileTableText>
+                                <MobileHeadText marginLeft={0} marginRight={0}>#</MobileHeadText>
                             </MobileMiniTableHead>
                             {reportInfoList.map((dictObj:any, index:any) => {
                                 return (
                                     <MobileEachReport key={1000+index}>
-                                        <MobileTableText marginLeft={6} marginRight={6}>{index+1}</MobileTableText>
+                                        <MobileHeadText marginLeft={6} marginRight={6}>{index+1}</MobileHeadText>
                                         <MobileMiniTableContent>
                                             <MobileTableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
                                                     
-                                                        <MobileTableText marginLeft={0} marginRight={0}>
-
-                                                                {dictObj.vulName}
-
-                                                        </MobileTableText>
+                                                        <MobileTableText marginLeft={0} marginRight={0}>{truncateLongStr(dictObj.vulName, 37)} </MobileTableText>
                                                     
-                                                        <MobileTableText marginLeft={0} marginRight={0}>{statusDict[dictObj.status]}</MobileTableText>
+                                                        <MobileTableText marginLeft={0} marginRight={0}>{truncateLongStr(statusDict[dictObj.status],37)}</MobileTableText>
                                                     
-                                                        <MobileTableText marginLeft={0} marginRight={0}>
-
-                                                                {dictObj.companyName}
-
-                                                        </MobileTableText>
+                                                        <MobileTableText marginLeft={0} marginRight={0}>{dictObj.companyName}</MobileTableText>
 
                                                         <MobileTableText marginLeft={0} marginRight={0}>{dictObj.result?dictObj.result:"-"}</MobileTableText>
                                             </MobileTableContentWrapperWithRatio>

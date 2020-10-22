@@ -150,3 +150,13 @@ export const getTypeImage = (type:string):any =>{
   return imgComponent;
 
 }
+
+export const truncateLongStr = (longStr:string, index:number):string => {
+  if(longStr.length <= index){
+    return longStr
+  } else {
+    return longStr.substring(0,index)+ "...";
+  }
+
+
+}
