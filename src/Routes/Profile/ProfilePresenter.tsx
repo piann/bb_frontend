@@ -7,7 +7,6 @@ import PhotoInput from "../../Components/PhotoInput";
 import { ToastContainer } from "react-toastify";
 import {fileServerAddr} from "../../common";
 import Button from "../../Components/Button";
-import Truncate from 'react-truncate';
 
 const ProfileWrapper = styled.div`
     display:flex;
@@ -119,8 +118,7 @@ width:100%;
 const MobileMiniTableHead = styled(BasicTableHead)`
 background-color:${props => props.theme.bgColor};
 height:40px;
-padding-left:10px;
-padding-right:10px;
+padding-left:6px;
 width:100%;
 `;
 
@@ -312,7 +310,7 @@ export default ({
                 :
                 <MiniTableBox>
                             <MobileMiniTableHead>
-
+                                <MobileTableText marginLeft={0} marginRight={0}>#</MobileTableText>
                             </MobileMiniTableHead>
                             {reportInfoList.map((dictObj:any, index:any) => {
                                 return (
