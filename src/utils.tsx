@@ -36,6 +36,13 @@ export const checkComplexPassword = (target:string):boolean => {
     return result;
 }
 
+export const checkPhoneNumber = (target:string):boolean => {
+  const reg = /^\d{3}-\d{3,4}-\d{4}$/;
+  const result = reg.test(target);
+  return result;
+}
+
+
 export const useInput = (defaultValue:any) => {
     const [value, setValue] = useState(defaultValue);
   

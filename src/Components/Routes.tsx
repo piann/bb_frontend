@@ -4,6 +4,7 @@ import Proptypes from "prop-types";
 import React from "react";
 import LogIn from "../Routes/LogIn";
 import SignUp from "../Routes/SignUp";
+import RegisterBusiness from "../Routes/RegisterBusiness";
 import BBP from "../Routes/BBP";
 import Report from "../Routes/Report";
 import BBPProgress from "../Routes/BBPProgress";
@@ -47,6 +48,7 @@ const LoggedOutRoutes = () => <Switch>
 <Route exact path="/terms_of_service" component={TermsOfServices}></Route>
 <Route exact path="/log_in" component={LogIn}></Route>
 <Route exact path="/sign_up" component={SignUp}></Route>
+<Route exact path="/register_business" component={RegisterBusiness}></Route>
 <Route exact path="/programs" component={ProgramList}></Route>
 <Route exact path="/reauth" component={EmailResend}></Route>
 <Route exact path="/find_password" component={SendPasswordResetEmail}></Route>
