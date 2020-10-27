@@ -5,7 +5,8 @@ import Button from "../../Components/Button";
 import { checkEmailChars, checkPhoneNumber } from "../../utils";
 import { BarLoader } from "../../Components/Loaders";
 import { Link } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import { toastOpt } from "../../common";
 
 const SignUpBox = styled.div`
     background-color: white;
@@ -28,6 +29,40 @@ const SignUpBox = styled.div`
     }
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
     position: relative;
+`;
+
+
+const MiniFormBox = styled.div`
+    background-color: white;
+    border-radius: ${props => props.theme.borderRadius};
+    margin-top:100px;
+    margin-bottom:100px;
+    height: 150px;
+    padding: 8px 20px;
+    min-width:250px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        width:min(95vw, 400px);
+    }
+    box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+`;
+
+const ResultText = styled.div`
+    word-break: keep-all;
+    word-spacing: 0.1em;
+    line-height: 2em;
+    white-space: pre-line;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:600;
 `;
 
 
@@ -118,6 +153,11 @@ const EmptySpace = styled.div`
     margin-bottom: 10px;
 `;
 
+const FileInputArea = styled.div`
+margin-top:10px;
+margin-bottom:10px;
+`;
+
 
 interface SignUpPresenterProps{
     email:any
@@ -133,6 +173,7 @@ interface SignUpPresenterProps{
     checkedTerm:any
     setCheckedTerm:any
     setButtonDisabled:any
+    done:any
 }
 
 
@@ -147,7 +188,8 @@ export default ({
     checkedPrivacy,
     setCheckedPrivacy,
     checkedTerm,
-    setCheckedTerm
+    setCheckedTerm,
+    done
 
 }:SignUpPresenterProps) => {
 
@@ -202,6 +244,11 @@ export default ({
     
     return(<>
     <ToastContainer/>
+    {done?
+    <MiniFormBox>
+        <ResultText>{"이메일 전송이 완료되었습니다."}</ResultText>
+    </MiniFormBox>
+    :
     <SignUpBox>
         {submitting?
         <LoaderWrapper>
@@ -231,9 +278,10 @@ export default ({
                 <Description color={jobTitleDescriptionColor}>{jobTitleDescription}</Description>
             </MainComponentWrapper>
             <MainComponentWrapper>
-                <Input placeholder="Phone" {...phone} maxLength={24}/>
+                <Input placeholder="Phone number" {...phone} maxLength={24}/>
                 <Description color={phoneDescriptionColor}>{phoneDescription}</Description>
             </MainComponentWrapper>
+
         </MainArea>
         <SignUpFooterArea>
             <TotalDescription>
@@ -253,10 +301,12 @@ export default ({
                 <SLink to="/terms_of_service" target="_blank">{"서비스 이용약관"}</SLink>
                 <JText>{"에 동의합니다 (필수)"}</JText>
             </CheckBoxRow>
+            <EmptySpace />
             <Button text="Submit" disabled={buttonDisabled} onClick={clickFunc}/>
         </SignUpFooterArea>
         </>
         }
     </SignUpBox>
+    }
     </>)
 }

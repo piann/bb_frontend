@@ -19,6 +19,7 @@ export default () => {
     const [checkedPrivacy, setCheckedPrivacy] = useState(false);
     const [checkedTerm, setCheckedTerm] = useState(false);
     const [buttonDisabled, setButtonDisabled] = useState(false);
+    const [done, setDone] = useState(false);
 
     const [sendBusinessMail, {loading}] = useMutation(SEND_EMAIL_BUSINESS_ACCOUNT);
 
@@ -41,7 +42,7 @@ export default () => {
         if(!loading){
 
             if(sendBusinessMailResponse===true){
-                toast("메일이 전송되었습니다 !", toastOpt as any);
+                setDone(true);
                 setTimeout(()=>{window.location.href = "/";}, 3000)
             } else {
                 toast("There is an error", toastOpt as any);
@@ -64,7 +65,8 @@ export default () => {
     checkedTerm={checkedTerm}
     setCheckedTerm={setCheckedTerm}
     setButtonDisabled={setButtonDisabled}
+    done={done}
     />
 
 
-}
+} 

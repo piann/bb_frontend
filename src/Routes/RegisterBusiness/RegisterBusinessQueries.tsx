@@ -7,7 +7,6 @@ export const SEND_EMAIL_BUSINESS_ACCOUNT = gql`
     $companyName: String!
     $jobTitle: String
     $phone: String
-    $companyImage: Photo!
     ){
         sendBusinessMail(
             email:$email
@@ -15,7 +14,6 @@ export const SEND_EMAIL_BUSINESS_ACCOUNT = gql`
             companyName: $companyName
             jobTitle: $jobTitle
             phone: $phone
-            companyImage: $companyImage
         )
     }
 `;
