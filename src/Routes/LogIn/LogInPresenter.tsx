@@ -52,6 +52,15 @@ const FooterBox = styled.div`
     color: ${props => props.theme.blueColor};
     }
 ` 
+const BusinessFooterBox = styled.div`
+    padding:10px 0px;
+    display:flex;
+    font-size: 6px;
+    justify-content:flex-end;
+    a {
+    color: ${props => props.theme.blackGrayColor};
+    }
+` 
 
 
 
@@ -158,6 +167,9 @@ export default ({
                 <FooterBox>
                     <Link to="/find_password">Forgot Password?</Link>
                 </FooterBox>
+                <BusinessFooterBox>
+                    <Link to="/register_business">Creat Account for business -&gt;</Link>
+                </BusinessFooterBox>
             </LogInFooterArea>
             </>
         }
