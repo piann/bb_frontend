@@ -5,8 +5,7 @@ import Button from "../../Components/Button";
 import { checkEmailChars, checkPhoneNumber } from "../../utils";
 import { BarLoader } from "../../Components/Loaders";
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import { toastOpt } from "../../common";
+import { ToastContainer } from "react-toastify";
 
 const SignUpBox = styled.div`
     background-color: white;
@@ -153,12 +152,6 @@ const EmptySpace = styled.div`
     margin-bottom: 10px;
 `;
 
-const FileInputArea = styled.div`
-margin-top:10px;
-margin-bottom:10px;
-`;
-
-
 interface SignUpPresenterProps{
     email:any
     realName:any
@@ -246,7 +239,7 @@ export default ({
     <ToastContainer/>
     {done?
     <MiniFormBox>
-        <ResultText>{"이메일 전송이 완료되었습니다."}</ResultText>
+        <ResultText>{"가입요청이 완료되었습니다. 최대 2~3일이 소요될 수 있습니다."}</ResultText>
     </MiniFormBox>
     :
     <SignUpBox>

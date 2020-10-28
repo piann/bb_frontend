@@ -11,7 +11,7 @@ import {BarLoader} from "../../Components/Loaders";
 const LogInBox = styled.div`
     background-color: white;
     border-radius: ${props => props.theme.borderRadius};
-    height: 450px;
+    height: 480px;
     padding: 8px 20px;
     margin-top:100px;
     min-width:250px;
@@ -21,7 +21,7 @@ const LogInBox = styled.div`
     margin-bottom:120px;
     display:grid;
     grid-auto-flow: row;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 1.2fr;
     align-items: center;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
         width:min(90vw, 400px);
@@ -52,16 +52,6 @@ const FooterBox = styled.div`
     color: ${props => props.theme.blueColor};
     }
 ` 
-const BusinessFooterBox = styled.div`
-    padding:10px 0px;
-    display:flex;
-    font-size: 6px;
-    justify-content:flex-end;
-    a {
-    color: ${props => props.theme.blackGrayColor};
-    }
-` 
-
 
 
 const MainArea = styled.div`
@@ -167,9 +157,9 @@ export default ({
                 <FooterBox>
                     <Link to="/find_password">Forgot Password?</Link>
                 </FooterBox>
-                <BusinessFooterBox>
-                    <Link to="/register_business">Creat Account for business -&gt;</Link>
-                </BusinessFooterBox>
+                <FooterBox>
+                    <Link to="/register_business">Start your business program</Link>
+                </FooterBox>
             </LogInFooterArea>
             </>
         }
