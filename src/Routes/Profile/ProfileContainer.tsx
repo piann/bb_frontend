@@ -63,6 +63,7 @@ export default () => {
     profilePictureId,
     credit,
     numOfVul,
+    cNameId,
     reportInfoList;
 
 
@@ -79,11 +80,12 @@ export default () => {
             reportInfoList = getMyProfileResponse.reportInfoList;
             credit = getMyProfileResponse.credit;
             numOfVul = getMyProfileResponse.numOfVul;
-            if(role==="BUSINESS"){
+            cNameId = getMyProfileResponse.cNameId;
 
+            if(role==="BUSINESS"){
+                return <Redirect to={`${cNameId}/progress`} />
             } 
             if(role==="ADMIN"){
-
             }
 
         } else {
