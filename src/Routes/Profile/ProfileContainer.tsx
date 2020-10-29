@@ -10,6 +10,7 @@ import { useMutation } from "@apollo/react-hooks";
 import {LOCAL_LOG_OUT} from "../../utils";
 
 
+
 export default () => {
 
     const {data, loading} = useQuery(GET_MY_PROFILE);
@@ -83,7 +84,12 @@ export default () => {
             cNameId = getMyProfileResponse.cNameId;
 
             if(role==="BUSINESS"){
-                return <Redirect to={`${cNameId}/progress`} />
+                if(cNameId === null){
+                    toast("진행 중인 버그바운티가 없습니다. 버그바운티를 진행해보세요", toastOpt as any);
+                }
+                else{
+                    return <Redirect to={`${cNameId}/progress`} />
+                }
             } 
             if(role==="ADMIN"){
             }

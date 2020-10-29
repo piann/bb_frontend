@@ -71,7 +71,8 @@ export default (props:any) => {
             reportInfoList = getBusinessBountyPageResponse.reportInfoList;
 
 
-        } else {
+        } 
+        else{
             responseSuccess = false;
             return <Page404 />
         }
