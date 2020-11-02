@@ -33,13 +33,13 @@ const UpperBody = styled.div`
         src: url(${require("../resources/fonts/NotoSerifKR/NotoSerifKR-Medium.otf")});   
 }
 width: 100%;
-height: 890px;
+height: 1200px;
 position: absolute;
 top: ${props => props.theme.headerBarHeight};
 left:0;
 right:0;
 @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-        height:75vh;
+        height:calc(10vh + 500px);
         top: calc(${props => props.theme.headerBarHeight} - 10px);
 }
 background-color: white;
@@ -92,18 +92,18 @@ const SubText = styled.div`
     line-height:2rem;
     text-align:center;
     font-size:16px;
+    margin-top:20px;
     margin-bottom:30px;
     font-family: 'Noto Serif KR', serif;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        margin-top:0px;
         font-size:0px;
-        margin-top:45vh;
-        
     }
 `;
 
 const MainBody = styled.div`
     position: relative;
-    top: 770px;
+    top: 1200px;
     margin-top:200px;
     margin-bottom:100px;
     display: grid;
@@ -118,7 +118,7 @@ const MainBody = styled.div`
 
 const MainMobileBody = styled.div`
     position: relative;
-    top: 85vh;
+    top: calc(10vh + 570px);
     margin-top:50px;
 `;
 
@@ -148,6 +148,19 @@ const DescText= styled.div`
     font-family: 'Noto Serif KR', serif;
 `;
 
+const VideoWrapper= styled.div`
+
+    width:498px;
+    height:280px;
+    justify-content:center;
+    align-self:center;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        margin-top:100px;
+        width:70vw;
+        height:39.3vw;
+    }
+`;
+
 
 export default () => {
     
@@ -158,9 +171,12 @@ export default () => {
             <UpperBody>
                 <MainText>{"We connect security"}</MainText>
                 <SubArea>
+                <VideoWrapper>
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3y-pW1qZf1U"></iframe>
+                </VideoWrapper>
                     <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
                     <a href = {Pdf} target = "_blank" rel={"noopener"}>
-                        <AdvButton text={"What is Bug Bounty?"} />
+                        <AdvButton text={"More specific pdf"} />
                     </a>
                 </SubArea>
             </UpperBody>
@@ -190,9 +206,12 @@ export default () => {
                 <UpperBody>
                     <MainText>{"We connect security"}</MainText>
                     <SubArea>
+                        <VideoWrapper>
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3y-pW1qZf1U"></iframe>
+                        </VideoWrapper>
                         <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
                         <a href = {Pdf} target = "_blank">
-                            <AdvButton text={"What is Bug Bounty?"} width={"180px"}/>
+                            <AdvButton text={"More specific pdf"} width={"180px"}/>
                         </a>
                     </SubArea>
                 </UpperBody>
