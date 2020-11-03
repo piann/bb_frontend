@@ -84,12 +84,7 @@ export default () => {
             cNameId = getMyProfileResponse.cNameId;
 
             if(role==="BUSINESS"){
-                if(cNameId === null){
-                    toast("진행 중인 버그바운티가 없습니다. 버그바운티를 진행해보세요", toastOpt as any);
-                }
-                else{
-                    return <Redirect to={`${cNameId}/progress`} />
-                }
+                return <Redirect to={`${cNameId}/progress`} />
             } 
             if(role==="ADMIN"){
             }

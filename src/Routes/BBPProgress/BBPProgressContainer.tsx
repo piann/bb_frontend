@@ -2,6 +2,8 @@ import React from "react";
 import BBPProgressPresenter from "./BBPProgressPresenter";
 import {gql} from "apollo-boost";
 import { useQuery } from "@apollo/client";
+import { toast } from "react-toastify";
+import {toastOpt} from "../../common";
 import Page404 from "../../Components/Page404";
 
 export const GET_BUSINESS_BOUNTY_PAGE = gql`
@@ -28,9 +30,11 @@ export const GET_BUSINESS_BOUNTY_PAGE = gql`
                 result
                 authorNickName
             }
+            cNameId
         }
     }
 `;
+
 
 
 export default (props:any) => {
@@ -38,7 +42,6 @@ export default (props:any) => {
     const result : any = props.match.params;
     const nameId = result.name_id;
     const {data, loading} = useQuery(GET_BUSINESS_BOUNTY_PAGE, {variables:{nameId}})
-
     let responseSuccess;
 
     let
@@ -51,24 +54,31 @@ export default (props:any) => {
     openDate,
     firstReportDate,
     recentReportDate,
-    reportInfoList;
+    reportInfoList,
+    cNameId
+
 
     if(!loading){
         const {
             getBusinessBountyPage:getBusinessBountyPageResponse
         } = data;
-    if(getBusinessBountyPageResponse!==null){
 
-            submittedReportCount = getBusinessBountyPageResponse.submittedReportCount;
-            totalVulnerabilityCount = getBusinessBountyPageResponse.totalVulnerabilityCount;
-            rewardedVulnerabilityCount = getBusinessBountyPageResponse.rewardedVulnerabilityCount;
-            totalReward = getBusinessBountyPageResponse.totalReward;
-            joinedHackerCount = getBusinessBountyPageResponse.joinedHackerCount;
-            closeDate = getBusinessBountyPageResponse.closeDate;
-            openDate = getBusinessBountyPageResponse.openDate;
-            firstReportDate = getBusinessBountyPageResponse.firstReportDate;
-            recentReportDate = getBusinessBountyPageResponse.recentReportDate;
-            reportInfoList = getBusinessBountyPageResponse.reportInfoList;
+        if(getBusinessBountyPageResponse!==null){
+
+                submittedReportCount = getBusinessBountyPageResponse.submittedReportCount;
+                totalVulnerabilityCount = getBusinessBountyPageResponse.totalVulnerabilityCount;
+                rewardedVulnerabilityCount = getBusinessBountyPageResponse.rewardedVulnerabilityCount;
+                totalReward = getBusinessBountyPageResponse.totalReward;
+                joinedHackerCount = getBusinessBountyPageResponse.joinedHackerCount;
+                closeDate = getBusinessBountyPageResponse.closeDate;
+                openDate = getBusinessBountyPageResponse.openDate;
+                firstReportDate = getBusinessBountyPageResponse.firstReportDate;
+                recentReportDate = getBusinessBountyPageResponse.recentReportDate;
+                reportInfoList = getBusinessBountyPageResponse.reportInfoList;
+                cNameId = getBusinessBountyPageResponse.cNameId;
+                if(joinedHackerCount == 0){
+                    toast("진행 중인 버그바운티가 없습니다. 버그바운티를 진행해보세요", toastOpt as any);
+                }
 
 
         } 
@@ -78,6 +88,8 @@ export default (props:any) => {
         }
 
     }
+
+
     return <BBPProgressPresenter
         loading={loading}
         responseSuccess={responseSuccess}
@@ -92,5 +104,6 @@ export default (props:any) => {
         firstReportDate={firstReportDate}
         recentReportDate={recentReportDate}
         reportInfoList={reportInfoList}
+        cNameId={cNameId}
     />;
 }

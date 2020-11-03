@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { ToastContainer } from 'react-toastify';
 import BBPBanner from "../../Components/BBPBanner";
 import BBPSubMenu from "../../Components/BBPSubMenu";
 import {InformationBox, InformationTitle, InformationContent} from "../../Components/InformationElement";
@@ -113,6 +114,7 @@ export default ({
     firstReportDate,
     recentReportDate,
     reportInfoList,
+    cNameId
 }:any) =>{
 
     let 
@@ -128,6 +130,7 @@ export default ({
 
     return(
     <>
+
     <BBPBanner hideButton={true} nameId={nameId}/>
     <BBPSubMenu nameId={nameId}/>
     <BBPBody>
@@ -238,6 +241,9 @@ export default ({
             </>
         }
     </BBPBody>
+    
+    <ToastContainer>
+    </ToastContainer>
 
     </>
     )
