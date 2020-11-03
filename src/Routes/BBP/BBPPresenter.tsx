@@ -104,8 +104,6 @@ const TableContentWrapperWithRatio = styled.div`
 `;
 
 const TableText = styled.div<marginProps>`
-    @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap');
-    font-family: 'Nanum Myeongjo', serif;
     font-size:16px;
     word-break: keep-all;
     word-spacing: 0.1em;
