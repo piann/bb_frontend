@@ -245,9 +245,6 @@ export default ({
             />
             <InfoText>{nickName}</InfoText>
         </ProfileContent>
-        <LogOutBox>
-            <Button text="Log Out" width={"100px"} onClick={clickFunc}/>
-        </LogOutBox>
         <SpecRow>
             <BoldText>{"Credit⠀:⠀"}</BoldText>
             <InfoText>{credit}</InfoText>
@@ -312,9 +309,6 @@ export default ({
             />
             <InfoText>{nickName}</InfoText>
         </ProfileContent>
-        <LogOutBox>
-            <Button text="Log Out" width={"100px"} onClick={clickFunc}/>
-        </LogOutBox>
         <SpecRow>
             <BoldText>{"Credit⠀:⠀"}</BoldText>
             <InfoText>{credit}</InfoText>

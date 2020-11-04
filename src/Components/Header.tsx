@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import mainLogo from "../images/zerowhaleWhite.png";
+import mainLogoSmall from "../images/zerowhaleWhiteOnlyLogo.png";
 import { Link } from "react-router-dom"
 import {useQuery} from "@apollo/client";
 import {LOCAL_LOGGED_IN_QUERY} from "../sharedQueries";
@@ -8,6 +9,8 @@ import UserProfileImage from "./UserProfileImage";
 import {gql} from "apollo-boost";
 import {fileServerAddr} from "../common";
 import betaImg from "../images/beta.png";
+import DropdownProfile from "./DropdownMenuProfile";
+
 
 export const GET_MY_PROFILE = gql`
     query getMyProfile{
@@ -115,7 +118,7 @@ const BetaImg = styled.img`
     width:25px;
     margin-left:0px;
   }
-`
+`;
 
 export default () => {
 
@@ -140,7 +143,7 @@ export default () => {
         }
     }
   }
-
+// <LogoSpace src={window.innerWidth>700?mainLogo:mainLogoSmall}/> // for further mobile
 return(
 <Header>
     <SLink to="/">
@@ -156,13 +159,7 @@ return(
       </MenuLink>
       {
       isLoggedIn?
-      <Link to ="/profile">
-        <UserProfileImage 
-          src={profilePictureId?`${fileServerAddr}i/${profilePictureId}/`:null}
-          width={"35px"}
-          height={"35px"}
-        />
-      </Link>
+      <DropdownProfile srcUrl={profilePictureId?`${fileServerAddr}i/${profilePictureId}/`:null}/>
       :
       <>
       {window.innerWidth>700?

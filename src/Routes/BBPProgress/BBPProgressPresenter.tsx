@@ -76,7 +76,10 @@ const TableText = styled.div<marginProps>`
     align-items: center;
     margin-left:${props=>props.marginLeft}px;
     margin-right:${props=>props.marginRight}px;
-    font-size:12px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size:11.5px;
+    }
+    
 `;
 
 const TruncatedTableText = styled(TableText)`
