@@ -113,7 +113,8 @@ export default ({
     openDate,
     firstReportDate,
     recentReportDate,
-    reportInfoList
+    reportInfoList,
+    isInitBugBounty,
 }:any) =>{
 
     let 
@@ -129,9 +130,14 @@ export default ({
 
     return(
     <>
-
-    <BBPBanner hideButton={true} nameId={nameId}/>
-    <BBPSubMenu nameId={nameId}/>
+    {
+        isInitBugBounty && (
+            <>
+                <BBPBanner hideButton={true} nameId={nameId}/>
+                <BBPSubMenu nameId={nameId}/>
+            </>
+        )
+    }
     <BBPBody>
         {loading===false&&responseSuccess===false&&<Redirect to={"/"}/>}
         {loading?

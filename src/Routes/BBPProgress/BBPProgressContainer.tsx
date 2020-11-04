@@ -3,7 +3,6 @@ import BBPProgressPresenter from "./BBPProgressPresenter";
 import {gql} from "apollo-boost";
 import { useQuery } from "@apollo/client";
 import { toast } from "react-toastify";
-import {toastOpt} from "../../common";
 import { Redirect } from "react-router-dom";
 import Page404 from "../../Components/Page404";
 
@@ -31,12 +30,19 @@ export const GET_BUSINESS_BOUNTY_PAGE = gql`
                 result
                 authorNickName
             }
-            isInitBugbounty
+            isInitBugBounty
         }
     }
 `;
 
-
+export const toastOpt = {
+    position: "top-center",
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+};
 
 export default (props:any) => {
 
@@ -56,7 +62,7 @@ export default (props:any) => {
     firstReportDate,
     recentReportDate,
     reportInfoList,
-    isInitBugbounty
+    isInitBugBounty
 
 
     if(!loading){
@@ -79,11 +85,11 @@ export default (props:any) => {
                 firstReportDate = getBusinessBountyPageResponse.firstReportDate;
                 recentReportDate = getBusinessBountyPageResponse.recentReportDate;
                 reportInfoList = getBusinessBountyPageResponse.reportInfoList;
-                isInitBugbounty = getBusinessBountyPageResponse.isInitBugbounty;
+                isInitBugBounty = getBusinessBountyPageResponse.isInitBugBounty;
 
-                if(isInitBugbounty===false){
-                    //그 기업이긴한데 버그바운티 시작 안함
-                    toast("진행 중인 버그바운티가 없습니다. 버그바운티를 진행해보세요", toastOpt as any);
+                if(isInitBugBounty===false){
+                    // 3. company not in progress Bugbounty
+                    toast("진행 중인 버그바운티가 없습니다.", toastOpt as any);
                 }
 
 
@@ -111,5 +117,6 @@ export default (props:any) => {
         firstReportDate={firstReportDate}
         recentReportDate={recentReportDate}
         reportInfoList={reportInfoList}
+        isInitBugBounty={isInitBugBounty}
     />;
 }
