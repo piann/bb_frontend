@@ -318,7 +318,7 @@ export default ({
                 <div className={"paper"}>
                 <ReportTitleText>{title}</ReportTitleText>
                 <Viewer 
-                    initialValue={escapeHtml(description)}
+                    initialValue={description}
                     customHTMLSanitizer={html => {
                         return DOMPurify.sanitize(html)
                       }}
