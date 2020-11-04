@@ -14,6 +14,8 @@ import {fileServerAddr} from "../../common";
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Viewer } from '@toast-ui/react-editor';
+import {escapeHtml} from '../../utils';
+import DOMPurify from 'dompurify';
 
 
 const BBPBody = styled.div`
@@ -239,7 +241,7 @@ const LoaderWrapper = styled.div`
     width:100%;
 `;
 
-const MInformationContent = styled(InformationBox)`
+const MInformationContent = styled(InformationContent)`
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
         font-size: 12px;
     }
@@ -315,7 +317,12 @@ export default ({
             <PaperArea>
                 <div className={"paper"}>
                 <ReportTitleText>{title}</ReportTitleText>
-                <Viewer initialValue={description}/>
+                <Viewer 
+                    initialValue={escapeHtml(description)}
+                    customHTMLSanitizer={html => {
+                        return DOMPurify.sanitize(html)
+                      }}
+                />
                 </div>
             </PaperArea>
 

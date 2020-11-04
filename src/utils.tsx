@@ -167,3 +167,16 @@ export const truncateLongStr = (longStr:string, index:number):string => {
 
 
 }
+
+
+export const escapeHtml = (unsafe:string|undefined|null):any => {
+  if(!unsafe){
+    return unsafe;
+  }
+  return unsafe
+       .replace(/&/g, "&amp;")
+       .replace(/</g, "&lt;")
+       .replace(/>/g, "&gt;")
+       .replace(/"/g, "&quot;")
+       .replace(/'/g, "&#039;");
+}

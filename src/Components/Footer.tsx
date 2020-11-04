@@ -30,7 +30,7 @@ const RelativeFooterWrapper = styled.footer`
     margin-right: -50vw;	
     background: ${props=>props.theme.blackGrayColor};	
     color: white;	
-    bottom:-850px;	
+    bottom:-1200px;	
     padding: 3rem;
     padding-left: calc(5vw + 25px);	
     text-align: left;
@@ -38,7 +38,7 @@ const RelativeFooterWrapper = styled.footer`
     line-height:1.5rem;
     white-space: pre-line;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-      bottom:-730px;
+      bottom: calc(-680px - 7vh);
       padding-left: calc(2vw + 20px);	
       font-size:11px;
     }
