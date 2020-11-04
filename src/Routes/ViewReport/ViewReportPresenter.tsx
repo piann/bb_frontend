@@ -187,7 +187,7 @@ margin-bottom:50px;
 `;
 
 const PaperText = styled.div`
-    word-break: keep-all;
+    word-break: break-word;
     word-spacing: 0.1em;
     line-height:2em;
     white-space: pre-line;
