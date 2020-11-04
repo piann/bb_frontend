@@ -4,6 +4,7 @@ import {gql} from "apollo-boost";
 import { useQuery } from "@apollo/client";
 import { toast } from "react-toastify";
 import {toastOpt} from "../../common";
+import { Redirect } from "react-router-dom";
 import Page404 from "../../Components/Page404";
 
 export const GET_BUSINESS_BOUNTY_PAGE = gql`
@@ -30,7 +31,7 @@ export const GET_BUSINESS_BOUNTY_PAGE = gql`
                 result
                 authorNickName
             }
-            cNameId
+            isInitBugbounty
         }
     }
 `;
@@ -45,17 +46,17 @@ export default (props:any) => {
     let responseSuccess;
 
     let
-    submittedReportCount,
-    totalVulnerabilityCount,
-    rewardedVulnerabilityCount,
-    totalReward,
-    joinedHackerCount,
+    submittedReportCount = 0,
+    totalVulnerabilityCount = 0,
+    rewardedVulnerabilityCount = 0,
+    totalReward = 0,
+    joinedHackerCount = 0,
     closeDate,
     openDate,
     firstReportDate,
     recentReportDate,
     reportInfoList,
-    cNameId
+    isInitBugbounty
 
 
     if(!loading){
@@ -63,6 +64,9 @@ export default (props:any) => {
             getBusinessBountyPage:getBusinessBountyPageResponse
         } = data;
 
+        // 1. admin
+        // 2. company in progress Bugbounty
+        // 3. company not in progress Bugbounty
         if(getBusinessBountyPageResponse!==null){
 
                 submittedReportCount = getBusinessBountyPageResponse.submittedReportCount;
@@ -75,13 +79,16 @@ export default (props:any) => {
                 firstReportDate = getBusinessBountyPageResponse.firstReportDate;
                 recentReportDate = getBusinessBountyPageResponse.recentReportDate;
                 reportInfoList = getBusinessBountyPageResponse.reportInfoList;
-                cNameId = getBusinessBountyPageResponse.cNameId;
-                if(joinedHackerCount == 0){
+                isInitBugbounty = getBusinessBountyPageResponse.isInitBugbounty;
+
+                if(isInitBugbounty===false){
+                    //그 기업이긴한데 버그바운티 시작 안함
                     toast("진행 중인 버그바운티가 없습니다. 버그바운티를 진행해보세요", toastOpt as any);
                 }
 
 
         } 
+        // 3. unauthorized account  -> return null
         else{
             responseSuccess = false;
             return <Page404 />
@@ -104,6 +111,5 @@ export default (props:any) => {
         firstReportDate={firstReportDate}
         recentReportDate={recentReportDate}
         reportInfoList={reportInfoList}
-        cNameId={cNameId}
     />;
 }

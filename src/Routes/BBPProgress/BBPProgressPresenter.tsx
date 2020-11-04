@@ -113,8 +113,7 @@ export default ({
     openDate,
     firstReportDate,
     recentReportDate,
-    reportInfoList,
-    cNameId
+    reportInfoList
 }:any) =>{
 
     let 
@@ -241,7 +240,7 @@ export default ({
             </>
         }
     </BBPBody>
-    
+
     <ToastContainer>
     </ToastContainer>
 
