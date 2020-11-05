@@ -11,6 +11,7 @@ const TargetBox = styled.div`
   justify-content:center;
   width:40px;
   height:40px;
+  cursor: pointer;
 `
 
 const DropdownWrapper = styled.div`
@@ -26,7 +27,7 @@ const DropdownWrapper = styled.div`
       top: calc(${props => props.theme.headerBarHeight} - 10px);
       width:135px;
       font-size:12px;
-      cursor: pointer;
+      
   }
 `;
 
@@ -38,10 +39,21 @@ const Menu = styled.div`
   background-color:${props=>props.theme.lightGrayColor};
   height:50px;
   &:hover{
-    background-color: #ccd;
+    background-color: #c0c0ca;
     cursor: pointer;
   }
   &:active{
+    color:${props=>props.theme.textColor}
+  }
+
+`;
+
+const SLink = styled(Link)`
+  text-decoration:none;
+  &:active{
+    color:${props=>props.theme.textColor}
+  }
+  &:visited{
     color:${props=>props.theme.textColor}
   }
 `;
@@ -106,9 +118,9 @@ class DropdownMenuProfile extends Component<any,any> {
                  this.dropdownMenu = element;
                 }}
                 >
-                <Link to="/profile">
+                <SLink to="/profile">
                   <Menu>Dashboard</Menu>
-                </Link>
+                </SLink>
                 <Menu>
                     <Mutation mutation={LOCAL_LOG_OUT}>
                       {
