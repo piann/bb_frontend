@@ -175,7 +175,7 @@ export default ({
                         </GridContent>
                         <GridContent>
                             <BoldInfoText>{"최초 레포트 제출 시기 :"}</BoldInfoText>
-                            <InfoText>{"시작 후 "}{FirstReportGap}</InfoText>
+                            <InfoText>{FirstReportGap?`시작 후 ${FirstReportGap}`:" - "}</InfoText>
                         </GridContent>
                         <GridContent>
                             <BoldInfoText>{"총 지불 포상금 :"}</BoldInfoText>
@@ -183,7 +183,7 @@ export default ({
                         </GridContent>
                         <GridContent>
                             <BoldInfoText>{"최근 레포트 제출 시점 :"}</BoldInfoText>
-                            <InfoText>{lastReportGap}{" 전"}</InfoText>
+                            <InfoText>{lastReportGap?`${lastReportGap} 전`:" - "}</InfoText>
                         </GridContent>
                     </GridWrapper>
                 </InformationContent>

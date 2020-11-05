@@ -5,7 +5,7 @@ import { GET_REPORT_READY_PAGE, SUBMIT_REPORT } from "./ReportQueries";
 import { useMutation } from "@apollo/react-hooks";
 import { useInput } from "../../utils";
 import { toast, ToastContainer } from "react-toastify";
-import { toastOpt, fileServerAddr } from "../../common";
+import { toastOpt, fileServerAddr, exampleReportMarkDown } from "../../common";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
@@ -33,7 +33,7 @@ export default (props:any) => {
     const browserInput = useInput("");
     const browserVersionInput = useInput("");
     //const descriptionInput = useInput("");
-    const [editorDescription,setEditorDescription] = useState("");
+    const [editorDescription,setEditorDescription] = useState(exampleReportMarkDown);
     const dumpInput = useInput("");
     const additionalTextInput = useInput("");
     

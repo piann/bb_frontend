@@ -50,12 +50,17 @@ const Menu = styled.div`
 
 const SLink = styled(Link)`
   text-decoration:none;
+  ${props=>props.theme.textColor}
   &:active{
     color:${props=>props.theme.textColor}
   }
   &:visited{
     color:${props=>props.theme.textColor}
   }
+  a {
+    text-decoration: none;
+  }
+  
 `;
 
 const SignOutContent = styled.div`

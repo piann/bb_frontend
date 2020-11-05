@@ -29,6 +29,7 @@ const toolbarItems = [
 interface EProps{
     onChangeContent?:any
     maxBytes?:number
+    initContent?:string
 }
 
 interface EState{
@@ -49,7 +50,7 @@ class ToastEditor extends React.Component<EProps, EState>{
  render(){
     return(
      <Editor
-        initialValue=""
+        initialValue={this.props.initContent?this.props.initContent:""}
         previewStyle="tab"
         height="600px"
         initialEditType="markdown"

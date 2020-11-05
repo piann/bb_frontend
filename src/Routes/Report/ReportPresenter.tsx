@@ -12,7 +12,7 @@ import { Radio, RadioGroup } from 'rsuite';
 import Button from "../../Components/Button";
 import CheckDialog from "../../Components/CheckDialog";
 import { toast, ToastContainer } from "react-toastify";
-import { toastOpt } from "../../common";
+import { toastOpt, exampleReportMarkDown } from "../../common";
 import basicLogo from "../../images/zerowhaleBasic.png";
 
 import 'codemirror/lib/codemirror.css';
@@ -460,7 +460,7 @@ export default ({
                                 </InfoTextRow>
                             </InfoText>
 
-                            <ToastEditor onChangeContent={setEditorDescription} maxBytes={10000}/>
+                            <ToastEditor onChangeContent={setEditorDescription} maxBytes={10000} initContent={exampleReportMarkDown}/>
 
                             <BoldInfoText>{"\n\n\n"}{"HTTP request dump"}</BoldInfoText>
                             <InfoText>
