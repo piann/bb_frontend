@@ -9,7 +9,7 @@ import {BarLoader, SpinLoader} from "../../Components/Loaders";
 const FormBox = styled.div`
     background-color: white;
     border-radius: ${props => props.theme.borderRadius};
-    height: 400px;
+    height: 470px;
     padding: 8px 20px;
     margin-top:100px;
     min-width:250px;
@@ -18,7 +18,7 @@ const FormBox = styled.div`
     margin-right: auto;
     display:grid;
     grid-auto-flow: row;
-    grid-template-rows: 3fr 6fr 1fr;
+    grid-template-rows: 3fr 10fr 1fr;
     align-items: center;
 
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
@@ -84,54 +84,63 @@ const Description = styled.div<DescriptionProps>`
 `;
 
 
-interface ResetPasswordBySecretPresenterProps{
-    password:any;
-    passwordAgain:any;
+interface EditPasswordPresenterProps{
+    oldPassword:any;
+    newPassword:any;
+    newPasswordAgain:any;
     clickFunc:any;
     submitting:any;
 }
 
 
 export default ({
-    password,
-    passwordAgain,
+    oldPassword,
+    newPassword,
+    newPasswordAgain,
     clickFunc,
     submitting,
-}:ResetPasswordBySecretPresenterProps) => {
+}:EditPasswordPresenterProps) => {
 
-    const passwordValue = password.value;
-    const passwordAgainValue = passwordAgain.value;
+    const oldPasswordValue = oldPassword.value
+    const newPasswordValue = newPassword.value;
+    const newPasswordAgainValue = newPasswordAgain.value;
     let buttonDisabled = false;
-    let passwordDescription = "영어와 특수문자, 숫자를 섞어서 8자 이상"
-    let passwordDescriptionColor;
-    let passwordAgainDescription = "⠀";
-    let passwordAgainDescriptionColor;
+    let newPasswordDescription = "영어와 특수문자, 숫자를 섞어서 8자 이상"
+    let newPasswordDescriptionColor;
+    let newPasswordAgainDescription = "⠀";
+    let newPasswordAgainDescriptionColor;
 
-    // password logic
-    if(passwordValue.length >= 8){
-        if(checkComplexPassword(passwordValue)===true){
-            passwordDescription = "적절한 패스워드입니다";
+
+    // oldPassword logic
+    if(oldPasswordValue.length < 8){
+        buttonDisabled = true;
+    }
+
+    // newPassword logic
+    if(newPasswordValue.length >= 8){
+        if(checkComplexPassword(newPasswordValue)===true){
+            newPasswordDescription = "적절한 패스워드입니다";
         } else {
-            passwordDescription = "적절하지 않은 패스워드입니다";
-            passwordDescriptionColor = "red";
+            newPasswordDescription = "적절하지 않은 패스워드입니다";
+            newPasswordDescriptionColor = "red";
             buttonDisabled = true;
         }
     }
     else {
         buttonDisabled = true;
     }
-    if(passwordAgainValue.length >= 8){
-        if(passwordValue!==passwordAgainValue){
-            passwordAgainDescription = "입력한 패스워드와 같지 않습니다"
-            passwordAgainDescriptionColor = "red";
+    if(newPasswordAgainValue.length >= 8){
+        if(newPasswordValue!==newPasswordAgainValue){
+            newPasswordAgainDescription = "입력한 패스워드와 같지 않습니다"
+            newPasswordAgainDescriptionColor = "red";
             buttonDisabled = true;
         } else {
-            passwordAgainDescription = "입력한 패스워드와 일치합니다"
+            newPasswordAgainDescription = "입력한 패스워드와 일치합니다"
         }
     } else {
         buttonDisabled = true;
     }
-
+    
     return(<>
     <ToastContainer
     />
@@ -143,16 +152,19 @@ export default ({
             :
             <>
             <FormTitleArea>
-                <TitleBox>{"Reset your password"}</TitleBox>
+                <TitleBox>{"Edit your password"}</TitleBox>
             </FormTitleArea>
             <MainArea>
                 <MainComponentWrapper>
-                    <Input placeholder="New password" type={"password"} {...password}/>
-                    <Description color={passwordDescriptionColor}>{passwordDescription}</Description>
+                    <Input placeholder="Original password" type={"password"} {...oldPassword}/>
                 </MainComponentWrapper>
                 <MainComponentWrapper>
-                    <Input placeholder="New password again" type={"password"} {...passwordAgain} />
-                    <Description color={passwordAgainDescriptionColor}>{passwordAgainDescription}</Description>
+                    <Input placeholder="New password" type={"password"} {...newPassword}/>
+                    <Description color={newPasswordDescriptionColor}>{newPasswordDescription}</Description>
+                </MainComponentWrapper>
+                <MainComponentWrapper>
+                    <Input placeholder="New password again" type={"password"} {...newPasswordAgain} />
+                    <Description color={newPasswordAgainDescriptionColor}>{newPasswordAgainDescription}</Description>
                 </MainComponentWrapper>
             </MainArea>
                 <MainComponentWrapper>

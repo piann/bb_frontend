@@ -19,13 +19,13 @@ const DropdownWrapper = styled.div`
     top:${props => props.theme.headerBarHeight};
     right:1px;
     width:180px;
-    height:100px;
+    height:150px;
     color:${props=>props.theme.textColor};
     box-shadow:0 10px 20px 5px rgba(50, 50, 93, 0.1),0 6px 6px 1px rgba(0, 0, 0, 0.2);
     border-radius: ${props => props.theme.borderRadius};
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
       top: calc(${props => props.theme.headerBarHeight} - 10px);
-      width:135px;
+      width:140px;
       font-size:12px;
       
   }
@@ -125,6 +125,9 @@ class DropdownMenuProfile extends Component<any,any> {
                 >
                 <SLink to="/profile">
                   <Menu>Dashboard</Menu>
+                </SLink>
+                <SLink to="/edit_password">
+                  <Menu>Edit Password</Menu>
                 </SLink>
                 <Menu>
                     <Mutation mutation={LOCAL_LOG_OUT}>

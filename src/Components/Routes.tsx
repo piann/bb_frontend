@@ -21,6 +21,7 @@ import TermsOfServices from "../Routes/TermsOfServices";
 import Admin from "../Routes/Admin";
 import ResetPasswordBySecret from "../Routes/ResetPasswordBySecret";
 import SendPasswordResetEmail from "../Routes/SendPasswordResetEmail";
+import EditPassword from "../Routes/EditPassword";
 
 const LoggedInRoutes = () => <Switch>
 <Route exact path="/" component={Introduction}/>
@@ -29,6 +30,7 @@ const LoggedInRoutes = () => <Switch>
 <Route exact path="/terms_of_service" component={TermsOfServices}></Route>
 <Route exact path="/log_in" component={LogIn}/>
 <Route exact path="/profile" component={Profile}></Route>
+<Route exact path="/edit_password" component={EditPassword}/>
 <Route exact path="/programs" component={ProgramList}></Route>
 {/*<Route exact path="/upload" component={UploadTest}></Route>*/}
 <Route exact path="/view_report/:report_id" component={ViewReport}></Route>
