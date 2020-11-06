@@ -2,9 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import BBPBanner from "../../Components/BBPBanner";
 import BBPSubMenu from "../../Components/BBPSubMenu";
+import TooltipWrapper from "../../Components/TooltipWrapper";
 import {InformationBox, InformationTitle, InformationContent} from "../../Components/InformationElement";
 import {BasicTableBox, BasicTableHead, BasicTableContent} from "../../Components/BasicTableElement"
 import {dateStringToDotFormat, addCommaForMoney, getTypeImage} from "../../utils";
+import tooltipImg from "../../images/tooltip.png";
+
 
 const BBPBody = styled.div`
     position: relative;
@@ -123,6 +126,36 @@ const ImgFollowedText = styled.div`
     word-break: keep-all;
 `;
 
+const HeadMultiContent = styled.div`
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+`;
+
+const TooltipImg = styled.img`
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:10px;
+    width:18px;
+    margin-bottom:38px;
+`;
+
+const rewardToolTipText = ` [ 기준 ]
+
+⚬ Fatal : cvss 9.0 ~ 10.0
+ex) Arbitary RCE, zero-click RCE
+
+⚬High : cvss 7.0 ~ 9.0
+ex)SQLi, Restricted RCE
+
+⚬Medium : cvss 6.0 ~ 8.0
+ex) Stored-XSS, memory-addr leak
+
+⚬Low : cvss 5.0 ~ 6.0
+ex) Reflected-XSS, Open Redirect
+
+`;
+
 /*
 const elements = ['이런 것을 이렇게 해야한다', '저렇게 이렇게 꼭 해야한다', '이런 것을 알아야한다.'];
 const testTargetObjList = [{type:"WEB", value:"https://starbucks.com"},{type:"WEB", value:"https://api.starbucks.com"} ]
@@ -175,7 +208,14 @@ exclusionValueList,
         <InformationBox>
             <InformationTitle>Details</InformationTitle>
             <InformationContent>
-            <MiniTitleText>{"Reward"}</MiniTitleText>
+                <HeadMultiContent>
+                    <MiniTitleText>
+                    {"Reward"}
+                    </MiniTitleText>
+                    <TooltipWrapper data-tooltip-text={rewardToolTipText}>
+                        <TooltipImg src={tooltipImg}/>
+                    </TooltipWrapper>
+                </HeadMultiContent>
                 <BasicTableBox>
                     <BasicTableHead>
                         <TableContentWrapper>
@@ -186,7 +226,7 @@ exclusionValueList,
                     <BasicTableContent>
                         <TableContentWrapper>
                             <TableText marginLeft={8} marginRight={0}>
-                            <img height={"10px"} src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik0yNTYsMEMxMTQuODQyLDAsMCwxMTQuODQyLDAsMjU2czExNC44NDIsMjU2LDI1NiwyNTZzMjU2LTExNC44NDIsMjU2LTI1NlMzOTcuMTU4LDAsMjU2LDB6IiBmaWxsPSIjMDAwMDAwIiBkYXRhLW9yaWdpbmFsPSIjYTRlMjc2IiBjbGFzcz0iIj48L3BhdGg+CjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9IiIgZD0iTTAsMjU2YzAsMTQxLjE1OCwxMTQuODQyLDI1NiwyNTYsMjU2VjBDMTE0Ljg0MiwwLDAsMTE0Ljg0MiwwLDI1NnoiIGZpbGw9IiMzZTNlM2UiIGRhdGEtb3JpZ2luYWw9IiM2NGMzN2QiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
+                                <img height={"10px"} src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik0yNTYsMEMxMTQuODQyLDAsMCwxMTQuODQyLDAsMjU2czExNC44NDIsMjU2LDI1NiwyNTZzMjU2LTExNC44NDIsMjU2LTI1NlMzOTcuMTU4LDAsMjU2LDB6IiBmaWxsPSIjMDAwMDAwIiBkYXRhLW9yaWdpbmFsPSIjYTRlMjc2IiBjbGFzcz0iIj48L3BhdGg+CjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9IiIgZD0iTTAsMjU2YzAsMTQxLjE1OCwxMTQuODQyLDI1NiwyNTYsMjU2VjBDMTE0Ljg0MiwwLDAsMTE0Ljg0MiwwLDI1NnoiIGZpbGw9IiMzZTNlM2UiIGRhdGEtb3JpZ2luYWw9IiM2NGMzN2QiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
                                 <ImgFollowedText>{"Fatal"}</ImgFollowedText>
                             </TableText>
                             <TableText marginLeft={5} marginRight={0}>
