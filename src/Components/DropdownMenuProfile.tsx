@@ -57,6 +57,12 @@ const SLink = styled(Link)`
   &:visited{
     color:${props=>props.theme.textColor}
   }
+  &:link{
+    color:${props=>props.theme.textColor}
+  }
+  &:active{
+    color:${props=>props.theme.textColor}
+  }
   a {
     text-decoration: none;
   }
