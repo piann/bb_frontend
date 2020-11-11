@@ -24,14 +24,7 @@ const WholeWrapper = styled.div`
 `;
 
 const UpperBody = styled.div`
-@font-face {
-    font-family:'Source Serif Pro';
-    src: url(${require("../resources/fonts/SourceSerifPro/SourceSerifPro-SemiBold.ttf")});   
-}
-@font-face {
-        font-family:'Noto Serif KR';
-        src: url(${require("../resources/fonts/NotoSerifKR/NotoSerifKR-Medium.otf")});   
-}
+
 width: 100%;
 height: 1200px;
 position: absolute;
