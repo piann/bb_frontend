@@ -14,6 +14,9 @@ flex-direction:column;
 
 const MainText = styled.div`
     font-size:130px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    font-size:80px;
+    }
     font-family: 'Source Serif Pro', serif;
     display: flex;
     justify-content:center;
@@ -38,8 +41,12 @@ const MainText = styled.div`
 
 
 const SubText = styled.div`
-    font-size:50px;
+    font-size:40px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    font-size:30px;
+    }
     font-family: 'Source Serif Pro', serif;
+    text-align:center;
     margin-bottom:40px;
     color: ${props=>props.theme.darkGrayColor};
     
@@ -50,14 +57,18 @@ const DescText= styled.div`
     word-break: keep-all;
     white-space: pre-line;
     font-family: 'Noto Serif KR', serif;
+    text-align:center;
     font-size:18px;
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+    font-size:13px;
+    }
     color: ${props=>props.theme.normalGrayColor};
 `;
 
 export default () => (
     <MainBody>
         <MainText>{"404"}</MainText>
-        <SubText>{"PAGE NOT FOUND"}</SubText>
+        <SubText>{"Not Found"}</SubText>
         <DescText>{"This is not the page you are looking for. ☹"}</DescText>
     </MainBody>
 )
