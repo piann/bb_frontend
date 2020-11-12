@@ -4,10 +4,7 @@ import styled from "styled-components";
 
 const MainBody = styled.div`
 
-@font-face {
-    font-family:'Source Serif Pro';
-    src: url(${require("../resources/fonts/SourceSerifPro/SourceSerifPro-SemiBold.ttf")});   
-}
+font-family:'Source Serif Pro';
 margin-top:70px;
 display: flex;
 justify-content:center;

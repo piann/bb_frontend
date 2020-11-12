@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const TooltipWrapper = styled.span`
+position: relative;
+display: inline-block;
 &:hover {
 	position: relative;
 }
@@ -22,8 +24,8 @@ const TooltipWrapper = styled.span`
     color: #FFFFFF;
 	font-size: 14px;
 	margin-bottom: 10px;
-	padding: 7px 12px;
 	position: absolute;
+	padding: 7px 12px;
 	width: max-content;
 	min-width: 100px;
 	max-width: 80vw;
@@ -35,18 +37,18 @@ const TooltipWrapper = styled.span`
     word-break:keep-all;
     white-space:pre-line;
     line-height:1.3em;
-    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
-        font-size:12px;
-        word-break: break-word;
-    }
-
-}
-
-&:hover:after {
+	visibility: hidden;
 	top: 30px;
 	left: 0;
 	opacity: 1;
-}
-`
+    @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
+        font-size:12px;
+        word-break: break-word;
+    	}
+	}
+  &:hover::after{
+	visibility: visible;
+  }
+`;
 
 export default TooltipWrapper;
