@@ -52,6 +52,8 @@ const CardLogoSpace = styled.div`
 
 const Logo = styled.img`
     height:100px;
+    width:auto;
+    max-width:90%;
 `
 
 const CardBodySpace = styled.div`
