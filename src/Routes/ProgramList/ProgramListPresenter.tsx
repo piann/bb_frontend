@@ -5,6 +5,7 @@ import categoryIcon from "../../images/category.png";
 import wonIcon from "../../images/won.png";
 import zeroWhaleIcon from "../../images/zerowhaleBasic.png";
 import selfCheckIcon from "../../images/selfCheck.png";
+import censoredImg from "../../images/censored.jpg";
 import { Link } from "react-router-dom";
 import {BarLoader} from "../../Components/Loaders";
 import { categoryUpperToNormal } from "../../common";
@@ -119,45 +120,53 @@ programInfoList,
     :
     <CardListArea>
             {programInfoList.map((programInfo:any, index:any) => {
-
-            return (
-            <SLink to={"/"+programInfo.nameId} key={1000+index}>
-                <CardBox>
-                <CardLogoSpace>
-                    <Logo src={programInfo.logoId?`${fileServerAddr}i/${programInfo.logoId}/`:zeroWhaleIcon}/>
-                </CardLogoSpace>
-                <CardBodySpace>
-                    <CompanyNameText>{programInfo.companyName}</CompanyNameText>
-                    <CompanyDescText>{programInfo.description}</CompanyDescText>
-                    <CardBodyRow>
-                        <HelpImg src={categoryIcon}/>
-                        {
-                                programInfo.inScopeTypeList.map((type:any,idx:any)=><Tag text={categoryUpperToNormal[type]} key={2000+idx}/>)
-                        }
-                    </CardBodyRow>
-                    <CardBodyRow>
-                        <HelpImg src={wonIcon}/>
-                        <CardRowText>{getBountyRangeText(programInfo.bountyMin,programInfo.bountyMax)}</CardRowText>
-                    </CardBodyRow>
-                    {
-                    programInfo.managedBy==="zerowhale"&&
-                    <CardBodyRow>
-                        <HelpImg src={zeroWhaleIcon}/>
-                    <CardRowText>{"managed by zerowhale"}</CardRowText>
-                    </CardBodyRow>
-                    }
-                    {
-                    programInfo.managedBy==="self"&&
-                    <CardBodyRow>
-                        <HelpImg src={selfCheckIcon}/>
-                    <CardRowText>{"managed by self"}</CardRowText>
-                    </CardBodyRow>
-                    }
-
-                </CardBodySpace>
-                </CardBox>
-            </SLink>
-            )
+            if(programInfo===null){
+                return(
+                    <CardBox>
+                        <img src={censoredImg} width={"100%"} height={"100%"}/>
+                    </CardBox>
+                )
+            } else {
+                return (
+                    <SLink to={"/"+programInfo.nameId} key={1000+index}>
+                        <CardBox>
+                        <CardLogoSpace>
+                            <Logo src={programInfo.logoId?`${fileServerAddr}i/${programInfo.logoId}/`:zeroWhaleIcon}/>
+                        </CardLogoSpace>
+                        <CardBodySpace>
+                            <CompanyNameText>{programInfo.companyName}</CompanyNameText>
+                            <CompanyDescText>{programInfo.description}</CompanyDescText>
+                            <CardBodyRow>
+                                <HelpImg src={categoryIcon}/>
+                                {
+                                        programInfo.inScopeTypeList.map((type:any,idx:any)=><Tag text={categoryUpperToNormal[type]} key={2000+idx}/>)
+                                }
+                            </CardBodyRow>
+                            <CardBodyRow>
+                                <HelpImg src={wonIcon}/>
+                                <CardRowText>{getBountyRangeText(programInfo.bountyMin,programInfo.bountyMax)}</CardRowText>
+                            </CardBodyRow>
+                            {
+                            programInfo.managedBy==="zerowhale"&&
+                            <CardBodyRow>
+                                <HelpImg src={zeroWhaleIcon}/>
+                            <CardRowText>{"managed by zerowhale"}</CardRowText>
+                            </CardBodyRow>
+                            }
+                            {
+                            programInfo.managedBy==="self"&&
+                            <CardBodyRow>
+                                <HelpImg src={selfCheckIcon}/>
+                            <CardRowText>{"managed by self"}</CardRowText>
+                            </CardBodyRow>
+                            }
+        
+                        </CardBodySpace>
+                        </CardBox>
+                    </SLink>
+                    )
+            }
+            
 
             })}
             
