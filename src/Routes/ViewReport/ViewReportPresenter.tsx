@@ -101,6 +101,7 @@ const HackerProfileImg = styled.img`
 const PaperArea = styled.div`
 margin-top:20px;
 margin-bottom:50px;
+word-break:break-all;
 
 .paper {
   background: #fff;
