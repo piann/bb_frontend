@@ -12,6 +12,7 @@ import {BarLoader} from "../../Components/Loaders"
 import { ToastContainer } from 'react-toastify';
 import AdvButton from "../../Components/AdvButton";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const BBPBody = styled.div`
     position: relative;
@@ -37,6 +38,8 @@ const CommentTimeText = styled.div`
     align-items:flex-end;
     justify-content:center;
     color: #7d7d7d;
+    margin-left : 24px;
+    margin-right : 29px;
 `;
 
 const BoldInfoText = styled(InfoText)`
@@ -162,12 +165,18 @@ const AdditionalRow = styled.div`
 const CommentWrapper = styled.div`
     display:flex;
     flex-direction:row;
-    margin-bottom:22px;
+    margin-bottom:10px;
     @media only screen and (max-width: ${props=>props.theme.mobileWidth}) {
         font-size:11px;
     }
-
 `;
+
+const CommentTimeWrapper = styled.div`
+    display:flex;
+    flex-direction:column;
+    margin-bottom:22px;
+`;
+
 const ProfileWrapper = styled.div`
     display:flex;
     flex-direction:column;
@@ -298,31 +307,39 @@ export default ({
 
                 if(isAuthor===true){ // determine direction of bubble 
                     return(
-                        <CommentWrapper className={"rightAlign"} key={1000+index}>
-                            <CommentTimeText>{commentTime}</CommentTimeText>
-                            <CommentTimePadding>{"⠀"}</CommentTimePadding>
-                            <RSpeechBubble
-                            maxWidth={"calc(100% - 130px)"} 
-                            text={commentContent}/>
-                            <ProfileWrapper>
-                            <img src={basicProfile} width={"50px"} height={"50px"} alt={""}/>
-                            <ProfileId>{commenterNickName}</ProfileId>
-                            </ProfileWrapper>
-                        </CommentWrapper>
+                        <CommentTimeWrapper>
+                            <CommentWrapper className={"rightAlign"} key={1000+index}>
+                                <CommentTimePadding>{"⠀"}</CommentTimePadding>
+                                <RSpeechBubble
+                                maxWidth={"calc(100% - 130px)"} 
+                                text={commentContent}/>
+                                <ProfileWrapper>
+                                <img src={basicProfile} width={"50px"} height={"50px"} alt={""}/>
+                                <ProfileId>{commenterNickName}</ProfileId>
+                                </ProfileWrapper>
+                            </CommentWrapper>
+                            <CommentTimeText className={"rightAlign"}>
+                                {moment(commentTime).format("YY-MM-DD / LT")}
+                            </CommentTimeText>
+                        </CommentTimeWrapper>
                     )
                 } else {
                     return(
-                        <CommentWrapper className={"leftAlign"} key={1000+index}>
-                            <ProfileWrapper>
-                            <img src={basicProfile} width={"50px"} height={"50px"} alt={""}/>
-                            <ProfileId>{commenterNickName}</ProfileId>
-                            </ProfileWrapper>
-                            <LSpeechBubble
-                            maxWidth={"calc(100% - 130px)"} 
-                            text={commentContent}/>
-                            <CommentTimePadding>{"⠀"}</CommentTimePadding>
-                            <CommentTimeText>{commentTime}</CommentTimeText>
-                        </CommentWrapper>
+                        <CommentTimeWrapper>
+                            <CommentWrapper className={"leftAlign"} key={1000+index}>
+                                <ProfileWrapper>
+                                <img src={basicProfile} width={"50px"} height={"50px"} alt={""}/>
+                                <ProfileId>{commenterNickName}</ProfileId>
+                                </ProfileWrapper>
+                                <LSpeechBubble
+                                maxWidth={"calc(100% - 130px)"} 
+                                text={commentContent}/>
+                                <CommentTimePadding>{"⠀"}</CommentTimePadding>
+                            </CommentWrapper>
+                            <CommentTimeText className={"leftAlign"}>
+                                {moment(commentTime).format("YY-MM-DD / LT")}
+                            </CommentTimeText>
+                        </CommentTimeWrapper>
                     )
 
                 }
