@@ -29,6 +29,16 @@ const InfoText = styled.div`
     margin-bottom:8px;
 `;
 
+const CommentTimePadding = styled.div`
+`;
+
+const CommentTimeText = styled.div`
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    color: #7d7d7d;
+`;
+
 const BoldInfoText = styled(InfoText)`
     font-weight:600;
 `;
@@ -282,12 +292,15 @@ export default ({
             {commentInfoList.map((dictObj:any, index:any) => {
                 const commenterNickName = dictObj.writerNickName;
                 const commentContent = dictObj.content;
+                const commentTime = dictObj.createdAt;
 
                 const isAuthor = (authorNickName)===(commenterNickName)
 
                 if(isAuthor===true){ // determine direction of bubble 
                     return(
                         <CommentWrapper className={"rightAlign"} key={1000+index}>
+                            <CommentTimeText>{commentTime}</CommentTimeText>
+                            <CommentTimePadding>{"⠀"}</CommentTimePadding>
                             <RSpeechBubble
                             maxWidth={"calc(100% - 130px)"} 
                             text={commentContent}/>
@@ -307,6 +320,8 @@ export default ({
                             <LSpeechBubble
                             maxWidth={"calc(100% - 130px)"} 
                             text={commentContent}/>
+                            <CommentTimePadding>{"⠀"}</CommentTimePadding>
+                            <CommentTimeText>{commentTime}</CommentTimeText>
                         </CommentWrapper>
                     )
 
