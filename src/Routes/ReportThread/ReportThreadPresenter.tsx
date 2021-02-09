@@ -30,16 +30,12 @@ const InfoText = styled.div`
     margin-bottom:8px;
 `;
 
-const CommentTimePadding = styled.div`
-`;
-
 const CommentTimeText = styled.div`
     display:flex;
     align-items:flex-end;
     justify-content:center;
-    color: #7d7d7d;
-    margin-left : 24px;
-    margin-right : 29px;
+    font-size : 11px;
+    color: ${props=>props.theme.normalGrayColor};
 `;
 
 const BoldInfoText = styled(InfoText)`
@@ -177,6 +173,11 @@ const CommentTimeWrapper = styled.div`
     margin-bottom:22px;
 `;
 
+const CommentTimePaddingWrapper = styled.div`
+    height:10px;
+    width:140px;
+`;
+
 const ProfileWrapper = styled.div`
     display:flex;
     flex-direction:column;
@@ -309,7 +310,6 @@ export default ({
                     return(
                         <CommentTimeWrapper>
                             <CommentWrapper className={"rightAlign"} key={1000+index}>
-                                <CommentTimePadding>{"⠀"}</CommentTimePadding>
                                 <RSpeechBubble
                                 maxWidth={"calc(100% - 130px)"} 
                                 text={commentContent}/>
@@ -320,6 +320,7 @@ export default ({
                             </CommentWrapper>
                             <CommentTimeText className={"rightAlign"}>
                                 {moment(commentTime).format("YY-MM-DD / LT")}
+                                <CommentTimePaddingWrapper />
                             </CommentTimeText>
                         </CommentTimeWrapper>
                     )
@@ -334,9 +335,9 @@ export default ({
                                 <LSpeechBubble
                                 maxWidth={"calc(100% - 130px)"} 
                                 text={commentContent}/>
-                                <CommentTimePadding>{"⠀"}</CommentTimePadding>
                             </CommentWrapper>
                             <CommentTimeText className={"leftAlign"}>
+                                <CommentTimePaddingWrapper />
                                 {moment(commentTime).format("YY-MM-DD / LT")}
                             </CommentTimeText>
                         </CommentTimeWrapper>

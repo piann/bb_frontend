@@ -19,7 +19,7 @@ const LSpeechBubbleContainer = styled.div<ContainerProps>`
 	border-radius: .4em;
     min-height:60px;
     max-width: calc(100% - 130px);
-    word-break: keep-all;
+    word-break: break-all;
     letter-spacing: 0.08em;
     line-height: 2em;
     display: flex;
@@ -49,7 +49,7 @@ const RSpeechBubbleContainer = styled.div<ContainerProps>`
 	border-radius: .4em;
     min-height:60px;
     max-width: calc(100% - 130px);
-    word-break: keep-all;
+    word-break: break-all;
     letter-spacing: 0.08em;
     line-height: 2em;
     display: flex;
