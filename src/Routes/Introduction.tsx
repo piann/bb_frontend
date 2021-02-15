@@ -168,7 +168,7 @@ export default () => {
                     <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3y-pW1qZf1U"></iframe>
                 </VideoWrapper>
                     <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
-                    <a href = {Pdf} target = "_blank" rel={"noopener"}>
+                    <a href = {Pdf} target = "_blank" rel={"noopener noreferrer"}>
                         <AdvButton text={"More specific pdf"} />
                     </a>
                 </SubArea>
@@ -203,7 +203,7 @@ export default () => {
                             <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3y-pW1qZf1U"></iframe>
                         </VideoWrapper>
                         <SubText>{"버그바운티는 협력을 통하여 보안문제를 해결하는 솔루션입니다."}</SubText>
-                        <a href = {Pdf} target = "_blank">
+                        <a href = {Pdf} target = "_blank" rel={"noopener noreferrer"}>
                             <AdvButton text={"More specific pdf"} width={"180px"}/>
                         </a>
                     </SubArea>

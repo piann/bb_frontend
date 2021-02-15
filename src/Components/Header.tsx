@@ -8,7 +8,6 @@ import {LOCAL_LOGGED_IN_QUERY} from "../sharedQueries";
 import UserProfileImage from "./UserProfileImage";
 import {gql} from "apollo-boost";
 import {fileServerAddr} from "../common";
-import betaImg from "../images/beta.png";
 import DropdownProfile from "./DropdownMenuProfile";
 
 
@@ -148,7 +147,6 @@ return(
 <Header>
     <SLink to="/">
       <LogoSpace src={mainLogo}/>
-      <BetaImg src={betaImg}/>
     </SLink>
     <MenuSpace>
       <IntroMenuLink to="/">

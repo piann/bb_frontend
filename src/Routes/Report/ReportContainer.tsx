@@ -7,7 +7,6 @@ import { useInput } from "../../utils";
 import { toast, ToastContainer } from "react-toastify";
 import { toastOpt, fileServerAddr, exampleReportMarkDown } from "../../common";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 
 export default (props:any) => {

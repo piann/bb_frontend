@@ -9,12 +9,10 @@ import basicLogo from "../../images/zerowhaleBasic.png";
 import hideArrow from "../../images/hideArrow.png";
 import { RatingStar } from "rating-star";
 import grayProfile from "../../images/grayProfile.png";
-import { Link } from "react-router-dom";
 import {fileServerAddr} from "../../common";
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Viewer } from '@toast-ui/react-editor';
-import {escapeHtml} from '../../utils';
 import DOMPurify from 'dompurify';
 
 
