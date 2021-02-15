@@ -16,6 +16,7 @@ export const GET_REPORT_TOTAL_STATUS = gql`
             commentInfoList{
                 id
                 content
+                createdAt
                 writerNickName
                 fileId
             }
