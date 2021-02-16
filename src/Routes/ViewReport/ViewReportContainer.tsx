@@ -26,6 +26,7 @@ export const GET_REPORT_CONTENT = gql`
             location
             enviroment
             dump
+            createdAt
         }
     }
 
@@ -50,7 +51,8 @@ export default (props:any) => {
     additionalText,
     location,
     enviroment,
-    dump;
+    dump,
+    createdAt;
     
     
     if(!loading){
@@ -71,6 +73,7 @@ export default (props:any) => {
         location = getReportContentResponse.location;
         enviroment = getReportContentResponse.enviroment;
         dump = getReportContentResponse.dump;
+        createdAt = getReportContentResponse.createdAt;
 
         } else {
             return <Page404 />
@@ -112,6 +115,7 @@ export default (props:any) => {
     location={location}
     enviroment={enviroment}
     dump={dump}
+    createdAt={createdAt}
     fileDownloadFunc={fileDownloadFunc}
     />
 }

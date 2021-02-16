@@ -14,6 +14,7 @@ import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Viewer } from '@toast-ui/react-editor';
 import DOMPurify from 'dompurify';
+import moment from "moment";
 
 
 const BBPBody = styled.div`
@@ -273,7 +274,8 @@ export default ({
     location,
     enviroment,
     dump,
-    fileDownloadFunc
+    fileDownloadFunc,
+    createdAt
 }:any) => (
 <>
 <BBPBanner hideButton={true} nameId={nameId}/>
@@ -307,12 +309,14 @@ export default ({
             <MiniTitleText>{"1. Vulnerability "}</MiniTitleText>
             <InfoText>{vulName}</InfoText>
 
+            <MiniTitleText>{"2. Submitted date "}</MiniTitleText>
+            <InfoText>{moment(createdAt).format("YYYY-MM-DD / LT")}</InfoText>
 
-            <MiniTitleText>{"2. Asset"}</MiniTitleText>
+            <MiniTitleText>{"3. Asset"}</MiniTitleText>
             <InfoText>{assetName}</InfoText>
 
 
-            <MiniTitleText>{"3. Detail"}</MiniTitleText>
+            <MiniTitleText>{"4. Detail"}</MiniTitleText>
             <PaperArea>
                 <div className={"paper"}>
                 <ReportTitleText>{title}</ReportTitleText>
@@ -326,7 +330,7 @@ export default ({
             </PaperArea>
 
 
-            <MiniTitleText>{"4. CVSS score"}</MiniTitleText>
+            <MiniTitleText>{"5. CVSS score"}</MiniTitleText>
             {cvssScore===null?
                 <InfoText>{"평가점수가 없습니다."}</InfoText>
             :<StarWrapper>
@@ -335,7 +339,7 @@ export default ({
             </StarWrapper>
             }
 
-            <MiniTitleText>{"5. Hacker's comment "}</MiniTitleText>
+            <MiniTitleText>{"6. Hacker's comment "}</MiniTitleText>
             <InfoText>{additionalText}</InfoText>
 
 
@@ -343,7 +347,7 @@ export default ({
                 (location||enviroment!=="::::"||dump)&&
             <>
             <EtcHeader>
-            <MiniTitleText>{"6. Etc"}</MiniTitleText>
+            <MiniTitleText>{"7. Etc"}</MiniTitleText>
                 <EtcArrow src={hideArrow} onClick={toggleHide}/>
             </EtcHeader>
 
