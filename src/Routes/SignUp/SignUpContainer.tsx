@@ -14,6 +14,9 @@ export default () => {
     const nickName = useInput("");
     const password = useInput("");
     const passwordAgain = useInput("");
+    const phoneNumber1 = useInput("");
+    const phoneNumber2 = useInput("");
+    const phoneNumber3 = useInput("");
     const [submitting, setSubmitting] = useState(false);
     const [checkedPrivacy, setCheckedPrivacy] = useState(false);
     const [checkedTerm, setCheckedTerm] = useState(false);
@@ -32,7 +35,8 @@ export default () => {
             email:email.value,
             password:generateSaltedHash(password.value),
             realName:realName.value,
-            nickName:nickName.value
+            nickName:nickName.value,
+            phoneNumber:phoneNumber1.value+phoneNumber2.value+phoneNumber3.value
         }});
 
         if(!loading){
@@ -53,6 +57,9 @@ export default () => {
     nickName={nickName}
     password={password}
     passwordAgain={passwordAgain}
+    phoneNumber1={phoneNumber1}
+    phoneNumber2={phoneNumber2}
+    phoneNumber3={phoneNumber3}
     clickFunc={clickFunc}
     submitting={submitting}
     checkedPrivacy={checkedPrivacy}

@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const SignUpBox = styled.div`
     background-color: white;
     border-radius: ${props => props.theme.borderRadius};
-    height: 600px;
+    height: 700px;
     padding: 8px 20px;
     margin-left: auto;
     margin-right: auto;
@@ -104,8 +104,25 @@ const SLink = styled(Link)`
     color:blue;
 `;
 
+const NoLinkMargin = styled.div`
+    margin-left:8px;
+`;
+
 const JText = styled.div`
 
+`;
+
+const PhoneBox = styled.div`
+    display:flex;
+    flex-direction:row;
+`;
+
+const PhoneHyphen = styled.div`
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding-left:9px;
+    padding-right:9px;
 `;
 
 
@@ -115,6 +132,9 @@ interface SignUpPresenterProps{
     nickName:any
     password:any
     passwordAgain:any
+    phoneNumber1:any
+    phoneNumber2:any
+    phoneNumber3:any
     clickFunc:any
     submitting:any
     checkedPrivacy:any
@@ -130,6 +150,9 @@ export default ({
     nickName,
     password,
     passwordAgain,
+    phoneNumber1,
+    phoneNumber2,
+    phoneNumber3,
     clickFunc,
     submitting,
     checkedPrivacy,
@@ -143,6 +166,9 @@ export default ({
     const nickNameValue = nickName.value;
     const passwordValue = password.value;
     const passwordAgainValue = passwordAgain.value;
+    const phoneNumber1Value = phoneNumber1.value;
+    const phoneNumber2Value = phoneNumber2.value;
+    const phoneNumber3Value = phoneNumber3.value;
     
     let emailDescription = "⠀"
     let emailDescriptionColor;
@@ -153,6 +179,8 @@ export default ({
     let passwordDescriptionColor;
     let passwordAgainDescription = "⠀";
     let passwordAgainDescriptionColor;
+    let phoneNumberDescription = "추후 Trust Level 인증을 위해 정확히 기재해주세요";
+    let phoneNumberDescriptionColor;    
     
     let buttonDisabled = false;
 
@@ -267,7 +295,6 @@ export default ({
     } else {
         buttonDisabled = true;
     }
-
     
     return(<>
     <ToastContainer/>
@@ -301,6 +328,16 @@ export default ({
             <MainComponentWrapper>
                 <Input placeholder="Password Confirmation (*)" {...passwordAgain} type={"password"} maxLength={24}/>
                 <Description color={passwordAgainDescriptionColor}>{passwordAgainDescription}</Description>
+            </MainComponentWrapper>
+            <MainComponentWrapper>
+                <PhoneBox>
+                        <Input placeholder="Input" inputWidth={"30%"} {...phoneNumber1} maxLength={3}/>
+                        <PhoneHyphen>{"-"}</PhoneHyphen>
+                        <Input placeholder="Mobile" inputWidth={"30%"} {...phoneNumber2} maxLength={4}/>
+                        <PhoneHyphen>{"-"}</PhoneHyphen>
+                        <Input placeholder="Number" inputWidth={"30%"} {...phoneNumber3} maxLength={4}/>
+                </PhoneBox>
+                <Description color={phoneNumberDescriptionColor}>{phoneNumberDescription}</Description>
             </MainComponentWrapper>
         </MainArea>
         <SignUpFooterArea>
