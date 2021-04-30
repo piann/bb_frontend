@@ -6,7 +6,6 @@ import { useInput } from "../../utils";
 import { toastOpt } from "../../common";
 import { toast } from "react-toastify";
 import Page404 from "../../Components/Page404";
-import { get } from "https";
 
 export default (props:any) => {
     const result : any = props.match.params;
@@ -89,7 +88,6 @@ export default (props:any) => {
         bountyAmount={bountyAmount}
         grantedCredit={grantedCredit}
         commentInfoList={commentInfoList}
-        //
         buttonDisabled={buttonDisabled}
         commentInput={commentInput}
         clickFunc={clickFunc}

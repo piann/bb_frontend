@@ -13,6 +13,7 @@ interface SpeechProps{
 
 const LSpeechBubbleContainer = styled.div<ContainerProps>`
     position:relative;
+    white-space: pre-wrap;
     color:white;
 	background: ${props=>props.theme.darkGrayColor};
     padding: 18px 18px;
@@ -43,6 +44,7 @@ const LSpeechBubbleContainer = styled.div<ContainerProps>`
 
 const RSpeechBubbleContainer = styled.div<ContainerProps>`
     position:relative;
+    white-space: pre-wrap;
     color:${props=>props.theme.headerBarColor};
 	background: ${props=>props.theme.lightGrayColor};
     padding: 18px 18px;
