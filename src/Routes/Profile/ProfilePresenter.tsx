@@ -227,6 +227,14 @@ export default ({
     clickFunc
 }:any) => 
 {
+    function sortData (arr: any) {
+        const arr1 = arr.sort(function (a: any, b: any) {
+            return new Date(a.submitDate).getTime() - new Date(b.submitDate).getTime();
+        });
+        console.log(arr1);
+        return arr1;
+    }
+
     return(
         window.innerWidth>700?
         // for desktop
@@ -274,7 +282,7 @@ export default ({
                                 <TableText marginLeft={10} marginRight={0}>{"Result"}</TableText>
                             </TableContentWrapperWithRatio>
                         </MiniTableHead>
-                            {reportInfoList.map((dictObj:any, index:any) => {
+                            {sortData(reportInfoList).map((dictObj:any, index:any) => {
                                 return (
                                 <MiniTableContent key={1000+index}>
                                     <TableContentWrapperWithRatio href={"/report_thread/"+dictObj.reportId}>
